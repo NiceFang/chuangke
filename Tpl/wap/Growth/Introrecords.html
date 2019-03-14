@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.record}</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/Introrecords.css">
+
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+
+<body>
+	<!-- 头部 -->
+	<div class="header_box">
+		<a href="{:U('index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+		<p class="txt">{$Think.lang.record}</p>
+	</div>
+
+	<!-- 列表内容 -->
+	<div class="goodslist_box">
+		<ul>
+			<foreach name="Chan_info" item="v">
+				<li>
+					<a href="javascript:void(0)" href="" onClick="window.location.href='/Home/Growth/mutualParticulars2/id/{$v['id']}'">
+						<div class="head_icon">
+							<img src="__IMGHEAD__/{$v.img_head}" alt="">
+							<div class="userinfo">
+								<p class="username">{$v.username}</p>
+								<p class="UID">uid:{$v.deputy_id}</p>
+							</div>
+						</div>
+
+						<div class="money_box">
+							<div class="moneyinfo">
+								<p class="money">{$v.get_nums}</p>
+								<p class="time">{$v.get_time}</p>
+
+							</div>
+						</div>
+					</a>
+				</li>
+			</foreach>
+		</ul>
+	</div>
+
+</body>
+
+</html>

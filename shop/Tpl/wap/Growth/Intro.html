@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.tochangeinto}</title>
+<!-- <link rel="stylesheet" href="__WCSS__/style.css"> -->
+<!-- <link rel="stylesheet" href="__WCSS__/digital.css"> -->
+<!-- <link rel="stylesheet" href="__WCSS__/meCen-K.css"> -->
+<!-- <link rel="stylesheet" href="__WCSS__/YangStyle.css"> -->
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/Intro.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<style>
+    .bg96{background: #fff;}
+    .big_width100{background: #fff;}
+    .w-bj p{margin: 0;}
+	.centBalance .dLine{top: 0.3rem;}
+    .w-mydiv h3{color: #000;font-size: .4rem;}
+    .w-mydiv h4 {color: #000;font-size: .26rem !important;text-align: center;}
+    .w-mydiv{ width: 85%;}
+
+
+    /* 页面样式 */
+    html,body {
+        height: 100%;
+        width: 100%;
+    }
+    .user_info {
+    height: 3.4167rem;
+    }
+</style>
+
+<body>
+
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="javascript:history.go(-1)" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+        <!-- 语言切换 -->
+        <!-- 先不要删掉 -->
+        <div class="top"> <!-- 使用时, class添加top -->
+            <!-- <div class="loginLanguage">
+                <div id="sample" class="dropdown">
+                    <div id="div_curr_lag" class="parent">
+                        <a href="#">
+                            <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                    </div>
+                    <div class="son">
+                        <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                English
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                中文
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                            <a>
+                                <img class="flag" src="images/hanguo.png" alt="" />
+                                한국어
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                            <a>
+                                <img class="flag" src="images/Japan.png" alt="" />
+                                わぶん
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
+        </div> 
+    </div>
+
+    <!-- 个人信息 -->
+    <div class="user_info">
+        <div class="user_info_box">
+            <div class="user_info_box_cont">
+                <div class="user_info_box_cont_top">
+                    <div class="div_img fl">
+
+                        <img src="__WIMG__/{$uinfo.img_head}" alt="">
+                    </div>
+                    <div class="user_info_left fl">
+                        <p class="name">昵称 :{$uinfo.username}</p>
+                        <p class="uid">UID : {$uinfo.userid} </p>
+                        <p class="garde">等级：{$uinfo.use_grade} </p>
+                    </div>
+                </div>
+                <div class="mony">
+                    <div class="balance">
+                        <span>余额:</span>
+                        <!--<img src="__WIMG__/integraimages/balance3030.png" alt="">-->
+                        <span>{$moneyinfo.cangku_num}</span>
+                    </div>
+                    <div class="integral">
+                        <span>积分:</span>
+                      <!--  <img src="__WIMG__/integraimages/balance3030.png" alt="">-->
+                        <span>{$moneyinfo.fengmi_num}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 二维码 -->
+    <div class="er_code">
+        <div class="er_code_pic">
+            <img src="{$urel}" alt="" style="width: 95%;">
+        </div>
+        <div class="txt">扫二维码  向我付款</div>
+        <div class="txt_1"><a href="#">（点击此处 保存二维码图片）</a></div>
+    </div>
+
+    <!-- 查看传入记录 -->
+    <div class="checkBtn">
+        <a href="{:U('Growth/Introrecords')}">查看转入记录</a>
+    </div>
+
+
+    <!-- 之前样式 -->
+
+    <!-- <div class="headerb">
+        <div class="userInfo" style="width: 75%">
+            <a href="{:U('User/Personal')}">
+                <div class="toux_icon"><img src="__IMGHEAD__/{$uinfo['img_head']}"></div>
+            </a>
+            <div class="uid_xy">
+                <p>UID:{$uinfo['userid']}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.rank}:
+                    <?php echo $uinfo['vip_grade'] ? 'VIP' : L('pthy')?>
+                </p>
+            </div>
+        </div>
+        <div class="header_rb"> <a href="{:U('User/Personal')}"><img src="__WIMG__/index/shez-icon.png" alt=""></a></div>
+    </div> -->
+
+    <!-- 主体 -->
+    <!-- <div class="">
+        <div class="w-bj">
+            <div class="shaomZ">
+                <a class="shaom">
+                    <img src="__IMGHEAD__/{$uinfo['img_head']}" class="icon">
+                    <?php if($uinfo['vip_grade'] != 0) {?>
+                    <img src="__WIMG__/hyjb-VIP.png" class="w-vip">
+                    <?php }?>
+            </div>
+            <div class="centBalance">
+                <div class="Balance">
+                    <p><a class="balance">{$Think.lang.wdzc}<br /><strong><span class="yue">{$minecoins[0]['c_nums']|default="0.0000"}</span></strong></a></p>
+                </div>
+                <div class="Balance">
+                    <p><a class="balance">{$Think.lang.nowprice}<br /><strong><span class="jifen">{$coindets[0]['coin_price']}</span></strong></a></p>
+                </div>
+                <div class="dLine"></div>
+            </div>
+        </div>
+        <div class="w-center">
+            <div class="fill_sty">
+                <div class="w-erweima">
+                    <img src="{$urel}" alt="">
+                </div>
+                <div class="w-mydiv">
+                    <h3>{$Think.lang.smewm}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.xwfk}</h3>
+                    <h4><a href="/Growth/test?filename=.{$urel}">({$Think.lang.djcc}&nbsp;&nbsp;{$Think.lang.saveimg})</a></h4>
+
+
+                    <div class="bottom"></div>
+                </div>
+                <div class="w-zhuanchu">
+                    <a href="{:U('Growth/Introrecords')}" id="ternNextStep">{$Think.lang.zrjlck}</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+    <!--<textarea cols="20" rows="10" id="biao1">用户定义的代码区域</textarea>
+    <input type="button" onClick="copyUrl2()" value="点击复制代码" />-->
+
+    <!-- <div class="big_width100" >
+   
+   <div class="qindHB">
+     <div class="qindHB_nb">
+         <img src="__WIMG__/hongbaoyema.png" class="qinb_imga">
+          <a href="javascript:void(0);" >
+            <a href="{:U('Index/index')}"><img src="__WIMG__/cunryuea.png"></a>
+          </a>
+          <div class="qiandHB_wz">
+            
+          </div>
+     </div>
+   </div>
+   <div class="qindHB_bg"> </div>
+ </div> -->
+    <input type="hidden" value="{$Think.lang.zwkf}" id="zwkf">
+    <input type="hidden" value="{$Think.lang.guoji}" id="guoji">
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".xianzjiaoy").click(function () {
+                msg_alert("暂时不支持现金交易");
+            });
+
+        });
+    </script>
+    <style type="text/css">
+        .qindHB_bg {
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 100;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+        }
+
+        .qindHB {
+            position: absolute;
+            z-index: 101;
+            padding: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            opacity: 1;
+
+        }
+
+        .qindHB_nb {
+            z-index: 102;
+            width: 100%;
+            position: relative;
+        }
+
+        .qindHB_nb a {
+            width: 100%;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .qindHB_nb a img {
+            z-index: 104;
+            width: 100%;
+        }
+
+        .qinb_imga {
+            height: 22rem;
+            margin: 0 auto;
+            display: block;
+            margin-top: 2rem;
+        }
+
+        .qiandHB_wz {
+            position: absolute;
+            top: 7rem;
+            width: 50%;
+            left: 25%;
+            text-align: center;
+        }
+
+        .qiandHB_wz h3 {
+            font-size: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dotted rgba(217, 45, 45, 0.4);
+            color: #d92d2d;
+            line-height: 1.8rem;
+            font-weight: 900;
+        }
+
+        .qiandHB_wz p {
+            font-size: 1rem;
+            color: #d92d2d;
+            line-height: 2.4rem;
+            font-weight: 900;
+        }
+    </style>
+
+
+        
+        
+    <script>
+        function copyArticle(event) {
+            const range = document.createRange();
+            range.selectNode(document.getElementById('content'));
+
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+            alert("复制成功！");
+        }
+
+        /*document.getElementById('copyBT').addEventListener('click', copyArticle(), false);*/
+    </script>
+    <script>
+        var zwkf = $('#zwkf').val();
+        var notSell=$("#notSell");
+        $("#notSell,#nokaifang").click(function(){
+            alert(zwkf)
+        })
+        var guoji = $('#guoji').val();
+        $("#guojiweikaifang").click(function () {
+            if(guoji == 'hanguo'){
+                $("#guojiweikaifang").attr('href','');
+                alert(zwkf);
+            }
+        })
+    </script>
+
+</body>
+
+</html>

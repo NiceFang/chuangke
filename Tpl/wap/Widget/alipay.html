@@ -1,0 +1,38 @@
+<!-- 支付宝 -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<volist name="arr" id="val">
+<div class="bank alipay">
+    <div class="bank_box alipay_box">
+        <div class="top alipay_box_top namex">
+            <div class="top_left fl">
+                <p class="bank_txt">{$Think.lang.zfb}：{$val.alipay_num}</p>
+                <p class="bank_name">{$Think.lang.ndsjh}：{$val.alipay_phone}</p>
+            </div>
+            <div class="top_right fr">
+                <img src="{$val.alipay_imgs}" alt="">
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="left fl">
+                <if condition="($val.alipay_default eq 1)">
+                    <div class="select_bg fl select_bg_box select_red update" data-val="{$val.id}"></div>
+                    <else/>
+                    <div class="select_bg fl select_bg_box update" data-val="{$val.id}"></div>
+                </if>
+                <p class="fl">{$Think.lang.mr}</p>
+            </div>
+            <div class="right fr"  name="alipay_dele" data-val="{$val.id}">
+                <div class="delete_bg fl"></div>
+                <p class="fl" style="color: white">{$Think.lang.deleteo}</p>
+            </div>
+        </div>
+    </div>
+    <div class="big_er_code" style="display: none;">
+        <div class="big_pic">
+            <img src="{$val.alipay_imgs}" alt="">
+        </div>
+    </div>
+</div>
+</volist>
+<div class="bottomOP_box"></div>

@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<script src="../../../../jubaozuang/jubao/Themes/Home/nc/Public/js/JdClick.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.addbankcard}</title>
+
+<!-- 新的的样式代码 -->
+<link rel="stylesheet" href="__WCSS__/base.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/accountManage.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script type="text/javascript" src="__WJS__/mui.min.js"></script>
+
+<body class="bg96">
+
+    <!-- 新的的代码 -->
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('Growth/Cardinfos')}"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+        {$Think.lang.addcard1}
+    </div>
+
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis">
+                <label class="name chikaren">{$Think.lang.cardholdername}</label>
+                <input type="text" name="bank_name" class="mui-input-clear chikaren_input" placeholder="" id="crkxm">
+            </div>
+            <div class="mui-input-row user_info_lis select_bank">
+                <label class="name kaihu">{$Think.lang.addcard32}</label>
+                <input type="text" readonly="readonly" name="bank_bank" class="mui-input-clear kaihu_input" placeholder="" id="khy">
+                <img class="jiantou" src="__WIMG__/jiantouyou.png" alt="">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name kahao">{$Think.lang.cardnum}</label>
+                <input type="text" name="bank_number" class="mui-input-clear kahao_input" placeholder="" id="yhk">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name kahao">{$Think.lang.openbranch}</label>
+                <input type="text" name="bank_bank1" class="mui-input-clear kahao_input" placeholder="" id="khzy">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name">{$Think.lang.mobile}</label>
+                <input type="text" name="bank_phone" class="mui-input-clear" placeholder="" id="mobile">
+            </div>
+        </form>
+    </div>
+
+    <!-- 设为默认 -->
+    <div class="default">
+        <div class="select_bg fl " id="select_red"></div>
+        <p class="fl">{$Think.lang.mr}</p>
+    </div>
+
+    <!-- 保存按钮 -->
+    <div class="save" id="confirm">{$Think.lang.bc}</div>
+
+    <!-- 银行卡选择 -->
+    <div class="mui-inner-wrap box none">
+
+        <div class="shadow_top"></div>
+        <!-- 主页面标题 -->
+        <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll scroll_box">
+                <!-- 主界面具体展示内容 -->
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="6">建设银行</a>
+                </li>
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="4">招商银行</a>
+                </li>
+
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="2">农业银行</a>
+                </li>
+
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="3">工商银行</a>
+                </li>
+
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="7">中国银行</a>
+                </li>
+
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="10">上海浦东发展银行</a>
+                </li>
+
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#" data-id="13">华夏银行</a>
+                </li>
+
+            </div>
+        </div>
+        <div class="shadow_bot"></div>
+    </div>
+
+
+
+    <!--请填写持卡人姓名-->
+    <input type="hidden" id="qtxckrxm" value="{$Think.lang.qtxckrxm}">
+    <!--请选择开户人行-->
+    <input type="hidden" id="addcard3" value="{$Think.lang.addcard3}">
+    <!--开户银行支行分行输入有误-->
+    <input type="hidden" id="khyhzhsryw" value="{$Think.lang.khyhzhsryw}">
+    <script type="text/javascript">
+        $(function () {
+            // 初始化银行卡下拉框滚动
+            mui('#offCanvasContentScroll').scroll();
+
+            // 点击选为默认
+            $(".select_bg").on('click', function () {
+                $(this).toggleClass("select_red");
+            })
+
+            // 点击选择银行 出现银行卡选择框
+            $(".select_bank").click(function () {
+                $(".box").show()
+                $(".save").hide();
+            })
+
+            // 获取选择银行
+            $("#offCanvasContentScroll").on("tap", "a", function () {
+                var txt = $(this).html();
+                var val = $(".select_bank input").val(txt);
+                var data_id = $(this).attr('data-id');
+                var val1 = $("#khy").attr('data-id', data_id);
+                $(".select_bank .jiantou").attr("src", "__WIMG__/select_red.png");
+                $(".select_bank .jiantou").css({
+                    'width': '0.3333rem',
+                    'height': '0.3333rem',
+                    'top': '0.3542rem',
+                    'right':'0.2083rem'
+                });
+                $(".box").hide()
+                // 保存按钮延迟出现
+                $(".save").delay(10).fadeIn(10);
+            })
+            
+            // 判断input的值不为空时,给保存按钮添加样式
+            $(".mui-input-group input").blur(function () {
+                if (($("input[name=bank_name]").val().trim()) != "" && ($("input[name=bank_bank]").val().trim()) !=
+                    "" &&
+                    ($("input[name=bank_number]").val().trim()) != "" && ($("input[name=bank_bank1]").val()) != "" && ($("input[name=bank_phone]").val().trim()) != "" ) {
+                    $(".save").addClass("active");
+                } else if (($("input[name=bank_name]").val().trim()) != "" || ($(
+                        "input[name=bank_bank]").val().trim()) ==
+                    "" || ($("input[name=bank_number]").val().trim()) == "" || ($("input[name=bank_bank1]").val().trim()) != "" || ($("input[name=bank_phone]").val().trim()) != "") {
+                    $(".save").removeClass("active");
+                }
+            })
+        })
+    </script>
+
+    <!-- 提示不能为空 -->
+    <script type="text/javascript">
+        var i=0;
+        var closetime = null;
+        $('#confirm').on('click',function () {
+            i++;
+            closetime = window.setTimeout(addBank,1000);
+        });
+        function addBank() {
+            if(i>1){
+                window.clearTimeout(closetime);
+                closetime = null;
+                i=0;
+            }else {
+                i = 0;
+                var qtxckrxm = $('#qtxckrxm').val();
+                var addcard3 = $('#addcard3').val();
+                var khyhzhsryw = $('#khyhzhsryw').val();
+                var crkxm = $.trim($('#crkxm').val()); //姓名
+                if ($('#select_red').hasClass('select_red')) {
+                    var c_on = 1;
+                } else {
+                    var c_on = 0;
+                }
+                // alert(c_on);return
+                if (crkxm == '') {
+                    msg_alert(qtxckrxm);
+                    return;
+                }
+                var khy = $.trim($('#khy').attr('data-id')); //开户行
+                // alert(khy)
+                if (khy == 0) {
+                    msg_alert(addcard3);
+                    return;
+                }
+                var yhk = $.trim($('#yhk').val()); //银行卡
+                // var pattern = /^([1-9]{1})(\d{14}|\d{18})$/;
+                // if(!pattern.test(yhk)){
+                //     msg_alert('银行卡号输入不正确');
+                //     return;
+                // }
+                var khzy = $.trim($('#khzy').val()); //开户支行
+
+                if (khzy == '') {
+                    msg_alert(khyhzhsryw);
+                    return;
+                }
+                var mobile = $.trim($('#mobile').val());
+                if (mobile == '') {
+                    msg_alert('手机号不能为空');
+                    return;
+                }
+
+                $.post("{:U('Growth/addBanks')}", {
+                    crkxm: crkxm,
+                    khy: khy,
+                    yhk: yhk,
+                    khzy: khzy,
+                    c_on: c_on,
+                    mobile: mobile
+                }, function (mes) {
+                    if (mes.status == 1) {
+                        msg_alert(mes.message, mes.url);
+                    } else {
+                        msg_alert(mes.message);
+                    }
+                }, "json");
+            }
+        }
+    </script>
+
+
+    <script src="__WJS__/ansel_select.js"></script>
+    <!--input  type="checkbox"  美化 -->
+    <script>
+        function setupLabel() {
+        if ($('.label_check input').length) {
+            $('.label_check').each(function(){
+                $(this).removeClass('c_on');
+            });
+            $('.label_check input:checked').each(function(){
+                $(this).parent('label').addClass('c_on');
+            });
+        };
+        if ($('.label_radio input').length) {    /////
+            $('.label_radio').each(function(){
+                $(this).removeClass('r_on');
+            });
+            $('.label_radio input:checked').each(function(){
+                $(this).parent('label').addClass('r_on');
+            });
+        };
+    };
+    $(document).ready(function(){
+        $('body').addClass('has-js');
+        $('.label_check, .label_radio').click(function(){
+            setupLabel();
+        });
+        setupLabel();
+    });
+
+</script>
+    <script>
+        //插件初始化配置
+    $('.select').anselcfg({});
+</script>
+
+    <style type="text/css">
+        .ansel_search {
+            border-bottom: 1px solid #ff0000;
+        }
+
+        .ansel_search input:-ms-input-placeholder {
+            color: #ff0000
+        }
+
+        .ansel_searchinput:-moz-placeholder {
+            color: #ff0000
+        }
+
+        .ansel_search input::-webkit-input-placeholder {
+            color: #ff0000
+        }
+
+        .demo {
+            margin-bottom: 0px;
+        }
+
+        .tips {
+            margin: 10px 0;
+        }
+    </style>
+
+</body>
+
+</html>

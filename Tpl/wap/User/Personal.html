@@ -1,0 +1,1006 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.Setup}</title>
+<!-- <link rel="stylesheet" href="__WCSS__/style.css">  -->
+<!-- <link rel="stylesheet" href="__WCSS__/meCen.css"> -->
+<link rel="stylesheet" href="__WCSS__/reset.css">
+<link rel="stylesheet" href="__WCSS__/uploads.css">
+<link rel="stylesheet" href="__WCSS__/login.css">
+
+<link rel="stylesheet" href="__WCSS__/normalize.css">
+<link rel="stylesheet" href="__WCSS__/wen.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+
+<link rel="stylesheet" href="__WCSS__/YangStyle.css">
+<link rel="stylesheet" href="__WCSS__/Personal.css">
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__WJS__/upload.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<style>
+	.sett_xiug{display:none;}
+	.button,#clipBtn{width: 130px;font-size: 16px;}
+	.sett_xiug{display:none;}
+	.button,#clipBtn{display: block;z-index: 2;height: .8rem;width: 90%;margin: 0 auto;float: none;border-radius: 5px;text-align: center;line-height: 40px;color: #fff;font-size: 16px;margin-bottom: 10px;}
+	.setlistboxs ul{margin-top: 10px;}
+	.setlistboxs ul li a div{display: flex;align-items: center;}
+	.bg96{background: #fff;}
+    .big_width100{background: #fff; margin-top:1rem; }
+    .w-bj p{margin: 0;}
+	.w-nicheng{line-height: .7rem;color: #9ba2ee !important;}
+	.red_package{padding: 15px ;background-color: #fff;}
+	.red_package a{display: flex;justify-content: space-between;align-items: center;}
+	.red_package .red_left {display: flex;align-items: center;font-size: 12px;color:#333;}
+	.red_package .red_left img{width: 15px;height: 20px;margin-right: 10px;}
+	.red_package .red_left span{margin-left: 10px;color:#999;}
+	.red_package  .arrow{display: flex;align-items: center;}
+	.red_package  .arrow span{width: 4px;height: 4px;border-radius: 50%;background-color: red;display: inline-block;}
+	.red_package  .arrow img{width: 22px;height: 22px;}
+	.loginLanguage {
+		width: 118px;
+		height: 48px;
+		position: absolute;
+		right: 0;
+
+	}
+</style>
+
+
+<body>
+	<!-- <div class="headerb" style="text-align: center;line-height: 1rem;color:  #C2E7FF;font-size: .36rem;">
+
+<body >
+	<div class="headerb" style="text-align: center;line-height: 1rem;color:  #C2E7FF;font-size: .36rem;">
+>>>>>>> dd46073c5ecdc51d0ed5f2995ed110f26e1616eb
+		<div class="header_l" style="width: 20%;height: 46px;float: left;position: relative;">
+			<a href="javascript:history.go(-1)" style="display: block;float: left;height: 46px;">
+				<img src="__WIMG__/jiant.png" alt="" style="position: absolute;width: 20px;top: 14px;left: 10px;">
+			</a>
+		</div>
+		<input id="hid_lag" type="hidden" value="{:cookie('think_language')}" />
+		<div class="loginLanguage" style="">
+				<div id="sample" class="dropdown">
+					<div id="div_curr_lag" class="parent">
+						<a href="#">
+							<span><img class="flag" src="__WIMG__/English.png" alt="" />English</span></a>
+					</div>
+					<div class="son">
+						英文
+						<div id="div_en-us" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/English.png" alt="" />English<span
+								 class="value"></span></a></div>
+
+						<!-日文-->
+	<!-- <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span -->
+	<!-- class="value"></span></a></div> -->
+	<!--韩文-->
+	<!-- <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png" -->
+	<!-- alt="" />한국어<span class="value"></span></a></div> -->
+	<!--中文-->
+	<!-- <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png" alt="" />中文&nbsp;&nbsp;&nbsp;<span -->
+	<!-- class="value"></span></a></div> -->
+
+	<!-- </div> -->
+	<!-- </div> -->
+	<!-- </div> -->
+	<!-- <div style="width: 80%;">{$Think.lang.grzx}</div> -->
+
+
+	<!-- </div> -->
+
+
+
+
+	<!-- <div class="top">
+			<div class="loginLanguage">
+				<div id="sample" class="dropdown">
+					<div id="div_curr_lag" class="parent">
+						<a href="#">
+							<span><img class="flag" src="__WIMG__/English.png" alt="" />English</span></a>
+					</div>
+					<div class="son">
+
+						<div id="div_en-us" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/English.png" alt="" />English<span
+								 class="value"></span></a></div>
+
+						<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span
+								 class="value"></span></a></div>
+
+						<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"
+								 alt="" />한국어<span class="value"></span></a></div>
+
+						<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span
+								 class="value"></span></a></div>
+					</div>
+				</div>
+			</div>
+		</div>  -->
+
+	<!-- <div class="big_width100">
+		<div class="w-bj">
+
+			<div class="shaomZ" id="logox" style="text-align: center">
+				<div class="shaom">
+					<img src="__IMGHEAD__/{$uinfo['img_head']}" class="icon">
+					<?php if($uinfo['vip_grade'] != 0) { ?>
+					<img src="__WIMG__/hyjb-VIP.png" class="w-vip">
+					<?php } ?>
+				</div>
+				<p class="w-nicheng">{$uinfo['username']}</p>
+				<p>UID:{$uinfo['userid']}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.rank}:
+					<?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>
+				</p>
+			</div>
+			<div class="centBalance">
+				<div class="Balance">
+					<p><a class="balance" href="###">{$Think.lang.myBalance}<br /><strong><img style="vertical-align: top;" src="__WIMG__/imgs.png"><span class="yue">{$moneyinfo['cangku_num']|Showtwo}</span></strong></a></p>
+				</div>
+				<div class="Balance">
+					<p><a class="balance" href="###">{$Think.lang.myIntegral}<br /><strong><img style="vertical-align: top;" src="__WIMG__/imgs.png"><span class="jifen">{$moneyinfo['fengmi_num']|Showtwo}</span></strong></a></p>
+				</div>
+				<div class="dLine"></div>
+			</div>
+		</div>
+	</div>  -->
+	<!-- 头部 -->
+	<div class="head">
+		<div class="head_title">
+			<div class="top">
+				<div class="loginLanguage">
+					<div id="sample" class="dropdown">
+						<div id="div_curr_lag" class="parent">
+							<a href="#">
+								<span><img class="flag select_flag" src="__WIMG__/English.png" alt="" />English</span></a>
+						</div>
+						<div class="son">
+							<div id="div_en-us" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/English.png" alt="" />English<span
+									 class="value"></span></a></div>
+							<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span
+									 class="value"></span></a></div>
+							<!--<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"-->
+							<!--alt="" />한국어<span class="value"></span></a></div>-->
+							<!--<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png"-->
+							<!--alt="" />わぶん<span class="value"></span></a></div>-->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="user">
+			<div class="user_info ">
+				<div class="div_img fl">
+					<img src="__IMGHEAD__/{$uinfo['img_head']}" id="user_head" alt="">
+					 <input type="file" id="head_file" onchange="imgChange()" name="header_img">
+				</div>
+				<div class="user_info_right fl">
+					<p class="name">{$Think.lang.usename}:{$uinfo['username']}</p>
+					<div>
+						<p class="uid">UID :{$uid}</p>
+						<p class="grade">{$Think.lang.rank}：{$uinfo['use_grade_name']}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		//测试表单
+		<!--<form action="{:U('user/upload_img')}" enctype="multipart/form-data" method="post">-->
+			<!--<input type="file" name="header_img">-->
+			<!--<input type="submit" value="提交" style="color: white">-->
+		<!--</form>-->
+		<div class="centBalance">
+			<div class="Balance">
+				<a class="balance" href="###">
+					<p>{$Think.lang.yue}</p>
+					<div class="balance_box">
+						<div class="div_info fl">
+							<img src="__WIMG__/index/white_icc.png" alt="">
+						</div>
+						<span class="yue fl">
+							&nbsp;{$moneyinfo['cangku_num']|Showtwo}
+						</span>
+					</div>
+				</a>
+			</div>
+			<div class="Balance">
+				<a class="balance" href="###">
+					<p>{$Think.lang.jifen}</p>
+					<div class="balance_box">
+						<div class="div_info fl">
+							<img src="__WIMG__/index/white_icc.png" alt="">
+						</div>
+						<span class="yue fl">
+							&nbsp;{$moneyinfo['fengmi_num']|Showtwo}
+						</span>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="red_package">
+		<a href="javascript:;">
+			<div class="red_left">
+				<img src="/Public/home/wap/images/index/hongbao.png" alt="">
+				<p>{$Think.lang.nyxdhb}</p>
+				<span>
+					<?php echo date("Y-m-d",time())?></span>
+			</div>
+			<div class="arrow">
+				<span class="circle"></span>
+				<img src="/Public/home/wap/images/index/right-arrow.png" alt="">
+			</div>
+		</a>
+	</div> -->
+	<div class="setlistboxs">
+		<ul style="margin-top: 0;">
+			<li><a href="{:U('User/Setuname')}">
+					<div>
+						<img src="__WIMG__/user/nicheng.png" alt="">
+						<p>{$Think.lang.nickname}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
+			<li><a href="{:U('User/Mobile')}">
+					<div>
+						<img src="__WIMG__/user/dianhua.png" alt="">
+						<p>{$Think.lang.dh}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
+			<!-- <li><a href="{:U('Shop/member/addresslist')}" class="guojiweikaifang">
+					<div>
+						<img src="__WIMG__/user/dizhi.png" alt="">
+						<p>{$Think.lang.address}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a></li> -->
+			<li><a href="{:U('User/accountManage')}">
+					<div>
+						<img src="__WIMG__/user/zhanghuguanli.png" alt="">
+						<p>{$Think.lang.bankcard}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
+		</ul>
+		<!-- <ul>
+			<li><a href="{:U('Shop/Home/index')}" class="guojiweikaifang">
+					<div>
+						<img src="__WIMG__/user/dianpu.png" alt="">
+						<p>{$Think.lang.mineshops}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a></li>
+			<li><a href="{:U('Shop/Member/allorder')}" class="guojiweikaifang">
+					<div>
+						<img src="__WIMG__/user/dingdan.png" alt="">
+						<p>{$Think.lang.myoder}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a></li>
+		</ul> -->
+		<ul>
+			<if condition="$isAndMobile['isM'] eq false">
+				<li><a href="{:U('User/Setpwd',array('type'=>1))}">
+					<div>
+						<img src="__WIMG__/user/denglvmima.png" alt="">
+						<p>{$Think.lang.loginpwd}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+				</li>
+			</if>
+			<li><a href="{:U('User/Setpwd',array('type'=>2))}">
+					<div>
+						<img src="__WIMG__/user/zhifumima.png" alt="">
+						<p>{$Think.lang.paypwd}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
+		</ul>
+		<ul>
+			<li><a href="{:U('User/News')}" class="guojiweikaifang">
+					<div>
+						<img src="__WIMG__/user/gonggao.png" alt="">
+						<p>{$Think.lang.notice}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
+			<!--公告-->
+			<!--<li><a href="{:U('User/Aboutus')}">-->
+			<!--<div>-->
+			<!--<img src="__WIMG__/user/u08.png" alt="">-->
+			<!--<p>{$Think.lang.about}</p>-->
+			<!--</div>-->
+			<!--<img src="__WIMG__/jiantt.png" alt="">-->
+			<!--</a></li>-->
+			<li><a href="{:U('User/feedbackInfo')}">
+					<div>
+						<img src="__WIMG__/user/tousu.png" alt="">
+						<p>{$Think.lang.complins}</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
+			<li><a href="javascript:void(0)">
+					<div>
+						<img src="__WIMG__/user/banben.png" alt="">
+						<p>{$Think.lang.edition}(1.1.0)</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a></li>
+		</ul>
+
+	</div>
+	<div class="loginout">
+		<a class="quit" href="{:U('User/Loginout')}">{$Think.lang.loginout}</a>
+	</div>
+	<div style="height: 1px"></div>
+	<div class="footer-fan">
+		<a href="{:U('Index/index')}">
+			<img src="__WIMG__/shouye.png" alt="首页">
+			<p class="">{$Think.lang.sy}</p>
+		</a>
+		<!-- <a href="{:U('Turntable/index')}"> -->
+		<!--<a id="notSell">-->
+		<a href="{:U('index/page')}">
+			<img src="__WIMG__/zican.png" alt="资产">
+			<p>{$Think.lang.zichan}</p>
+		</a>
+		<a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
+			<img src="__WIMG__/gouwuche.png" alt="商城">
+			<p>{$Think.lang.shoppingmall}</p>
+		</a>
+		<a href="{:U('User/Personal')}">
+			<img src="__WIMG__/wode_select.png" alt="我的">
+			<p class="active">{$Think.lang.my}</p>
+		</a>
+	</div>
+	<div class="big_width100">
+		<div class="shezhi">
+			<div class="sett_toux clear_wl" style="display: none">
+				<!--   <div class="upload">
+			        <div id="preview" style="border:none;">
+						<form id='myupload' action="{:U('User/Imgup')}" method='post' enctype='multipart/form-data'>
+							<input type="file" id="uploadphoto" name="uploadfile" value="请点击上传图片"  style="display:none;" />
+						</form>
+						<img id="imghead" width=100% height=auto border=0 src="__IMGHEAD__/{$uinfo['img_head']}">
+
+						<div class="imglist" style="color:red"> </div>
+						<p class="res"></p>
+						<div class="progress">
+							<div class="progress-bar progress-bar-striped" ><span class="percent">50%</span></div>
+						</div>
+			        </div>
+			  	</div>-->
+				<!--新的更换头像SSSS-->
+				<!-- <section class="logo-license">
+					 <div class="half">
+						 <a class="logo" id="logox">
+							 <img id="bgl" src="__IMGHEAD__/{$uinfo['img_head']}"/>
+							 <p>{$Think.lang.imghead}</p>
+						 </a>
+					 </div>
+				 </section> -->
+
+				<!--新的更换头像EEEE-->
+				<div class="sett_uid_xy">
+					<p><strong>UID:{$uinfo['userid']}</strong></p>
+					<p>{$Think.lang.reput}
+						<for start="0" end="$uinfo['user_credit']">
+							<span><img src="__WIMG__/aix-icon.png"></span>
+						</for>
+					</p>
+				</div>
+			</div>
+
+
+			<article class="htmleaf-container">
+				<div id="clipArea">
+					<div class="w-x" style="height: 1rem;color: #fff;z-index: 1;position: absolute;right: 0px;top: 0px;line-height: 1rem;width: 1rem;font-size: .64rem;">×</div>
+				</div>
+				<div class="foot-use">
+					<div class="uploader1 blue">
+						<input type="button" name="file" class="button" value="{$Think.lang.open}" />
+
+						<form id='myupload' action="{:U('User/Imgup')}" method='post' enctype='multipart/form-data'>
+							<input id="file" type="file" name="uploadfile" onchange="javascript:setImagePreview();" accept="image/*"
+							 multiple />
+							<!--<input type="file" id="uploadphoto" name="uploadfile" value="请点击上传图片"  style="display:none;" />-->
+						</form>
+					</div>
+					<button id="clipBtn">{$Think.lang.intercept}</button>
+				</div>
+				<div id="view"></div>
+			</article>
+
+			<div class="sett_xiug mt10" id="phone_uid">
+				<a href="{:U('User/Setuname')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett9-icon.png">
+						<p>{$Think.lang.nickname}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+						<img src="__WIMG__/jiantt.png">
+						<p>{$uinfo['username']}</p>
+					</div>
+				</a>
+			</div>
+
+
+			<!--  <div class="sett_xiug ">
+	      	 	<a  class="clear_wl" id="duoyhide">
+	      	 		<div class="sett_x_l clear_wl">
+	      	 			<img src="__WIMG__/sett15-icon.png">
+	      	 			<p>{$Think.lang.multilingual}</p>
+	      	 		</div>
+	      	 		<div class="sett_x_r clear_wl">
+	      	 			<img src="__WIMG__/jiantt.png">
+	      	 			<p><eq name="lantype" value="1">中文<else />English</eq></p>
+	      	 		</div>
+	      	 	</a>
+
+	      	 </div> -->
+
+			<div class="sett_xiug ">
+
+				<a href="{:U('User/Mobile')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett15-icon.png">
+						<p>{$Think.lang.dh}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+						<img src="__WIMG__/jiantt.png">
+						<p></p>
+					</div>
+				</a>
+
+			</div>
+
+
+
+			<div class="sett_xiug mt10 ">
+				<a href="{:U('Growth/Cardinfos')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett10-icon.png">
+						<p>{$Think.lang.bankcard}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+
+						<img src="__WIMG__/jiantt.png">
+						<p></p>
+					</div>
+				</a>
+			</div>
+
+			<div class="sett_xiug mt10 ">
+				<a href="{:U('User/Sharecode')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/settfx-icon.png">
+						<p>{$Think.lang.share}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+
+						<img src="__WIMG__/jiantt.png">
+						<p></p>
+					</div>
+				</a>
+			</div>
+
+			<div class="sett_xiug mt10 ">
+				<a href="{:U('User/Setpwd',array('type'=>1))}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett12-icon.png">
+						<p>{$Think.lang.loginpwd}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+						<img src="__WIMG__/jiantt.png">
+						<p>{$Think.lang.csave}</p>
+					</div>
+				</a>
+			</div>
+
+			<div class="sett_xiug ">
+				<a href="{:U('User/Setpwd',array('type'=>2))}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett13-icon.png">
+						<p>{$Think.lang.paypwd}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+						<img src="__WIMG__/jiantt.png">
+						<p>{$Think.lang.csave}</p>
+					</div>
+				</a>
+
+			</div>
+
+			<div class="sett_xiug mt10 ">
+				<a href="{:U('User/News')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett14-icon.png">
+						<p>{$Think.lang.notice}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+
+						<img src="__WIMG__/jiantt.png">
+						<p><img src="__WIMG__/yuand.png"></p>
+					</div>
+				</a>
+
+			</div>
+
+			<!--<div class="sett_xiug  ">-->
+			<!--<a href="{:U('User/News')}" class="clear_wl">-->
+			<!--<div class="sett_x_l clear_wl">-->
+			<!--<img src="__WIMG__/sett1-icon.png">-->
+			<!--<p>个人消息</p>-->
+			<!--</div>-->
+			<!--<div class="sett_x_r clear_wl">-->
+			<!---->
+			<!--<img src="__WIMG__/jiantt.png">-->
+			<!--<p></p>-->
+			<!--</div>-->
+			<!--</a>-->
+			<!--</div>-->
+
+
+			<?php
+$userid=session('userid');
+?>
+			<eq name="userid" value="2080">
+				<div class="sett_xiug mt10 ">
+					<a href="{:U('Shop/dianpu/index',array('did'=>$uid))}" class="clear_wl" id="cuanjdd2">
+						<div class="sett_x_l clear_wl">
+							<img src="__WIMG__/sett2-icon.png">
+							<p id="tjyhk">{$Think.lang.mineshops}</p>
+						</div>
+						<div class="sett_x_r clear_wl">
+
+							<img src="__WIMG__/jiantt.png">
+							<p></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="sett_xiug">
+					<a href="{:U('Shop/Member/allorder')}" class="clear_wl" id="cuanjdd1">
+						<div class="sett_x_l clear_wl">
+							<img src="__WIMG__/sett3-icon.png">
+							<p id="tjyhk">{$Think.lang.myoder}</p>
+						</div>
+						<div class="sett_x_r clear_wl">
+
+							<img src="__WIMG__/jiantt.png">
+							<p></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="sett_xiug ">
+					<a href="{:U('Shop/member/addresslist')}" class="clear" id="cuanjdd">
+						<div class="sett_x_l clear_wl">
+							<img src="__WIMG__/sett4-icon.png">
+							<p id="tjyhk">{$Think.lang.address}</p>
+						</div>
+						<div class="sett_x_r clear_wl">
+
+							<img src="__WIMG__/jiantt.png">
+							<p></p>
+						</div>
+					</a>
+				</div>
+				<else />
+
+				<div class="sett_xiug mt10 ">
+					<a href="{:U('Shop/Home/index')}" class="clear_wl" id="cuanjdd2">
+						<div class="sett_x_l clear_wl">
+							<img src="__WIMG__/sett2-icon.png">
+							<p id="tjyhk">{$Think.lang.mineshops}</p>
+						</div>
+						<div class="sett_x_r clear_wl">
+
+							<img src="__WIMG__/jiantt.png">
+							<p></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="sett_xiug">
+					<a href="{:U('Shop/Member/allorder')}" class="clear_wl" id="cuanjdd1">
+						<div class="sett_x_l clear_wl">
+							<img src="__WIMG__/sett3-icon.png">
+							<p id="tjyhk">{$Think.lang.myoder}</p>
+						</div>
+						<div class="sett_x_r clear_wl">
+
+							<img src="__WIMG__/jiantt.png">
+							<p></p>
+						</div>
+					</a>
+				</div>
+
+				<div class="sett_xiug ">
+					<a href="{:U('/Shop/member/addresslist')}" class="clear" id="cuanjdd">
+						<div class="sett_x_l clear_wl">
+							<img src="__WIMG__/sett4-icon.png">
+							<p id="tjyhk">{$Think.lang.address}</p>
+						</div>
+						<div class="sett_x_r clear_wl">
+
+							<img src="__WIMG__/jiantt.png">
+							<p></p>
+						</div>
+					</a>
+				</div>
+			</eq>
+			<div class="sett_xiug  mt10">
+				<a href="{:U('User/Complaint')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett5-icon.png">
+						<p>{$Think.lang.complins}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+
+						<img src="__WIMG__/jiantt.png">
+						<p></p>
+					</div>
+				</a>
+			</div>
+
+			<!--<div class="sett_xiug ">-->
+			<!--<a href="{:U('User/test')}" class="clear_wl">-->
+			<!--<div class="sett_x_l clear_wl">-->
+			<!--<img src="__WIMG__/sett6-icon.png">-->
+			<!--<p>分享</p>-->
+			<!--</div>-->
+			<!--<div class="sett_x_r clear_wl">-->
+			<!---->
+			<!--<img src="__WIMG__/jiantt.png">-->
+			<!--<p></p>-->
+			<!--</div>-->
+			<!--</a>-->
+			<!--</div>-->
+
+			<div class="sett_xiug ">
+				<a href="#" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett16-icon.png">
+						<p>{$Think.lang.edition}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+
+						<img src="__WIMG__/jiantt.png">
+						<p>1.0.0</p>
+					</div>
+				</a>
+
+			</div>
+
+			<div class="sett_xiug ">
+				<a href="{:U('User/Aboutus')}" class="clear_wl">
+					<div class="sett_x_l clear_wl">
+						<img src="__WIMG__/sett7-icon.png">
+						<p>{$Think.lang.about}</p>
+					</div>
+					<div class="sett_x_r clear_wl">
+
+						<img src="__WIMG__/jiantt.png">
+						<p></p>
+					</div>
+				</a>
+			</div>
+			<!--
+			  <div class="sett_tuic">
+				  <a href="{:U('User/Loginout')}">{$Think.lang.loginout}</a>
+			  </div> -->
+		</div>
+	</div>
+	<div id="duoynone">
+		<div id="myModal" class="reveal-modal">
+			<h1>{$Think.lang.Multilingual}</h1>
+			<div class="dyyyinwzwen">
+				<div <eq name="lantype" value="1">class="dyyyinw ona"
+					<else />class="dyyyinw"</eq>><span>简体中文</span>
+					<p><input type="radio" name="identity" value="1" class="radioclass"></p>
+				</div>
+				<div <eq name="lantype" value="2">class="dyyyinw ona"
+					<else />class="dyyyinw"</eq>><span>English</span>
+					<p><input type="radio" name="identity" value="2" class="radioclass" /></p>
+				</div>
+			</div>
+			<div class="duoyyquedqux">
+				<a href="javascript:void(0)" class="close-reveal-modal" id="duoyhidea">{$Think.lang.qux}</a>
+				<a href="javascript:void(0)" class="cheklan">{$Think.lang.termine}</a>
+				<p></p>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+<input type="hidden" value="{$Think.lang.zwkf}" id="zwkf">
+<input type="hidden" value="{$Think.lang.guoji}" id="guoji">
+<input id="hid_lag" type="hidden" value="{:cookie('think_language')}" />
+
+</html>
+
+<!--头像上传新SSSSS-->
+<script src="__IMGJS__/jquery.min.js" type="text/javascript"></script>
+<script>
+	window.jQuery || document.write('<script src="__IMGJS__/jquery-2.1.1.min.js"><\/script>')
+</script>
+<script src="__IMGJS__/iscroll-zoom.js"></script>
+<script src="__IMGJS__/hammer.js"></script>
+<script src="__IMGJS__/jquery.photoClip.js"></script>
+<script type="text/javascript" src="__WJS__/jquery.form.js"></script>
+<script type="text/javascript">
+	$(".w-x").click(function () {
+		$(".htmleaf-container").toggle();
+	})
+
+	$(document).ready(function () {
+		$("#duoyhide").click(function () {
+			$("#duoynone").toggle(); //toggle() 方法切换元素的可见状态。 如果被选元素可见,则隐藏这些元素,如果被选元素隐藏,则显示这些元素。
+		});
+
+	});
+
+	$(document).ready(function () {
+		$("#duoyhidea").click(function () {
+			$("#duoynone").toggle(); //toggle() 方法切换元素的可见状态。 如果被选元素可见,则隐藏这些元素,如果被选元素隐藏,则显示这些元素。
+		});
+
+	});
+
+
+	// // 点击改变用户头像
+	function imgChange() {
+		//获取点击的文本框
+		var file = document.getElementById("head_file");
+		//  人物头像
+		var user_head = document.getElementById("user_head");
+        console.log($('#head_file')[0].files[0]);
+		// 人物头像地址
+		var formData = new FormData();
+		var img = $('#head_file')[0].files[0];
+		formData.append('header_img',img);
+		$.ajax({
+			url:"{:U('User/upload_img')}",
+			type:'post',
+            processData : false,
+            contentType : false,
+            async:false,
+			data:formData,
+			success:function(data){
+			    console.log(data);
+				if(data.status==0){
+					alert(data.message);
+				}else{
+                    user_head.src = '/Public/home/wap/heads/'+data.message;
+				    alert('修改成功')
+				}
+			}
+
+		})
+		// var path = user_head.src
+		// console.log(path)
+		// // 上传图片地址
+		// var fileList = file.files[0].name;
+		// // var imgURL =  fileList.name[1]
+		// console.log(fileList)
+
+
+
+	};
+</script>
+
+<script type="text/javascript">
+	$(".dyyyinw").on("click", function () {
+		$(this).addClass("ona").siblings().removeClass("ona");
+	})
+</script>
+<script>
+	$('.modal').click(function () {
+		$("#myModal").hide();
+	})
+
+	$('.cheklan').click(function () {
+		var checlan = $('.ona').find(("input[name='identity']")).val();
+		if (checlan == 1) {
+			window.location.href = '?l=zh-cn';
+		}
+
+		if (checlan == 2) {
+			window.location.href = '?l=en-us';
+		}
+	})
+</script>
+
+
+<script type="text/javascript">
+	// function getCookie(cookieName){
+	// 	        var cookieValue="";
+	// 	        if (document.cookie && document.cookie != '') {
+	// 	            var cookies = document.cookie.split(';');
+	// 	            for (var i = 0; i < cookies.length; i++) {
+	// 	                 var cookie = cookies[i];
+	// 	                 if (cookie.substring(0, cookieName.length + 2).trim() == cookieName.trim() + "=") {
+	// 	                       cookieValue = cookie.substring(cookieName.length + 2, cookie.length);
+	// 	                       break;
+	// 	                 }
+	// 	             }
+	// 	        }
+	// 	        return cookieValue;
+	// 	    }
+	$(document).ready(function () {
+		// 点击切换语言
+		$(".dropdown .son").hide();
+		$("#div_curr_lag").click(function () {
+			$(".dropdown .son").toggle();
+		});
+		$(".dropdown .son div a").click(function () {
+			var text = $(this).html();
+			$(".dropdown .parent a span").html(text);
+			// localStorage.setItem('key',JSON.stringify(text));
+			$(".dropdown .son").hide(); //选择完成以后隐藏页面
+		});
+
+		// function gradeOnclick(url) {
+		// 	window.location.href = "?l=" + url;
+		// };
+
+		var curr_lag = $("#hid_lag").val();
+		//console.log(curr_lag);
+
+		var curr_html_lag = $("#div_" + curr_lag).html();
+		$("#div_curr_lag").html(curr_html_lag);
+		// if (curr_lag == "") {
+		//     // var cookie = getCookie('think_language');
+		//     gradeOnclick('en-us');
+		// } else {
+		//     var curr_html_lag = $("#div_" + curr_lag).html();
+		//     $("#div_curr_lag").html(curr_html_lag);
+		// }
+
+	});
+	var curr_lag = $("#hid_lag").val();
+	//console.log(curr_lag);
+
+	var curr_html_lag = $("#div_" + curr_lag).html();
+	$("#div_curr_lag").html(curr_html_lag);
+
+	function gradeOnclick(url) {
+		window.location.href = "?l=" + url;
+	};
+</script>
+
+
+
+
+
+<script>
+	var obUrl = ''
+	//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	$("#clipArea").photoClip({
+		width: 320,
+		height: 320,
+		file: "#file",
+		view: "#view",
+		ok: "#clipBtn",
+		loadStart: function () {
+			console.log("照片读取中");
+		},
+		loadComplete: function () {
+			console.log("照片读取完成");
+		},
+		clipFinish: function (dataURL) {
+			// console.log(dataURL);
+		}
+	});
+
+
+	$(function () {
+		$(".shaom").click(function () {
+			$(".htmleaf-container").show();
+		})
+		$("#clipBtn").click(function () {
+			//数据流上传开始执行图片上传
+			$.ajax({
+				url: '/User/imgUps',
+				type: 'post',
+				data: {
+					'dataflow': imgsource
+				},
+				datatype: 'json',
+				success: function (data) {
+					if (data.status == 1) {
+						//  $("#logox").empty();
+						$("#logox .icon").attr("src", imgsource)
+						// $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style="width:60px;height:60px ">');
+						$(".htmleaf-container").hide();
+						msg_alert(data.message);
+					} else {
+						msg_alert(data.message);
+					}
+				}
+			})
+		}) _ //_IMGHEAD__/{$uinfo['img_head']}
+	});
+</script>
+<script type="text/javascript">
+	$(function () {
+		jQuery.divselect = function (divselectid, inputselectid) {
+			var inputselect = $(inputselectid);
+			$(divselectid + " small").click(function () {
+				$("#divselect ul").toggle();
+				$(".mask").show();
+			});
+			$(divselectid + " ul li a").click(function () {
+				var txt = $(this).text();
+				$(divselectid + " small").html(txt);
+				var value = $(this).attr("selectid");
+				inputselect.val(value);
+				$(divselectid + " ul").hide();
+				$(".mask").hide();
+				$("#divselect small").css("color", "#333")
+			});
+		};
+		$.divselect("#divselect", "#inputselect");
+	});
+</script>
+<script type="text/javascript">
+	function setImagePreview() {
+		var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
+			picture = file_head.value;
+
+		if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+			!1;
+		if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display =
+			"block",
+			preview.style.width = "63px",
+			preview.style.height = "63px",
+			preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ?
+			window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+		else {
+			file_head.select(),
+				file_head.blur(),
+				img_txt = document.selection.createRange().text,
+				localImag = document.getElementById("localImag"),
+				localImag.style.width = "63px",
+				localImag.style.height = "63px";
+			try {
+				localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
+					localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+			} catch (f) {
+				return alert("您上传的图片格式不正确，请重新选择！"),
+					!1
+			}
+			preview.style.display = "none",
+				document.selection.empty()
+		}
+		return document.getElementById("DivUp").style.display = "block",
+			!0
+	}
+</script>
+<script>
+	var zwkf = $('#zwkf').val();
+	var notSell = $("#notSell");
+	$("#notSell,#nokaifang").click(function () {
+		alert(zwkf)
+	})
+	var guoji = $('#guoji').val();
+	$("#guojiweikaifang,.guojiweikaifang").click(function () {
+		if (guoji == 'hanguo') {
+			$(this).attr('href', '');
+			alert(zwkf);
+		}
+	})
+</script>
+<!--头像上传新EEEEE-->
+</script>

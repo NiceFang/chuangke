@@ -1,0 +1,105 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: #000;
+}
+
+.mui-content {
+    background-color: #fff;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+input {
+    border: none;
+}
+
+* {
+    -webkit-touch-callout: inherit !important;
+}
+    
+
+
+.hear p {
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 0.4167rem;
+}
+
+/* 分享样式开始 */
+
+/* 二维码开始 */
+.content {
+    overflow: hidden;
+}
+
+.content .qr_code {
+    width: 4.25rem;
+    height: 4.25rem;
+    background-image: url("../images/integraimages/fangkuang.png");
+    background-size: 100%;
+    margin: 0.625rem auto 0.5rem;
+    overflow: hidden;
+} 
+
+.content .qr_code img {
+    width: 3.2917rem;
+    height: 3.2917rem;
+    margin: 0.4583rem auto;
+    display: block;
+}
+
+/* 二维码结束 */
+.content .share {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content .share .txt {
+    font-size: 0.3333rem;
+    color: #7AC231;
+    text-align: center;
+}
+
+.content input {
+    width: 5rem;
+    height: 0.7917rem;
+    border: 0.0208rem solid #002982;
+    margin: 0.25rem auto;
+    border-radius: 0.3958rem;
+    display: block;
+    font-size: 14px;
+    color: #999999;
+}
+
+.content .share .copy {
+    display: block;
+    text-align: center;
+    color: #7AC231;
+    font-size: 0.2917rem;
+}
+
+.content .share .examine_share {
+    display: block;
+    width: 5rem;
+    height: 0.7917rem;
+    line-height: 0.7917rem;
+    text-align: center;
+    font-size: 0.3333rem;
+    color: #333333;
+    background-color: #EFDE30;
+    margin: 0.5rem auto;
+    border-radius: 0.3958rem;
+
+}
+
+/* 分享样式结束 */
+
+
+
+/* 分享样式结束 */

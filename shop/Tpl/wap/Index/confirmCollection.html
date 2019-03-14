@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>确认收款</title>
+    <link rel="stylesheet" href="__WCSS__/myOrderSale.css">
+    <link rel="stylesheet" href="__WCSS__/myOrderbase.css">
+    <script src="__WJS__/rem.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/mui/3.7.1/css/mui.min.css">
+
+    <script src="__WJS__/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
+
+    <style>
+        .mui-table-view {
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+        }
+        .mui-table-view-cell {
+            padding: 0;
+            border: 0;
+            margin-top: 0.1667rem;
+            position: relative;
+
+        }
+        .mui-table-view-cell>.mui-slider-handle {
+            background-color: rgba(0, 0, 0, 0);
+            margin: 0 auto;
+            width: 6.8333rem
+        }
+        .mui-content>.mui-table-view:first-child {
+            margin: 0;
+        }
+        .mui-table-view:before,.mui-table-view:after,.mui-table-view-cell:after {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .sale_box {
+            margin: 0;
+        }
+
+        .sale_box_right a{
+            background-color: #E72C18;
+            border-radius: 0.1042rem;
+        }
+
+
+        /* 遮罩层 */
+        .marker,.show_pic_marsker {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+        }
+
+        .remit_bottom_box img.show_pic {
+            top: 0;
+            left: 0;
+        }
+
+        .show_pic_marsker {
+            flex: 6;
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+        .big_img {
+            width: 90%;
+            height: 6.25rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+
+        .big_img img {
+            width: 100%;
+        }
+
+        .sale_box .sale_box_content .name.username {
+            width: 2.25rem;
+            line-height: 0.4167rem;
+            word-break: break-all;
+            text-overflow: ellipsis;
+            display: -webkit-box; /** 对象作为伸缩盒子模型显示 **/
+            -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+            -webkit-line-clamp: 1; /** 显示的行数 **/
+            overflow: hidden;  /** 隐藏超出的内容 **/
+        }
+
+
+
+    </style>
+</head>
+
+<body>
+<!-- 头部 -->
+<div class="hear Order_hear">
+    <a href="{:U('Index/myOrderSale')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+    确认收款
+    <a href="{:U('index/myOrderSale')}" class="history"><img src="__WIMG__/history_info.png" alt=""></a>
+</div>
+
+<!-- 卖出 -->
+<div class="mui-content">
+    <ul id="OA_task_1" class="mui-table-view">
+        <li  class="mui-table-view-cell">
+            <div class="mui-slider-right mui-disabled">
+                <a class="mui-btn mui-btn-red">取消订单</a>
+            </div>
+            <div class="mui-slider-handle">
+                <div class="sale_box">
+                    <div class="sale_box_left fl">
+                        <div class="m">
+                            <img src="__WIMG__/m_info.png" alt="">
+                        </div>
+                        {$arr.pay_nums}
+                    </div>
+                    <div class="sale_box_content fl">
+                        <p class="name username">{$userData.username}</p>
+                        <p class="num">{$userData.userid}</p>
+                        <div class="div_box">
+                            <if condition="$arr.pay_type eq 1">
+                                <img src="__WIMG__/trading_center/yinghangke.png" alt="">
+                                <elseif condition="$arr.pay_type eq 2"/>
+                                <img src="__WIMG__/trading_center/zhifubao.png" alt="">
+                                <elseif condition="$arr.pay_type eq 3"/>
+                                <img src="__WIMG__/trading_center/weixin.png" alt="">
+                                <elseif condition="$arr.pay_type eq 4"/>
+                                <img src="__WIMG__/trading_center/IMtoken.png" alt="">
+                            </if>
+                        </div>
+                    </div>
+                    <div class="sale_box_right fr">
+                        <a>{:L('confirm')}</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </li>
+    </ul>
+</div>
+
+<!--确认打款信息  -->
+<div class="remit none ">
+    <!-- 遮罩层 -->
+    <div class="marker"></div>
+    <div class="remit_box">
+        <div class="remit_info">
+            打款人信息
+        </div>
+        <div class="remit_content">
+            <!--<if condition="$arr.pay_type eq 1">-->
+            <!--<elseif condition="$arr.pay_type eq 2"/>-->
+            <!--<elseif condition="$arr.pay_type eq 3"/>-->
+            <!--<elseif condition="$arr.pay_type eq 4"/>-->
+            <!--</if>-->
+            <p class="name">打款人姓名：<span>{$payInData.username}</span></p>
+            <p class="phone">打款人手机号：<span>{$payInData.mobile}</span></p>
+            <p class="money">交易金额：<span>{$arr.pay_nums}</span></p>
+        </div>
+        <div class="remit_bottom">
+            <div class="remit_bottom_box">
+                <!--<input type="file">-->
+                <img class="show_pic" style="height: 100%; width: 100%" src="{$arr.trans_img}" alt="">
+                <!-- <img class="show_pic" style="height: 100%; width: 100%" src="__WIMG__/trading_center/yinghangke.png" alt=""> -->
+            </div>
+        </div>
+
+        <p class="txt">打款凭证展示，点击查看大图</p>
+        <div class="remit_footer">
+            <a id="confirm" data-id="{$arr.id}">确认收款</a>
+        </div>
+    </div>
+    <div class="show_pic_marsker" style="display: none">
+        <div class="big_img">
+            <img src="{$arr.trans_img}" alt="">
+            <!-- <img src="__WIMG__/trading_center/yinghangke.png" alt=""> -->
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
+
+<script>
+    $('#confirm').click(function(){
+
+        var orderId = $(this).attr('data-id');
+        console.log(orderId);
+        $.ajax({
+            url:'/trading/Con_Getmoney',
+            type:'post',
+            data:{orderId:orderId},
+            success:function(msg){
+                if(msg.status==0){
+                    // console.log(msg.message,msg.url);
+                    window.location.href="Index/myOrderSale"
+                }else{
+                    alert('成功')
+                    window.location.href="Index/myOrderSale"
+                }
+            }
+        })
+    })
+
+
+    // mui.init();
+    // (function($) {
+    //
+    //     $('#OA_task_1').on('tap', '.mui-btn', function(event) {
+    //         var elem = this;
+    //         var li = elem.parentNode.parentNode;
+    //         mui.confirm('<div class="text"><p class="icon-information"></p><h3>确定删除此条消息？</h3><span>REMIND</span></div>', 'Hello MUI', btnArray, function(e) {
+    //             if (e.index == 0) {
+    //                 li.parentNode.removeChild(li);
+    //             } else {
+    //                 setTimeout(function() {
+    //                     $.swipeoutClose(li);
+    //                 }, 0);
+    //             }
+    //         });
+    //     });
+    //
+    //     var btnArray = ['确认', '取消'];
+    // })(mui);
+
+    $('#OA_task_1').on('click','.sale_box_right a',function(){
+
+    })
+
+    $('.sale_box_right').click(function(e){
+// alert(2343)
+        $('.remit').show();
+    });
+
+    // 遮罩层点击关闭打款信息
+    $('.marker').on('click',function(){
+        $(".remit").hide();
+    })
+
+    //
+    $('.remit_bottom_box').on('click',function(){
+        $('.show_pic_marsker').show();
+    })
+
+    $('.show_pic_marsker').on('click',function(){
+        $(this).hide();
+    })
+
+</script>

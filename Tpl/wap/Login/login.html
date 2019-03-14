@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title> {$Think.lang.login}</title>
+<link rel="stylesheet" href="__WCSS__/login.css">
+<link rel="stylesheet" href="__WCSS__/normalize.css">
+<script src="__WJS__/rem.js"></script>
+<script src="__WJS__/jquery.min.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+
+<body class="bgf5">
+	<input id="hid_lag" type="hidden" value="{:I('get.l')}" />
+	<div class="login-container">
+		<div class="top">
+			<div class="loginLanguage">
+				<div id="sample" class="dropdown">
+					<div id="div_curr_lag" class="parent">
+						<a href="#">
+							<span><img class="flag" src="__WIMG__/English.png" alt="" />English</span></a>
+					</div>
+					<div class="son">
+						<!--英文-->
+						<div id="div_en-us" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/English.png" alt="" />English<span
+								 class="value"></span></a></div>
+						<!--中文-->
+						<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span
+								 class="value"></span></a></div>
+						<!--韩文-->
+						<!-- <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"
+								 alt="" />한국어<span class="value"></span></a></div> -->
+						<!--日文-->
+						<!-- <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span
+								 class="value"></span></a></div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="formbox">
+			<form name="formlogin" id="loginForm" class="formlogin" method="post" action="{:U('Login/checkLogin')}">
+				<div class="logo">
+					<img src="__WIMG__/logo4.png">
+				</div>
+				<div class="input_box">
+					<span><img src="__WIMG__/user.png" alt=""></span>
+					<input type="text" name="account" class="username" id="username" placeholder="{$Think.lang.mobile}/UID/Email"
+					 autocomplete="off" />
+				</div>
+				<div class="input_box">
+					<span><img src="__WIMG__/password.png" alt=""></span>
+					<input type="password" name="password" class="password login" id="demo_input" placeholder="{$Think.lang.loginpwd}"
+					 oncontextmenu="return false" onpaste="return false" />
+					<span class="right"><img id="demo_img" onclick="hideShowPsw()" src="__WIMG__/mima.png" alt=""></span>
+				</div>
+				<div class="extra_btn text">
+					<a href="{:U('Login/register')}?l={:I('get.l')}">{$Think.lang.zc}</a>
+					<a href="{:U('login/getpsw')}?l={:I('get.l')}">{$Think.lang.forget_pwd} ?</a>
+				</div>
+				<div class="inde-btn">
+					<button id="submit" class="" type="button" onclick="login()">{$Think.lang.login1}</button>
+				</div>
+			</form>
+		</div>
+		<!--<if condition="!empty(I('mobile'))">-->
+			<!--<div class="buttonbox">-->
+				<!--<a href="https://copy.im/a/KkJhEm">-->
+					<!--<p>{$Think.lang.appload}</p>-->
+					<!--<img src="__WIMG__/xiazai.png" alt="">-->
+				<!--</a>-->
+			<!--</div>-->
+		<!--</if>-->
+	</div>
+	</if>
+	</div>
+	<!--账号不能为空-->
+	<input type="hidden" id="zhbnwk" value="{$Think.lang.zhbnwk}">
+	<!--密码不能为空-->
+	<input type="hidden" id="mmbnwk" value="{$Think.lang.mmbnwk}">
+
+</body>
+<script>
+	 // input 的值不为空添加按钮样式
+	$("#demo_input").blur(function () {
+		if (($("#demo_input").val().trim() || $("#username").val().trim()) != "") {
+			$(".inde-btn button").addClass("active");
+		}
+	})
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		// 点击切换语言
+		$(".dropdown .son").hide();
+		$("#div_curr_lag").click(function () {
+			$(".dropdown .son").toggle();
+		});
+
+		$(".dropdown .son div a").click(function () {
+			var text = $(this).html();
+			$(".dropdown .parent a span").html(text);
+			// localStorage.setItem('key',JSON.stringify(text));
+			$(".dropdown .son").hide();
+		}); //选择完成以后隐藏页面
+
+		// function gradeOnclick(url) {
+		// 	window.location.href = "?l=" + url;
+		// };
+
+		var curr_lag = $("#hid_lag").val();
+		if (curr_lag == "") {
+			gradeOnclick("zh-cn");
+		} else {
+			var curr_html_lag = $("#div_" + curr_lag).html();
+			$("#div_curr_lag").html(curr_html_lag);
+		}
+
+	});
+
+	function gradeOnclick(url) {
+		window.location.href = "?l=" + url;
+	}
+	// window.onload=function(){
+	// 	var text =JSON.parse(localStorage.getItem('key'));
+	// 	$(".dropdown .parent a span").html(text);
+	// };
+
+	//隐藏text block，显示password block
+	// 点击显示隐藏密码
+	function hideShowPsw() {
+		var demoImg = document.getElementById("demo_img");
+		var demoInput = document.getElementById("demo_input");
+		if (demoInput.type == "password") {
+			demoInput.type = "text";
+			demo_img.src = "__WIMG__/keshi.png";
+		} else {
+			demoInput.type = "password";
+			demo_img.src = "__WIMG__/mima.png";
+		}
+	}
+    //调取指纹
+//    window.onload=function(){
+//        var url="{:U('/login/enters')}";
+//        var value=BSL.getUserJson();
+//        // var value = JSON.stringify(value);
+//		var abc = value.split(',')
+//         if ( abc[1] != '"loginkey":""}'){
+//
+//            $.ajax({
+//                url:url,
+//                type:'post',
+//                data: { loginkey: value},
+//                success:function(res){
+//                    if(res.code == 200){
+//                        window.location = "{:U('index/index')}"
+//                    }else {
+//                        alert(res.msg)
+//                    }
+//                }
+//            })
+//		 }
+//    }
+</script>
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<!--表单验证-->
+<script src="__WJS__/jquery.validate.min.js?var1.14.0"></script>
+<!--commonjs-->
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+
+</html>

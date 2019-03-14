@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.ddxq}</title>
+    <link rel="stylesheet" href="__WCSS__/myOrderbase.css">
+    <link rel="stylesheet" href="__WCSS__/Iccparticulars.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear Order_hear">
+        <a href="{:U('User/historyOrder')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+        {$Think.lang.ddxq}
+    </div>
+
+    <!-- 卖出 -->
+    <div class="content">
+        <div class="sale_box">
+            <div class="sale_box_left fl">
+                <div class="m">
+                    <img src="__WIMG__/white_icc.png" alt="">
+                </div>
+                {$data.pay_nums|intval}
+            </div>
+            <div class="sale_box_content fl">
+                <p class="name">
+                    <if condition="data_type eq 0">
+                        {$data.payin_name}
+                        <else />
+                        {$data.payout_name}
+                    </if>
+                </p>
+                <p class="num">
+                    <if condition="data_type eq 0">
+                        {$data.payin_id}
+                        <else />
+                        {$data.payout_id}
+                    </if>
+                </p>
+                <div class="div_box">
+                    <img src="__WIMG__/yinghangka.png" alt="">
+                    <img src="__WIMG__/zhifubao.png" alt="">
+                    <img src="__WIMG__/weixin.png" alt="">
+                    <img src="__WIMG__/imtoken.png" alt="">
+                </div>
+            </div>
+            <div class="div_img">
+                <if condition="$data.pay_state eq 0">
+                    <img src="__WIMG__/yijiedan.png" alt="">
+                    <elseif condition="$pay_state eq 1"/>
+                        <if condition="$Think.lang.l eq 1">
+                            <img src="__WIMG__/daifukuan.png" alt="">
+                        <else />
+                            <img src="__WIMG__/daifukuan2.png" alt="">
+                        </if>
+                    <elseif condition="$data.pay_state eq 2"/>
+                        <if condition="$Think.lang.l eq 1">
+                            <img src="__WIMG__/daishoukuan.png" alt="">
+                            <else />
+                            <img src="__WIMG__/daishoukuan2.png" alt="">
+                        </if>
+
+                    <elseif condition="$data.pay_state eq 3"/>
+                        <if condition="$Think.lang.l eq 1">
+                            <img src="__WIMG__/yiwanchen.png" alt="">
+                            <else />
+                            <img src="__WIMG__/yiwanchen2.png" alt="">
+                        </if>
+                    <elseif condition="$data.pay_state eq 4"/>
+                        <if condition="$Think.lang.l eq 1">
+                            <img src="__WIMG__/yiquxiao1.png" alt="">
+                            <else />
+                            <img src="__WIMG__/yiquxiao2.png" alt="">
+                        </if>
+                </if>
+            </div>
+        </div>
+        <div class="user_info">
+            <p class="seller">{$Think.lang.mf1}: {$data.payout_name}</p>
+            <p>{$Think.lang.mf0}: {$data.payin_name}</p>
+            <p>{$Think.lang.ddh}: {$data.pay_no}</p>
+            <p>{$Think.lang.mf0}ID: {$data.payin_id}</p>
+            <p>{$Think.lang.mf1}ID: {$data.payout_id}</p>
+            <p>{$Think.lang.ddlx}:
+                <if condition="data.pay_type eq 0">
+                    {$Think.lang.purchase}
+                    <else/>
+                    {$Think.lang.sellout}
+                </if>
+            </p>
+            <p>{$Think.lang.zzpz}：</p>
+            <div class="file_box">
+                <if condition="data.trans_img eq 2">
+                    <p>{$Think.lang.wsczzpz}</p>
+                    <else />
+                    <img src="{$data.trans_img}">
+                </if>
+            </div>
+        </div>
+    </div>
+
+    <div class="shade" style="display: none">
+        <div class="shade_box">
+            <img class="off" src="__WIMG__/xx_03.png " alt="">
+            <div class="div_img">
+                <img src="{$data.trans_img}" alt="">
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
+<script type="text/javascript">
+    // 点击弹出遮罩层
+    $(".file_box").click(function () {
+        $(".shade").show();
+    });
+    $(".off").click(function () {
+        $(".shade").hide();
+    })
+</script>

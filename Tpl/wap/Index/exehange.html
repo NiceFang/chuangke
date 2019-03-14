@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 字体颜色兼容 -->
+<meta name="format-detection" content="telephone=no">
+<title>{$Think.lang.duihuan}</title>
+<!-- 旧的样式 -->
+<!--<link rel="stylesheet" href="__WCSS__/style.css">-->
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<!--<link rel="stylesheet" href="__WCSS__/YangStyle.css">-->
+
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/integralConversion.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script type="text/javascript" src="__WJS__/mui.min.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+
+<body>
+	<!-- 头部 -->
+	<div class="hear">
+		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+		<p>{$Think.lang.jfdh}</p>
+		<!-- 语言切换 -->
+		<!-- 先不要删掉 -->
+		<!-- <div class="top">
+				<div class="loginLanguage">
+					<div id="sample" class="dropdown">
+						<div id="div_curr_lag" class="parent">
+							<a href="#">
+								<span><img class="flag" src="images/English.png" alt="" />English</span></a>
+						</div>
+						<div class="son">
+							<div id="div_en-us" onclick="gradeOnclick('en-us')">
+								<a>
+									<img class="flag" src="images/china.png" alt="" />
+									English
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+								<a>
+									<img class="flag" src="images/china.png" alt="" />
+									中文
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+								<a>
+									<img class="flag" src="images/hanguo.png" alt="" />
+									한국어
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+								<a>
+									<img class="flag" src="images/Japan.png" alt="" />
+									わぶん
+									<span class="value"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+	</div>
+
+	<!-- 个人信息 -->
+	<div class="user_info">
+		<div class="user_info_box">
+			<div class="user_info_box_cont">
+				<div class="user_info_box_cont_top">
+					<div class="div_img fl">
+						<img src="__IMGHEAD__/{$userinfo['img_head']}" alt="">
+					</div>
+					<div class="user_info_left fl">
+						<p class="name">{$Think.lang.nickname} : {$userinfo.username}</p>
+						<p class="uid">UID : {$userinfo.userid} </p>
+						<p class="garde">{$Think.lang.rank}：{$userinfo.lev}</p>
+					</div>
+				</div>
+				<div class="mony">
+					<div class="balance">
+						<span>{$Think.lang.ye}:</span>
+						<img src="__WIMG__/integraimages/icc_black.png" alt="">
+						<span id="money">{$moneyinfo.cangku_num}</span>
+					</div>
+					<div class="integral">
+						<span>{$Think.lang.jifen}:</span>
+						<img src="__WIMG__/integraimages/icc_black.png" alt="">
+						<span class="jifen">{$moneyinfo.fengmi_num}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 余额积分 -->
+	<div class="mui-content tab">
+		<div class="title">
+			<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary title_box">
+				<li>
+					<a class="mui-control-item title_box_a  mui-active" href="#item2" id="a">
+						{$Think.lang.jfdh}
+					</a>
+				</li>
+				<li>
+					<a class="mui-control-item title_box_a" href="#item3" id="b">
+						{$Think.lang.dhjl}
+					</a>
+				</li>
+			</div>
+		</div>
+		<div class="content">
+			<div id="item2" class="mui-control-content integral mui-active">
+				<p class="price">{$Think.lang.srdhje}</p>
+				<div class="div_input">
+					<input type="num" placeholder="请输入100的整数倍" class="dhnums">
+				</div>
+				<p class="hint">{$Think.lang.tszsdhsl}</p>
+				<div class="conversion turnout_conversion">
+					<a href="javascript:void(0)" id="aaa">{$Think.lang.qrdh}</a>
+				</div>
+			</div>
+			<div id="item3" class="mui-control-content  record">
+				<div class="column">
+					<ul>
+						<li>{$Think.lang.ywlx1}</li>
+						<li>{$Think.lang.sl}</li>
+						<li>{$Think.lang.dqjf}</li>
+						<li>{$Think.lang.sj}</li>
+					</ul>
+				</div>
+				<ul class="ul">
+					<foreach name="record" item="v">
+						<li class="lis">
+							<p>{$v.type_name}</p>
+							<if condition="$v.get_nums gt 0">
+								<p style="color:red;">+{$v.get_nums}</p>
+							<else />
+								<p style="color: green">{$v.get_nums}</p>
+							</if>
+							<p>{$v.now_nums}</p>
+							<p>{$v.get_time}</p>
+						</li>
+					</foreach>
+					<!--<li class="lis">-->
+						<!--<p>交易释放（8816）</p>-->
+						<!--<p>-800</p>-->
+						<!--<p>-800</p>-->
+						<!--<p>2018-10-10 12:12:50</p>-->
+					<!--</li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<!--浮动层-->
+	<div class="ftc_wzsf">
+		<div class="srzfmm_box">
+			<div class="qsrzfmm_bt clear_wl">
+				<img src="__WIMG__/xx_03.png" class="tx close fl">
+				<!-- <span class="fl">{$Think.lang.input_pwd}</span> -->
+				<p>{$Think.lang.qsrzfmm}</p>
+			</div>
+			<div class="zfmmxx_shop">
+				<div class="mz">{$Think.lang.sjhd}</div>
+				<div class="zhifu_price">
+						<img src="__WIMG__/integraimages/icc_black.png" alt="">
+						<p></p>
+				</div>
+			</div>
+			<ul class="mm_box">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="numb_box">
+			<div class="xiaq_tb">
+				<img src="__WIMG__/jftc_14.jpg" height="10"></div>
+			<ul class="nub_ggg">
+				<li><a href="javascript:void(0);" class="zf_num">1</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">3</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">4</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">6</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">7</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">9</a></li>
+				<li><a href="javascript:void(0);" class="zf_empty">{$Think.lang.emptya}</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+				<li><a href="javascript:void(0);" class="zf_del">{$Think.lang.deleteo}</a></li>
+			</ul>
+		</div>
+		<div class="hbbj"></div>
+	</div>
+
+
+	<!-- //设置错误变量 -->
+	<input type="hidden" value="{$Think.lang.dhjebnxy}" id="dhjebnxy">
+	<input type="hidden" value="{$Think.lang.dhjebz}" id="dhjebz">
+	<input type="hidden" value="{$Think.lang.dhjebsbs}" id="dhjebsbs">
+	<script type="text/javascript">
+		var dhjebnxy = $('#dhjebnxy').val();
+		var dhjebz = $('#dhjebz').val();
+		var dhjebsbs = $('#dhjebsbs').val();
+		$('#aaa').on('click', function () {
+			var maxe = $('#money').text(); //余额
+			var maxe = Number(maxe); //余额
+			var dhnums = $('.dhnums').val(); //要兑换的数量
+			var dhnums = Number(dhnums); //要兑换的数量
+			//console.log(maxe,' ',dhnums)
+			if (dhnums < 100) {
+				msg_alert(dhjebnxy);
+				return;
+			}
+			if (maxe < dhnums) {
+				msg_alert(dhjebz);
+				return;
+			} else {
+				var yuee = dhnums % 100;
+				if (yuee != 0) {
+					msg_alert(dhjebsbs);
+					return;
+				}
+			}
+			var getjifens = dhnums * 6;
+			$('.zhifu_price p').text(getjifens + '.00');
+			$(".ftc_wzsf").show();
+
+			$('html,body').css('height', '100%');
+			$('body').css('margin-top', '1rem');
+
+			$('.w-header').css('position', 'fixed');
+			$('.header .w-header').css('top', '0');
+			$('.header .w-header').css('left', '0');
+		});
+		$(function () {
+			//关闭浮动
+			$(".close").click(function () {
+				$(".ftc_wzsf").hide();
+				$(".mm_box li").removeClass("mmdd");
+				$(".mm_box li").attr("data", "");
+				i = 0;
+				$('.w-header').css('position', 'static');
+				$('.header .w-header').css('top', '0');
+				$('.header .w-header').css('left', '0');
+
+				$('html,body').css('height', '');
+				$('body').css('margin-top', '0');
+
+			});
+			//数字显示隐藏
+			$(".xiaq_tb").click(function () {
+				$(".numb_box").slideUp(500);
+			});
+			$(".mm_box").click(function () {
+				$(".numb_box").slideDown(500);
+			});
+			//----
+			var i = 0;
+			$(".nub_ggg li .zf_num").click(function () {
+
+				if (i < 6) {
+					$(".mm_box li").eq(i).addClass("mmdd");
+					$(".mm_box li").eq(i).attr("data", $(this).text());
+					i++
+					if (i == 6) {
+						setTimeout(function () {
+							var pwd = "";
+							$(".mm_box li").each(function () {
+								pwd += $(this).attr("data");
+							});
+
+
+							//ajax提交密码以及参数
+							var dhnums = $('.dhnums').val(); //要兑换的数量
+							$.ajax({
+								url: '/Index/Exehange',
+								type: 'post',
+								data: {
+									'dhnums': dhnums,
+									'pwd': pwd
+								},
+								datatype: 'json',
+								success: function (mes) {
+									if (mes.status == 1) {
+										msg_alert(mes.message, mes.url);
+										$(".ftc_wzsf").hide();
+										$(".mm_box li").removeClass("mmdd");
+										$(".mm_box li").attr("data", "");
+										i = 0;
+									} else {
+										msg_alert(mes.message);
+										$(".mm_box li").removeClass("mmdd");
+										$(".mm_box li").attr("data", "");
+										i = 0;
+									}
+								}
+							})
+						}, 100);
+					};
+				}
+			});
+
+			$(".nub_ggg li .zf_del").click(function () {
+				if (i > 0) {
+					i--
+					$(".mm_box li").eq(i).removeClass("mmdd");
+					$(".mm_box li").eq(i).attr("data", "");
+				}
+			});
+
+			$(".nub_ggg li .zf_empty").click(function () {
+				$(".mm_box li").removeClass("mmdd");
+				$(".mm_box li").attr("data", "");
+				i = 0;
+			});
+
+		});
+	</script>
+
+</body>
+
+</html>

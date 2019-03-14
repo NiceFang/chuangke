@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.tjtoken}</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 获取头部的颜色 -->
+    <script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/addImTokenGathering')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.tjtoken}
+    </div>
+
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis" style="display: flex">
+                <label class="name" style="width: unset;">{$Think.lang.xm}</label>
+                <input type="text" name="imtoken_name" class="mui-input-clear" style="flex: 1">
+            </div>
+            <div class="mui-input-row user_info_lis" style="display: flex">
+                <label class="name imtoken_site" style="width: unset;">{$Think.lang.imqbdz}</label>
+                <input type="text" name="imtoken_size" class="mui-input-clear site_input" style="flex: 1">
+            </div>
+            <div class="mui-input-row user_info_lis" style="display: flex">
+                <label class="name" style="width: unset;">{$Think.lang.mobile}</label>
+                <input type="number" name="imtoken_phone" class="mui-input-clear" style="flex: 1">
+            </div>
+        </form>
+    </div>
+    <input type="file" name="imtoken_file" id="file" accept="image/gif, image/x-ms-bmp, image/jpeg" class="line"
+        onchange="fileType(this)" hidden />
+    <!-- 上传图片 -->
+    <div class="file_box" onclick="driverUpload()">
+        <div class="add" name="imtoken_ceshi">+</div>
+        <p name="imtoken_ceshi">{$Think.lang.scskewm}</p>
+        <img src="" alt="" name="imtoken_image">
+        <div class="accomplish_state">
+        </div>
+    </div>
+
+
+    <!-- 设为默认 -->
+    <div class="default">
+        <div class="select_bg fl" id="select" name="imtoken_r"></div>
+        <p class="fl">{$Think.lang.mr}</p>
+    </div>
+
+
+    <!-- 保存按钮 -->
+    <div class="save Wechat_save" data-name="imtoken">{$Think.lang.bc}</div>
+</body>
+
+</html>
+
+<script>
+    // input 失去焦点按钮添加背景色
+    $("form input").blur(function () {
+        if (($("input[name=imtoken_name]").val().trim()) != "" && ($("input[name=imtoken_size]").val()) != "" && ($("input[name=imtoken_phone]").val()) != "" )   {
+            $(".Wechat_save").addClass("active");
+            $(".file_box").addClass("active");
+            $(".file_box .add").addClass("active");
+            $(".file_box p").addClass("active");
+        } else if (($("input[name=imtoken_name]").val().trim()) != "" || ($("input[name=imtoken_size]").val()) == "" || ($("input[name=imtoken_phone]").val()) == "" ) {
+            $(".Wechat_save").removeClass("active");
+            $(".file_box").removeClass("active");
+            $(".file_box .add").removeClass("active");
+            $(".file_box p").removeClass("active");
+        }
+    })
+</script>

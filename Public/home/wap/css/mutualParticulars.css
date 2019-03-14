@@ -1,0 +1,27 @@
+.content {
+    background-color: #2A2B31;
+}
+
+.content .price {
+    height: 3.9167rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #E93C33;
+    font-size: 0.6667rem;
+}
+
+.content .info li {
+    height: 1rem;
+    border-top: 0.0208rem solid #333333;
+    font-size: 0.2917rem;
+    padding: 0 0.6667rem 0 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content .info li span {
+    color: #999999;
+}
+

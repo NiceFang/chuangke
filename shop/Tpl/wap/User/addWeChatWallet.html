@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加支付宝钱包</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/accountManage')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        添加微信收款
+    </div>
+    <!--获取绑定微信信息小物件-->
+    {:W('Card/menu',['weichar'])}
+    <!-- 底部 -->
+    <div class="footer">
+        <a href="{:U('User/newWechatGathering')}">添加微信收款</a>
+    </div>
+    <div class="Wechat_save" data-name="weichar" style="display:none" >保 存</div>
+</body>
+
+</html>
+<script>
+    $(function () {
+        $(".alipay").on('click','.select_bg',function(){
+             $(this).toggleClass("select_red").parent().parent().parent().parent().siblings().children().children().children().children().removeClass('select_red');
+        })
+    })
+
+
+</script>
+

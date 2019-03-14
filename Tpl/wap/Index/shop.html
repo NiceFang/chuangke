@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商城</title>
+    <link rel="stylesheet" href="__WCSS__/shop.css">
+    <!--线上JQ包-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+</head>
+
+<body>
+<section>
+    <ul>
+        <li class="lis mak">
+            <a href="{:U('Login/login?source=1')}"><img src="__WIMG__/shopIndex/huanbao.png" alt=""></a>
+        </li>
+        <li class="lis noOpen">
+            <a href="javascript:;"><img src="__WIMG__/shopIndex/wenlv.png" alt=""></a>
+        </li>
+        <li class="lis mak noOpen">
+            <a href="javascript:;"><img src="__WIMG__/shopIndex/xianrun.png" alt=""></a>
+        </li>
+        <li class="lis noOpen">
+            <a href="javascript:;"><img src="__WIMG__/shopIndex/jiankang.png" alt=""></a>
+        </li>
+        <li class="lis mak noOpen">
+            <a href="javascript:;"><img src="__WIMG__/shopIndex/zhineng.png" alt=""></a>
+        </li>
+        <li class="lis">
+            <a href="javascript:;"><img src="__WIMG__/shopIndex/yule.png" alt=""></a>
+        </li>
+    </ul>
+
+
+</section>
+<script>
+    var noOpen = $('.noOpen');
+    noOpen.click(function () {
+        alert("暂未开放")
+    })
+    //  移入改变图片的路径
+    // var newpath = [
+    //     "__WIMG__/shopIndex/huanbao1.png",
+    //     "__WIMG__/shopIndex/wenlv1.png",
+    //     "__WIMG__/shopIndex/xianrun1.png",
+    //     "__WIMG__/shopIndex/jiankang1.png",
+    //     "__WIMG__/shopIndex/zhineng1.png",
+    //     "__WIMG__/shopIndex/yule1.png"];
+    // //  原始路径
+    // var path = [
+    //     "__WIMG__/shopIndex/huanbao.png",
+    //     "__WIMG__/shopIndex/wenlv.png",
+    //     "__WIMG__/shopIndex/xianrun.png",
+    //     "__WIMG__/shopIndex/jiankang.png",
+    //     "__WIMG__/shopIndex/zhineng.png",
+    //     "__WIMG__/shopIndex/yule.png"];
+
+    // // 手指移入
+    // $(".lis a").mouseover(function(){
+    //     $('.lis a img').eq($(".lis a").index(this)).attr("src",newpath[$(".lis a").index(this)]);
+    // })
+    // // 手指移出
+    // $(".lis a").mouseout(function(){
+    //     $('.lis a img').eq($(".lis a").index(this)).attr("src",path[$(".lis a").index(this)]);
+    // })
+</script>
+</body>
+
+</html>

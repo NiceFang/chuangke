@@ -1,0 +1,93 @@
+/* tab栏目 */
+.tab ul {
+    display: flex;
+    justify-content: center;
+    background-color: #18191d;
+    border-bottom: 0.0208rem solid #000;
+    height: 1rem;
+
+}
+
+.tab ul li {
+    width: 25%;
+    float: left;
+    text-align: center;
+    height: 1rem;
+    line-height: 1rem;
+    color: #fff;
+    font-size: 0.3333rem;
+}
+
+#pullrefresh {
+    top: 104px;
+    background-color: #000;
+}
+
+ul.mui-table-view {
+    background-color: #18191d;
+}
+
+.mui-content .mui-scroll .uls .lis {
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    padding-right: 0;
+    padding: 0;
+    border-bottom: 0.0208rem solid #000;
+}
+
+#pullrefresh .mui-table-view:after {
+    background-color: #000;
+}
+
+.mui-content .mui-scroll .uls .lis::after {
+    height: 0;
+}
+
+.mui-content .mui-scroll .uls .lis p {
+    width: 25%;
+    float: left;
+    text-align: center;
+    margin-bottom: 0;
+    font-size: 0.2917rem;
+    color: #fff;
+    line-height: 0.3333rem;
+}
+
+.refresh {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    color: red;
+    font-size: 0.4167rem;
+    z-index: 10;
+    height: 1.0208rem;
+    line-height: 1.0208rem;
+    width: 100%;
+
+
+}
+
+.refresh>div {
+    margin: 0 0 0 2.8125rem;
+    height: 1.0208rem;
+}
+
+.refresh .arrows {
+    width: 0.3333rem;
+    height: 0.3333rem;
+    margin-right: 0.1667rem;
+    margin-top: 0.3333rem;
+}
+
+.refresh .arrows>img {
+    width: 100%;
+    vertical-align: top;
+
+
+}
+
+.refresh span {
+    font-size: 0.2917rem;
+    color: #999999;
+}

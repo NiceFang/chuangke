@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$title}</title>
+    <link rel="stylesheet" href="__WCSS__/myOrderbase.css">
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/myOrderSale.css">
+    <!--<link rel="stylesheet" href="__WCSS__/style.css">-->
+    <link rel="stylesheet" href="__WCSS__/meCen-K.css">
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script type="text/javascript" src="__COM__/js/index.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+
+    <style>
+        .zhifu_price {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.0833rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="buy_hear">
+        <div class="buy_hear_top">
+            <a href="{:U('index/trading_center')}" class="fanhui">
+                <img src="__WIMG__/jiantou2416.png" alt="">
+            </a>
+            {$title}
+        </div>
+        <div class="buy_hear_buttom">
+            <div class="buy_hear_buttom_left">
+                <p class="balance_txt">{$Think.lang.myBalance}</p>
+                <div class="balance_box">
+                    <div class="balance_box_img fl">
+                        <img src="__WIMG__/balance3030.png" alt="">
+                    </div>
+                    <p class="balance_num fl">{$my.cangku_num}</p>
+                </div>
+            </div>
+            <div class="buy_hear_buttom_left">
+                <p class="balance_txt">{$Think.lang.myIntegral}</p>
+                <div class="balance_box">
+                    <div class="balance_box_img fl">
+                        <img src="__WIMG__/balance3030.png" alt="">
+                    </div>
+                    <p class="balance_num fl">{$my.fengmi_num}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 买入金额 -->
+    <div class="buy_money">
+        <div class="buy_money_top">{$Think.lang.qxzmrje1}</div>
+        <div class="buy_money_box">
+            <div class="select_money" data-val="500">500</div>
+            <div data-val="1000">1000</div>
+            <div data-val="3000">3000</div>
+            <div data-val="5000">5000</div>
+            <div data-val="10000">10000</div>
+            <div data-val="30000">30000</div>
+        </div>
+    </div>
+    <!-- 收款方式 -->
+    <div class="gathering">
+        <div class="gathering_top">{$Think.lang.qxzsfkfs}</div>
+        <div class="gathering_box">
+            <ul>
+                <li>
+                    <div class="div_img fl">
+                        <img src="__WIMG__/yinghangka.png" alt="">
+                    </div>
+                    {$Think.lang.yhk}
+                    <div class="div_bg fr select" data-tx="1">
+
+                    </div>
+                </li>
+                <li>
+                    <div class="div_img fl">
+                        <img src="__WIMG__/zhifubao.png" alt="">
+                    </div>
+                    {$Think.lang.zfb}
+                    <div class="div_bg fr"  data-tx="2">
+
+                    </div>
+                </li>
+                <li>
+                    <div class="div_img fl">
+                        <img src="__WIMG__/weixin.png" alt="">
+                    </div>
+                    {$Think.lang.wx}
+                    <div class="div_bg fr"  data-tx="3">
+
+                    </div>
+                </li>
+                <li>
+                    <div class="div_img fl">
+                        <img src="__WIMG__/imtoken.png" alt="">
+                    </div>
+                    Imtoken
+                    <div class="div_bg fr "  data-tx="4">
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="buy_footer">
+        <a class="createBtn">{$Think.lang.createorder}</a>
+    </div>
+
+    <!--浮动层-->
+    <div class="ftc_wzsf" >
+        <div class="srzfmm_box">
+            <div class="qsrzfmm_bt clear_wl">
+                <img src="__WIMG__/xx_03.jpg" class="tx close fl">
+                <span class="fl">{$Think.lang.input_pwd}</span></div>
+            <div class="zfmmxx_shop">
+                <div class="mz">{$Think.lang.sjhd}</div>
+                <div class="zhifu_price"><img src="__WIMG__/integraimages/icc_black.png" alt=""><div></div></div></div>
+            <ul class="mm_box">
+                <li></li><li></li><li></li><li></li><li></li><li></li>
+            </ul>
+        </div>
+        <div class="numb_box">
+            <div class="xiaq_tb">
+                <img src="__WIMG__/jftc_14.jpg" height="10"></div>
+            <ul class="nub_ggg">
+                <li><a href="javascript:void(0);" class="zf_num">1</a></li>
+                <li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+                <li><a href="javascript:void(0);" class="zf_num">3</a></li>
+                <li><a href="javascript:void(0);" class="zf_num">4</a></li>
+                <li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+                <li><a href="javascript:void(0);" class="zf_num">6</a></li>
+                <li><a href="javascript:void(0);" class="zf_num">7</a></li>
+                <li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+                <li><a href="javascript:void(0);" class="zf_num">9</a></li>
+                <li><a href="javascript:void(0);" class="zf_empty">{$Think.lang.emptya}</a></li>
+                <li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+                <li><a href="javascript:void(0);" class="zf_del">{$Think.lang.deleteo}</a></li>
+            </ul>
+        </div>
+        <div class="hbbj"></div>
+    </div>
+
+
+</body>
+
+</html>
+
+<script>
+    $('.buy_money_box>div').click(function () {
+        $(this).addClass('select_money').siblings().removeClass('select_money')
+    })
+
+    $('.gathering_box li').on('click',function () {
+        $(this).children('.div_bg').addClass('select').parents('li').siblings().children('.div_bg').removeClass('select')
+
+    })
+</script>
+
+<!--输入密码-->
+
+<script type="text/javascript">
+    var dhjebnxy = $('#dhjebnxy').val();
+    var dhjebz  = $('#dhjebz').val();
+    var dhjebsbs = $('#dhjebsbs').val();
+    $('.createBtn').on('click', function(){
+
+        var maxe=$('#money').text();//余额
+        var maxe=Number(maxe);//余额
+        var dhnums =$('.select_money').data('val'); //要兑换的数量
+        var dhnums =Number(dhnums); //要兑换的数量
+
+        // if(dhnums<100){
+        //     msg_alert(dhjebnxy);
+        //     return;
+        // }
+        // if(maxe<dhnums){
+        //     msg_alert(dhjebz);
+        //     return;
+        // }else{
+        //     var yuee = dhnums % 100;
+        //     if(yuee!=0){
+        //         msg_alert(dhjebsbs);
+        //         return;
+        //     }
+        // }
+        var getjifens = dhnums;
+        $('.zhifu_price div').text(getjifens+'.00');
+        $(".ftc_wzsf").show();
+
+        $('html,body').css('height','100%');
+        // $('body').css('margin-top','1rem');
+
+        $('.w-header').css('position','fixed');
+        $('.header .w-header').css('top','0');
+        $('.header .w-header').css('left','0');
+    });
+    // $(function(){
+    //     //关闭浮动
+    //     $(".close").click(function(){
+    //         $(".ftc_wzsf").hide();
+    //         $(".mm_box li").removeClass("mmdd");
+    //         $(".mm_box li").attr("data","");
+    //         i = 0;
+    //         $('.w-header').css('position','static');
+    //         $('.header .w-header').css('top','0');
+    //         $('.header .w-header').css('left','0');
+    //
+    //         $('html,body').css('height','');
+    //         $('body').css('margin-top','0');
+    //
+    //     });
+    //     //数字显示隐藏
+    //     $(".xiaq_tb").click(function(){
+    //         $(".numb_box").slideUp(500);
+    //     });
+    //     $(".mm_box").click(function(){
+    //         $(".numb_box").slideDown(500);
+    //     });
+    //     //----
+    //     var i = 0;
+    //     $(".nub_ggg li .zf_num").click(function(){
+    //         var type = $('.select').data('tx');
+    //         var money = $('.select_money').data('val');
+    //         if(i<6){
+    //             $(".mm_box li").eq(i).addClass("mmdd");
+    //             $(".mm_box li").eq(i).attr("data",$(this).text());
+    //             i++
+    //             if (i==6) {
+    //                 setTimeout(function(){
+    //                     var pwd = "";
+    //                     $(".mm_box li").each(function(){
+    //                         pwd += $(this).attr("data");
+    //                     });
+    //
+    //
+    //                     //ajax提交密码以及参数
+    //                     var dhnums =$('.select_money').data('val'); //要兑换的数量
+    //                     $.ajax({
+    //                         url:'/Index/Exehange',
+    //                         type:'post',
+    //                         data:{'dhnums':dhnums,'pwd':pwd},
+    //                         datatype:'json',
+    //                         success:function (mes) {
+    //                             console.log(mes)
+    //                             if(mes.status == 1){
+    //                                 $(".ftc_wzsf").hide();
+    //                                 $(".mm_box li").removeClass("mmdd");
+    //                                 $(".mm_box li").attr("data","");
+    //                                 i = 0;
+    //
+    //                                 $.ajax({
+    //                                     type: "GET",
+    //                                     url: "/Index/buy",
+    //                                     data : {
+    //                                         'password':pwd,
+    //                                         'type':type,
+    //                                         'money':money
+    //                                     },
+    //                                     success:function(data){
+    //                                        if(data.status==1){
+    //                                             alert(data.message);
+    //                                            window.location.href="/Index/trading_buy";
+    //                                        }else{
+    //                                            alert(data.message);
+    //                                         //   window.location.href="/Index/trading_buy";
+    //                                        }
+    //                                     },
+    //                                     error:function(result){
+    //                                         alert('失败');
+    //                                         //请求失败之后的操作
+    //                                     }
+    //                                 })
+    //                             }else{
+    //                                 // msg_alert(mes.message);
+    //                                 $(".mm_box li").removeClass("mmdd");
+    //                                 $(".mm_box li").attr("data","");
+    //                                 i = 0;
+    //                             }
+    //                         }
+    //                     })
+    //                 },100);
+    //             };
+    //         }
+    //     });
+    $(function () {
+        //关闭浮动
+        $(".close").click(function () {
+            $(".ftc_wzsf").hide();
+            $(".mm_box li").removeClass("mmdd");
+            $(".mm_box li").attr("data", "");
+            i = 0;
+        });
+        //数字显示隐藏
+        $(".xiaq_tb").click(function () {
+            $(".numb_box").slideUp(0);
+        });
+        $(".mm_box").click(function () {
+            $(".numb_box").slideDown(0);
+        });
+        //----
+        var i = 0;
+        $(".nub_ggg li .zf_num").click(function () {
+            if (i < 6) {
+                $(".mm_box li").eq(i).addClass("mmdd");
+                $(".mm_box li").eq(i).attr("data", $(this).text());
+                i++
+                if (i == 6) {
+                    setTimeout(function () {
+                        var pwd = "";
+                        $(".mm_box li").each(function(){
+                            pwd += $(this).attr("data");
+                        });
+                        //AJAX提交数据
+                        var sellnums = $.trim($('.select_money').text()); //账号  //.trim() 去空格判断
+                        var cardid = $('.carnumber').val();//银行卡id
+                        var type = $('.select').data('tx');
+                        var exg = /^[1-9]\d*|0$/;
+                        if (!exg.test(sellnums)) {
+                            alert(qxzmrje);
+                            return;
+                        }
+                        if (cardid == '') {
+                            alert(q);
+                            return;
+                        }
+                        $.ajax({
+                            url:'/Index/Purchase',
+                            type:'post',
+                            data:{'paySelect':type,'sellnums':sellnums,'pwd':pwd,'cardid':cardid},
+                            datatype:'json',
+                            success:function (mes) {
+                                if(mes.status == 1){
+                                    alert(mes.message);
+                                    $(".ftc_wzsf").hide();
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+// <<<<<<< HEAD
+                                    window.location.href='/index/trading_center';
+// =======
+
+                                    // $.ajax({
+                                    //     type: "GET",
+                                    //     url: "/Index/buy",
+                                    //     data : {
+                                    //         'password':pwd,
+                                    //         'type':type,
+                                    //         'money':money
+                                    //     },
+                                    //     success:function(data){
+                                    //        if(data.status==1){
+                                    //            msg_alert(data.message);
+                                    //            window.location.href="/Index/trading_buy";
+                                    //        }else{
+                                    //            // alert(data.message);
+                                    //            msg_alert(data.message);
+                                    //           window.location.href="/Index/trading_buy";
+                                    //        }
+                                    //     },
+                                    //     error:function(result){
+                                    //         alert("{$Think.lang.czsb}");
+                                    //         //请求失败之后的操作
+                                    //     }
+                                    // })
+// >>>>>>> 194c5624e4c2ff2f90ed68a7f13a7962d1bb3421
+                                }else{
+                                    alert(mes.message);
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+                                }
+                            }
+                        })
+                    }, 100);
+                };
+            }
+        });
+        $(".nub_ggg li .zf_del").click(function(){
+            if(i>0){
+                i--
+                $(".mm_box li").eq(i).removeClass("mmdd");
+                $(".mm_box li").eq(i).attr("data","");
+            }
+        });
+
+        $(".nub_ggg li .zf_empty").click(function(){
+            $(".mm_box li").removeClass("mmdd");
+            $(".mm_box li").attr("data","");
+            i = 0;
+        });
+
+    });
+</script>

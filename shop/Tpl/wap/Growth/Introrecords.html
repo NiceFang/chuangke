@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.record}</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/Introrecords.css">
+
+<body >
+	<!-- 头部 -->
+	<div class="header_box">
+		<a href="{:U('index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+		<p class="txt">{$Think.lang.record}</p>
+	</div>
+
+	<!-- 列表内容 -->
+	<div class="goodslist_box">
+		<ul>
+			<foreach name="Chan_info" item="v">
+			<li>
+
+				<div class="head_icon">
+					<img src="__WIMG__/toux-icon.png" alt="">
+					<div class="userinfo">
+						<p class="username">{$username}</p>
+						<p class="UID">uid:{$v.master_id}</p>
+					</div>
+				</div>
+
+				<div class="money_box">
+					<div class="moneyinfo">
+						<p class="money">{$v.get_nums}</p>
+						<p class="time">{$v.get_time}</p>
+						
+					</div>
+				</div>
+			</li>
+			</foreach>
+		</ul>
+	</div>
+<!--	<foreach name="$Chan_info" item="v">
+		<?php  var_dump($Chan_info)?>
+		<div class="annal_ul">
+		<div class="annal_ul_l">
+				<img src="__WIMG__/toux-icon.png" alt="">
+				<div class="annal_p">
+					<p><?php echo M('user')->where(array('userid'=>$v['pay_id']))->getfield('username'); ?></p>
+
+					<p>UID:{$v['pay_id']}</p>
+				</div>
+			</div>
+			<div class="annal_ul_r">
+				<div class="annal_p">
+					<p class="zhuanrua"><eq name="v['get_id']" value="$uid">+<else />-</eq>{$v['get_nums']}</p>
+					<p>{$v['get_time']|date="Y-m-d H:i:s",###}</p>
+				</div>
+			</div>
+		</div>
+	</foreach>-->
+
+	<!-- <foreach name="Chan_info" item="v">
+		<div class="annal_ul">
+			<div class="annal_ul_l">
+				<img src="__WIMG__/toux-icon.png" alt="">
+				<div class="annal_p">
+						<p><?php echo M('user')->where(array('userid'=>$v['pay_id']))->getfield('username'); ?></p>
+
+					<p>UID:{$v['pay_id']}</p>
+				</div>
+			</div>
+
+			<div class="annal_ul_r">
+				<div class="annal_p">
+					<p class="zhuanrua"><eq name="v['get_id']" value="$uid">+<else />-</eq>{$v['get_nums']}</p>
+					<p>{$v['get_time']|date="Y-m-d H:i:s",###}</p>
+				</div>
+			</div>
+		</div>
+	</foreach> -->
+	<!--<div class="annal_ul">-->
+
+		<!--<div class="annal_ul_l">-->
+			<!--<img src="__WIMG__/toux-icon.png" alt="">-->
+			<!--<div class="annal_p">-->
+				<!--<p>蔡先生</p>-->
+				<!--<p>UID:19144</p>-->
+			<!--</div>-->
+		<!--</div>-->
+
+		<!--<div class="annal_ul_r">-->
+			<!--<div class="annal_p">-->
+				<!--<p class="zhuanrua">+192.00</p>-->
+				<!--<p>2018-01-25 18:55:46</p>-->
+			<!--</div>-->
+		<!--</div>-->
+
+
+	<!--</div>-->
+	<!--<div class="annal_ul">-->
+
+		<!--<div class="annal_ul_l">-->
+			<!--<img src="__WIMG__/toux-icon.png" alt="">-->
+			<!--<div class="annal_p">-->
+				<!--<p>蔡先生</p>-->
+				<!--<p>UID:19144</p>-->
+			<!--</div>-->
+		<!--</div>-->
+
+		<!--<div class="annal_ul_r">-->
+
+			<!--<div class="annal_p">-->
+				<!--<p class="zhuanrua">+192.00</p>-->
+				<!--<p>2018-01-25 18:55:46</p>-->
+			<!--</div>-->
+
+		<!--</div>-->
+
+
+	<!--</div>-->
+
+</body>
+</html>

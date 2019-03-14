@@ -1,0 +1,556 @@
+ /*账户管理样式开始 */
+ .setlistboxs {
+     margin-top: 0.1667rem;
+     background-color: #2A2B31;
+ }
+
+ .setlistboxs ul li img {
+     width: 0.5rem;
+     height: 0.5rem;
+ }
+
+ .setlistboxs ul li {
+     width: 100%;
+     height: 1rem;
+     background: #2A2B31;
+
+ }
+
+ .setlistboxs ul li a div {
+     display: flex;
+     align-items: center;
+ }
+
+ .setlistboxs ul li a div p {
+     font-size: 0.3333rem;
+     color: #fff;
+     padding-left: 0.3542rem;
+
+ }
+
+ .setlistboxs ul li a {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     line-height: 0.9792rem;
+     margin-left: 0.3333rem;
+     margin-right: 0.3958rem;
+     border-bottom: 0.0208rem solid #000;
+ }
+
+ .setlistboxs ul li:last-child a {
+     border-bottom: none;
+ }
+
+ /* 账户管理样式结束 */
+
+
+
+ /* 添加银行卡样式开始 */
+ .bank {
+     margin-top: 0.1667rem;
+ }
+
+
+ .bank .bank_box {
+     width: 6.8333rem;
+     height: 3.1667rem;
+     border-radius: 0.1458rem;
+     margin: 0 auto;
+     background: #2A2B31;
+     overflow: hidden;
+ }
+
+ .bank .bank_box .top_left {
+     font-size: 0.2917rem;
+     line-height: 0.2917rem;
+     color: #fff;
+     width: 5.1042rem;
+ }
+
+ .bank .bank_box .top {
+     width: 6.1667rem;
+     height: 1.9167rem;
+     margin: 0.3333rem auto 0;
+     overflow: hidden;
+     border-bottom: 0.0208rem solid #000;
+ }
+
+ .bank .bank_box .top_left .bank_name {
+     margin: 0.1667rem 0;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+     width: 5.1042rem;
+ }
+
+ .bank .bank_box .top_left .bank_num {
+     margin: 0.1667rem 0 0.3333rem;
+ }
+
+ .bank .bank_box .top_right {
+     width: 1rem;
+     height: 1rem;
+     border-radius: 0.5rem;
+ }
+
+ .bank .bank_box .top_right>img {
+     width: 100%;
+     height: 100%;
+     border-radius: 50%;
+     vertical-align: top;
+ }
+
+
+ .bank .bank_box .bottom {
+     height: 0.9167rem;
+     padding: 0 0.3333rem;
+     font-size: 0.2917rem;
+     color: #999999;
+     line-height: 0.9167rem;
+ }
+ 
+ .bank .bank_box .bottom .right p {
+     color: #18191D;
+ }
+
+ .bank .bank_box .bottom .left .select_bg_box,
+ .hide_bg,
+ .delete_bg {
+     width: 0.3333rem;
+     height: 0.3333rem;
+     margin-top: 0.2917rem;
+     margin-right: 0.1875rem;
+ }
+
+ .bank .bank_box .bottom .right .div_delete {
+     margin-left: 0.3125rem;
+ }
+
+
+ .bank .bank_box .bottom .content.hide_box {
+     padding-left: 2.6875rem;
+     background-color: #2A2B31;
+ }
+
+ .select_bg {
+     background: url("../images/select.png") no-repeat;
+     background-size: 100%;
+ }
+
+ .select_red {
+     background: url("../images/select_red.png") no-repeat;
+     background-size: 100%;
+ }
+
+ .bank .bank_box .bottom .hide_bg {
+     background: url("../images/hide.png") no-repeat;
+     background-size: 100%;
+ }
+
+ .bank .bank_box .bottom .show_bg {
+     background: url("../images/show.png") no-repeat;
+     background-size: 100%;
+ }
+
+ .bank .bank_box .bottom .delete_bg {
+     background: url("../images/delete.png") no-repeat;
+     background-size: 100%;
+ }
+
+ /*遮罩开始*/
+
+ .big_er_code {
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     top: 0;
+     background-color: rgba(0, 0, 0, .3);
+
+ }
+
+ .big_er_code .big_pic {
+     width: 5rem;
+     height: 5rem;
+     background-color: #fff;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+ }
+
+ .big_er_code .big_pic img {
+     width: 100%;
+     height: 100%;
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+ }
+
+ /* 添加银行卡样式结束 */
+
+
+ /* 底部开始 */
+ .footer {
+     font-size: 0.4167rem;
+     height: 1.1667rem;
+     line-height: 1.1667rem;
+     text-align: center;
+     position: fixed;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     background-color: #7AC231;
+     color: #FFFFFF;
+     border-top: 1px solid #7AC231;
+ }
+
+ .footer a {
+     height: 1.1667rem;
+     line-height: 1.1667rem;
+     display: block;
+     width: 100%;
+     color: #FFFFFF;
+ }
+
+ /* 底部结束 */
+
+
+ /* 新增银行卡开始 */
+ /* 用户信息开始 */
+ .user_info {
+     margin-top: 0.1667rem;
+     background-color: #2A2B31;
+ }
+
+ .user_info .mui-input-group {
+     background-color: #2A2B31;
+ }
+
+
+ .user_info .user_info_lis {
+     height: 1rem;
+     margin: 0 0.3333rem 0 0;
+ }
+
+ .user_info .user_info_lis .name {
+     font-size: 0.3333rem;
+     color: #999;
+     line-height: 1rem;
+     padding: 0 0 0 0.3333rem;
+     height: 1rem;
+     width: auto;
+ }
+
+ .user_info .mui-input-row .mui-input-clear~.mui-icon-clear,
+ .mui-input-row .mui-input-password~.mui-icon-eye,
+ .mui-input-row .mui-input-speech~.mui-icon-speech {
+     font-size: 0.4167rem;
+     position: absolute;
+     z-index: 1;
+     top: 0.3125rem;
+     right: 0;
+     width: 0.7917rem;
+     height: 0.7917rem;
+     text-align: center;
+     color: #999;
+ }
+
+ .user_info .user_info_lis input {
+     padding: 0;
+     height: 1rem;
+     font-size: 0.3333rem;
+     color: #fff;
+     line-height: 1rem;
+     float: left;
+     text-indent: 0.2083rem;
+     width: auto;
+ }
+
+ .user_info .mui-input-group:before,
+ .mui-input-group:after {
+     background-color: #000;
+ }
+
+ .user_info .mui-input-group .mui-input-row:after {
+     background-color: #000;
+ }
+
+ .user_info .user_info_lis .select_bank {
+     position: relative;
+ }
+
+ .user_info .user_info_lis .jiantou {
+     width: 0.5rem;
+     height: 0.5rem;
+     position: absolute;
+     top: 0.25rem;
+     right: 0rem;
+ }
+
+ /* 用户结束 */
+
+ .bottomOP_box {
+     height: 1.2rem;
+     width: 100%;
+ }
+
+ /* 选择状态开始 */
+ .default {
+     margin-top: 0.5rem;
+     margin-left: 0.6667rem;
+     overflow: hidden;
+     height: 0.3333rem;
+ }
+
+ .default .select_bg {
+     width: 0.3333rem;
+     height: 0.3333rem;
+     margin-right: 0.1875rem;
+
+ }
+
+ .default p {
+     font-size: 0.2917rem;
+     color: #999;
+     line-height: 0.3333rem;
+     margin-bottom: 0;
+ }
+
+ /* 选择状态结束 */
+
+
+ /* 银行卡下拉菜单开始 */
+ .none {
+     display: none;
+ }
+
+ html {
+     height: 100%;
+ }
+
+ body {
+     position: relative;
+     height: 100%;
+     background-color: #000;
+ }
+
+ .mui-inner-wrap {
+     height: 2.375rem;
+    position: relative;
+ }
+
+ .shadow_top {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0.3958rem;
+    background: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 122%);
+    z-index: 5;
+ }
+ .shadow_bot {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0.3958rem;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 122%);
+    z-index: 5;
+ }
+
+
+ .box {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+ }
+
+ .box .scroll_box .bank_list {
+     height: 0.7917rem;
+     /* background: rgba(42, 43, 49, 0.98); */
+     padding: 0;
+ }
+
+ .box  .mui-content {
+    background: -webkit-radial-gradient(#2a2b31, #000);
+ }
+
+ .box .scroll_box .bank_list>a {
+     margin: 0 auto;
+     height: 0.7917rem;
+     line-height: 0.7917rem;
+     text-align: center;
+     font-size: 0.3333rem;
+     color: #999999;
+
+ }
+
+ .mui-table-view-cell:after {
+     left: 0;
+     background-color: #000;
+ }
+
+ .box .mui-scroll-wrapper .bank_list a.mui-active {
+     color: #7AC231;
+     background-color: #000;
+ }
+
+
+
+ /* 银行卡下拉菜单结束 */
+
+
+
+ /* 保存按钮开始 */
+ .save {
+     width: 6.6667rem;
+     height: 0.875rem;
+     border-radius: 0.4375rem;
+     margin: 0 auto;
+     font-size: 0.4167rem;
+     color: #7AC231;
+     text-align: center;
+     line-height: 0.875rem;
+     /* margin-top: 4.125rem; */
+     position: fixed;
+     bottom: 32px;
+     left: 20px;
+     border: 1px solid #7AC231;
+ }
+
+ .Wechat_save.active {
+     background-color: #7AC231;
+     color: #FFFFFF;
+ }
+
+ .save.active {
+    background-color: #7AC231;
+    color: #FFFFFF;
+ }
+ /* 保存按钮结束 */
+ /* 新增银行卡结束 */
+
+ /* 新增支付宝页面开始 */
+ .alipay {
+     height: 131px;
+ }
+
+ .alipay .alipay_box {
+     height: 131px;
+ }
+
+ .alipay .alipay_box .alipay_box_top {
+     margin-top: 24px;
+     height: 62px;
+ }
+
+ /* 新增支付宝页面结束 */
+
+
+ /* 新增微信收款开始 */
+ /* 上传文件开始 */
+ .file_box {
+     width: 5rem;
+     height: 2.9167rem;
+     margin: 0.5rem auto;
+     border: 0.0208rem dashed #2A2B31;
+     border-radius: 0.2708rem;
+     position: relative;
+ }
+
+ .file_box.active {
+    border: 0.0208rem dashed #7AC231;
+ }
+ .file_box input {
+     width: 5rem;
+     height: 2.9167rem;
+     border: 0.0208rem dashed #E5E5E5;
+     border-radius: 0.2708rem;
+     opacity: 0;
+ }
+
+ .file_box .add {
+     width: 0.3333rem;
+     height: 0.3333rem;
+     position: absolute;
+     top: 0.8958rem;
+     left: 2.3333rem;
+     font-size: 0.6667rem;
+     color: #2A2B31;
+     font-size: 0.6667rem;
+     text-align: center;
+     line-height: 0.3333rem;
+ }
+
+ .file_box .add.active {
+     color: #7AC231;
+ }
+
+ .file_box #imgs {
+     width: 2.9167rem;
+     height: 2.9167rem;
+ }
+
+ .file_box p {
+     font-size: 0.3333rem;
+     color: #2A2B31;
+     position: absolute;
+     top: 1.7083rem;
+     left: 1.3542rem;
+ }
+
+ .file_box p.active {
+     color: #7AC231;
+ }
+
+ .file_box .color {
+     color: #002982;
+ }
+
+ .file_box .accomplish_state {
+     width: 0.7917rem;
+     height: 0.7917rem;
+     position: absolute;
+     top: 1.0625rem;
+     left: 2.1042rem;
+     background: url("../img/accomplish_state.png");
+     background-size: 100%;
+ }
+
+ /* 上传文件结束 */
+
+
+ .Wechat_save {}
+
+ /* 新增微信收款结束 */
+
+
+
+ /* 添加imToken款开始 */
+ .imToken_bank .imToken_bank_box {
+     height: 3.2708rem;
+ }
+
+ .imToken_bank .imToken_bank_box .imToken_bank_moblie {
+     margin-top: 0.1458rem;
+ }
+
+ .imToken_bank .imToken_bank_box .imToken_top {
+     height: 1.9583rem;
+ }
+
+ .imToken_bank .imToken_bank_box .imToken_top .imToken_top_left {
+     margin-right: 0;
+ }
+
+ .imToken_bank .imToken_bank_box .imToken_bottom {
+     height: 0.9583rem;
+ }
+
+ .imToken_bank .imToken_bank_box .imToken_bottom .content {
+     padding-left: 0;
+     padding-left: 1.875rem;
+ }
+
+ /* 添加imToken款结束

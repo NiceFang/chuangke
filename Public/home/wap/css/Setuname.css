@@ -1,0 +1,82 @@
+.user_info .user_info_lis label.name {
+    font-size: 0.2917rem;
+    color: #D4D4D4;
+}
+
+.user_info .mui-input-group .user_info_lis {
+    border-bottom: 1px solid #000;
+    margin-right: 0;
+}
+
+.user_info .user_info_lis input {
+    font-size: 0.2917rem;
+    color: red;
+}
+
+.mui-input-group .mui-input-row:after {
+    height: 0px;
+}
+
+div.name {
+    color: #FFFFFF;
+    /* background-color: #7AC231; */
+    width: 6.6875rem;
+    height: 0.8958rem;
+    border: 1px solid #7AC231;
+    border-radius: 0.4375rem;
+    text-align: center;
+    line-height: 0.8958rem;
+    margin: 0.75rem auto;
+    color: #7AC231;
+}
+
+div.active {
+    background-color: #7AC231;
+    color: #fff;
+}
+
+.user_info .mui-input-row span.mui-input-clear {
+    top: 0.3125rem;
+}
+
+
+.user_info .mui-input-row .mui-input-clear~.mui-icon-clear, .user_info .mui-input-row .mui-input-password~.mui-icon-eye, .user_info .mui-input-row .mui-input-speech~.mui-icon-speech {
+    font-size: 0.4167rem;
+    position: absolute;
+    z-index: 1;
+    top: 0.2917rem;
+    right: 0;
+    width: 0.7917rem;
+    height: 0.7917rem;
+    text-align: center;
+    color: #999;
+}
+
+
+
+.user_info .user_info_lis {
+    position: relative;
+}
+
+.user_info .user_info_lis img {
+    position: absolute;
+    width: 0.3333rem;
+    height: 0.3333rem;
+    top: 0.3333rem;
+    right: 0.4167rem;
+}
+
+.busy {
+    margin-top: 0.2083rem;
+    margin-right: 0.2917rem;
+    overflow: hidden;
+}
+
+.busy a {
+    font-size: 0.25rem;
+    color: #7AC231;
+}
+
+div.pwd_save {
+    margin-top: 1.3125rem;
+}

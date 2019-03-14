@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.lsdd}</title>
+    <link rel="stylesheet" href="__WCSS__/myOrderSale.css">
+    <link rel="stylesheet" href="__WCSS__/myOrderbase.css">
+    <script src="__WJS__/rem.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+
+    <style>
+
+        .sale_box {
+            position: relative;
+        }
+        .time {
+            font-size: 12px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: #ccc;
+
+        }
+
+    </style>
+</head>
+
+<body>
+<!-- 头部 -->
+<div class="hear Order_hear">
+    <a href="{:U('Index/myOrderSale')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+    {$Think.lang.lsdd}
+</div>
+
+<!-- 卖出 -->
+<volist name="transData" id="vo">
+    <div class="sale_box">
+        <div class="sale_box_left fl">
+            <div class="m">
+                <img src="__WIMG__/m_info.png" alt="">
+            </div>
+            {$vo.pay_nums}
+        </div>
+        <div class="sale_box_content fl">
+            <p class="name">{$vo.username}</p>
+            <p class="num">{$vo.userid}</p>
+            <!--<if condition="$vo.trans_type eq 1">-->
+                <!--<p class="num">{$vo.payout_id}</p>-->
+                <!--<else/>-->
+                <!--<p class="num">{$vo.payin_id}</p>-->
+            <!--</if>-->
+            <div class="div_box">
+                <if condition="$vo.pay_type eq 1">
+                    <img src="__WIMG__/yinghangka1.png" alt="">
+                    <elseif condition="$vo.pay_type eq 2"/>
+                    <img src="__WIMG__/zhifubao1.png" alt="">
+                    <elseif condition="$vo.pay_type eq 3"/>
+                    <img src="__WIMG__/weixin1.png" alt="">
+                    <elseif condition="$vo.pay_type eq 4"/>
+                    <img src="__WIMG__/IMtoken1.png" alt="">
+                </if>
+            </div>
+        </div>
+        <div class="time">{$vo.pay_time|date="Y-m-d H:i:s",###}</div>
+        <if condition="$vo.type = 1">
+            <div class="sale_box_right history_sale_box_right fr " id="history_sale_box_right">
+                <a href="{:U('User/Iccparticulars')}?id={$vo.id}&type=1"> {$Think.lang.ywc}</a>
+            </div>
+            <else />
+            <div class="sale_box_right history_sale_box_right fr " id="history_sale_box_call">
+                <a href="{:U('User/Iccparticulars')}?id={$vo.id}&type=2">{$Think.lang.yqx}</a>
+            </div>
+        </if>
+    </div>
+</volist>
+</body>
+
+</html>

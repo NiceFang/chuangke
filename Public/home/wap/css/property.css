@@ -1,0 +1,115 @@
+.bg96 {
+    margin: 0;
+    background-color: #18191d;
+}
+.big_width100 {
+    background-color: #18191d;
+
+}
+
+.url_address {
+    width: 100%;
+    height: 1.8333rem;
+    background-color: #18191d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.address_box {
+    width: 5rem;
+    height: 0.7917rem;
+    border-radius: 0.3958rem;
+    background-color: #fff;
+    color: #000;
+    outline: none;
+    border: none;
+    padding: 0 0.1042rem;
+    margin-bottom: 0.2917rem;
+}
+
+.url_address .btn {
+    color: #7AC231;
+    font-size: 0.2917rem;
+}
+
+.exchange_list {
+    background-color: #18191d;
+}
+
+.exchange_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exchange_box li {
+    width: 6.8333rem;
+    height: 1.5rem;
+    background-color: #2A2B31;
+    border-radius: 0.2708rem;
+    display: flex;
+    align-items: center;
+    padding: 0 0.1667rem;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.exchange_box li img {
+    width: 0.8333rem;
+    height: 0.8333rem;
+    border-radius: 50%;
+    margin-right: 0.1667rem;
+}
+.exchange_box li .num_box {
+    height: 0.8333rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.exchange_box li .num_box .title {
+    font-size: 0.2917rem;
+}
+.exchange_box li .num_box .title_box {
+    display: flex;
+}
+.exchange_box li .num_box .icon {
+    display: block;
+    width: 0.3125rem;
+    height: 0.3125rem;
+    background: url('../images/m_info.png');
+    background-size: cover;
+    margin: 0 0.0833rem;
+}
+.exchange_box li .num_box .num {
+    font-size: 0.2917rem;
+}
+.exchange_box li .num_box .nums {
+    font-size: 0.2917rem;
+    margin-left: 0.5625rem;
+}
+
+a.exchange_btn {
+    font-size: 0.2917rem;
+    width: 1.25rem;
+    height: 0.5rem;
+    border-radius: 0.25rem;
+    display: block;
+    background: #EFDE30;
+    color: #333333;
+    line-height: 0.5rem;
+    text-align: center;
+}
+
+.exchange_Btn{
+    background-color: #EFDE30;
+    color: #333333;
+    width: 5rem;
+    height: 0.7917rem;
+    border-radius: 0.3958rem;
+    font-size: 0.3333rem;
+    line-height: 0.7917rem;
+    text-align: center;
+    margin: 0 auto;
+}

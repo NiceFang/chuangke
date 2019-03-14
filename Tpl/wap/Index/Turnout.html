@@ -1,0 +1,245 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 字体颜色兼容 -->
+<meta name="format-detection" content="telephone=no">
+<title>{$Think.lang.turnout}</title>
+
+<!-- 旧的css样式 -->
+<!-- <link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<link rel="stylesheet" href="__WCSS__/YangStyle.css"> -->
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/integralConversion.css">
+<link rel="stylesheet" href="__WCSS__/Turnout.css">
+
+
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script type="text/javascript" src="__WJS__/mui.min.js"></script>
+
+
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<style>
+	/* .bg96 { background: #fff;margin-top: 0;}
+	.big_width100{margin: 0;}
+	.centBalance{
+		background: url(__WIMG__/mcbj.png) no-repeat;
+		background-size: 100% 100%;
+		padding: .6rem 0;}
+	.moneyS_icon {
+		display: flex;
+		justify-content: center;
+	}
+
+	.moneyS_icon img {
+		width: 14px;
+		height: 14px;
+	} */
+
+</style>
+
+<body class="">
+	<!-- 旧代码 -->
+	<!-- <div class="header w-header">
+		<div class="header_l">
+			<a href="{:U('Index/index')}"><img src="__WIMG__/jiant.png" alt=""></a>
+		</div>
+		<div class="header_c">
+			<h2>{$Think.lang.turnout}</h2>
+		</div>
+		<div class="header_r"><a href="{:U('Index/Turncords')}">{$Think.lang.zcjl}</a></div>
+	</div>
+
+	<div class="big_width100">
+		<div class="centBalance">
+			<div class="Balance">
+				<p><a class="balance">{$Think.lang.yue}<br /><strong class="moneyS_icon"><img src="/Public/home/wap/images/integraimages/balance3030.png"><span
+							 class="yue" style="color:#cfb263">{$moneyinfo['cangku_num']}</span></strong></a></p>
+			</div>
+			<div class="Balance">
+				<p><a class="balance">{$Think.lang.jifen}<br /><strong class="moneyS_icon"><img src="/Public/home/wap/images/integraimages/balance3030.png"><span
+							 class="jifen">{$moneyinfo['fengmi_num']}</span></strong></a></p>
+			</div>
+			<div class="dLine"></div>
+		</div>
+		<div class="w-center">
+			<div class="fill_sty">
+				<h2>{$Think.lang.rollOut}</h2>
+				<input type="number" name="other_account" placeholder="{$Think.lang.srsjhm}" autocomplete="off" id="phone_uid">
+				<div class="w-mydiv">
+					<h3>{$Think.lang.srsjhm}</h3>
+					<div class="bottom"></div>
+				</div>
+				<div class="buttonGeoup">
+					<a href="#" class="not_next" id="ternNextStep">{$Think.lang.nextstep}</a>
+					<a href="{:U('Index/exehange')}" class="exchange">{$Think.lang.jfdh}</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	//配置错误说明
+
+
+
+	<!-- 新代码 -->
+
+	<!-- 头部 -->
+	<div class="hear">
+		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+		<p>{$Think.lang.turnout}</p>
+		<!-- 语言切换 -->
+		<!-- 先不要删掉 -->
+		<!-- <div class="top">
+            <div class="loginLanguage">
+                <div id="sample" class="dropdown">
+                    <div id="div_curr_lag" class="parent">
+                        <a href="#">
+                            <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                    </div>
+                    <div class="son">
+                        <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                English
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                中文
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                            <a>
+                                <img class="flag" src="images/hanguo.png" alt="" />
+                                한국어
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                            <a>
+                                <img class="flag" src="images/Japan.png" alt="" />
+                                わぶん
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+	</div>
+
+	<!-- 个人信息 -->
+	<div class="user_info">
+		<div class="user_info_box">
+			<div class="user_info_box_cont">
+				<div class="user_info_box_cont_top">
+					<div class="div_img fl">
+						<img src="__IMGHEAD__/{$userinfo['img_head']}" alt="">
+					</div>
+					<div class="user_info_left fl">
+						<p class="name">{$Think.lang.nickname} : {$userinfo.username}</p>
+						<p class="uid">UID : {$userinfo.userid} </p>
+						<p class="garde">{$Think.lang.rank}：{$userinfo.lev}</p>
+					</div>
+				</div>
+				<div class="mony">
+					<div class="balance">
+						<span>{$Think.lang.yue}:</span>
+						<img src="__WIMG__/integraimages/icc_black.png" alt="">
+						<span>{$moneyinfo.cangku_num}</span>
+					</div>
+					<div class="integral">
+						<span>{$Think.lang.jifen}:</span>
+						<img src="__WIMG__/integraimages/icc_black.png" alt="">
+						<span>{$moneyinfo.fengmi_num}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 余额积分 -->
+	<div class="mui-content tab">
+		<div class="title">
+			<div id="segmentedControl" class="mui-segmented-control mui-segmented-control-inverted mui-segmented-control-primary title_box">
+				<li>
+					<a class="mui-control-item title_box_a  mui-active" href="#item2" id="a">
+						{$Think.lang.rollOut}
+					</a>
+				</li>
+				<li>
+					<a class="mui-control-item title_box_a" href="#item3" id="b">
+						{$Think.lang.zcjl}
+					</a>
+				</li>
+			</div>
+		</div>
+		<div class="content">
+			<div id="item2" class="mui-control-content integral mui-active">
+				<p class="price">{$Think.lang.qsrsjh}</p>
+				<div class="div_input">
+					<input type="num" placeholder="{$Think.lang.qsrsjh}" id="phone_uid">
+				</div>
+				<div class="conversion turnout_conversion">
+					<a href="#" id="ternNextStep">{$Think.lang.nextstep}</a>
+				</div>
+			</div>
+			<div id="item3" class="mui-control-content  record">
+				<div class="column">
+					<ul>
+						<li>{$Think.lang.ywlx1}</li>
+						<li>{$Think.lang.sl}</li>
+						<li>{$Think.lang.dqjf}</li>
+						<li>{$Think.lang.sj}</li>
+					</ul>
+				</div>
+				<ul class="ul">
+					<foreach name="Chan_info" item="v">
+						<li >
+							<a class="lis" href="{:U('growth/mutualParticulars')}?id={$v.id}">
+							<p>{$v.type_name}</p>
+							<if condition="$v.get_nums lt 0">
+								<p style="color:green;">{$v.get_nums}</p>
+							<else />
+								<p style="color:red;">{$v.get_nums}</p>
+							</if>
+							<p class="p23">{$v.now_nums}</p>
+							<p class="p24">{$v.get_time}</p>
+							</a>
+						</li>
+					</foreach>
+					<!--<li class="lis">-->
+						<!--<p>交易释放（8816）</p>-->
+						<!--<p>-800</p>-->
+						<!--<p>-800</p>-->
+						<!--<p>2018-10-10 12:12:50</p>-->
+					<!--</li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" value="{$Think.lang.dfzhbnwk}" id="msg1"> //账号不能为空 -->
+
+
+	<script type="text/javascript">
+		var msg = $('#msg1').val(); //获取错误信息
+		$('#ternNextStep').on('click', function () {
+			Checku();
+		});
+	</script>
+
+</body>
+
+</html>

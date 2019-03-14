@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.digitalasset}</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/digital.css">
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<link rel="stylesheet" href="__WCSS__/YangStyle.css">
+<link rel="stylesheet" href="__WCSS__/property.css">
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js" ></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js" ></script>
+<style>
+    /* .bg96{background: #fff;} */
+    /* .big_width100{background: #fff;} */
+    .w-bj p{margin: 0;}
+    .centBalance .dLine{top: 0.3rem;}
+
+    .url_address input::-ms-input-placeholder{text-align: center;}
+    .url_address input::-webkit-input-placeholder{text-align: center;}
+    .url_address input{text-align: center;}
+</style>
+
+<body class="bg96">
+    <!-- <div class="headerb">
+        <div class="userInfo" style="width: 75%">
+		<a href="{:U('User/Personal')}"><div class="toux_icon"><img src="__IMGHEAD__/{$uinfo['img_head']}"></div></a>
+    	<div class="uid_xy">
+            <p>UID:{$uinfo['userid']}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.rank}:<?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?></p>
+    	</div>	
+    </div>
+    <div class="header_rb"> <a href="{:U('User/Personal')}"><img src="__WIMG__/index/shez-icon.png" alt=""></a></div>
+</div> -->
+
+
+    <!-- 头部 -->
+    <div class="hear">
+            <a href="{:U('Turntable/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+            <p>兑换 DTH</p>
+            <!-- 语言切换 -->
+            <!-- 先不要删掉 -->
+            <!-- <div class="top">
+                    <div class="loginLanguage">
+                        <div id="sample" class="dropdown">
+                            <div id="div_curr_lag" class="parent">
+                                <a href="#">
+                                    <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                            </div>
+                            <div class="son">
+                                <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                                    <a>
+                                        <img class="flag" src="images/china.png" alt="" />
+                                        English
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                                    <a>
+                                        <img class="flag" src="images/china.png" alt="" />
+                                        中文
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                                    <a>
+                                        <img class="flag" src="images/hanguo.png" alt="" />
+                                        한국어
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                                    <a>
+                                        <img class="flag" src="images/Japan.png" alt="" />
+                                        わぶん
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+        </div>
+        <!-- 个人信息 -->
+        <div class="user_info">
+            <div class="user_info_box">
+                <div class="user_info_box_cont">
+                    <div class="user_info_box_cont_top">
+                        <div class="div_img fl">
+                            <img src="__IMGHEAD__/{$uinfo['img_head']}" alt="">
+                        </div>
+                        <div class="user_info_left fl">
+                            <p class="name">{$Think.lang.nickname} : {$uinfo['username']}</p>
+                            <p class="uid">UID : {$uinfo['userid']} </p>
+                            <p class="garde">{$Think.lang.rank}：{$uinfo['lev']}</p>
+                        </div>
+                    </div>
+                    <div class="mony">
+                        <div class="balance">
+                            <span>{$Think.lang.ye}:</span>
+                            <img src="__WIMG__/integraimages/icc_black.png" alt="">
+                            <span>{$uinfo['cangku_num']|Showtwo}</span>
+                        </div>
+                        <div class="integral">
+                            <span>{$Think.lang.jifen}:</span>
+                            <img src="__WIMG__/integraimages/icc_black.png" alt="">
+                            <span>{$uinfo['fengmi_num']|Showtwo}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<div class="big_width100">
+
+    <div class="url_address" style="height: unset; margin-bottom: 2rem;">
+        
+        <a class="btn" style="margin-bottom: 0.6667rem;">请输入兑换通证数</a>
+        <input type="text" placeholder="请输入1的整数倍" class="address_box">
+        <a class="btn">提示：最低的兑换数量是1，请输入1的整数倍。</a>
+    </div>
+    <input type="hidden" id="address" value="{$address}">
+    <div class="exchange_Btn">兑换</div>
+</div>
+
+
+    <!--浮动层-->
+<div class="ftc_wzsf" >
+    <div class="srzfmm_box">
+        <div class="qsrzfmm_bt clear_wl">
+            <img src="__WIMG__/xx_03.png" class="tx close fl">
+            <span class="fl">{$Think.lang.input_pwd}</span></div>
+        <div class="zfmmxx_shop" style="text-align: unset;">
+            <div class="mz" style="text-align: center;">{$Think.lang.sjkc}</div>
+            <div class="zhifu_price"><img src="__WIMG__/integraimages/icc_black.png" alt="" style=""><div ></div></div></div>
+        <ul class="mm_box">
+            <li></li><li></li><li></li><li></li><li></li><li></li>
+        </ul>
+    </div>
+    <div class="numb_box">
+        <div class="xiaq_tb">
+            <img src="__WIMG__/jftc_14.jpg" height="10"></div>
+        <ul class="nub_ggg">
+            <li><a href="javascript:void(0);" class="zf_num">1</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">3</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">4</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">6</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">7</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">9</a></li>
+            <li><a href="javascript:void(0);" class="zf_empty">{$Think.lang.emptya}</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+            <li><a href="javascript:void(0);" class="zf_del">{$Think.lang.deleteo}</a></li>
+        </ul>
+    </div>
+    <div class="hbbj"></div>
+</div>
+  <script type="text/javascript">
+        var zbzcxjjy = $('#zbzcxjjy').val();
+
+           $(document).ready(function(){
+  
+     $(".xianzjiaoy").click(function(){
+         msg_alert(zbzcxjjy);
+        });
+
+    });
+</script>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    // var dhjebnxy = $('#dhjebnxy').val();
+    // var dhjebz  = $('#dhjebz').val();
+    // var dhjebsbs = $('#dhjebsbs').val();
+
+    var qxzmrje = $('#qxzmrje').val();
+    var addcard = $('#addcard').val();
+    var qxzyhk = $("#qxzyhk").val();
+    $('.exchange_Btn').on('click', function(){
+
+        var maxe=$('#money').text();//余额
+        var maxe=Number(maxe);//余额
+        var dhnums =$.trim($('.address_box').val());; //要兑换的数量
+        var dhnums =Number(dhnums); //要兑换的数量
+//        alert(maxe);
+//        alert(dhnums);
+        if(dhnums==''){
+            alert('请输入兑换金额');
+            return;
+        }
+        if(!(/(^[1-9]\d*$)/.test(dhnums))){
+            alert("请输入正整数");
+            return;
+        }
+
+        // if(dhnums<100){
+        //     msg_alert(dhjebnxy);
+        //     return;
+        // }
+        // if(maxe<dhnums){
+        //     msg_alert(dhjebz);
+        //     return;
+        // }else{
+        //     var yuee = dhnums % 100;
+        //     if(yuee!=0){
+        //         msg_alert(dhjebsbs);
+        //         return;
+        //     }
+        // }
+        //获取通证倍数
+        var mulriple = "{$mulriple}";
+        if(mulriple<0){
+            alert('通证倍数不得小于0');
+            return;
+        }
+        //倍数精准计算
+        var getjifens = (parseInt(dhnums) * (parseFloat(mulriple)*(100000000)))/parseInt(100000000);
+        getjifens = getjifens.toFixed(2);
+//        alert(getjifens);
+
+        $('.zhifu_price div').text(getjifens);
+        $(".ftc_wzsf").show();
+
+        $('html,body').css('height','100%');
+        // $('body').css('margin-top','1rem');
+
+        $('.w-header').css('position','fixed');
+        $('.header .w-header').css('top','0');
+        $('.header .w-header').css('left','0');
+    });
+
+    $(function () {
+        //关闭浮动
+        $(".close").click(function () {
+            $(".ftc_wzsf").hide();
+            $(".mm_box li").removeClass("mmdd");
+            $(".mm_box li").attr("data", "");
+            i = 0;
+        });
+        //数字显示隐藏
+        $(".xiaq_tb").click(function () {
+            $(".numb_box").slideUp(0);
+        });
+        $(".mm_box").click(function () {
+            $(".numb_box").slideDown(0);
+        });
+        //----
+        var i = 0;
+        $(".nub_ggg li .zf_num").click(function () {
+            if (i < 6) {
+                $(".mm_box li").eq(i).addClass("mmdd");
+                $(".mm_box li").eq(i).attr("data", $(this).text());
+                i++
+                if (i == 6) {
+                    setTimeout(function () {
+                        var pwd = "";
+                        $(".mm_box li").each(function(){
+                            pwd += $(this).attr("data");  //输入的密码
+                        });
+//                        alert(pwd);
+                        //AJAX提交数据
+                        var buyNums = $.trim($('.address_box').val()); //兑换数量
+//                        var address = $('#address').val();//钱包地址
+//                        var cid = "{:I('id')}";  //获取币的id号
+//                        alert(buyNums);
+//                        alert(address);
+//                        alert(cid);
+
+                        $.ajax({
+                            url:'/turntable/tansTongZheng',
+                            type:'post',
+                            data:{
+                                buyNums:buyNums,
+                                pwd:pwd
+                            },
+                            datatype:'json',
+                            success:function (mes) {
+                                console.log(mes);
+                                if(mes.status == 3){
+//                                    alert(mes.message);
+                                    $(".ftc_wzsf").hide();
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+                                    window.location.href='/index/index';
+                                }
+                                if(mes.status == 1){
+                                    alert(mes.message);
+                                    $(".ftc_wzsf").hide();
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+                                    window.location.href='/index/index';
+                                }else{
+                                    alert(mes.message);
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+                                }
+                            }
+                        })
+                    }, 100);
+//                    setTimeout(function () {
+//                        var pwd = "";
+//                        $(".mm_box li").each(function(){
+//                            pwd += $(this).attr("data");
+//                        });
+//                        //AJAX提交数据
+//                        var buyNums = $.trim($('.address_box').val()); //兑换数量
+//                        var address = $('#address').val();//钱包地址
+//                        var cid = "{:I('id')}";  //获取币的id号
+//                        // console.log(cid);
+//                        // if (buyNums == '') {
+//                        //     alert('请输入兑换金额');
+//                        //     return;
+//                        // }
+//                        //var str = "&getAddr=$getAddr&outputMoney=$outputMoney&timestamp=$timestamp&AccessKey=mochain_access_blockchain";
+//                        //192.168.0.206:8802/api/exchange
+//                        // $.ajax({
+//                        //     url:'192.168.0.206:8802/api/exchange',
+//                        //     type:'post',
+//                        //     data:{
+//                        //         getAddr: 'ax2dbe384b10c688f109418067fc948149',
+//                        //         outputMoney: 100,
+//                        //         timestamp: 1542094004,
+//                        //         sign: 'AFE02F3DC8AEE6E4FC6330DB43FC5DAD',
+//                        //     },
+//                        //     datatype:'json',
+//                        //     success:function(mes){
+//                        //         console.log(mes);
+//                        //     }
+//                        // })
+//
+//                        $.ajax({
+//                            url:'/turntable/tansCoins',
+//                            type:'post',
+//                            data:{buyNums:buyNums,address:address,cid:cid},
+//                            datatype:'json',
+//                            success:function (mes) {
+//                                console.log(mes);
+//                                if(mes.status == 1){
+//                                    alert(mes.message);
+//                                    $(".ftc_wzsf").hide();
+//                                    $(".mm_box li").removeClass("mmdd");
+//                                    $(".mm_box li").attr("data","");
+//                                    i = 0;
+//                                    window.location.href='/index/trading_center';
+//                                }else{
+//                                    alert(mes.message);
+//                                    $(".mm_box li").removeClass("mmdd");
+//                                    $(".mm_box li").attr("data","");
+//                                    i = 0;
+//                                }
+//                            }
+//                        })
+//                    }, 100);
+                };
+            }
+        });
+        $(".nub_ggg li .zf_del").click(function(){
+            if(i>0){
+                i--
+                $(".mm_box li").eq(i).removeClass("mmdd");
+                $(".mm_box li").eq(i).attr("data","");
+            }
+        });
+
+        $(".nub_ggg li .zf_empty").click(function(){
+            $(".mm_box li").removeClass("mmdd");
+            $(".mm_box li").attr("data","");
+            i = 0;
+        });
+
+    });
+</script>

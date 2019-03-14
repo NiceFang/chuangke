@@ -1,0 +1,66 @@
+#audio_notice {
+    display: none;
+    width: 6.6667rem;
+    height: 1rem;
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, .9);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    /*display: flex;*/
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 0.25rem;
+
+}
+#audio_notice .audio,#audio_notice .skip {
+    margin-top: 0.15rem;
+}
+#audio_notice .audio,#audio_notice .txt,#audio_notice .skip {
+    float: left;
+}
+#audio_notice .audio,#audio_notice .skip{
+    width: 0.6667rem;
+    height: 0.6667rem;
+    
+}
+#audio_notice .audio a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url('../images/index/audio_icon.png');
+    background-size: cover;
+}
+
+#audio_notice .txt {
+    width: 4.66rem;
+    color: #000000;
+    font-size: 0.2917rem;
+    height: 100%;
+    margin-left: 0.1667rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    line-height: 0.4375rem;
+    box-sizing: border-box;
+    /*padding-top:0.0625rem;*/
+
+    word-break: break-all;
+    text-overflow: ellipsis;
+    /*display: -webkit-box; !** 对象作为伸缩盒子模型显示 **!*/
+    -webkit-box-orient: vertical; /** 设置或检索伸缩盒对象的子元素的排列方式 **/   
+    -webkit-line-clamp: 2; /** 显示的行数 **/
+    overflow: hidden;  /** 隐藏超出的内容 **/
+
+}
+#audio_notice .skip a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url('../images/index/more_icon.png');
+    background-size: cover;
+    
+}

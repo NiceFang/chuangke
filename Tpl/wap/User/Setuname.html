@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.ncxg}</title>
+
+<!-- 新的的样式 -->
+<link rel="stylesheet" href="__WCSS__/base.css">
+<link rel="stylesheet" href="__WCSS__/Setuname.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/accountManage.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script src="__WJS__/rem.js"></script>
+<script src="__WJS__/mui.min.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/Personal')}"><img src="__WIMG__/user/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.ncxg}
+    </div>
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis">
+                <label class="name nick">{$Think.lang.nickname}</label>
+                <input type="text" class="username mui-input-clear nick_input" value="{$uname}" placeholder="">
+            </div>
+        </form>
+    </div>
+
+    <!-- 保存按钮 -->
+    <div class="name ljzf_but">{$Think.lang.bc}</div>
+
+    <!-- <input type="hidden" id="qtxnc" value="{$Think.lang.qtxnc}"> -->
+</body>
+
+</html>
+
+<script>
+    // 判断名字是否为空, 为其保存按钮添加样式
+    $(".nick_input").blur(function () {
+        if ($(".nick_input").val().trim() != "") {
+            $(".name").addClass("active");
+        } else {
+            $(".name").removeClass("active");
+        }
+    })
+
+    $('.ljzf_but').click(function () {
+        //alert(21312)
+        var qtxnc = "{$Think.lang.qtxnc}";
+        var uname = $('.username').val();
+        if (uname == '') {
+            msg_alert(qtxnc);
+        }
+        $.ajax({
+            url: '/User/Setuname',
+            type: 'post',
+            data: {
+                'uname': uname
+            },
+            datatype: 'json',
+            success: function (mes) {
+                if (mes.status == 1) {
+                    msg_alert(mes.message, mes.url);
+                } else {
+                    msg_alert(mes.message);
+                }
+            }
+        })
+    })
+</script>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.tjwxqb}</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/addWeChatWallet')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.tjwxqb}
+    </div>
+
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis">
+                <label class="name " >{$Think.lang.xm}</label>
+                <input type="text"   name="weichar_name" class="" >
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name bank_name">{$Think.lang.wx}</label>
+                <input type="text" name="weichar_size" class="bank_input" >
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name">{$Think.lang.mobile}</label>
+                <input type="text" name="weichar_phone" class="">
+            </div>
+        </form>
+    </div>
+
+    <input type="file" name="weichar_file" id="file" accept="image/gif, image/x-ms-bmp, image/jpeg" class="line" onchange="fileType(this)" hidden/>
+    <!-- 上传图片 -->
+    <div class="file_box" onclick="driverUpload()">
+
+        <div class="add" name="weichar_ceshi">+</div>
+        <p  name="weichar_ceshi">{$Think.lang.scskewm}</p>
+        <img src="" alt="" name="weichar_image">
+        <div class="accomplish_state">
+        </div>
+    </div>
+
+
+    <!-- 设为默认 -->
+   <div class="default">
+        <div class="select_bg fl" id="select" name="weichar_r"></div>
+        <p class="fl">{$Think.lang.mr}</p>
+    </div>
+
+    <!-- 保存按钮 -->
+    <div class="save Wechat_save"  data-name="weichar">{$Think.lang.bc}</div>
+
+
+</body>
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>反馈信息</title>
+    <!-- <link rel="stylesheet" href="css/base.css"> -->
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/integralbase.css">
+    <link rel="stylesheet" href="__WCSS__/feedbackInfo.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script>
+    </script>
+    <style>
+   
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/Personal')}" class="jiantou"><img src="__WIMG__/user/user_jiantouzuo.png" alt=""></a>
+        <p>反馈信息</p>
+        <a href="{:U('User/Complaint')}" class="you"><img src="__WIMG__/bianji.png" alt=""></a>
+        <!-- 语言切换 -->
+        <!-- 先不要删掉 -->
+        <!-- <div class="top"> 
+            <div class="loginLanguage">
+                <div id="sample" class="dropdown">
+                    <div id="div_curr_lag" class="parent">
+                        <a href="#">
+                            <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                    </div>
+                    <div class="son">
+                        <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                English
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                中文
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                            <a>
+                                <img class="flag" src="images/hanguo.png" alt="" />
+                                한국어
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                            <a>
+                                <img class="flag" src="images/Japan.png" alt="" />
+                                わぶん
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+  
+    </div>
+
+    <!-- 反馈信息列表 -->
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper" >
+        <div class="mui-scroll">
+            <ul class="mui-table-view mui-table-view-chevron uls" id="list">
+                <volist name="list" id="vo">
+                    <li class="lis" data-id="{$vo.id}" data-status="{$vo.status}">
+                        <!--<a href="{:U('User/revertParticulars')}?id={$vo.id}">-->
+                            <h2>{$vo.toushu}</h2>
+                            <h4>{$vo.huifu}</h4>
+                            <p class="mui-clearfix">
+                                <span class="fl">{$vo.mobile}</span>
+                                <!--<span class="fr">{$vo.create_time|date="Y-m-d H:i:s",###}</span>-->
+                                <span class="fr">{$vo.time}</span>
+                            </p>
+                            <div class="img_box">
+                                <if condition="($vo.status eq 0) OR ($vo.status eq 1)">
+                                        <img src="__WIMG__/clzzw.png" alt="">
+                                    <else />
+                                        <img src="__WIMG__/yclzw.png" alt="">
+                                </if>
+                            </div>
+                        <!--</a>-->
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <!-- <div class="refresh">
+        <div>
+            <div class="arrows ">
+                <img src="./integraimages/jiantouxia.png" alt="">
+            </div>
+            <span class="">下拉加载更多</span>
+        </div>
+    </div> -->
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    // 更改语言 先不要删掉
+    // $(document).ready(function () {
+    //     // 点击切换语言
+    //     $(".dropdown .son").hide();
+    //     $("#div_curr_lag").click(function () {
+    //         $(".dropdown .son").toggle();
+    //     });
+
+    //     $(".dropdown .son div a").click(function () {
+    //         var text = $(this).html();
+    //         $(".dropdown .parent a span").html(text);
+    //         // localStorage.setItem('key',JSON.stringify(text));
+    //         $(".dropdown .son").hide();
+    //     }); //选择完成以后隐藏页面
+
+    //     var curr_lag = $("#hid_lag").val();
+    //     if (curr_lag == "") {
+    //         gradeOnclick("en-us");
+    //     } else {
+    //         var curr_html_lag = $("#div_" + curr_lag).html();
+    //         $("#div_curr_lag").html(curr_html_lag);
+    //     }
+    // })
+
+    // function gradeOnclick(url) {
+    //     window.location.href = "?l=" + url;
+    // };
+</script>
+<script>
+        //上拉加载更多
+        $(function () {
+            var page = 1;
+            setTimeout(function () {
+                mui.init({
+                    pullRefresh: {
+                        container: '#pullrefresh',
+                        up: {
+                            contentrefresh: '正在加载...',
+                            contentnomore:'没有更多数据了',
+                            container: '#pullrefresh',
+                            // var that = this;
+                            //上拉时，触发ajax请求，发送数据到后台
+                            callback: function() {
+                                var that = this;
+                                $.ajax({
+                                    url:"{:U('User/feedbackInfo')}",
+                                    type:'post',
+                                    data:{
+                                        page:page
+                                    },
+                                    success:function (meg) {
+                                        loadFankui(that,meg)
+                                    }
+                                })
+
+                            }
+                        }
+                    }
+                });
+            },1000);
+            function loadFankui(obj,meg){
+                var str = '';
+                page++;
+                console.log(meg.message)
+                if(meg.status==0){
+                    obj.endPullupToRefresh(true);
+                    return;
+                }
+                $.each(meg.message,function(key,value){
+                    str += '<li class="lis">'
+                    str += "<h2>"+value.toushu+"</h2>"
+                    str += "<h4>"+value.huifu+"</h4>"
+                    str += '<p class="mui-clearfix">'
+                    str += "<span class='fr'>"+value.mobile+"</span>"
+                    str += "<span class='fr'>"+value.time+"</span>"
+                    str += '</p>'
+                    str += '<div class="img_box">'
+                    if(value.status != 2){
+                        str += '<img src="__WIMG__/clzzw.png" alt="">'
+                    }else{
+                        str += '<img src="__WIMG__/yclzw.png" alt="">'
+                    }
+                    str += '</div>'
+                    str += "</li>"
+                });
+                $('.mui-scroll ul').append(str);
+                obj.endPullupToRefresh(false);
+            }
+        });
+</script>
+<block name="script">
+    <script>
+        $('#list li').on('tap',function(){
+            var list_id = $(this).data('id');
+            var list_status = $(this).data('status');
+//            alert(list_status);
+            if(list_status == 2){
+                window.location.href = "{:U('User/revertParticulars')}?id="+list_id;
+            }else {
+//                alert("你提交的问题正在处理中...");
+            }
+
+        });
+    </script>
+</block>

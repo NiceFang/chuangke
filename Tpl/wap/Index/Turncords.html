@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>转出记录</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<link rel="stylesheet" href="__WCSS__/YangStyle.css">
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<style>
+	.bg96 {
+		background: #fff;
+		margin-top: 0;
+	}
+
+	.big_width100 {
+		margin: 0;
+	}
+</style>
+
+<body class="bg96">
+	<div class="header w-header1">
+		<div class="header_l">
+			<a href="{:U('Index/index')}"><img src="__WIMG__/jiant.png" alt=""></a>
+		</div>
+		<div class="header_c">
+			<h2>{$Think.lang.turnout}</h2>
+		</div>
+		<div class="header_r"><a href="{:U('Index/Turncords')}">{$Think.lang.zcjl}</a></div>
+	</div>
+
+	<div class="big_width100">
+		<div class="w-center">
+			<div class="fill_sty">
+				<h2>{$Think.lang.zcjl}</h2>
+				<div class="w-mydiv1">
+					<div class="top"></div>
+				</div>
+
+				<div>
+					<div class="yugejil1">
+						<p>{$Think.lang.ywlx1}</p>
+						<p>{$Think.lang.sl}</p>
+						<p>{$Think.lang.dangq}</p>
+						<p>{$Think.lang.sj}</p>
+					</div>
+
+					<div class="w-wrapper">
+						<div class="scroller">
+							<ul>
+								<foreach name="Chan_info" item="v">
+									<li>
+										<p>{$v.type_name}</p>
+										<p>{$v.get_nums}</p>
+										<p class="p23">{$v.now_nums}</p>
+										<p class="p24">{$v.get_time}</p>
+									</li>
+								</foreach>
+								<p>{$t}</p>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+</body>
+
+</html>

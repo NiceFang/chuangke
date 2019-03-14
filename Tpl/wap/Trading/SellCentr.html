@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.sellout}</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/meCen.css">
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<style>
+  .haveCard .bdingcard{border-bottom: 1px solid #aaa;}
+  .haveCard .bdingcard a h4{color: #333;}
+  .haveCard .bdingcard a p{color: #333;}
+  .cardInfo p{    text-align: center;border-bottom: 1px solid #ddd;color: #999;}
+</style>
+<body class="bg96 ">
+
+<div class="header">
+    <div class="header_l">
+        <a href="{:U('Index/index')}"><img src="__WIMG__/jiant.png" alt=""></a>
+    </div>
+    <div class="header_c"><h2>{$Think.lang.sellout}</h2></div>
+    <div class="header_r"><a href="javascript:void(0)" id="hide"><img src="__WIMG__/moer_icon.png" alt=""></a>
+        <div id="p1">
+            <div class="down"></div>
+            <ul>
+                <li><a href="{:U('Trading/Nofinsh')}">{$Think.lang.wwcdd}</a></li>
+                <li><a href="{:U('Trading/Conpayd')}">{$Think.lang.confirm}</a></li>
+                <li><a href="{:U('Trading/Dofinsh')}">{$Think.lang.ywcdd}</a></li>
+                <li><a href="{:U('Trading/Sellerrecords')}">{$Think.lang.sellerrecords}</a></li>
+                <li class="not"><a href="{:U('Trading/Selldets')}">{$Think.lang.salescenter}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="big_width100">
+
+    <eq name="morecars['card_number']" value="">
+        <!--未添加银行卡-->
+        <div class="addCard SellAddCard">
+            <a href="{:U('Growth/Addbank')}">+{$Think.lang.addcard}</a>
+        </div>
+        <else />
+        <div class="haveCard SellAddCard">
+            <div class="bdingcard"><a href="{:U('Growth/Cardinfos?clco=Trading&funact=SellCentr')}"><h4>{$Think.lang.bdbankcard}</h4>
+                <p>&#62</p></a></div>
+            <div class="cardInfo">
+                <p>{$morecars['hold_name']}</p>
+                <p>{$morecars['banq_genre']}</p>
+                <p>{$Think.lang.cardnum}:{$morecars['card_number']}</p>
+                <input type="hidden" class="carnumber" value="{$morecars['id']}">
+            </div>
+        </div>
+    </eq>
+
+
+    <div class="pad9"></div>
+    <div class="buy_aminy br-b">
+        <h4>{$Think.lang.qxzmrje}</h4>
+        <ul class="clear_wl">
+            <li class="buyChecked"><span>500</span></li>
+            <li class="buyChecked"><span>1000</span></li>
+            <li class="buyChecked"><span>3000</span></li>
+            <li class="buyChecked"><span>5000</span></li>
+            <li class="buyChecked"><span>10000</span></li>
+            <li class="buyChecked"><span>30000</span></li>
+        </ul>
+    </div>
+
+    <div class="pad9"></div>
+    <div class="sell_textarea br-t br-b">
+        <textarea id="message" class="messge" name="message" placeholder="{$Think.lang.zybq}"></textarea>
+    </div>
+    <p style="color: red;padding: 0 10px">创建卖出订单时，系统自动增加15%的余额手续费。</p>
+    <div class="buttonGeoup">
+         <a href="###"   class="not_next ljzf_but" class="not_next" id="cuanjdd"> <!--  <a href="javascript:void(0);" class="not_next ljzf_but " class="not_next" id="cuanjdd"> -->{$Think.lang.createorder}</a>
+    </div>
+   
+</div>
+<!--浮动层-->
+<div class="ftc_wzsf">
+    <div class="srzfmm_box">
+        <div class="qsrzfmm_bt clear_wl">
+            <img src="__WIMG__/xx_03.jpg" class="tx close fl">
+
+            <span class="fl">{$Think.lang.input_pwd}</span></div>
+        <div class="zfmmxx_shop">
+
+        </div>
+        <ul class="mm_box">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div class="numb_box">
+        <div class="xiaq_tb">
+            <img src="__WIMG__/jftc_14.jpg" height="10"></div>
+        <ul class="nub_ggg">
+            <li><a href="javascript:void(0);" class="zf_num">1</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">3</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">4</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">6</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">7</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+            <li><a href="javascript:void(0);" class="zf_num">9</a></li>
+            <li><a href="javascript:void(0);" class="zf_empty">{$Think.lang.emptya}</a></li>
+            <li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+            <li><a href="javascript:void(0);" class="zf_del">{$Think.lang.deleteo}</a></li>
+        </ul>
+    </div>
+    <div class="hbbj"></div>
+</div>
+<input type="hidden" value="{$Think.lang.qxzmrje}" id="qxzmrje">
+<input type="hidden" value="{$Think.lang.addcard}" id="addcard">
+<input type="hidden" value="{$Think.lang.qxzmrje1}" id="qxzmrje1">
+<input type="hidden" value="{$Think.lang.qxzyhk}" id="qxzyhk">
+<script type="text/javascript">
+    var qxzmrje = $('#qxzmrje').val();
+    var addcard = $('#addcard').val();
+    var qxzmrje1 = $('#qxzmrje1').val();
+    var qxzyhk = $('#qxzyhk').val();
+    $(".buyChecked").on("click", function () {
+        $(this).addClass("on").siblings().removeClass("on");
+    })
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#hide").click(function () {
+            $("#p1").toggle(); //toggle() 方法切换元素的可见状态。 如果被选元素可见,则隐藏这些元素,如果被选元素隐藏,则显示这些元素。
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $('#cuanjdd').on('click', function () {
+        $("#p1").hide(); //toggle() 方法切换元素的可见状态。 如果被选元素可见,则隐藏这些元素,如果被选元素隐藏,则显示这些元素。
+
+        var mairjie = $.trim($('.on').text()); //账号  //.trim() 去空格判断
+        var exg = /^[1-9]\d*|0$/;
+        if (!exg.test(mairjie)) {
+            msg_alert(qxzmrje);
+            return;
+        }
+        //是否存在银行卡
+        var carnumber = $('.carnumber').val();
+        if(carnumber == ''){
+            msg_alert(addcard);
+            return;
+        }
+          $.ajax({
+            url:'/Growth/jsajax',
+            type:'post',
+            data:{
+                'ac':'create',
+            },
+            success:function (mes) {
+               if (mes!=1){
+                    alert('不在交易时间内');
+                    window.location.href='/Index/index';
+               }
+               // else{
+               //      alert("温馨提醒：在进行交易时将会扣除相应的保证金和相应的手续费！");
+               // }
+            },
+            error:function(){
+                alert('服务器错误');
+            }
+        });
+        $(".ftc_wzsf").show();
+    });
+
+    $(function () {
+        //关闭浮动
+        $(".close").click(function () {
+            $(".ftc_wzsf").hide();
+            $(".mm_box li").removeClass("mmdd");
+            $(".mm_box li").attr("data", "");
+            i = 0;
+        });
+        //数字显示隐藏
+        $(".xiaq_tb").click(function () {
+            $(".numb_box").slideUp(50000);
+        });
+        $(".mm_box").click(function () {
+            $(".numb_box").slideDown(50000);
+        });
+        //----
+        var i = 0;
+        $(".nub_ggg li .zf_num").click(function () {
+
+            if (i < 6) {
+                $(".mm_box li").eq(i).addClass("mmdd");
+                $(".mm_box li").eq(i).attr("data", $(this).text());
+                i++
+                if (i == 6) {
+                    setTimeout(function () {
+                        var pwd = "";
+                        $(".mm_box li").each(function(){
+                            pwd += $(this).attr("data");
+                        });
+                        //AJAX提交数据
+                        var sellnums = $.trim($('.on').text()); //账号  //.trim() 去空格判断
+                        var cardid = $('.carnumber').val();//银行卡id
+                        var messge = $('.messge').val();
+                        var exg = /^[1-9]\d*|0$/;
+                        if (!exg.test(sellnums)) {
+                            msg_alert(qxzmrje1);
+                            return;
+                        }
+                        if (cardid == '') {
+                            msg_alert(qxzyhk);
+                            return;
+                        }
+                        $.ajax({
+                            url:'/Trading/SellCentr',
+                            type:'post',
+                            data:{'sellnums':sellnums,'pwd':pwd,'cardid':cardid,'messge':messge},
+                            datatype:'json',
+                            success:function (mes) {
+                                if(mes.status == 1){
+                                    msg_alert(mes.message);
+                                    $(".ftc_wzsf").hide();
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+                                }else{
+                                    msg_alert(mes.message);
+                                    $(".mm_box li").removeClass("mmdd");
+                                    $(".mm_box li").attr("data","");
+                                    i = 0;
+                                }
+                            }
+                        })
+                    }, 100);
+                };
+            }
+        });
+
+        $(".nub_ggg li .zf_del").click(function () {
+            if (i > 0) {
+                i--
+                $(".mm_box li").eq(i).removeClass("mmdd");
+                $(".mm_box li").eq(i).attr("data", "");
+            }
+        });
+
+        $(".nub_ggg li .zf_empty").click(function () {
+            $(".mm_box li").removeClass("mmdd");
+            $(".mm_box li").attr("data", "");
+            i = 0;
+        });
+
+    });
+</script>
+
+</body>
+
+</html>

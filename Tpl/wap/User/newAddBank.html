@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增银行卡</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href=""><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        新增银行卡
+    </div>
+
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis">
+                <label class="name bank_name">持卡人</label>
+                <input type="text" class="bank_input" placeholder="">
+            </div>
+            <div class="mui-input-row user_info_lis select_bank">
+                    <label class="name bank_select">选择开户银行</label>
+                    <input type="text" class="bank_select_input" placeholder="">
+                    <img class="jiantou" src="__WIMG__/jiantouyou.png" alt="">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name bank_num">银行卡号</label>
+                <input type="text" class=" bank_num_input" placeholder="">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name  bank_num">开户支行</label>
+                <input type="text" class=" bank_num_input" placeholder="">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name">手机</label>
+                <input type="text" class="" placeholder="">
+            </div>
+        </form>
+    </div>
+
+    <!-- 设为默认 -->
+    <div class="default">
+        <div class="select_bg fl"></div>
+        <p class="fl">设为默认</p>
+    </div>
+
+    <!-- 保存按钮 -->
+    <div class="save">保 存</div>
+
+    <!-- 银行卡选择 -->
+    <div class="mui-inner-wrap box none"  >
+        <!-- 主页面标题 -->
+        <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll scroll_box">
+                <!-- 主界面具体展示内容 -->
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">建设银行</a>
+                </li>
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">招商银行</a>
+                </li>
+             
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">农业银行</a>
+                </li>
+              
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">建设银行</a>
+                </li>
+             
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">招商银行</a>
+                </li>
+              
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">招商银行</a>
+                </li>
+            
+                <li class="mui-table-view-cell bank_list">
+                    <a href="#">招商银行</a>
+                </li>
+             
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+</body>
+
+</html>
+<script>
+    //  初始化滚动
+    mui('#offCanvasContentScroll').scroll();
+</script>

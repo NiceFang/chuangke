@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的订单</title>
+    <link rel="stylesheet" href="__WCSS__/myOrderSale.css">
+    <link rel="stylesheet" href="__WCSS__/myOrderbase.css">
+    <script src="__WJS__/rem.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/mui/3.7.1/css/mui.min.css">
+
+    <script src="__WJS__/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
+
+    <style>
+        .mui-table-view {
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+        }
+        .mui-table-view-cell {
+            padding: 0;
+            border: 0;
+            margin-top: 0.1667rem;
+            position: relative;
+            
+        }
+        .mui-table-view-cell>.mui-slider-handle {
+            background-color: rgba(0, 0, 0, 0);
+            margin: 0 auto;
+            width: 6.8333rem
+        }
+        .mui-content>.mui-table-view:first-child {
+            margin: 0;
+        }
+        .mui-table-view:before,.mui-table-view:after,.mui-table-view-cell:after {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        .sale_box {
+            margin: 0;
+        }
+
+
+        
+    </style>
+</head>
+
+
+<body>
+    <!-- 头部 -->
+    <div class="hear Order_hear">
+        <a href="{:U('Index/trading_buy')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+        我的订单
+        <a href="{:U('/user/historyOrder')}" class="history"><img src="__WIMG__/history_info.png" alt=""></a>
+    </div>
+    <!-- 买卖 -->
+    <div class="deal">
+        <div class="left ">
+            <a href="{:U('Index/myOrderSale')}?type=1" >卖出</a>
+        </div>
+        <div class="right">
+            <a href="" class="active">买入</a>
+        </div>
+    </div>
+    
+
+    <!-- 卖出 -->
+
+    <div class="mui-content">
+        <ul id="OA_task_1" class="mui-table-view">
+            <li  class="mui-table-view-cell">
+                <div class="mui-slider-right mui-disabled">
+                    <a class="mui-btn mui-btn-red" id="cancel" data-id="{$vo.id}">取消订单</a>
+                </div>
+                <div class="mui-slider-handle">
+                    <volist name="transData" id="vo">
+                    <div class="sale_box">
+                        <div class="sale_box_left fl">
+                            <div class="m">
+                                <img src="__WIMG__/m_info.png" alt="">
+                            </div>
+                            {$vo.pay_nums}
+                        </div>
+                        <div class="sale_box_content fl">
+                            <p class="name">{$username.username}</p>
+                            <p class="num">{$vo.payin_id}</p>
+                            <div class="div_box">
+                                <if condition="$vo.pay_type eq 1">
+                                    <img src="__WIMG__/trading_center/yinghangke.png" alt="">
+                                    <elseif condition="$vo.pay_type eq 2"/>
+                                    <img src="__WIMG__/trading_center/zhifubao.png" alt="">
+                                    <elseif condition="$vo.pay_type eq 3"/>
+                                    <img src="__WIMG__/trading_center/weixin.png" alt="">
+                                    <elseif condition="$vo.pay_type eq 4"/>
+                                    <img src="__WIMG__/trading_center/IMtoken.png" alt="">
+                                </if>
+                            </div>
+                        </div>
+                        <div class="sale_box_right fr">
+                            <a href="{:U('Index/confirm_pay')}?id={$vo.id}">去 付 款</a>
+                        </div>
+                    </div>
+                    </volist>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+</html>
+<script>
+    $('#cancel').click(function(){
+        //alert(21131)
+        var e = this;
+        var id = $(e).attr('data-id');
+        console.log(id);
+        var r=confirm("{$tink.lang.qdyqxm}")
+        if (r==true)
+        {
+            $.ajax({
+                url:'/Growth/quxiao_order',
+                type:'post',
+                data:{id:id},
+                success:function(meg){
+                    if(meg.status == 0){
+                        alert(meg.message);
+                    }else{
+                        window.location.href='/index/myOrderSale?type=1';
+                    }
+                }
+            })
+        }
+        else
+        {
+
+        }
+
+
+    })
+        // mui.init();
+        // (function($) {
+        //
+        //     $('#OA_task_1').on('tap', '.mui-btn', function(event) {
+        //         var elem = this;
+        //         var li = elem.parentNode.parentNode;
+        //         mui.confirm('<div class="text"><p class="icon-information"></p><h3>确定删除此条消息？</h3><span>REMIND</span></div>', 'Hello MUI', btnArray, function(e) {
+        //             if (e.index == 0) {
+        //                 li.parentNode.removeChild(li);
+        //             } else {
+        //                 setTimeout(function() {
+        //                     $.swipeoutClose(li);
+        //                 }, 0);
+        //             }
+        //         });
+        //     });
+        //
+        //     var btnArray = ['确认', '取消'];
+        // })(mui);
+
+        $('#OA_task_1').on('click','.sale_box_right a',function(){
+            window.location.href = "{:U('Index/confirm_pay')}";  
+        })
+    </script>	

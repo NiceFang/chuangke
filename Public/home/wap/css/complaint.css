@@ -1,0 +1,141 @@
+a,a:hover,a:active,a:visited,a:link,a:focus{
+
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    
+    -webkit-tap-highlight-color: transparent;
+    
+    outline:none;
+    
+    background: none;
+    
+    text-decoration: none;
+    
+}
+.bg96 {
+    display: flex;
+    flex-direction: column;
+
+}
+
+body,html {
+    background-color: #18191d;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 反馈建议 */
+.suggest_box {
+    width: 100%;
+    height: 3.75rem;
+    margin-top: 0.1667rem;
+    margin-bottom: 0.1667rem;
+}
+
+.suggest_box textarea {
+    width: 100%;
+    height: 100%;
+    background-color: #2A2B31;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    padding-top: 0.1875rem;
+    padding-left: 0.3333rem;
+    color: #fff;
+    
+}
+
+.suggest_box textarea::placeholder {
+    color: #ccc;
+}
+
+/*  上传照片*/
+.z_photo {
+    width: 100%;
+    height: 2.5rem;
+    background-color: #2A2B31;
+    margin-bottom: 0.1667rem;
+    border: none;
+    padding: 0;
+    display: flex;
+    font-size: 0.2917rem;
+    color: #999999;
+    align-items: center;
+}
+
+.z_photo .z_file {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.3333rem;
+}
+
+/* 手机号码 */
+.mobile_box {
+  width: 100%;
+  height: 1rem;  
+  margin-bottom: 0.1667rem;
+  background-color: #2A2B31;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 0.3542rem;
+}
+
+.mobile_box input,.time_box input {
+    flex: 1;
+    /* direction: rtl; */
+    background-color: rgba(0,0,0,0);
+    border: none;
+    outline: none;
+    color: #FFFFFF;
+    margin-right: 0.3542rem;
+    padding-left: 0.2083rem;
+}
+
+.mobile_box .txt {
+    font-size: 0.2917rem;
+    color: #999999;
+}
+
+/* 发生时间 */
+.time_box {
+  width: 100%;
+  height: 1rem;  
+  margin-bottom: 0.1667rem;
+  background-color: #2A2B31;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 0.3542rem;
+}
+
+.time_box .txt {
+    font-size: 0.2917rem;
+    color: #999999;
+}
+
+/* 提交按钮 */
+.buttonGeoup {
+    width: 100%;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buttonGeoup a.not_next {
+    width: 6.6667rem;
+    height: 0.875rem;
+    background-color: rgba(0,0,0,0);
+    border: 0.0208rem solid #7AC231;
+    border-radius: 0.4375rem;
+    font-size: 0.4167rem;
+    color: #7AC231;
+    margin-bottom: 0.625rem;
+    box-sizing: border-box;
+}
+.buttonGeoup a.active {
+    background-color: #7AC231;
+    border: none;
+    color:#fff;
+} 

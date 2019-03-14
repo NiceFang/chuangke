@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+    background-color: #F4f4f4;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.hear {
+  height: 1.1667rem;
+  background-color: #000;
+  text-align: center;
+  line-height: 1.1667rem;
+  color: #fff;
+  font-size:0.4167rem;
+  position: relative;
+  
+}
+
+.hear a {
+  width: 0.5rem;
+  height: 0.5rem;
+  position: absolute;
+  top: 0.3333rem;
+  left: 0.3333rem;
+  display: block;
+
+}
+.hear a>img {
+  width: 100%;
+  vertical-align: top;
+}

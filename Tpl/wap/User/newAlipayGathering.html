@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.tjzfbsk}</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- 获取头部的颜色 -->
+    <script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/addAlipayWallet')}"> <img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.tjzfbsk}
+    </div>
+
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis">
+                <label class="name">{$Think.lang.xm}</label>
+                <input type="text" name="alipay_name" class="mui-input-clear">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name alipay_name">{$Think.lang.zfbzh}</label>
+                <input type="text" name="alipay_size" class="alipay_input mui-input-clear">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name">{$Think.lang.mobile}</label>
+                <input type="number" name="alipay_phone" class="mui-input-clear">
+            </div>
+        </form>
+    </div>
+    <input type="file" name="alipay_file" id="file" accept="image/gif, image/x-ms-bmp, image/jpeg" class="line"
+        onchange="fileType(this)" hidden />
+    <!-- 上传图片 -->
+    <div class="file_box" onclick="driverUpload()">
+        <div class="add" name="alipay_ceshi">+</div>
+        <p name="alipay_ceshi">{$Think.lang.scskewm}</p>
+        <img src="" alt="" name="alipay_image">
+        <div class="accomplish_state">
+        </div>
+    </div>
+    <!-- 设为默认 -->
+    <div class="default">
+        <div class="select_bg fl" id="select" name="alipay_r"></div>
+        <p class="fl">{$Think.lang.mr}</p>
+    </div>
+
+    <!-- 保存按钮 -->
+    <div class="save Wechat_save" data-name="alipay">{$Think.lang.bc}</div>
+
+</body>
+</body>
+
+</html>
+
+<script>
+    // input 失去焦点按钮添加背景色
+    $("form input").blur(function () {
+        if (($("input[name=alipay_name]").val().trim()) != "" && ($("input[name=alipay_size]").val()) != "" &&
+            ($("input[name=alipay_phone]").val()) != "") {
+            $(".Wechat_save").addClass("active");
+            $(".file_box").addClass("active");
+            $(".file_box .add").addClass("active");
+            $(".file_box p").addClass("active");
+        } else if (($("input[name=alipay_size]").val().trim()) != "" || ($("input[name=alipay_size]").val()) ==
+            "" || ($("input[name=alipay_phone]").val()) == "") {
+            $(".Wechat_save").removeClass("active");
+            $(".file_box").removeClass("active");
+            $(".file_box .add").removeClass("active");
+            $(".file_box p").removeClass("active");
+        }
+    })
+</script>

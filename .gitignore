@@ -1,0 +1,5 @@
+/.idea
+/.vagrant
+/shop/Runtime
+/Uploads
+#/shop/Common/Conf/config.php

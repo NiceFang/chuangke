@@ -1,0 +1,502 @@
+/* 交易中心卖出开始 */
+/* 交易中心买卖开始 */
+.deal {
+  height: 1.0208rem;
+  display: flex;
+  background-color: #2A2B31;
+}
+
+.deal > div {
+  width: 50%;
+  font-size: .4167rem;
+  display: flex;
+  justify-content: center;
+  height: 1.0208rem;
+  align-items: center;
+}
+
+.deal .left a,
+.right a {
+  height: 1.0208rem;
+  line-height: 1.0208rem;
+  display: block;
+  width: 110px;
+  text-align: center;
+
+}
+
+div.mui-content {
+  background-color: #000;
+}
+
+div.mui-content .mui-table-view-cell.mui-active {
+  background-color: #000;
+}
+
+.deal a.active {
+  color: #7DC334;
+  border-bottom: .0417rem solid #7DC334;
+  height: 1.0208rem;
+  line-height: 1.0208rem;
+}
+
+.deal div > a {
+  color: #fff;
+}
+
+/* 交易中心买卖结束 */
+
+/* 卖出开始 */
+.sale_box {
+  width: 6.8333rem;
+  height: 2.2292rem;
+  background-color: #2A2B31;
+  border-radius: .2708rem;
+  margin: .1667rem auto;
+  padding: .4375rem .2708rem .4583rem .3958rem;
+}
+
+.sale_box .sale_box_left {
+  width: 1.9792rem;
+  height: 1.3125rem;
+  border-radius: .125rem;
+  background-color: #7AC231;
+  font-size: .5625rem;
+  color: #fff;
+  position: relative;
+  line-height: 1.3125rem;
+  text-align: center;
+  margin-right: .25rem;
+  font-family: Roboto-Regular;
+}
+
+.sale_box .sale_box_left .m {
+  width: .3125rem;
+  height: .3125rem;
+  position: absolute;
+  top: .1667rem;
+  left: .2083rem;
+}
+
+.sale_box .sale_box_left .m > img {
+  width: 100%;
+  vertical-align: top;
+}
+
+.sale_box .sale_box_content .name {
+  font-size: .3958rem;
+  color: #fff;
+  width: 2.1667rem;
+  line-height: .4167rem;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /** 对象作为伸缩盒子模型显示 **/
+  -webkit-box-orient: vertical;
+  /** 设置或检索伸缩盒对象的子元素的排列方式 **/
+  -webkit-line-clamp: 1;
+  /** 显示的行数 **/
+  overflow: hidden;
+  /** 隐藏超出的内容 **/
+}
+
+.sale_box .sale_box_content .num {
+  color: #D4D4D4;
+  font-size: .3125rem;
+  margin-top: .125rem;
+  line-height: .3125rem;
+}
+
+.sale_box .sale_box_content .div_box {
+  width: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+}
+
+.sale_box .sale_box_content .div_box > img {
+  width: .3125rem;
+  height: .3125rem;
+  /* display: flex;
+    justify-content: space-between; */
+
+}
+
+.sale_box .sale_box_right {
+  width: 1.6667rem;
+  height: .6667rem;
+  text-align: center;
+  font-size: .2917rem;
+  background-color: #FF9933;
+  border-radius: .3333rem;
+  margin-top: .3125rem;
+}
+
+.sale_box .sale_box_right > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 卖出结束 */
+
+/* 买入开始 */
+
+/* 买入结束 */
+
+/* 历史订单开始 */
+#history_sale_box_right {
+  color: #169726;
+  /* background: #fff; */
+}
+
+#history_sale_box_call {
+  color: #7A7A7A;
+  background: #fff;
+}
+
+/* 历史订单结束 */
+
+/* 代收款开始 */
+#stay_gathering {
+  background-color: #E72C18;
+  color: #FFFFFF;
+}
+
+/* 代收款结束 */
+
+/* 买入页面头部开始 */
+.buy_hear {
+  height: 3.3333rem;
+  width: 100%;
+  background-size: 100%;
+  background-color: #18191D;
+}
+
+.buy_hear .buy_hear_top {
+  height: 1.1667rem;
+  position: relative;
+  font-size: .4375rem;
+  color: #fff;
+  line-height: 1.1667rem;
+  text-align: center;
+
+}
+
+.buy_hear .buy_hear_top .fanhui {
+  width: .5rem;
+  height: .3333rem;
+  position: absolute;
+  top: .4375rem;
+  left: .3333rem;
+
+}
+
+.buy_hear .buy_hear_top .fanhui > img {
+  width: 100%;
+  vertical-align: top;
+}
+
+.buy_hear .buy_hear_buttom {
+  height: 2.1667rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.buy_hear .buy_hear_buttom .balance_box {
+  overflow: hidden;
+}
+
+.buy_hear .buy_hear_buttom .buy_hear_buttom_left {
+  height: 2.1667rem;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #2A2B31;
+
+}
+
+.buy_hear .buy_hear_buttom .buy_hear_buttom_left .balance_txt {
+  font-size: .3958rem;
+  color: #fff;
+  text-align: center;
+  margin-top: .5208rem;
+  line-height: .4167rem;
+
+}
+
+.buy_hear .buy_hear_buttom .buy_hear_buttom_left .balance_box {
+  margin: .3333rem auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.buy_hear .buy_hear_buttom .buy_hear_buttom_left .balance_box_img {
+  width: .3125rem;
+  height: .3125rem;
+  margin-right: .0417rem;
+}
+
+.buy_hear .buy_hear_buttom .buy_hear_buttom_left .balance_box_img > img {
+  width: 100%;
+  vertical-align: top;
+
+}
+
+.buy_hear .buy_hear_buttom .buy_hear_buttom_left .balance_box .balance_num {
+  font-size: .3333rem;
+  color: #fff;
+  line-height: .3333rem;
+}
+
+/* 买入头部页面结束 */
+
+/* 买入金额开始 */
+
+.buy_money_top,
+.gathering_top {
+  height: .7292rem;
+  color: #7AC231;
+  padding-left: .3542rem;
+  font-size: .3125rem;
+  line-height: .7292rem;
+  background-color: #18191D;
+}
+
+.buy_money_box {
+  height: 2.8542rem;
+  background: #2A2B31;
+  padding: .2292rem .3333rem .2083rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: .3542rem;
+  color: #fff;
+}
+
+.buy_money_box .select_money {
+  background: #7AC231;
+  color: #fff;
+  border: none;
+}
+
+.buy_money_box > div {
+  width: 2.0833rem;
+  height: 1.0625rem;
+  border-radius: .2083rem;
+  border: .0208rem solid #7AC231;
+  text-align: center;
+  line-height: 1.0625rem;
+  color: #fff;
+}
+
+/* 买入金额结束 */
+
+/* 收款方式开始 */
+.gathering {}
+
+.gathering .gathering_box {
+  background-color: #2A2B31;
+}
+
+.gathering .gathering_box ul li {
+  height: 1rem;
+  margin-left: .3333rem;
+  line-height: 1rem;
+  border-bottom: .0208rem solid #18191D;
+  color: #fff;
+}
+
+.gathering .gathering_box ul li .div_img {
+  width: .5rem;
+  height: .5rem;
+  margin-top: .2292rem;
+  margin-right: .2917rem;
+}
+
+.gathering .gathering_box ul li .div_img > img {
+  width: 100%;
+  vertical-align: top;
+}
+
+.gathering .gathering_box ul li .div_bg {
+  width: .4583rem;
+  height: .4583rem;
+  /* background-color: green */
+  margin-top: .2708rem;
+  margin-right: .3333rem;
+}
+
+.gathering .gathering_box ul li:last-child {
+  border: none;
+}
+
+.gathering .gathering_box ul li .select {
+  background: url("../images/select1.png");
+  background-size: 100%;
+}
+
+/* 收款方式结束 */
+
+/* 买入页面底部开始 */
+
+.buy_footer {
+  height: .9792rem;
+  line-height: .9792rem;
+  background-color: #7AC231;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.buy_footer a {
+  display: block;
+  height: .9792rem;
+  color: #fff;
+  font-size: .4167rem;
+}
+
+/* 买入页面底部结束 */
+
+/*确认打款结束  */
+body,
+html {
+  height: 100%;
+  background-color: #18191D;
+}
+
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.remit {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  top: 0;
+}
+
+.remit .remit_box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+}
+
+.remit_info {
+  height: .8958rem;
+  color: #7B7A7A;
+  font-size: .3333rem;
+  border-bottom: .0208rem solid #D0CECE;
+  line-height: .8958rem;
+  padding-left: .3333rem;
+
+}
+
+.remit .remit_content {
+  font-size: .3125rem;
+  color: #7B7A7A;
+  padding-left: .3333rem;
+  line-height: .3333rem;
+  height: 3.625rem;
+  overflow: hidden;
+  border-bottom: .0208rem solid #D0CECE;
+}
+
+.remit .remit_content p span {
+  color: #1C1C1C;
+}
+
+.remit .remit_content p.name,
+p.money {
+  margin: .6875rem 0;
+}
+
+.remit .remit_content p.name span {
+  padding-left: 1.0208rem;
+}
+
+.remit .remit_content p.phone span {
+  padding-left: .7292rem;
+}
+
+.remit .remit_content p.money span {
+  padding-left: 1.3333rem;
+}
+
+.remit .remit_content p.money span {
+  color: #F7931E;
+}
+
+.remit .remit_box .remit_bottom {
+  background: #fff;
+  padding: .2708rem .375rem 0 .2708rem;
+
+}
+
+.remit .remit_box .remit_bottom_box {
+  background: #FCFAFA;
+  height: 2.2292rem;
+  position: relative;
+}
+
+.remit .remit_box .remit_bottom input {
+  width: 6.8333rem;
+  height: 2.2292rem;
+  background: #FCFAFA;
+  line-height: 2.2292rem;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.remit .remit_box p.txt {
+  text-align: center;
+  font-size: .25rem;
+  color: #8E8D8D;
+  line-height: .5833rem;
+}
+
+.remit .remit_box .remit_footer {
+  height: .9792rem;
+  background-color: #003B92;
+  height: .9792rem;
+  text-align: center;
+  font-size: .4167rem;
+  color: #fff;
+}
+
+.remit .remit_box img {
+  width: 3.6458rem;
+  height: 2.5625rem;
+  position: absolute;
+  top: -0.2708rem;
+  left: 1.6042rem;
+}
+
+.remit .remit_box .remit_footer a {
+  display: block;
+  height: .9792rem;
+  text-align: center;
+  color: #fff;
+  line-height: .9792rem;
+}
+
+/* 交易中心卖出结束 */
+
+/* 交易中心卖出结束 */

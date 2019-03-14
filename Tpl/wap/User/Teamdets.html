@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.record}</title>
+
+<!-- 旧的样式 -->
+<!-- <link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/meCen.css"> -->
+
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/shareRecord.css">
+
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script type="text/javascript" src="__WJS__/mui.min.js"></script>
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+
+<body>
+    <!-- 新的代码 -->
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+        <p>{$Think.lang.fxjl}</p>
+        <!-- 语言切换 -->
+        <!-- 先不要删掉 -->
+        <!-- <div class="top">
+                <div class="loginLanguage">
+                    <div id="sample" class="dropdown">
+                        <div id="div_curr_lag" class="parent">
+                            <a href="#">
+                                <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                        </div>
+                        <div class="son">
+                            <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                                <a>
+                                    <img class="flag" src="images/china.png" alt="" />
+                                    English
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                            <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                                <a>
+                                    <img class="flag" src="images/china.png" alt="" />
+                                    中文
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                            <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                                <a>
+                                    <img class="flag" src="images/hanguo.png" alt="" />
+                                    한국어
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                            <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                                <a>
+                                    <img class="flag" src="images/Japan.png" alt="" />
+                                    わぶん
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  -->
+    </div>
+    <!-- 个人信息 -->
+    <form action="{:U('User/Teamdets')}" method="post">
+    <div class="search_box">
+        <div class="search_content">
+            <div class="search_img">
+                <img src="__WIMG__/integraimages/search.png" alt="">
+            </div>
+            <input type="text" placeholder="{$Think.lang.sousuo}UID/{$Think.lang.sjhm}" id="search" name="uinfo">
+        </div>
+    </div>
+    </form>
+    <!-- 内容 -->
+    <div class="div_box">
+        <ul>
+            <foreach name="muinfo" item="v">
+                <li class="lis">
+                    <div class="lis_top">
+                        <div class="user_img fl">
+                            <img src="__IMGHEAD__/{$v.img_head}" alt="">
+                        </div>
+                        <div class="top_content fl">
+                            <p class="name">{$Think.lang.nickname} : {$v.username}</p>
+                            <p class="uid">UID : {$v.userid} </p>
+                            <p class="phone">{$Think.lang.mobile} : {$v.mobile}</p>
+                        </div>
+                        <div class="top_right fr">
+                            <div class="top_right_img">
+                                <img src="__WIMG__/integraimages/jiangpai.png" alt="">
+                            </div>
+                            <p>
+                                <if condition="$v['use_grade'] == 1">
+                                        VIP1星
+                                        <elseif condition="$v['use_grade'] == 2"/>
+                                            VIP2星
+                                            <elseif condition="$v['use_grade'] == 3"/>
+                                                VIP3星
+                                </if>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="time fr">{$v['reg_date']|date="Y-m-d H:i:s",###}</p>
+                </li>
+            </foreach>
+            <!--<li class="lis">-->
+                <!--<div class="lis_top">-->
+                    <!--<div class="user_img fl">-->
+                        <!--<img src="" alt="">-->
+                    <!--</div>-->
+                    <!--<div class="top_content fl">-->
+                        <!--<p class="name">昵称 : 熊呆呆</p>-->
+                        <!--<p class="uid">UID : 00000018 </p>-->
+                        <!--<p class="phone">手机 : 13355522486</p>-->
+                    <!--</div>-->
+                    <!--<div class="top_right fr">-->
+                        <!--<div class="top_right_img">-->
+                            <!--<img src="__WIMG__/integraimages/jiangpai.png" alt="">-->
+                        <!--</div>-->
+                        <!--<p>环保达人</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<p class="time fr">2018-10-10 20:10:16</p>-->
+            <!--</li>-->
+
+        </ul>
+    </div>
+
+</body>
+<script>
+    $('#search').blur(function(){
+        $('form').submit();
+       // var uinfo = $(this).val();
+       // $.ajax({
+       //     url:"{:U('User/Teamdets')}",
+       //     type:'post',
+       //     data:{uinfo:uinfo},
+       //
+       // })
+    })
+</script>
+
+</html>

@@ -1,0 +1,169 @@
+.confirm_pay {
+
+}
+
+.confirm_pay .mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.confirm_pay .pay_way {
+    width: 100%;
+    /* height: 9.375rem; */
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
+}
+
+/* 上传图片 */
+.confirm_pay .pay_way .uploading_pic {
+    width: 100%;
+    height: 3.0625rem;
+    margin-bottom: 1.25rem;
+    box-sizing: border-box;
+    padding: 0.2917rem;
+}
+
+.confirm_pay .pay_way .uploading_pic .info_box {
+    width: 100%;
+    height: 100%;
+    background-color: #FCFAFA;
+    position: relative;
+}
+#chooseImage {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+#cropedBigImg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 头部 */
+.confirm_pay .pay_way .pay_way_title {
+    height: 1rem;
+    font-size: 0.3125rem;
+    color: #545353;
+    box-sizing: border-box;
+    border-bottom: 0.0208rem solid #DFDDDD;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 0.3333rem;
+}
+.confirm_pay .pay_way .mui-table-view .mui-navigate-right {
+    height: 1rem;
+    display: flex;
+    align-items: center;
+
+}
+
+.confirm_pay .pay_way .mui-table-view .mui-navigate-right img {
+    width: 0.4583rem;
+    height: 0.4583rem;
+    margin-right: 0.3333rem;
+}
+
+.confirm_pay .pay_way .mui-table-view .mui-collapse-content {
+    height: 2.9583rem;
+    background-color: #FAF7F7;
+
+    /* box-sizing: border-box; */
+    /* padding: 0.2083rem; */
+}
+.confirm_pay .pay_way .mui-table-view .mui-collapse-content .content_box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.1042rem;
+}
+
+.confirm_pay .pay_way  .content_box .title {
+    color: #8B8B8B;
+    font-size: 0.2708rem;
+}
+.confirm_pay .pay_way  .content_box .info {
+    color: #3F3E3E;
+    font-size: 0.2708rem;
+    display: flex;
+    align-items: center;
+}
+.confirm_pay .pay_way  .content_box .info a {
+    margin-left: 0.125rem;
+}
+.confirm_pay .pay_way  .content_box .info i {
+    width: 0.2292rem;
+    height: 0.2292rem;
+    display: block;
+    background: url('../images/trading_center/cope.png');
+    background-size: cover;
+}
+
+.confirm_pay .pay_way  .content_box .info .re_code {
+    width: 0.2917rem;
+    height: 0.2917rem;
+    display: block;
+    background: url('../images//trading_center/er_code.png');
+    background-size: cover;
+}
+
+
+.footer_box {
+    width: 100%;
+    height: 1.0417rem;
+    position: fixed;
+    bottom: 0;
+    background-color: #FAFAFA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer_box .num_box {
+    font-size: 0.4167rem;
+    color: #F7931E;
+    margin-left: 0.3333rem;
+}
+.footer_box .num_box i {
+    font-size: 0.625rem;
+    font-weight: bold;
+}
+.footer_box .btn {
+    width: 2.6458rem;
+    height: 1.0417rem;
+    background-color: #003B92;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.4167rem;
+}
+
+.big_er_code {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, .3);
+
+}
+
+.big_er_code .big_pic {
+    width: 3.8958rem;
+    height: 3.8958rem;
+    background-color: #fff;
+    position: absolute;top: 50%;left: 50%;
+    transform: translate(-50%,-50%);
+}
+.big_er_code .big_pic img {
+    width: 95%;
+    height: 95%;
+    position: absolute;top: 50%;left: 50%;
+    transform: translate(-50%,-50%);
+}

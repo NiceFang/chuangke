@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="__WCSS__/style.css">
+    <link rel="stylesheet" href="__WCSS__/trading_center.css">
+    <script src="__WJS__/jquery-3.3.1.min.js"></script>
+
+</head>
+<body>
+<!-- 头部 start -->
+<div class="header_box">
+    <a class="jiantou" href="{:U('Index/index')}"><i  class="backIcon"></i></a>
+    交易中心
+    <a href="#" class="historyIcon"><i></i></a>
+</div>
+<!-- 头部 end -->
+
+<!-- 买入/卖出 start-->
+<div class="deal_box">
+    <a href="{:U('Index/trading_center')}"><p class="txt">卖出</p></a>
+    <a href=""><p class="txt active">买入</p></a>
+</div>
+<!-- 买入/卖出 end-->
+<!-- 商品列表 start -->
+<div class="goodsList_box">
+    <ul>
+        <foreach name="data" item="vo">
+            <li>
+                <div class="num_box"><i></i>{$vo.pay_nums|intval}</div>
+                <div class="info_box">
+                    <div class="username">{$vo.username}</div>
+                    <div class="user_id">{$vo.userid}</div>
+                    <div class="payIcon">
+                        <img src="__WIMG__/trading_center/yinghangke.png" alt="">
+                        <img src="__WIMG__/trading_center/zhifubao.png" alt="">
+                        <img src="__WIMG__/trading_center/weixin.png" alt="">
+                        <img src="__WIMG__/trading_center/IMtoken.png" alt="">
+                    </div>
+                </div>
+                <div class="sale_box">
+                    <a href="{:U('Index/myOrderSale')}" class="saleBtn">买入</a>
+                </div>
+            </li>
+        </foreach>
+    </ul>
+</div>
+<!-- 商品列表 end -->
+<!-- 创建订单 -->
+<div class="creat_index">
+    <a href="{:U('Index/buy')}">创建买单</a>
+</div>
+</body>
+</html>
+<script>
+    // 实现rem的适屏变化
+    document.querySelector('html').style.fontSize = screen.width/7.5 + "px";
+</script>

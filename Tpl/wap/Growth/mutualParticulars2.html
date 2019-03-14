@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.huzxq}</title>
+    <link rel="stylesheet" href="__WCSS__/integralbase.css">
+    <link rel="stylesheet" href="__WCSS__/mutualParticulars.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <!-- <script src="js/mui.min.js"></script> -->
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('Growth/Introrecords')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+        <p>{$Think.lang.huzxq}</p>
+        <!-- 语言切换 -->
+        <!-- 先不要删掉 -->
+        <!-- <div class="top">
+            <div class="loginLanguage">
+                <div id="sample" class="dropdown">
+                    <div id="div_curr_lag" class="parent">
+                        <a href="#">
+                            <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                    </div>
+                    <div class="son">
+                        <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                English
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                            <a>
+                                <img class="flag" src="images/china.png" alt="" />
+                                中文
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                            <a>
+                                <img class="flag" src="images/hanguo.png" alt="" />
+                                한국어
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                            <a>
+                                <img class="flag" src="images/Japan.png" alt="" />
+                                わぶん
+                                <span class="value"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="content">
+        <div class="price"><if condition="$mutual['get_nums'] gt 0">+</if>{$mutual['get_nums']}</div>
+        <div class="info">
+            <ul>
+                <li>
+                    <span><if condition="$mutual['get_nums'] gt 0">{$Think.lang.rollOut}<else />{$Think.lang.zr}</if>{$Think.lang.zh}</span>
+                    <span>{$mutual['deputy_id']}</span>
+                </li>
+                <li>
+                    <span>{$Think.lang.zllx}</span>
+                    <span>{$Think.lang.zw1}</span>
+                </li>
+                <li>
+                    <span>{$Think.lang.czsj}</span>
+                    <span>{$mutual['get_time']}</span>
+                </li>
+                <!--<li>-->
+                    <!--<span>交易备注</span>-->
+                    <!--<span>{$mutual['remark']}</span>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    // 更改语言 先不要删掉
+    // $(document).ready(function () {
+    //     // 点击切换语言
+    //     $(".dropdown .son").hide();
+    //     $("#div_curr_lag").click(function () {
+    //         $(".dropdown .son").toggle();
+    //     });
+
+    //     $(".dropdown .son div a").click(function () {
+    //         var text = $(this).html();
+    //         $(".dropdown .parent a span").html(text);
+    //         // localStorage.setItem('key',JSON.stringify(text));
+    //         $(".dropdown .son").hide();
+    //     }); //选择完成以后隐藏页面
+
+    //     var curr_lag = $("#hid_lag").val();
+    //     if (curr_lag == "") {
+    //         gradeOnclick("en-us");
+    //     } else {
+    //         var curr_html_lag = $("#div_" + curr_lag).html();
+    //         $("#div_curr_lag").html(curr_html_lag);
+    //     }
+    // })
+
+    // function gradeOnclick(url) {
+    //     window.location.href = "?l=" + url;
+    // };
+</script>

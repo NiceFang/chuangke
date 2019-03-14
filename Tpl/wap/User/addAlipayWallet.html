@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.tjzfbqb}</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/accountManage')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.tjzfbqb}
+    </div>
+
+    <!--获取绑定支付宝信息小物件-->
+    {:W('Card/menu',['alipay'])}
+
+    <!-- 底部 -->
+    <div class="footer"><a href="{:U('User/newAlipayGathering')}" >{$Think.lang.tjzfbqb}</a></div>
+    <div class="Wechat_save" data-name="alipay" style="display:none" >{$Think.lang.bc}</div>
+</body>
+
+</html>
+<script>
+    $(function () {
+        $(".select_bg").on('click',function(){
+            $(this).toggleClass("select_red").parent().parent().parent().parent().siblings().children().children().children().children().removeClass('select_red');
+        })
+    })
+
+
+</script>

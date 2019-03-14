@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加imToken</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script>
+    </script>
+</head>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/accountManage')}">
+            <img src="__WIMG__/user_jiantouzuo.png" alt="">
+        </a>
+        添加imToken
+    </div>
+    <!--获取绑定imToken信息小物件-->
+    {:W('Card/menu',['imtoken'])}
+    <div class="footer">
+        <a href="{:U('User/newImrotenGathering')}">添加imToken收款 </a>
+    </div>
+<div class="Wechat_save" data-name="imtoken" style="display:none" >保 存</div>
+</body>
+
+</html>
+<script>
+    $(function () {
+        $(".select_bg").on('click',function(){
+            $(this).toggleClass("select_red").parent().parent().parent().parent().siblings().children().children().children().children().removeClass('select_red');
+        })
+    })
+
+
+</script>
+

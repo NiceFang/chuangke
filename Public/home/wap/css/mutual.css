@@ -1,0 +1,70 @@
+/* 互转个人信息开始 */
+.mutual_user_info {
+    background-color: #18191D;
+    overflow: hidden;
+}
+
+.mutual_user_info .mutual_user_info_bg {
+    width: 6.8333rem;
+    height: 2.25rem;
+    background: url("../images/integraimages/user_info_bg1.png") no-repeat;
+    background-size: 100%;
+    margin: 0.6667rem auto 0;
+    position: relative;
+}
+
+.mutual_user_info .mutual_user_info_bg .div_img {
+    width: 1.4167rem;
+    height: 1.4167rem;
+    position: absolute;
+    border-radius: 50%;
+    top: -0.6667rem;
+    left: 2.7083rem;
+}
+
+.mutual_user_info .mutual_user_info_bg .div_img>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.mutual_user_info .mutual_user_info_bg .uid {
+    font-size: 0.3333rem;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 0.875rem;
+    width: 100%;
+}
+.mutual_user_info .mutual_user_info_bg .grade {
+    font-size: 0.2917rem;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: 1.3542rem;
+    width: 100%;
+}
+
+.mui-content .content {
+    overflow: hidden;
+}
+
+.mui-content .content .integral .mutual_price {
+    margin: 0.6667rem 0 0rem;
+}
+.mui-content .content .integral a.cny {
+    color: #7DC334;
+    font-size: 0.2917rem;
+    text-align: center;
+    display: block;
+    margin-top: 0.3333rem;
+}
+
+.tab .content .integral .mutual_conversion {
+    margin-top: 1.75rem;
+}
+
+.tab .content .integral .mutual_conversion>a {
+    font-size: 0.3333rem;
+}
+/* 互转个人信息结束 */

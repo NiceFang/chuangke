@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.dhjl}</title>
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/sumConversion.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script src="__WJS__/mui.min.js"></script>
+
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<style>
+	.bg96 {
+		background: #fff;
+		margin-top: 0;
+	}
+
+	.big_width100 {
+		margin: 0;
+	}
+
+	.yugejil1 {
+		width: 100%;
+		/*height: 0.8333rem;*/
+		/* height: 100%; */
+		background: #ddd;
+		display: flex;
+		justify-content: space-around;
+		top: 0.9375rem;
+		z-index: 3;
+		height: 0.8333rem;
+
+		/*line-height: 0.8333rem;*/
+	}
+
+	.yugejil1 p {
+		line-height: normal;
+		float: left;
+		width: 1.4583rem;
+		/* flex: 1; */
+		height: 100%;
+		font-size: 0.2917rem;
+		color: #000;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: 0;
+	}
+
+	.w-wrapper li p {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+</style>
+
+<body >
+	<!-- 新的代码 -->
+	<!-- 头部 -->
+	<div class="hear">
+		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+		<p>积分记录</p>
+		<!-- 语言切换 -->
+		<!-- 先不要删掉 -->
+		<!-- <div class="top"> 
+				<div class="loginLanguage">
+					<div id="sample" class="dropdown">
+						<div id="div_curr_lag" class="parent">
+							<a href="#">
+								<span><img class="flag" src="images/English.png" alt="" />English</span></a>
+						</div>
+						<div class="son">
+							<div id="div_en-us" onclick="gradeOnclick('en-us')">
+								<a>
+									<img class="flag" src="images/china.png" alt="" />
+									English
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+								<a>
+									<img class="flag" src="images/china.png" alt="" />
+									中文
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+								<a>
+									<img class="flag" src="images/hanguo.png" alt="" />
+									한국어
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+								<a>
+									<img class="flag" src="images/Japan.png" alt="" />
+									わぶん
+									<span class="value"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+	</div>
+	<!-- 余额积分 -->
+	<div class="tab">
+		<ul>
+			<li>{$Think.lang.ywlx1}</li>
+			<li>{$Think.lang.sl}</li>
+			<li>{$Think.lang.dqjf}</li>
+			<li>{$Think.lang.sj}</li>
+		</ul>
+	</div>
+	<!-- 余额记录列表 -->
+	<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+		<div class="mui-scroll">
+			<ul class="mui-table-view mui-table-view-chevron uls">
+				<foreach name="scoresDate" item="vo">
+					<li class="lis">
+						<p>{$vo.type_name}</p>
+						<if condition="$vo.get_nums lt 0">
+							<p style="color:green;">{$vo.get_nums}</p>
+							<else />
+							<p style="color:red;">{$vo.get_nums}</p>
+						</if>
+						<p>{$vo.now_nums}</p>
+						<p>{$vo.get_time}</p>
+					</li>
+				</foreach>
+			</ul>
+		</div>
+	</div>
+	<!-- 底部 -->
+	<div class="refresh">
+		<div>
+			<div class="arrows fl">
+				<img src="./integraimages/jiantouxia.png" alt="">
+			</div>
+			<!--<span class="fl">下拉加载更多</span>-->
+		</div>
+	</div>
+
+
+
+	<script>
+		var myscroll = new iScroll("wrapper", {
+			onScrollMove: function () {
+				if (this.y < (this.maxScrollY)) {
+					$('.pull_icon').addClass('flip');
+					$('.pull_icon').removeClass('loading');
+				} else {
+					$('.pull_icon').removeClass('flip loading');
+					$('.more span').text('上拉加载...')
+				}
+			},
+			onScrollEnd: function () {
+				if ($('.pull_icon').hasClass('flip')) {
+					$('.pull_icon').addClass('loading');
+					$('.more span').text('加载中...');
+					//加载P+1
+					var pagen = Number($('.pagen').val());
+					$('.pagen').val(pagen + 1);
+					$('.more span').text('释放加载...');
+					pullUpAction();
+				}
+			},
+			onRefresh: function () {
+				$('.more').removeClass('flip');
+				$('.more span').text('上拉加载...');
+			}
+		});
+
+		function pullUpAction() {
+			var p = Number($('.pagen').val());
+			var isover = $('.isover').val();
+			if (isover == 1) {
+				return;
+			}
+			setTimeout(function () {
+				//是否已经没有数据了
+				$.ajax({
+					url: '/Index/Outrecords',
+					type: 'get',
+					dataType: 'json',
+					data: {
+						'p': p
+					},
+					success: function (data) {
+						var str = '';
+						if (data.status == 1) {
+							$.each(data.message, function (key, val) {
+								str += '<li>';
+								str += '<p >' + v.now_nums + '</p>';
+								str += '<p >' + v.get_nums + '</p>';
+								str += '<p class="p24">' + val.get_timeymd + '</br>' + val.get_timedate + '</p>';
+								str += '</li>';
+							})
+							$('.scroller ul').append(str);
+							myscroll.refresh();
+						} else {
+							var isover = $('.isover').val();
+							if (isover == 0) {
+								$('.isover').val(1);
+								str += '<div class="annalWa">';
+								str += '<p>暂无更多记录</p></div>';
+							}
+							$('.scroller ul').append(str);
+						}
+
+					},
+					error: function () {
+						console.log('error');
+					},
+				})
+			}, 1000)
+		}
+
+		if ($('.scroller').height() < $('#wrapper').height()) {
+			$('.more').hide();
+			myscroll.destroy();
+		}
+	</script>
+
+
+
+	<script type="text/javascript">
+		var url1 = "{:U('Exchangerecords')}"
+	</script>
+	<!--上拉加载-->
+	<script src="__WJS__/load.js"></script>
+</body>
+
+</html>

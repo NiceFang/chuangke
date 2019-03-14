@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.yejl}</title>
+
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/sumConversion.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script src="__WJS__/mui.min.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<!-- <script src="__WJS__/iscroll.js"></script> -->
+
+<style>
+    .red{
+        color: red;
+    }
+    .grean{
+        color: green;
+    }
+</style>
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+        <p>{$Think.lang.yejl}</p>
+        <!-- 语言切换 -->
+        <!-- 先不要删掉 -->
+        <!-- <div class="top"> 
+                    <div class="loginLanguage">
+                        <div id="sample" class="dropdown">
+                            <div id="div_curr_lag" class="parent">
+                                <a href="#">
+                                    <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                            </div>
+                            <div class="son">
+                                <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                                    <a>
+                                        <img class="flag" src="images/china.png" alt="" />
+                                        English
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                                    <a>
+                                        <img class="flag" src="images/china.png" alt="" />
+                                        中文
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                                    <a>
+                                        <img class="flag" src="images/hanguo.png" alt="" />
+                                        한국어
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                                    <a>
+                                        <img class="flag" src="images/Japan.png" alt="" />
+                                        わぶん
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+    </div>
+    <!-- 余额积分 -->
+    <div class="tab">
+        <ul>
+            <li>{$Think.lang.ywlx1}</li>
+            <li>{$Think.lang.shue}</li>
+            <li>{$Think.lang.dqye}</li>
+            <li>{$Think.lang.sj}</li>
+        </ul>
+    </div>
+    <!-- 余额记录列表 -->
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+        <div class="mui-scroll">
+            <ul class="mui-table-view mui-table-view-chevron uls">
+                <foreach name="moneyDate" item="vo">
+                    <li class="lis">
+                        <p>{$vo.type_name}</p>
+                        <!--<if condition="vo.get_nums gt 0">style="color: red"</else>style="color: grean"</else></if>-->
+                        <if condition="$vo.get_nums lt 0">
+                            <p style="color:green;">{$vo.get_nums}</p>
+                            <else />
+                            <p style="color:red;">{$vo.get_nums}</p>
+                        </if>
+
+                        <p>{$vo.now_nums}</p>
+                        <p>{$vo.get_time}</p>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="refresh">
+        <div>
+            <div class="arrows fl">
+                <img src="./integraimages/jiantouxia.png" alt="">
+            </div>
+            <!--<span class="fl">下拉加载更多</span>-->
+        </div>
+    </div>
+
+    <!--上拉加载-->
+    <input type="hidden" id="sljz" value="{$Think.lang.sljz}">
+    <!--加载中-->
+    <input type="hidden" id="jzz" value="{$Think.lang.jzz}">
+    <!--释放加载-->
+    <input type="hidden" id="sfjz" value="{$Think.lang.sfjz}">
+    <!--转出-->
+    <input type="hidden" id="turnout" value="{$Think.lang.turnout}">
+    <!--转入-->
+    <input type="hidden" id="tochangeinto" value="{$Think.lang.tochangeinto}">
+    <!--积分释放-->
+    <input type="hidden" id="yjfsf" value="{$Think.lang.yjfsf}">
+    <!--余额-->
+    <input type="hidden" id="ye" value="{$Think.lang.ye}">
+    <!--求购-->
+    <input type="hidden" id="qg" value="{$Think.lang.qg}">
+    <!--购买-->
+    <input type="hidden" id="goumai" value="{$Think.lang.goumai}">
+    <!--出售-->
+    <input type="hidden" id="chushou" value="{$Think.lang.chushou}">
+    <!--取消求购-->
+    <input type="hidden" id="qxqg" value="{$Think.lang.qxqg}">
+    <!--众筹购买-->
+    <input type="hidden" id="zcgm" value="{$Think.lang.zcgm}">
+    <!--买入-->
+    <input type="hidden" id="purchase" value="{$Think.lang.purchase}">
+    <!--卖出-->
+    <input type="hidden" id="sellout" value="{$Think.lang.sellout}">
+    <!--取消卖出-->
+    <input type="hidden" id="qxmc2" value="{$Think.lang.qxmc2}">
+    <!--兑换积分-->
+    <input type="hidden" id="exchange" value="{$Think.lang.exchange}">
+    <!--暂无记录-->
+    <input type="hidden" id="zwjl1" value="{$Think.lang.zwjl1}">
+    <!--暂无跟多记录-->
+    <input type="hidden" id="zwgdjl" value="{$Think.lang.zwgdjl}">
+
+    <script>
+        var myScroll = new iScroll("wrapper", {
+            hScrollbar: false,
+            vScrollbar: false,
+            onScrollMove: function () {
+                var sljz = $('#sljz').val(); //上拉加载
+
+                if (this.y < (this.maxScrollY)) {
+                    $('.pull_icon').addClass('flip');
+                    $('.pull_icon').removeClass('loading');
+                } else {
+                    $('.pull_icon').removeClass('flip loading');
+                    $('.more span').text(sljz + '...')
+                }
+            },
+            onScrollEnd: function () {
+                var jzz = $('#jzz').val();
+                var sfjz = $('#sfjz').val();
+                if ($('.pull_icon').hasClass('flip')) {
+                    $('.pull_icon').addClass('loading');
+                    $('.more span').text(jzz + '...');
+                    var pagen = Number($('.pagen').val());
+                    $('.pagen').val(pagen + 1);
+                    $('.more span').text(sfjz + '...');
+                    pullUpAction();
+                }
+            },
+            onRefresh: function () {
+                var sljz = $('#sljz').val();
+                $('.more').removeClass('flip');
+                $('.more span').text(sljz + '...');
+            }
+        });
+
+        function pullUpAction() {
+            var p = Number($('.pagen').val());
+            var isover = $('.isover').val();
+            if (isover == 1) {
+                return;
+            }
+            setTimeout(function () {
+                $.ajax({
+                    url: '/Index/Bancerecord',
+                    type: 'get',
+                    dataType: 'json',
+                    data: {
+                        'p': p
+                    },
+                    success: function (data) {
+                        var str = '';
+                        var turnout = $('#turnout').val(); //转出
+                        var tochangeinto = $('#tochangeinto').val(); //转入
+                        var yjfsf = $('#yjfsf').val(); //积分释放
+                        var ye = $('#ye').val(); //余额
+                        var qg = $('#qg').val(); //求购
+                        var goumai = $('#goumai').val(); //购买
+                        var chushou = $('#chushou').val(); //出售
+                        var qxqg = $('#qxqg').val(); //取消求购
+                        var zcgm = $('#zcgm').val(); //众筹购买
+                        var purchase = $('#purchase').val(); //买入
+                        var sellout = $('#sellout').val(); //卖出
+                        var qxmc2 = $('#qxmc2').val() //取消卖出
+                        var exchang = $('#exchang').val(); //积分兑换
+                        var zwjl1 = $('#zwjl1').val();
+                        if (data.status == 1) {
+                            $.each(data.message, function (key, val) {
+                                str += '<li>';
+                                if (val.get_type == 0) {
+                                    if (val.trtype == 1) {
+                                        str += '<p >' + turnout + '</p>';
+
+                                    } else {
+                                        str += '<p >' + tochangeinto + '</p>';
+                                    }
+                                } else {
+                                    if (val.get_type == 2) {
+                                        str += '<p>' + yjfsf + '</p>';
+                                    }
+                                    //console.log(val.get_type);
+                                    var i = val.get_type;
+                                    //console.log(i);
+                                    if (i == 3) {
+                                        str += '<p>' + ye + '-' + qg + '</p>';
+                                    } else if (i == 4) {
+                                        str += '<p>' + ye + '-' + goumai + '</p>';
+                                    } else if (i == 5) {
+                                        str += '<p>' + ye + '-' + chushou + '</p>';
+                                    } else if (i == 6) {
+                                        str += '<p>' + ye + '-' + qxqg + '</p>';
+                                    } else if (i == 7) {
+                                        str += '<p>' + zcgm + '</p>';
+                                    } else if (i == 8) {
+                                        str += '<p>' + purchase + '</p>';
+                                    } else if (i == 9) {
+                                        str += '<p>' + sellout + '</p>';
+                                    } else if (i == 10) {
+                                        str += '<p>' + qxmc2 + '</p>';
+                                    } else if (i == 13) {
+                                        str += '<p>' + exchang + '</p>';
+                                    }
+                                }
+
+                                str += '<p >' + val.get_nums + '</p>';
+                                str += '<p class="p23">';
+                                if (val.now_nums == 0 && val.now_nums_get == 0 && val.is_release ==
+                                    0) {
+                                    str += zwjl1;
+                                } else {
+                                    str += val.now_nums;
+                                }
+                                str += '<p class="p24">' + val.get_timeymd + '</br>' + val.get_timedate +
+                                    '</p>';
+                                str += '</li>';
+                            })
+                            $('.scroller ul').append(str);
+                            myScroll.refresh();
+                        } else {
+                            var isover = $('.isover').val();
+                            var zwgdjl = $('#zwgdjl').val();
+                            if (isover == 0) {
+                                $('.isover').val(1);
+                                str += '<div class="annalWa">';
+                                str += '<p>' + zwgdjl + '</p></div>';
+                            }
+                            $('.scroller ul').append(str);
+                        }
+                    },
+                    error: function () {
+                        console.log('error');
+                    },
+                })
+            }, 1000)
+        }
+
+        if ($('.scroller').height() < $('#wrapper').height()) {
+            $('.more').hide();
+            myscroll.destroy();
+        }
+    </script>
+</body>
+
+</html>
+<script>
+    var url1 = "{:U('Bancerecord1')}";
+</script>
+<script src="__WJS__/load.js"></script>

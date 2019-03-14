@@ -1,0 +1,294 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.turnout}</title>
+
+<!-- 旧的样式 -->
+<!--<link rel="stylesheet" href="__WCSS__/style.css">-->
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<!--<link rel="stylesheet" href="__WCSS__/YangStyle.css">-->
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/integralConversion.css">
+<link rel="stylesheet" href="__WCSS__/mutual.css">
+
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+
+<style>
+	.bg96 { background: #fff;margin-top: 0;}
+	.big_width100{margin: 1rem 0 0;}
+ 	.click{background: #2874d5 !important;}
+	.click .bottom1{border-bottom-color: #cfb164 !important;}
+
+	.zhifu_price {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 0.0833rem;
+	}
+</style>
+
+<body>
+	<!-- 头部 -->
+	<div class="hear">
+		<a href="{:U('index/Turnout')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+		<p>{$Think.lang.turnout}</p>
+		<!-- 语言切换 -->
+		<!-- 先不要删掉 -->
+		<!-- <div class="top">
+				<div class="loginLanguage">
+					<div id="sample" class="dropdown">
+						<div id="div_curr_lag" class="parent">
+							<a href="#">
+								<span><img class="flag" src="images/English.png" alt="" />English</span></a>
+						</div>
+						<div class="son">
+							<div id="div_en-us" onclick="gradeOnclick('en-us')">
+								<a>
+									<img class="flag" src="images/china.png" alt="" />
+									English
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+								<a>
+									<img class="flag" src="images/china.png" alt="" />
+									中文
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+								<a>
+									<img class="flag" src="images/hanguo.png" alt="" />
+									한국어
+									<span class="value"></span>
+								</a>
+							</div>
+							<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+								<a>
+									<img class="flag" src="images/Japan.png" alt="" />
+									わぶん
+									<span class="value"></span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+	</div>
+	<!-- 个人信息 -->
+	<div class="mutual_user_info">
+		<div class="mutual_user_info_bg">
+			<div class="div_img">
+				<img src="__IMGHEAD__/{$uinfo['img_head']}" alt="">
+			</div>
+			<p class="uid">UID : {$uinfo.userid}</p>
+			<p class="grade">{$Think.lang.rank}：{$uinfo.grade_name}</p>
+		</div>
+	</div>
+	<!-- 余额积分 -->
+	<div class="mui-content tab">
+		<div class="content">
+			<div id="item2" class="mui-control-content integral mui-active">
+				<p class="price mutual_price">{$Think.lang.qsrzcje}</p>
+				<div class="input_num">
+					<input type="num" placeholder="{$Think.lang.qsr100dzs}" class="paynums">
+				</div>
+				<!--<a href="#" class="cny">{$Think.lang.z} CNY (￥)</a>-->
+				<!-- <p class="hint">提示：最低兑换数量是100</p> -->
+				<div class="conversion  mutual_conversion">
+					<a href="javascript:void(0);" id="operConfirm">{$Think.lang.qrzc}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--浮动层-->
+	<div class="ftc_wzsf">
+		<div class="srzfmm_box">
+			<div class="qsrzfmm_bt clear_wl">
+				<img src="__WIMG__/xx_03.jpg" class="tx close fl">
+				<span class="fl">{$Think.lang.qsrzfmm}</span></div>
+			<div class="zfmmxx_shop">
+				<div class="mz">{$Think.lang.x}（{$uinfo['username']}）{$Think.lang.zf}</div>
+				<div class="zhifu_price"><img src="__WIMG__/integraimages/icc_black.png" alt="">
+					<div></div>
+				</div>
+			</div>
+			<ul class="mm_box">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="numb_box">
+			<div class="xiaq_tb">
+				<img src="__WIMG__/jftc_14.jpg" height="10"></div>
+			<ul class="nub_ggg">
+				<li><a href="javascript:void(0);" class="zf_num">1</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">3</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">4</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">6</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">7</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+				<li><a href="javascript:void(0);" class="zf_num">9</a></li>
+				<li><a href="javascript:void(0);" class="zf_empty">{$Think.lang.emptya}</a></li>
+				<li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+				<li><a href="javascript:void(0);" class="zf_del">{$Think.lang.deleteo}</a></li>
+			</ul>
+		</div>
+		<div class="hbbj"></div>
+	</div>
+
+	<input type="hidden" id="qsrzqdzzje" value="{$Think.lang.qsrzqdzzje}">
+	<input type="hidden" value="{:I('sid')}" class="zuid">
+	<script type="text/javascript">
+		$(".w-two-div>div").on('click', function () {
+			$(this).addClass("click").siblings().removeClass("click");
+		});
+		$(".pay_list_c1").click(function () {
+			$(this).addClass("on").siblings().removeClass("on");
+		})
+	</script>
+
+	<!--  -->
+	<script type="text/javascript">
+		$('#operConfirm').click(function () {
+			var paytype = $(".pay_list_c1.on p input").val(); //转账方式
+			var paynums = ($('.paynums').val()); //支付金额
+//			var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+			var reg = /^\+?[1-9][0-9]*$/;
+
+			var mobila = $('.mobilelast').val(); //手机号码后四位
+			// var txye =parseFloat($.trim($('#oper_1').val())); //要兑换的数量 1-1200
+			var exg = /^(([1-9]\d*)|\d)(\.\d{1,2})?$/;
+			var qsrzqdzzje = $('#qsrzqdzzje').val();
+			if (!reg.test(paynums)) {
+				msg_alert(qsrzqdzzje);
+				return;
+			}
+
+			// var exg = /^\d{4}$/
+			// if (!exg.test(mobila)) {
+			// 	msg_alert('请输入手机号末4位数');
+			// 	return;
+			// }
+			$('.zhifu_price div').text(paynums);
+			$(".ftc_wzsf").show();
+			$('html,body').css('height', '100%');
+		});
+
+
+		//获取数据传值
+		function Getvalue() {
+			var paytype = $(".pay_list_c1.on p input").val(); //转账方式
+			var paynums = Number($('.paynums').val()); //支付金额
+			var zuid = $('.zuid').val(); //转账会员id
+			var mobila = $('.mobilelast').val(); //手机号码后四位
+			var minemoney = Number($('#shengyue').text()); //当前账户余额
+			var data = {
+				'paytype': paytype,
+				'paynums': paynums,
+				'zuid': zuid,
+				'mobila': mobila,
+				'minemoney': minemoney
+			};
+			return data;
+		}
+
+		$(function(){
+			//出现浮动层
+			$(".ljzf_but").click(function () {
+				// $(".ftc_wzsf").hide();
+			});
+			//关闭浮动
+			$(".close").click(function () {
+				$(".ftc_wzsf").hide();
+				$(".mm_box li").removeClass("mmdd");
+				$(".mm_box li").attr("data", "");
+				i = 0;
+				$('html,body').css('height', '');
+			});
+			//数字显示隐藏
+			$(".xiaq_tb").click(function () {
+				$(".numb_box").slideUp(500);
+			});
+			$(".mm_box").click(function () {
+				$(".numb_box").slideDown(500);
+			});
+			//----
+			var i = 0;
+			$(".nub_ggg li .zf_num").click(function () {
+				if (i < 6) {
+					$(".mm_box li").eq(i).addClass("mmdd");
+					$(".mm_box li").eq(i).attr("data", $(this).text());
+					i++
+					if (i == 6) {
+						setTimeout(function () {
+							var pwd = "";
+							$(".mm_box li").each(function () {
+								pwd += $(this).attr("data");
+							});
+
+
+							//ajax提交密码以及参数
+							var post_data = Getvalue(); //获取上面的参数
+							$.ajax({
+								url: "{:U('index/Changeout')}",
+								type: 'post',
+								data: {
+									'post_data': post_data, 'pwd': pwd
+								},
+								datatype: 'json',
+								success: function (mes) {
+									console.log(mes);
+									if (mes.status == 1) {
+										msg_alert(mes.message, mes.url);
+										$(".ftc_wzsf").hide();
+										$(".mm_box li").removeClass("mmdd");
+										$(".mm_box li").attr("data", "");
+										i = 0;
+									} else {
+										msg_alert(mes.message);
+										$(".mm_box li").removeClass("mmdd");
+										$(".mm_box li").attr("data", "");
+										i = 0;
+									}
+								}
+							})
+						}, 100);
+					};
+				}
+			});
+
+			$(".nub_ggg li .zf_del").click(function () {
+				if (i > 0) {
+					i--
+					$(".mm_box li").eq(i).removeClass("mmdd");
+					$(".mm_box li").eq(i).attr("data", "");
+				}
+			});
+
+			$(".nub_ggg li .zf_empty").click(function () {
+				$(".mm_box li").removeClass("mmdd");
+				$(".mm_box li").attr("data", "");
+				i = 0;
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>

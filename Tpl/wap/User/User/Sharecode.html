@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.tellfriend}</title>
+<!-- <link rel="stylesheet" href="__WCSS__/mui.min.css"> -->
+
+<!-- 旧的样式 -->
+<!-- <link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/digital.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<link rel="stylesheet" href="__WCSS__/YangStyle.css"> -->
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/share.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__COM__/js/clipboard.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script type="text/javascript" src="__WJS__/mui.min.js"></script>
+<style>
+    /* .bg96{background: #fff;}
+    .big_width100{background: #fff;}
+    .w-bj p{margin: 0;}
+	.centBalance .dLine{top: 0.3rem;}
+    .w-mydiv h3{color: #000;font-size: .4rem;}
+    .w-mydiv h4 {color: #000;font-size: .26rem !important;text-align: center;}
+    .w-mydiv{ width: 85%;}
+    #text_input {
+        -webkit-touch-callout: text;
+        -webkit-user-select: text;
+        -moz-user-select: text;
+        -ms-user-select: text;
+        user-select: text;
+    } */
+</style>
+
+<!-- <body class="bg96"> -->
+
+<body>
+
+    <!-- 旧的代码 -->
+    <!-- <div class="headerb">
+        <div class="userInfo" style="width: 75%">
+            <a href="{:U('User/Personal')}">
+                <div class="toux_icon"><img src="__IMGHEAD__/{$uinfo['img_head']}"></div>
+            </a>
+            <div class="uid_xy">
+                <p>UID:{$uinfo['userid']}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.rank}:
+                    <?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>
+                </p>
+            </div>
+        </div>
+        <div class="header_rb"> <a href="{:U('User/Personal')}"><img src="__WIMG__/index/shez-icon.png" alt=""></a></div>
+    </div>
+    <div class="header_rb"> <a href="{:U('User/Personal')}"><img src="__WIMG__/index/shez-icon.png" alt=""></a></div>
+    </div>
+
+
+    <div class="big_width100">
+        <div class="w-bj">
+            <div class="shaomZ">
+                <a class="shaom">
+                    <img src="__IMGHEAD__/{$uinfo['img_head']}" class="icon">
+                    <?php if($uinfo['vip_grade'] != 0) {?>
+                    <img src="__WIMG__/hyjb-VIP.png" class="w-vip">
+                    <?php }?>
+                </a>
+            </div>
+            <div class="centBalance">
+                <div class="Balance">
+                    <p><a class="balance" href="###">{$Think.lang.my}{$Think.lang.yue}<br /><strong>￥<span class="yue">{$moneyinfo['cangku_num']|Showtwo}</span></strong></a></p>
+                </div>
+                <div class="Balance">
+                    <p><a class="balance" href="###">{$Think.lang.my}{$Think.lang.jifen}<br /><strong>￥<span class="jifen">{$moneyinfo['fengmi_num']|Showtwo}</span></strong></a></p>
+                </div>
+                <div class="dLine"></div>
+            </div>
+        </div>
+        <div class="w-center">
+            <div class="fill_sty">
+                <div class="w-erweima">
+                    <img src="{$urel}" alt="">
+                </div>
+                <div class="w-mydiv">
+                    <h3>{$Think.lang.tellfriend}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.tjsm}</h3>
+                    <h4>
+                        <!--<a href="{$urel}" download="download.png">(点击此处&nbsp;&nbsp;保存二维码)</a>-->
+    <!--<a href="/Growth/test?filename=.{$urel}" >(点击此处&nbsp;&nbsp;保存二维码)</a>-->
+    <!-- <input type="text" value="{$url}" id="text_input"> -->
+    <!-- <a class="btn" target="{$urel}" data-clipboard-action="copy" data-clipboard-target="#btn2">(点击此处&nbsp;&nbsp;复制链接)</a> -->
+    <!-- <a id="copy_text">({$Think.lang.djcc}&nbsp;&nbsp;{$Think.lang.fzdm})</a>
+                    </h4>
+                    <div class="bottom"></div>
+                </div>
+                <div class="w-zhuanchu">
+                    <a href="{:U('User/Teamdets')}" id="ternNextStep">{$Think.lang.fxjlck}</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- 新的代码 -->
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="" class="jiantou"><img src="images/jiantouzuo.png" alt=""></a>
+        <p>分享</p>
+        <!-- 语言切换 -->
+        <!-- 先不要删掉 -->
+        <!-- <div class="top">
+                <div class="loginLanguage">
+                    <div id="sample" class="dropdown">
+                        <div id="div_curr_lag" class="parent">
+                            <a href="#">
+                                <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                        </div>
+                        <div class="son">
+                            <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                                <a>
+                                    <img class="flag" src="images/china.png" alt="" />
+                                    English
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                            <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                                <a>
+                                    <img class="flag" src="images/china.png" alt="" />
+                                    中文
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                            <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                                <a>
+                                    <img class="flag" src="images/hanguo.png" alt="" />
+                                    한국어
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                            <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                                <a>
+                                    <img class="flag" src="images/Japan.png" alt="" />
+                                    わぶん
+                                    <span class="value"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+    </div>
+    <!-- 个人信息 -->
+    <div class="user_info">
+        <div class="user_info_box">
+            <div class="user_info_box_cont">
+                <div class="user_info_box_cont_top">
+                    <div class="div_img fl">
+                        <img src="" alt="">
+                    </div>
+                    <div class="user_info_left fl">
+                        <p class="name">昵称 : 熊呆呆</p>
+                        <p class="uid">UID : 00000018 </p>
+                        <p class="garde">等级：环保达人</p>
+                    </div>
+                </div>
+                <div class="mony">
+                    <div class="balance">
+                        <span>余额:</span>
+                        <img src="images/balance3030.png" alt="">
+                        <span>2024.02</span>
+                    </div>
+                    <div class="integral">
+                        <span>积分:</span>
+                        <img src="images/balance3030.png" alt="">
+                        <span>2024.02</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg_color"></div>
+    <!-- 内容 -->
+    <div class="content">
+        <div class="qr_code">
+            <img src="./integraimages/balance3030.png" alt="">
+        </div>
+        <div class="share">
+            <p class="txt">分享好友 扫码推荐</p>
+            <input type="text">
+            <a href="#" class="copy">（点击此处 复制链接地址）</a>
+            <a href="" class="examine_share">查看分享记录</a>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var inputElem = document.getElementById('text_input');
+        var btnElem = document.getElementById('copy_text');
+        btnElem.addEventListener('click', function () {
+            if (!document.execCommand) {
+                console.error('copy unsupport');
+               
+                return;
+            }
+            inputElem.select();
+            var result = document.execCommand('copy');
+            if (result) {
+                console.log('copy success');
+                // alert("")
+            } else {
+                console.error('copy fail');
+            }
+        });
+    </script>
+   
+     
+    <!-- <div class="big_width100" >
+   
+   <div class="qindHB">
+     <div class="qindHB_nb">
+         <img src="__WIMG__/hongbaoyema.png" class="qinb_imga">
+          <a href="javascript:void(0);" >
+            <a href="{:U('Index/index')}"><img src="__WIMG__/cunryuea.png"></a>
+          </a>
+          <div class="qiandHB_wz">
+            
+          </div>
+     </div>
+   </div>
+   <div class="qindHB_bg"> </div>
+
+ </div> -->
+    <input type="hidden" value="{$Think.lang.zbzcxjjy}" id="zbzcxjjy">
+    <input type="hidden" value="{$Think.lang.fzcg}" id="fzcg">
+    <input type="hidden" value="{$Think.lang.zwkf}" id="zwkf">
+    <input type="hidden" value="{$Think.lang.guoji}" id="guoji">
+    <input type="hidden" value="{$Think.lang.fzcg}" id="fzcg">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var zbzcxjjy = $('#zbzcxjjy').val();
+            $(".xianzjiaoy").click(function () {
+                msg_alert(zbzcxjjy);
+            });
+            // new ClipboardJS('.btn', {
+            //     text: function (trigger) {
+            //         return trigger.getAttribute('target'); // 返回需要复制的内容
+            //         clipboard.destroy()
+            //     }
+
+        })
+    </script>
+    <script>
+        var inputElem = document.getElementById('text_input');
+        var btnElem = document.getElementById('copy_text');
+        var fzcg = $('#fzcg').val();
+        btnElem.addEventListener('click', function () {
+            if (!document.execCommand) {
+                console.error('copy unsupport');
+
+                return;
+            }
+            inputElem.select();
+            var result = document.execCommand('copy');
+            if (result) {
+                msg_alert(fzcg);
+            } else {}
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var zbzcxjjy = $('#zbzcxjjy').val();
+            $(".xianzjiaoy").click(function () {
+                msg_alert(zbzcxjjy);
+            });
+            // 点击复制链接
+            // var clipboard = new ClipboardJS('.btn');
+
+            // clipboard.on('success', function (e) {
+            //     console.log(e);
+            //     // clipboard.destroy()
+        });
+    </script>
+    <style type="text/css">
+        .qindHB_bg {
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 100;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+        }
+
+        .qindHB {
+            position: absolute;
+            z-index: 101;
+            padding: 0;
+            left: 0;
+            top: 0;
+            width: 100%;
+            opacity: 1;
+
+        }
+
+        .qindHB_nb {
+            z-index: 102;
+            width: 100%;
+            position: relative;
+        }
+
+        .qindHB_nb a {
+            width: 100%;
+            display: block;
+            margin-top: 20px;
+        }
+
+        .qindHB_nb a img {
+            z-index: 104;
+            width: 100%;
+        }
+
+        .qinb_imga {
+            height: 22rem;
+            margin: 0 auto;
+            display: block;
+            margin-top: 2rem;
+        }
+
+        .qiandHB_wz {
+            position: absolute;
+            top: 7rem;
+            width: 50%;
+            left: 25%;
+            text-align: center;
+        }
+
+        .qiandHB_wz h3 {
+            font-size: 1.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dotted rgba(217, 45, 45, 0.4);
+            color: #d92d2d;
+            line-height: 1.8rem;
+            font-weight: 900;
+        }
+
+        .qiandHB_wz p {
+            font-size: 1rem;
+            color: #d92d2d;
+            line-height: 2.4rem;
+            font-weight: 900;
+        }
+    </style>
+
+
+        
+        
+    <script>
+        function copyArticle(event) {
+            var fzcg = $('#fzcg').val();
+            const range = document.createRange();
+            range.selectNode(document.getElementById('content'));
+
+            const selection = window.getSelection();
+            if (selection.rangeCount > 0) selection.removeAllRanges();
+            selection.addRange(range);
+            document.execCommand('copy');
+            alert(fzcg);
+        }
+
+        document.getElementById('copyBT').addEventListener('click', copyArticle, false);
+    </script>
+    <script>
+        function download(url, name) {
+            var aLink = $('a');
+            aLink.download = name;
+            aLink.href = url;
+            aLink.dispatchEvent(new MouseEvent('click', {}))
+        }
+        download()
+    </script>
+    <script>
+        var zwkf = $('#zwkf').val();
+        var notSell = $("#notSell");
+        notSell.click(function () {
+            alert(zwkf)
+        })
+        var guoji = $('#guoji').val();
+        $("#guojiweikaifang").click(function () {
+            if (guoji == 'hanguo') {
+                $("#guojiweikaifang").attr('href', '');
+                alert(zwkf);
+            }
+        })
+    </script>
+</body>
+
+</html>

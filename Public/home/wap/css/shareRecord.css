@@ -1,0 +1,138 @@
+.hear p {
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 0.4167rem;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+body {
+    background-color: #000;
+    height: 100%;
+}
+/* 搜索框开始 */
+.search_box {
+    height: 1rem;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.search_box .search_content {
+    position: relative;
+    width: 6.8333rem;
+    height: 0.6667rem;
+    margin: 0 auto;
+    margin: 0.1667rem 0.3333rem;
+}
+
+.search_box .search_img {
+    width: 0.5rem;
+    height: 0.5rem;
+    position: absolute;
+    top: 0.0833rem;
+    left: 0.3333rem;
+}
+
+.search_box .search_img>img {
+    width: 100%;
+}
+
+.search_box input {
+    width: 6.8333rem;
+    height: 0.6667rem;
+    border: none;
+    border-radius: 0.3333rem;
+    font-size: 0.2917rem;
+    color: #D4D4D4;
+    padding-left: 0.9375rem;
+    margin-bottom: 0;
+
+}
+
+/* 搜索框结束 */
+
+/* 内容开始 */
+.div_box {
+    padding: 0 0.3333rem;
+    overflow: hidden;
+}
+
+.div_box ul .lis {
+    height: 2.75rem;
+    width: 6.8333rem;
+    background-color: #2A2B31;
+    border-radius: 0.4167rem;
+    padding: 0.3333rem 0.2917rem 0.3333rem 0.3333rem;
+    margin-top: 0.1667rem;
+ 
+}
+
+.div_box ul .lis .lis_top {
+    height: 1.4167rem;
+}
+
+.div_box ul .lis .lis_top .user_img {
+    width: 1.4167rem;
+    height: 1.4167rem;
+    border-radius: 50%;
+    margin-right: 0.3542rem;
+}
+
+.div_box ul .lis .lis_top .user_img>img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.div_box ul .lis .lis_top .top_content {
+    color: #fff;
+    line-height: 0.3333rem;
+}
+
+.div_box ul .lis .lis_top .top_content p {
+    font-size: 0.2917rem
+}
+.div_box ul .lis .lis_top .top_content .name {
+    margin: 0.0625rem 0 0.1667rem 0;
+    width: 2.7083rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.div_box ul .lis .lis_top .top_content .uid {
+    margin-bottom: 0.0833rem;
+}
+
+.div_box ul .lis .lis_top .top_content .phone {
+}
+
+.div_box ul .lis .lis_top .top_right {
+    margin-right: 0.25rem;
+}
+
+.div_box ul .lis .lis_top .top_right .top_right_img {
+    width: 0.6667rem;
+    height: 0.6667rem;
+    margin: 0.0417rem auto 0;
+}
+
+.div_box ul .lis .lis_top .top_right .top_right_img>img {
+    width: 100%;
+}
+
+.div_box ul .lis .lis_top .top_right p {
+    font-size: 0.2917rem;
+    color: #7AC231;
+    margin-top: 0.0625rem;
+}
+
+.div_box .lis .time {
+    font-size: 0.25rem;
+    color: #999;
+    margin-top: 0.4167rem;
+    line-height: 0.2917rem;
+}
+
+/* 内容结束 */

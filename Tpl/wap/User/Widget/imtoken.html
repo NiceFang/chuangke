@@ -1,0 +1,42 @@
+<!-- imToken -->
+<script src="/Public/home/wap/js/jquery1.11.1.min.js"></script>
+<volist name="arr" id="val">
+<div class="bank imToken_bank">
+    <div class="bank_box imToken_bank_box">
+        <div class=" top imToken_top namex">
+            <div class="top_left imToken_top_left fl">
+                <p class="bank_txt imToken_bank_txt">姓名：{$val.imtoken_name}</p>
+                <p class="bank_name imToken_bank_name">imToken地址：{$val.imtoken_num}</p>
+
+                <p class="bank_num imToken_bank_num">持卡人手机：{$val.imtoken_phone}</p>
+            </div>
+            <div class="top_right fr">
+                <img src="{$val.imtoken_imgs}" alt="">
+            </div>
+        </div>
+        <div class="bottom imToken_bottom">
+            <div class="left fl">
+                <if condition="($val.imtoken_default eq 1)">
+                    <div class="select_bg fl select_bg_box select_red update" data-val="{$val.id}"></div>
+                    <else/>
+                    <div class="select_bg fl select_bg_box update" data-val="{$val.id}"></div>
+                </if>
+                <p class="fl">设为默认</p>
+            </div>
+            <div class="right fr" name="imtoken_dele" data-val="{$val.id}">
+                <div class="delete_bg fl"></div>
+                <p class="fl"  >删除</p>
+            </div>
+        </div>
+    </div>
+    <div class="big_er_code" data-a="" style="display: none;">
+        <div class="big_pic">
+            <img src="{$val.imtoken_imgs}" alt="">
+        </div>
+    </div>
+</div>
+</volist>
+<div class="bottomOP_box"></div>
+<script src="/Public/home/wap/js/jquery1.11.1.min.js"></script>
+<!--
+select_red-->

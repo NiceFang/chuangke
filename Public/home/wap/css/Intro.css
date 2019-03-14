@@ -1,0 +1,89 @@
+a,
+a:active,
+a:visited,
+a:link,
+a:focus {
+
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+    -webkit-tap-highlight-color: transparent;
+
+    outline: none;
+
+    background: none;
+
+    text-decoration: none;
+
+}
+
+body {
+    background-color: #000;
+}
+
+.er_code {
+    margin: 39px 0 47px 0;
+}
+
+.er_code_pic {
+    width: 4.25rem;
+    height: 4.25rem;
+    background: url(../images/integraimages/fangkuang.png);
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 0.3125rem;
+}
+
+.er_code_pic img {
+    width: 3.2917rem;
+    height: 3.2917rem;
+}
+
+.er_code .txt {
+    font-size: 0.3333rem;
+    color: #7AC231;
+    margin-bottom: 0.2083rem;
+    text-align: center;
+}
+.er_code .txt a {
+    color: #7AC231;
+}
+
+.er_code .txt_1 {
+    font-size: 0.2917rem;
+    color: #7AC231;
+    text-align: center;
+
+}
+
+.p_copy {
+    text-align: center;
+    display: block;
+    height: 20px;
+}
+
+ .a_copy {
+    font-size: 14px;
+    color: #7AC231;
+    text-align: center;
+}
+
+.checkBtn {
+    width: 5rem;
+    height: 0.7917rem;
+    background-color: #EFDE30;
+    border-radius: 0.3958rem;
+    margin: 0 auto;
+}
+
+.checkBtn a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    font-size: 0.3333rem;
+    color: #333333;
+    line-height: 0.7917rem;
+    text-align: center;
+}

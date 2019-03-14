@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.myoder}</title>
+    <link rel="stylesheet" href="__WCSS__/myOrderSale.css">
+    <link rel="stylesheet" href="__WCSS__/myOrderbase.css">
+    <script src="__WJS__/rem.js"></script>
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/mui/3.7.1/css/mui.min.css">
+
+    <script src="__WJS__/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/mui/3.7.1/js/mui.min.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+
+    <style>
+            .mui-table-view {
+                background-color:#000;
+                border: 0;
+            }
+            .mui-table-view-cell {
+                padding: 0;
+                border: 0;
+                margin-top: 0.1667rem;
+                position: relative;
+                
+            }
+            .mui-table-view-cell>.mui-slider-handle {
+                background-color: #000;
+                margin: 0 auto;
+                width: 6.8333rem
+            }
+            .mui-content>.mui-table-view:first-child {
+                margin: 0;
+            }
+            .mui-table-view:before,.mui-table-view:after,.mui-table-view-cell:after {
+                background-color: #000;
+            }
+    
+            .sale_box {
+                margin: 0;
+            }
+    
+    
+            
+        </style>
+</head>
+
+
+
+<body>
+    <!-- 头部 -->
+    <div class="hear Order_hear">
+        <a href="{:U('Index/trading_center')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+        {$Think.lang.myoder}
+        <a href="{:U('user/historyOrder')}" class="history"><img src="__WIMG__/history_info.png" alt=""></a>
+    </div>
+    <!-- 买卖 -->
+    <div class="deal">
+        <div class="left">
+            <a href="{:U('Index/myOrderSale')}?type=1" class="<if condition="I('get.type') eq 1 ">active</if>">{$Think.lang.sellout}</a>
+        </div>
+        <div class="right">
+            <a href="{:U('Index/myOrderSale')}?type=0" class="<if condition="I('get.type') eq 0 ">active</if>">{$Think.lang.purchase}</a>
+        </div>
+    </div>
+
+    <!-- 卖出 -->
+
+    
+    <div class="mui-content">
+            <ul id="OA_task_1" class="mui-table-view">
+                <foreach name="orders" item="vo">
+                    <li  class="mui-table-view-cell">
+                        <div class="mui-slider-right mui-disabled">
+                            <a class="mui-btn mui-btn-red" id="cancel" data-uid="{$userid}" data-pid="{$vo.payin_id}" data-type="{:I('get.type')}" data-id="{$vo.id}">{$Think.lang.qxdd}</a>
+                        </div>
+                        <div class="mui-slider-handle">
+                            <div class="sale_box">
+                                <div class="sale_box_left fl">
+                                    <div class="m">
+                                        <img src="__WIMG__/m_info.png" alt="">
+                                    </div>
+                                    {$vo.pay_nums}
+                                </div>
+                                <div class="sale_box_content fl">
+                                    <if condition="($vo.trans_type eq 1)">
+                                        <if condition="(($vo.pay_state eq 2) || ($vo.pay_state eq 1)) && ($vo.payout_id eq $userid)">
+                                            <p class="name"><?php echo M('user')->where(['userid'=>$vo['payin_id']])->getField('username')?></p>
+                                            <p class="num">{$vo.payin_id}</p>
+                                            <else/>
+                                            <p class="name">{$vo.username}</p>
+                                            <p class="num">{$vo.payout_id}</p>
+                                        </if>
+                                        <else/>
+                                        <if condition="(($vo.pay_state eq 2) || ($vo.pay_state eq 1)) && ($vo.payin_id eq $userid)">
+                                            <p class="name"><?php echo M('user')->where(['userid'=>$vo['payout_id']])->getField('username')?></p>
+                                            <p class="num">{$vo.payout_id}</p>
+                                            <else/>
+                                            <p class="name">{$vo.username}</p>
+                                            <p class="num">{$vo.payin_id}</p>
+                                        </if>
+                                    </if>
+                                        <!--<if condition="$vo.trans_type eq 1">-->
+                                            <!--<p class="num">{$vo.payout_id}</p>-->
+                                            <!--<else/>-->
+                                            <!--<p class="num">{$vo.payin_id}</p>-->
+                                        <!--</if>-->
+                                    <div class="div_box">
+                                        <if condition="$vo.pay_type eq 1">
+                                            <img src="__WIMG__/trading_center/yinghangke.png" alt="">
+                                            <elseif condition="$vo.pay_type eq 2"/>
+                                            <img src="__WIMG__/trading_center/zhifubao.png" alt="">
+                                            <elseif condition="$vo.pay_type eq 3"/>
+                                            <img src="__WIMG__/trading_center/weixin.png" alt="">
+                                            <elseif condition="$vo.pay_type eq 4"/>
+                                            <img src="__WIMG__/trading_center/IMtoken.png" alt="">
+                                        </if>
+                                    </div>
+                                </div>
+                                <!--<if condition="$vo.pay_state eq 3">-->
+                                    <!--<div class="sale_box_right fr confirm" id="confirm" data-id="{$vo.id}">-->
+                                       <!--<input type="hidden" id="order" value="{$vo.id}">-->
+                                        <!--<a>去 收 款</a>-->
+                                    <!--</div>-->
+                                    <!--<else/>-->
+                                    <!--<div class="sale_box_right fr confirm"  data-id="{$vo.id}">-->
+                                        <!--<a href="{:U('Index/confirm_pay','')}">待 付 款</a>-->
+                                    <!--</div>-->
+                                <!--</if>-->
+                                <if condition="I('get.type') eq 0">
+                                        <if condition="$vo.pay_state eq 1">
+                                            <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                                <a href="{:U('Index/confirm_pay')}?type=1&id={$vo.id}">去 付 款</a>
+                                            </div>
+                                            <elseif condition="$vo.pay_state eq 0"/>
+                                            <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                                <a href="">待  接 单</a>
+                                            </div>
+                                            <elseif condition="$vo.pay_state eq 2" />
+                                            <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                                <a href="#">待  收 款</a>
+                                                <!-- 已经付款订单调到详情页-->
+                                            </div>
+                                            <else />
+                                            <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                                <a href="#">未 知</a>
+                                            </div>
+                                        </if>
+                                    <else/>
+                                    <if condition="$vo.pay_state eq 1">
+                                        <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                            <a href="#">{$Think.lang.dfk}</a>
+                                        </div>
+                                        <elseif condition="$vo.pay_state eq 0"/>
+                                        <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                            <a href="">待  接 单</a>
+                                        </div>
+                                        <else/>
+                                        <div class="sale_box_right fr confirm"  data-id="{$vo.id}">
+                                            <a href="{:U('Index/confirm_pay')}?type=2&id={$vo.id}">{$Think.lang.qsk}</a>
+                                        </div>
+                                    </if>
+                                </if>
+                            </div>
+                        </div>
+                    </li>
+                </foreach>
+            </ul>
+        </div>
+
+
+</body>
+
+</html>
+<script>
+        // mui.init();
+        // (function($) {
+        //
+        //     $('#OA_task_1').on('tap', '.mui-btn', function(event) {
+        //         var elem = this;
+        //
+        //         var li = elem.parentNode.parentNode;
+        //         mui.confirm('<div class="text"><p class="icon-information"></p><h3>确定删除此条消息？</h3><span>REMIND</span></div>', 'Hello MUI', btnArray, function(e) {
+        //             if (e.index == 0) {
+        //                 li.parentNode.removeChild(li);
+        //             } else {
+        //                 setTimeout(function() {
+        //                     $.swipeoutClose(li);
+        //                 }, 0);
+        //             }
+        //         });
+        //     });
+        //
+        //     var btnArray = ['确认', '取消'];
+        // })(mui);
+        //
+        // $('#OA_task_1').on('click','.confirm a',function(){
+        //     var id = $(this).attr('data-id');
+        //     var ID =  elem.find('#cancel').attr('data-id');
+        //     console.log(ID);
+        //     $.ajax({
+        //         url:'trading/quxiao_order',
+        //         type:'post',
+        //         data:{id:id},
+        //         success:function(meg){
+        //             console.log(meg);
+        //         }
+        //     })
+        //     var order = $('#order').val();
+        //     //console.log(order);
+        //     window.location.href = "{:U('Index/affirmGathering')}?order="+order;
+        // })
+
+
+        $('#OA_task_1').on('click','#cancel',function(){
+            //alert(21131)
+            var e = this;
+            var id = $(e).attr('data-id');
+            var uid = $(e).data('uid');
+            var pid = $(e).data('pid');
+            var r=confirm("{$Think.lang.qdyqxm}");
+            var type = $(e).data('type');
+            // var url = '/Index/quxiao_order';
+            if(uid == pid){
+                url = '/Growth/quxiao_order';
+            }else{
+                url = '/Trading/quxiao_order';
+            }
+            if (r==true)
+            {
+                $.ajax({
+                    url:url,
+                    type:'post',
+                    data:{id:id},
+                    success:function(meg){
+                       if(meg.status == 0){
+                            alert(meg.message);
+                       }else{
+                           window.location.href='/index/myOrderSale?type='+type;
+                       }
+                    }
+                })
+            }
+            else
+            {
+
+            }
+
+
+        })
+    // $('#OA_task_1').click(function(){
+    $('#OA_task_1').on('click','#confirm',function(){
+        var order = $(this).attr('data-id');
+        window.location.href = "{:U('Index/affirmGathering')}?order="+order;
+    })
+    </script>	
+
+

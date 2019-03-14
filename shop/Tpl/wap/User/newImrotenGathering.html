@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>添加imToken</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/mui.min.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/mui.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/addImTokenGathering')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        添加imToken
+    </div>
+
+
+    <!-- 用户信息 -->
+    <div class="user_info">
+        <form class="mui-input-group">
+            <div class="mui-input-row user_info_lis">
+                <label class="name">姓名</label>
+                <input type="text" name="imtoken_name" class="mui-input-clear">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name imtoken_site">imToken钱包地址</label>
+                <input type="text" name="imtoken_size" class="mui-input-clear site_input" >
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <label class="name"  >手机</label>
+                <input type="text" name="imtoken_phone" class="mui-input-clear" >
+            </div>
+        </form>
+    </div>
+    <input type="file" name="imtoken_file" id="file" accept="image/gif, image/x-ms-bmp, image/jpeg" class="line" onchange="fileType(this)" hidden/>
+    <!-- 上传图片 -->
+    <div class="file_box" onclick="driverUpload()">
+        <div class="add" name="imtoken_ceshi">+</div>
+        <p  name="imtoken_ceshi">上传收款二维码</p>
+        <img src="" alt="" name="imtoken_image">
+        <div class="accomplish_state">
+        </div>
+    </div>
+
+
+    <!-- 设为默认 -->
+    <div class="default">
+        <div class="select_bg fl" id="select" name="imtoken_r"></div>
+        <p class="fl">设为默认</p>
+    </div>
+
+
+    <!-- 保存按钮 -->
+    <div class="save Wechat_save" data-name="imtoken">保 存</div>
+
+
+</body>
+
+
+
+</body>
+
+</html>

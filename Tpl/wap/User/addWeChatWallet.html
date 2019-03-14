@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.tjwxqb}</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/accountManage')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.tjwxqb}
+    </div>
+    <!--获取绑定微信信息小物件-->
+    {:W('Card/menu',['weichar'])}
+    <!-- 底部 -->
+    <div class="footer">
+        <a href="{:U('User/newWechatGathering')}">{$Think.lang.tjwxqb}</a>
+    </div>
+    <div class="Wechat_save" data-name="weichar" style="display:none" >{$Think.lang.bc}</div>
+</body>
+
+</html>
+<script>
+    $(function () {
+        $(".alipay").on('click','.select_bg',function(){
+             $(this).toggleClass("select_red").parent().parent().parent().parent().siblings().children().children().children().children().removeClass('select_red');
+        })
+    })
+
+
+</script>
+

@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.turnout}</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<link rel="stylesheet" href="__WCSS__/YangStyle.css">
+
+<style>
+	.bg96 { background: #fff;margin-top: 0;}
+	.big_width100{margin: 1rem 0 0;}
+ 	.click{background: #2874d5 !important;}
+	.click .bottom1{border-bottom-color: #cfb164 !important;}
+</style>
+
+<body class="bg96">
+	<div class="headera">
+		<div class="header_la ">
+			<a href="{:U('Index/Turnout')}"><img src="__WIMG__/jiant.png" alt=""></a>
+		</div>
+		<div class="header_ca">
+			<h2>{$Think.lang.turnout}</h2>
+
+		</div>
+	</div>
+
+	<div class="big_width100">
+		<div class="w-bj">
+			<div class="shaomZ">
+				<a href="javascript:void(0)" class="shaom">
+					<img src="__IMGHEAD__/{$uinfo['img_head']}" class="icon">
+					<img src="__WIMG__/hyjb-VIP.png" class="w-vip">
+				</a>
+				<p>{$Think.lang.hym}<span>{$uinfo['username']}</span><br>
+				<?php echo 'UID:'.$_GET['sid']?></p>
+				
+			</div>
+		</div>
+		<div class="w-center">
+			<div class="fill_sty">
+				<h2>{$Think.lang.zcje}</h2>
+				<div class="w-mydiv1">
+					<div class="top"></div>
+				</div>
+				<div class="w-two-div">
+					<div class="w-left click">
+						<a href="###">
+							<div class="w-zhuan">{$Think.lang.z}&nbsp;&nbsp;CNY(￥)
+								<div class="bottom1"></div>
+							</div>
+						</a>
+					</div>
+					<!-- <div class="w-right">
+						<a href="###">
+							<div class="w-zhuan">转&nbsp;&nbsp;USD($)
+								<div class="bottom1"></div>
+							</div>
+						</a>
+					</div> -->
+					<input class="w-input paynums" type="number" placeholder="{$Think.lang.qsr100dzs}">
+					<input type="hidden" value="{$uinfo['userid']}" class="zuid">
+				</div>
+					<!-- <input class="w-input1 mobilelast" type="number" placeholder="请输入对方手机号码末尾4位" maxlength="4" id="oper_2" onkeyup="value=value.replace(/[^\d]/g,'') "
+						ng-pattern="/[^a-zA-Z]/"> -->
+				<div class="w-zhuanchu">
+					<a href="javascript:void(0);" class="not_next ljzf_but " id="operConfirm">{$Think.lang.qrzc}</a>
+				</div>
+			</div>
+		</div>
+		<!--浮动层-->
+		<div class="ftc_wzsf">
+			<div class="srzfmm_box">
+				<div class="qsrzfmm_bt clear_wl">
+					<img src="__WIMG__/xx_03.jpg" class="tx close fl">
+					<span class="fl">{$Think.lang.qsrzfmm}</span></div>
+				<div class="zfmmxx_shop">
+					<div class="mz">{$Think.lang.x}（{$uinfo['username']}）{$Think.lang.zf}</div>
+					<div class="zhifu_price">￥88.88</div>
+				</div>
+				<ul class="mm_box">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="numb_box">
+				<div class="xiaq_tb">
+					<img src="__WIMG__/jftc_14.jpg" height="10"></div>
+				<ul class="nub_ggg">
+					<li><a href="javascript:void(0);" class="zf_num">1</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">2</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">3</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">4</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">5</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">6</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">7</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">8</a></li>
+					<li><a href="javascript:void(0);" class="zf_num">9</a></li>
+					<li><a href="javascript:void(0);" class="zf_empty">{$Think.lang.emptya}</a></li>
+					<li><a href="javascript:void(0);" class="zj_x zf_num">0</a></li>
+					<li><a href="javascript:void(0);" class="zf_del">{$Think.lang.deleteo}</a></li>
+				</ul>
+			</div>
+			<div class="hbbj"></div>
+		</div>
+
+	</div>
+	<input type="hidden" id="qsrzqdzzje" value="qsrzqdzzje">
+	<script type="text/javascript" src="__WJS__/rem.js"></script>
+	<script src="__WJS__/jquery1.11.1.min.js"></script>
+	<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+	<script type="text/javascript" src="__COM__/js/index.js"></script>
+	<script type="text/javascript">
+		$(".w-two-div>div").on('click', function () {
+			$(this).addClass("click").siblings().removeClass("click");
+		});
+		$(".pay_list_c1").click(function () {
+			$(this).addClass("on").siblings().removeClass("on");
+		})
+	</script>
+
+	<!--  -->
+	<script type="text/javascript">
+		$('#operConfirm').click(function () {
+			var paytype = $(".pay_list_c1.on p input").val(); //转账方式
+			var paynums = ($('.paynums').val()); //支付金额
+			var reg = /(^[1-9]([0-9]+)?(\.[0-9]{1,2})?$)|(^(0){1}$)|(^[0-9]\.[0-9]([0-9])?$)/;
+
+			var mobila = $('.mobilelast').val(); //手机号码后四位
+			// var txye =parseFloat($.trim($('#oper_1').val())); //要兑换的数量 1-1200
+			var exg = /^(([1-9]\d*)|\d)(\.\d{1,2})?$/;
+			var qsrzqdzzje = $('#qsrzqdzzje').val();
+			if (!reg.test(paynums)) {
+				msg_alert(qsrzqdzzje);
+				return;
+			}
+
+			// var exg = /^\d{4}$/
+			// if (!exg.test(mobila)) {
+			// 	msg_alert('请输入手机号末4位数');
+			// 	return;
+			// }
+			$('.zhifu_price').text('￥' + paynums);
+			$(".ftc_wzsf").show();
+            $('html,body').css('height','100%');
+		});
+
+
+		//获取数据传值
+		function Getvalue() {
+			var paytype = $(".pay_list_c1.on p input").val(); //转账方式
+			var paynums = Number($('.paynums').val()); //支付金额
+			var zuid = $('.zuid').val(); //转账会员id
+			var mobila = $('.mobilelast').val(); //手机号码后四位
+			var minemoney = Number($('#shengyue').text()); //当前账户余额
+			var data = {
+				'paytype': paytype,
+				'paynums': paynums,
+				'zuid': zuid,
+				'mobila': mobila,
+				'minemoney': minemoney
+			};
+			return data;
+		}
+
+		// $(function(){
+		//出现浮动层
+		$(".ljzf_but").click(function () {
+			// $(".ftc_wzsf").hide();
+		});
+		//关闭浮动
+		$(".close").click(function () {
+			$(".ftc_wzsf").hide();
+			$(".mm_box li").removeClass("mmdd");
+			$(".mm_box li").attr("data", "");
+			i = 0;
+            $('html,body').css('height','');
+		});
+		//数字显示隐藏
+		$(".xiaq_tb").click(function () {
+			$(".numb_box").slideUp(500);
+		});
+		$(".mm_box").click(function () {
+			$(".numb_box").slideDown(500);
+		});
+		//----
+		var i = 0;
+		$(".nub_ggg li .zf_num").click(function () {
+			if (i < 6) {
+				$(".mm_box li").eq(i).addClass("mmdd");
+				$(".mm_box li").eq(i).attr("data", $(this).text());
+				i++
+				if (i == 6) {
+					setTimeout(function () {
+						var pwd = "";
+						$(".mm_box li").each(function () {
+							pwd += $(this).attr("data");
+						});
+
+						//ajax提交密码以及参数
+						var post_data = Getvalue(); //获取上面的参数
+						$.ajax({
+							url: '/Index/Changeout',
+							type: 'post',
+							data: {
+								'post_data': post_data,
+								'pwd': pwd
+							},
+							datatype: 'json',
+							success: function (mes) {
+							    console.log(mes);
+								if (mes.status == 1) {
+									msg_alert(mes.message, mes.url);
+									$(".ftc_wzsf").hide();
+									$(".mm_box li").removeClass("mmdd");
+									$(".mm_box li").attr("data", "");
+									i = 0;
+								} else {
+									msg_alert(mes.message);
+									$(".mm_box li").removeClass("mmdd");
+									$(".mm_box li").attr("data", "");
+									i = 0;
+								}
+							}
+						})
+					}, 100);
+				};
+			}
+		});
+
+		$(".nub_ggg li .zf_del").click(function () {
+			if (i > 0) {
+				i--
+				$(".mm_box li").eq(i).removeClass("mmdd");
+				$(".mm_box li").eq(i).attr("data", "");
+			}
+		});
+
+		$(".nub_ggg li .zf_empty").click(function () {
+			$(".mm_box li").removeClass("mmdd");
+			$(".mm_box li").attr("data", "");
+			i = 0;
+		});
+		// });
+	</script>
+
+
+</body>
+
+</html>

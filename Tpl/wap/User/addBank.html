@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$Think.lang.addcard1}</title>
+    <link rel="stylesheet" href="__WCSS__/base.css">
+    <link rel="stylesheet" href="__WCSS__/accountManage.css">
+    <script src="__WJS__/rem.js"></script>
+    <script src="__WJS__/jquery1.11.1.min.js"></script>
+    <!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+    <script>
+    </script>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/accountManage')}"><img src="__WIMG__/user_jiantouzuo.png" alt=""></a>
+        {$Think.lang.addcard1}
+    </div>
+    <!-- 银行卡 -->
+    <foreach name="morecars" item="vo">
+        <div class="bank">
+            <div class="bank_box">
+                <div class="top">
+                    <div class="top_left fl">
+                        <p class="bank_txt">所属银行：{$vo.banq_genre}</p>
+                        <p class="bank_name">持卡人姓名：{$vo.hold_name}</p>
+                        <p class="bank_moblie">持卡人手机：{$vo.mobile}</p>
+                        <p class="bank_num">卡号：{$vo.card_number}</p>
+                    </div>
+                    <div class="top_right fr">
+                        <img src="__WIMG__/{$vo.banq_img}" alt="">
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="left fl">
+                        <div class="select_bg fl select_bg_box"></div>
+                        <p class="fl">默认</p>
+                    </div>
+                    <!--<div class="content fl hide_box">-->
+                        <!--<div class="hide_bg fl"></div>-->
+                        <!--<p class="fl">隐藏</p>-->
+                    <!--</div>-->
+                    <div class="right fr">
+                        <a href="javascript:void(0)" onclick="deleteb(this)" data-id="{$vo['id']}" style="color: #999999;display: block;height: 45px">
+                            <div class="delete_bg fl"></div>
+                            <p class="fl">删除</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </foreach>
+    <!--<div class="bank">-->
+        <!--<div class="bank_box">-->
+            <!--<div class="top">-->
+                <!--<div class="top_left fl">-->
+                    <!--<p class="bank_txt">所属银行：建设银行</p>-->
+                    <!--<p class="bank_name">持卡人姓名：熊呆呆</p>-->
+                    <!--<p class="bank_moblie">持卡人手机：16625588455</p>-->
+                    <!--<p class="bank_num">卡号：**** **** **** 5482</p>-->
+                <!--</div>-->
+                <!--<div class="top_right fr">-->
+                    <!--<img src="" alt="">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="bottom">-->
+                <!--<div class="left fl">-->
+                    <!--<div class="select_bg fl select_bg_box select_red"></div>-->
+                    <!--<p class="fl">设为默认</p>-->
+                <!--</div>-->
+                <!--<div class="content fl">-->
+                    <!--<div class="hide_bg fl show_bg "></div>-->
+                    <!--<p class="fl">显示</p>-->
+                <!--</div>-->
+                <!--<div class="right fr">-->
+                    <!--<div class="delete_bg fl"></div>-->
+                    <!--<p class="fl">删除</p>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="footer">
+        <a href="{:U('User/newAddBank')}">添加银行卡</a>
+    </div>
+
+</body>
+<script>
+    function deleteb(e) {
+        var qxzdydyhk = $('#qxzdydyhk').val();
+        var bangid = $(e).attr('data-id');
+        console.log($(e).parent('.bank'));
+        $(e).parent('.bank').remove();
+
+        if(bangid == ''){
+            msg_alert(qxzdydyhk);
+        }
+        // $.ajax({
+        //     url:'/Growth/Cardinfos',
+        //     type:'post',
+        //     data:{'bangid':bangid},
+        //     datatype:'json',
+        //     success:function (mes) {
+        //         if(mes.status == 1){
+        //             e.parent('.bank');
+        //         }else{
+        //             msg_alert(mes.message);
+        //         }
+        //     }
+        // })
+    }
+</script>
+
+</html>

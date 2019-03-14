@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$Think.lang.zhmm}</title>
+    <link rel="stylesheet" href="__WCSS__/normalize.css">
+    <link rel="stylesheet" href="__WCSS__/login.css">
+    <script src="__WJS__/rem.js"></script>
+    <!--<script src="https://www.jq22.com/jquery/1.11.1/jquery.min.js"></script>-->
+    <script type="text/javascript" src="__COM__/js/jquery-1.9.1.min.js"></script>
+    <script src="__WJS__/common.js"></script>
+    <script src="__WJS__/jquery.validate.min.js?var1.14.0"></script>
+    <script type="text/javascript" src="__COM__/js/index.js"></script>
+    <script type="text/javascript" src="__COM__/layer/layer.js"></script>
+    <!-- 获取头部的颜色 -->
+    <script type="text/javascript" src="__WJS__/color.js"></script>
+</head>
+
+<body class="bgf5">
+    <div class="login-container register-container">
+        <div class="header_back">
+            <a href="javascript:history.go(-1)"><img src="__WIMG__/jiant.png" alt=""></a>
+        </div>
+        <div class="formbox" style="margin-top: 1.5rem">
+            <div class="register-title getpwd-title"><span>{$Think.lang.forget_pwd}</span></div>
+            <form name="getpwdfrom" id="forgetForm" class="formrgister formgetpsw" action="{:U('setpsw')}" method="post">
+                <div class="input_box">
+                    <span><img src="__WIMG__/phone.png" alt=""></span>
+                    <input type="text" name="mobile" class="phone_number" placeholder="{$Think.lang.qsrsjhm}" maxlength="off"
+                        id="number" />
+                </div>
+                <div class="input_box">
+                    <span><img src="__WIMG__/password.png" alt=""></span>
+                    <input type="password" name="password" class="password" placeholder="{$Think.lang.qszxdlmm}" id="demo_input"
+                        oncontextmenu="return false" onpaste="return false" />
+                    <span class="right"><img id="demo_img" onclick="hideShowPsw('demo_img','demo_input')" src="__WIMG__/mima.png" alt=""></span>
+                </div>
+                <div class="input_box">
+                    <span><img src="__WIMG__/password.png" alt=""></span>
+                    <input type="password" name="passwordmin" class="passwordmin" placeholder="{$Think.lang.qrxddlmm}"
+                        id="zc_input" oncontextmenu="return false" onpaste="return false" />
+                    <span class="right"><img id="zc_img" onclick="hideShowPsw('zc_img','zc_input')" src="__WIMG__/mima.png" alt=""></span>
+                </div>
+                <!--<div class="input_box input_code">-->
+                <!--<input style="border-left: 1px solid #a29ca5" type="number" id="code" name="code" class="code" placeholder="手机验证码" oncontextmenu="return false"-->
+                <!--onpaste="return false" />-->
+                <!--<a href="javascript:void(0)" id="mycode" >获&nbsp;&nbsp;&nbsp;取</a>-->
+                <!--</div>-->
+                <div class="input_box input_code">
+                    <span><img src="__WIMG__/moblie_code.png" alt=""></span>
+                    <input type="number" name="code" class="code" style="width:80%;" placeholder="{$Think.lang.yzm2}"
+                        oncontextmenu="return false" onpaste="return false" />
+                    <!--<a href="javascript:void(0)" id="mycode" style="width:20%">获  取</a>-->
+                    <a href="javascript:void(0)" id="mycode">{$Think.lang.yzm3}</a>
+                </div>
+                <div class="inde-btn">
+                    <button id="submit" type="button" onclick="SetPwd()">{$Think.lang.qr}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--请输入手机号码-->
+    <input type="hidden" id="qsrsjhm" value="{$Think.lang.qsrsjhm}">
+    <!--验证码不能为空-->
+    <input type="hidden" id="yzmbnwk" value="{$Think.lang.yzmbnwk}">
+    <!--请输入新密码-->
+    <input type="hidden" id="qsrxmm" value="{$Think.lang.qsrxmm}">
+    <!--请输入确认密码-->
+    <input type="hidden" id="qsrqrmm" value="{$Think.lang.qsrqrmm}">
+    <!--两次输入密码不一致-->
+    <input type="hidden" id="lcsrdmmbyz" value="{$Think.lang.lcsrdmmbyz}">
+    <!--手机号码格式错误-->
+    <input type="hidden" id="sjhmgscw" value="{$Think.lang.sjhmgscw}">
+    <!--请输入正确的手机号码-->
+    <input type="hidden" id="qsrzqdsjhm" value="{$Think.lang.qsrzqdsjhm}">
+    <!--请输入验证码-->
+    <input type="hidden" id="qsryzm" value="{$Think.lang.qsryzm}">
+    <!--请输入正确的验证码-->
+    <input type="hidden" id="qsrzqdyzm" value="{$Think.lang.qsrzqdyzm}">
+    <!--请设置新的登录密码-->
+    <input type="hidden" id="qszxddlmm" value="{$Think.lang.qszxddlmm}">
+    <!--密码至少为6个字符-->
+    <input type="hidden" id="mmzsw6gzf" value="{$Think.lang.mmzsw6gzf}">
+    <!--密码至多为32个字符-->
+    <input type="hidden" id="mmzdw32gzf" value="{$Think.lang.mmzdw32gzf}">
+    <!--获取验证码-->
+    <input type="hidden" id="hqyzm" value="{$Think.lang.hqyzm}">
+</body>
+
+<script type="text/javascript">
+ // input 的值不为空添加按钮样式
+    $("form input").blur(function () {
+        if (($("input[type=password]").val() && $("input[type=text]").val()) && ($("input[type=number]").val()) !=
+            "") {
+            $(".inde-btn button").addClass("active");
+        }
+    })
+</script>
+
+<script type="text/javascript">
+    $('#mycode').click(function () {
+        $('#submit').css('backgroundColor', "rgba(255,255,255,0.5)");
+        var qsrsjhm = $('#qsrsjhm').val();
+        var mobile = $("input[name='mobile']").val();
+        var type = "{:I('get.l')}";
+        if (mobile == '' || mobile == null) {
+            layer.msg(qsrsjhm);
+        }
+        $.post("{:U('Login/sendCode')}", {
+            'mobile': mobile,
+            'l': type
+        }, function (data) {
+            console.log(data);
+            if (data.status == 1) {
+                layer.msg(data.message);
+                RemainTime();
+            } else {
+                layer.msg(data.message);
+            }
+        });
+    });
+
+    var intime = "{$Think.session.set_time}";
+    var timenow = "<?php echo time(); ?>";
+
+    var bet = (parseInt(intime) + 60) - parseInt(timenow);
+    $(document).ready(function () {
+        if (bet > 0) {
+            RemainTime();
+        }
+    });
+    var iTime = 59;
+    var Account;
+    if (bet > 0) {
+        iTime = bet;
+    }
+
+    function RemainTime() {
+        var iSecond, sSecond = "",
+            sTime = "";
+        var hqyzm = $('hqyzm').val(); //获取验证码
+        if (iTime >= 0) {
+            iSecond = parseInt(iTime % 60);
+            iMinute = parseInt(iTime / 60)
+            if (iSecond >= 0) {
+                if (iMinute > 0) {
+                    sSecond = iMinute + "m" + iSecond + "s";
+                } else {
+                    sSecond = iSecond + "s";
+                }
+            }
+            sTime = sSecond;
+            if (iTime == 0) {
+                clearTimeout(Account);
+                sTime = hqyzm;
+                iTime = 59;
+                $('#mycode').text('{$Think.lang.yzm}');
+            } else {
+                Account = setTimeout("RemainTime()", 1000);
+                iTime = iTime - 1;
+            }
+        } else {
+            sTime = '没有倒计时';
+        }
+        $('#mycode').html(sTime);
+        //document.getElementById('').html(123);
+    }
+
+    // 密码显示与隐藏
+    function hideShowPsw(img,input) {
+        var demoImg = document.getElementById(img);
+        var demoInput = document.getElementById(input);
+        if (demoInput.type == "password") {
+            demoInput.type = "text";
+            demoImg.src = "__WIMG__/keshi.png";
+        } else {
+            demoInput.type = "password";
+            demoImg.src = "__WIMG__/mima.png";
+        }
+    }
+
+</script>
+
+</html>

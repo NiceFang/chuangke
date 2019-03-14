@@ -1,0 +1,152 @@
+/* 积分兑换样式开始 */
+/* 引入mui.css 样式p便签冲突 */
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    background-color: #000;
+}
+
+.mui-content {
+    background-color: #000;
+}
+
+p {
+    margin-bottom: 0;
+}
+
+input {
+    border: none;
+}
+.hear p {
+    margin-bottom: 0;
+    color: #fff;
+    font-size: 0.4167rem;
+}
+
+.tab .title {
+    height: 1.1667rem;
+    background-color: #18191D;
+}
+
+.tab .title .title_box {
+    height: 1.1667rem;
+}
+
+.tab .title .title_box li {
+    float: left;
+    width: 50%;
+}
+
+.tab .title .title_box .title_box_a {
+    line-height: 1.125rem;
+    color: #fff;
+    font-size: 0.375rem;
+    width: 2.2708rem;
+    margin: 0 auto;
+    display: block;
+}
+
+.tab .title div.title_box .mui-control-item.mui-active {
+    border-bottom: 0.0417rem solid #7DC334;
+    color: #7DC334;
+}
+
+.tab .content .integral .price {
+    font-size: 0.3333rem;
+    color: #7DC334;
+    text-align: center;
+    margin: 1.3333rem 0 0.6667rem;
+}
+.tab .content .integral {
+    width: 5rem;
+    /* height: 0.7917rem; */
+    margin: 0 auto;
+}
+.tab .content .integral input {
+    width: 5rem;
+    height: 0.7917rem;
+    border-radius: 0.3958rem;
+    border: 0.0208rem solid #002982;
+   text-align: center;
+   font-size: 0.3333rem;
+   color: #333333;
+   -webkit-user-select: auto;  
+}
+
+.mui-search .mui-placeholder {
+    pointer-events: none; 
+}
+
+.tab .content .integral .hint {
+    color: #7AC231;
+    font-size: 0.2917rem;
+    text-align: center;
+    margin: 0.375rem 0 0.6667rem;
+}
+
+.tab .content .integral .conversion {
+    width: 5rem;
+    height: 0.7917rem;
+    margin: 0 auto;
+    background-color: #EFDE30;
+    color: #fff;
+    border-radius: 0.3958rem;
+    line-height: 0.7917rem;
+    text-align: center;
+}
+
+.tab .content .integral .turnout_conversion  {
+    margin-top: 1.3333rem;
+}
+
+.tab .content .integral .conversion>a {
+    color: #333333;
+    display: block;
+    width: 5rem;
+    height: 0.7917rem;
+    font-size: 0.3333rem;
+}
+.tab .content .record .column ul {
+   height: 1rem;
+}
+
+.tab .content .record {
+    background-color: #2A2B31;
+    color: #fff;
+}
+
+.tab .content .record .column ul li {
+    float: left;
+    height: 1rem;
+    font-size: 0.3333rem;
+    text-align: center;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab .content .record  .ul .lis {
+    height: 1rem;
+    display: flex;
+    align-items: center; 
+    border-top: 0.0208rem solid #000;
+}
+
+.tab .content .record  .ul .lis:last-child{
+    border-bottom: 0.0208rem solid #000;
+}   
+
+
+.tab .content .record  ul.ul .lis p {
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-size: 0.2917rem;
+    color: #FFF;
+}
+
+
+/* 积分兑换样式结束 */

@@ -1,0 +1,47 @@
+.header {
+    background-color: #18191d;
+    color: #fff;
+
+}
+
+.bg96,.bgff {
+    background-color: #18191d;
+}
+
+.header h2 {
+    color: #fff;
+}
+
+.header_l a img{
+    width: 0.5rem;
+}
+
+.big_width100 {
+    background-color: #18191d;
+}
+
+.genggao li {
+    background-color: #2A2B31;
+    color: #fff;
+}
+
+.genggao li a .gonggao_l h2 {
+    color: #fff;
+    border-bottom: 0.0208rem solid #999;
+}
+
+.genggao li a .gonggao_l p {
+    color: #ccc;
+}
+
+.AnnouncementDetails {
+    background-color: #2A2B31;
+}
+.annDe_h2 {
+    color: #fff;
+    border-bottom:0.0208rem solid #999;
+}
+
+.AnnouncementDetails_de {
+    color: #ccc;
+}

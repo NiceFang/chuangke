@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.digitalasset}</title>
+<link rel="stylesheet" href="__WCSS__/style.css">
+<link rel="stylesheet" href="__WCSS__/digital.css">
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/meCen-K.css">
+<link rel="stylesheet" href="__WCSS__/YangStyle.css">
+<link rel="stylesheet" href="__WCSS__/property.css">
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js" ></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js" ></script>
+<style>
+    /* .bg96{background: #fff;} */
+    /* .big_width100{background: #fff;} */
+    .w-bj p{margin: 0;}
+    .centBalance .dLine{top: 0.3rem;}
+</style>
+
+<body class="bg96">
+    <!-- <div class="headerb">
+        <div class="userInfo" style="width: 75%">
+		<a href="{:U('User/Personal')}"><div class="toux_icon"><img src="__IMGHEAD__/{$uinfo['img_head']}"></div></a>
+    	<div class="uid_xy">
+            <p>UID:{$uinfo['userid']}&nbsp;&nbsp;&nbsp;&nbsp;{$Think.lang.rank}:<?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?></p>
+    	</div>	
+    </div>
+    <div class="header_rb"> <a href="{:U('User/Personal')}"><img src="__WIMG__/index/shez-icon.png" alt=""></a></div>
+</div> -->
+
+
+    <!-- 头部 -->
+    <div class="hear">
+            <a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+            <p>资产</p>
+            <!-- 语言切换 -->
+            <!-- 先不要删掉 -->
+            <!-- <div class="top">
+                    <div class="loginLanguage">
+                        <div id="sample" class="dropdown">
+                            <div id="div_curr_lag" class="parent">
+                                <a href="#">
+                                    <span><img class="flag" src="images/English.png" alt="" />English</span></a>
+                            </div>
+                            <div class="son">
+                                <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                                    <a>
+                                        <img class="flag" src="images/china.png" alt="" />
+                                        English
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                                    <a>
+                                        <img class="flag" src="images/china.png" alt="" />
+                                        中文
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                                    <a>
+                                        <img class="flag" src="images/hanguo.png" alt="" />
+                                        한국어
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                                <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')">
+                                    <a>
+                                        <img class="flag" src="images/Japan.png" alt="" />
+                                        わぶん
+                                        <span class="value"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+        </div>
+        <!-- 个人信息 -->
+        <div class="user_info">
+            <div class="user_info_box">
+                <div class="user_info_box_cont">
+                    <div class="user_info_box_cont_top">
+                        <div class="div_img fl">
+                            <img src="__IMGHEAD__/{$uinfo['img_head']}" alt="">
+                        </div>
+                        <div class="user_info_left fl">
+                            <p class="name">{$Think.lang.nickname} : {$uinfo['username']}</p>
+                            <p class="uid">UID : {$uinfo['userid']} </p>
+                            <p class="garde">{$Think.lang.rank}：{$uinfo['use_grade_name']}</p>
+                        </div>
+                    </div>
+                    <div class="mony">
+                        <div class="balance">
+                            <span>{$Think.lang.ye}:</span>
+                            <img src="__WIMG__/integraimages/icc_black.png" alt="">
+                            <span>{$moneyinfo['cangku_num']|Showtwo}</span>
+                        </div>
+                        <div class="integral">
+                            <span>{$Think.lang.jifen}:</span>
+                            <img src="__WIMG__/integraimages/icc_black.png" alt="">
+                            <span>{$moneyinfo['fengmi_num']|Showtwo}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<div class="big_width100">
+    <div>
+    <!-- <div class="w-bj">
+        <div class="shaomZ">
+            <a class="shaom">
+                    <img src="__IMGHEAD__/{$uinfo['img_head']}" class="icon">
+                    <?php if($uinfo['vip_grade'] != 0) {?>
+                    <img src="__WIMG__/hyjb-VIP.png" class="w-vip">
+                    <?php }?>
+            </a>
+        </div>
+        <div class="centBalance">
+            <div class="Balance"><p><a class="balance">{$Think.lang.wdzc}<br/><strong>￥<span  class="yue">{$minecoins[0]['c_nums']|default="0.0000"}</span></strong></a></p></div>
+            <div class="Balance"><p><a class="balance">{$Think.lang.nowprice}<br/><strong>￥<span class="jifen">{$coindets[0]['coin_price']}</span></strong></a></p></div>
+            <div class="dLine"></div>
+        </div>-->
+    </div> 
+
+    <div class="url_address">
+        <input type="text" value="{$waadd}" class="address_box" readonly="readonly">
+        <a href="#" class="btn" id="copyBT">（点击此处 复制链接地址）</a>
+    </div>
+
+    <div class="exchange_list">
+        <ul class="exchange_box">
+            <foreach name="minecoins" item="vo">
+                <li>
+                    <img src="__WIMG__/dth0101.png" alt="">
+                    <div class="num_box">
+                        <div class="title_box">
+                            <div class="title">当前持有: </div>
+                            <i class="icon"></i>
+                            <p class="num">{$moneyinfo['tongzheng']}</p>
+                        </div>
+                        <div class="title_box">
+                            <div class="title">价&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp格: </div>
+                            <p class="nums">{$mulriple}</p>
+                        </div>
+                    </div>
+                    <!--<a  href="{:U('Turntable/exchanges')}?id={$vo.cid}" class="exchange_btn">去兑换</a>-->
+                    <a  href="{:U('Turntable/exchanges')}" class="exchange_btn">去兑换</a>
+                    <!--<a  href="#" class="exchange_btn">去兑换</a>-->
+                </li>
+            </foreach>
+        </ul>
+    </div>
+        
+    <!-- <div class="wpaeyzic">
+
+        <div class="dizhi">
+            <p>
+                <img src="__WIMG__/left-jt.png" alt="">
+                <span id="content">{$waadd}</span>
+                <img src="__WIMG__/right-jt.png" alt="">
+            </p>
+            <button id="copyBT">{$Think.lang.fzjydz}</button>
+        </div>
+
+    </div> -->
+    <!-- <div class="wpzicicon">
+        <ul class="clear_wl">
+            <li>
+                <a href="{:U('Turntable/Turnout')}">
+                    <img src="__WIMG__/index/zczc.png" alt="">
+                    <p>{$Think.lang.zczc}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Turntable/Crowds')}">
+                    <img src="__WIMG__/index/zccy.png" alt="">
+                    <p>{$Think.lang.zccy}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Turntable/Wbaobei')}">
+                    <img src="__WIMG__/index/szzx.png" alt="">
+                    <p>{$Think.lang.szzx}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Turntable/Transaction')}">
+                    <img src="__WIMG__/index/zcjy.png" alt="">
+                    <p>{$Think.lang.zcjy}</p>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+    <!-- <div class="w-no"></div> -->
+
+  <!-- <div class="big_width100" >
+   
+   <div class="qindHB">
+     <div class="qindHB_nb">
+         <img src="__WIMG__/hongbaoyema.png" class="qinb_imga">
+          <a href="javascript:void(0);" >
+            <a href="{:U('Index/index')}"><img src="__WIMG__/cunryuea.png"></a>
+          </a>
+          <div class="qiandHB_wz">
+            
+          </div>
+     </div>
+   </div>
+   <div class="qindHB_bg"> </div>
+
+
+
+ </div> -->
+        <input type="hidden" value="{$Think.lang.zbzcxjjy}" id="zbzcxjjy">
+        <input type="hidden" value="{$Think.lang.fzcg}" id="fzcg">
+  <script type="text/javascript">
+        var zbzcxjjy = $('#zbzcxjjy').val();
+
+           $(document).ready(function(){
+  
+     $(".xianzjiaoy").click(function(){
+         msg_alert(zbzcxjjy);
+        });
+
+    });
+</script>
+<style type="text/css">
+    .qindHB_bg{
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.6);
+    z-index: 100;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.qindHB{
+    position: absolute;
+    z-index: 101;
+    padding: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    opacity: 1;
+    
+}
+.qindHB_nb{
+   z-index: 102;
+   width: 100%; position: relative;
+}
+
+.qindHB_nb a {
+    width: 100%; display: block; margin-top: 20px;
+}
+.qindHB_nb a img{
+   z-index: 104;
+   width: 100%;
+}
+
+.qinb_imga{  height: 22rem;margin: 0 auto; display: block;  margin-top: 2rem; }
+
+.qiandHB_wz{ position:absolute; top:7rem; width: 50%; left: 25%; text-align: center; }
+.qiandHB_wz h3{ font-size: 1.8rem; padding-bottom: 1rem; border-bottom: 1px dotted rgba(217, 45, 45, 0.4); color: #d92d2d; line-height: 1.8rem; font-weight: 900;}
+.qiandHB_wz p{ font-size: 1rem; color: #d92d2d; line-height: 2.4rem; font-weight: 900;}
+
+</style>
+
+
+    
+    
+<script>
+    function copyArticle(event) {
+        var fzcg = $('#fzcg').val();
+        const range = document.createRange();
+        range.selectNode(document.getElementById('content'));
+
+        const selection = window.getSelection();
+        if (selection.rangeCount > 0) selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+        msg_alert(fzcg);
+    }
+
+    document.getElementById('copyBT').addEventListener('click', copyArticle, false);
+</script>
+
+
+</body>
+
+</html>
