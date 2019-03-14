@@ -638,7 +638,7 @@ class UserController extends AdminController
 
                      //更改会员等级
                      $userInfo = M('user')->where(array('userid' => $uid))->Field('use_grade,is_degraded')->find();
-                     formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
+                    // formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
 
                     $this->success('修改成功');
                  }else{
@@ -679,7 +679,7 @@ class UserController extends AdminController
 
                     //更改会员等级
                     $userInfo = M('user')->where(array('userid' => $uid))->Field('use_grade,is_degraded')->find();
-                    formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
+                   // formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
 
                     $this->success('修改成功');
 

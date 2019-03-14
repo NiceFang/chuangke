@@ -1570,7 +1570,7 @@ class MemberController extends CommonController
 			$res=M('store')->where(array('uid'=>$uid))->setInc('cangku_num',$moneys);
             $resjifeng=M('store')->where(array('uid'=>$uid))->setInc('fengmi_num',$jifeng);
             $userInfo = M('user')->where(array('userid' => $uid))->Field('use_grade,is_degraded')->find();
-            formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
+           // formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
 
             $account = M('store')->field('fengmi_num,cangku_num')->where(array('uid'=>$uid))->find();
             //添加积分记录

@@ -286,7 +286,7 @@ class PayController extends CommonController
                 //增加金额80%的
                 $yin_jifen = $pay_money * 0.8;
                 $res_inc =  M('store')->where(array('uid'=>$uid))->setInc('fengmi_num',$yin_jifen);
-                formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
+                //formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
                 //添加账户记录
                 $userAcount = M('store')->field('cangku_num,fengmi_num')->where(array('uid' => $uid))->find();
                 addAccountRecords($uid,0,-$pay_money,31,$userAcount['cangku_num'],'money');

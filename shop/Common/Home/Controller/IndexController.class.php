@@ -88,7 +88,7 @@ class IndexController extends CommonController
 //                M('tranmoney')->add($jifendets);
 
                 //更新用户等级
-                formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
+               // formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
 
                 if ($res_pay) {
                     $res = $can_get . L('jfsfdyecg');
@@ -676,7 +676,7 @@ private function get_banner()
                     $datapay['cangku_num'] = array('exp', 'cangku_num - ' . $paynums);
                     $datapay['fengmi_num'] = array('exp', 'fengmi_num + ' . $eper);
                     $res_pay = $Model->table('ysk_store')->where(array('uid' => $uid))->save($datapay);//转出的人+80%银
-                    formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+                   // formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
                     //添加释放记录
                     userAward($uid,'zhuandj1',3,$paynums);
 
@@ -685,7 +685,7 @@ private function get_banner()
                     $res_get = $Model->table('ysk_store')->where(array('uid' => $trid))->save($dataget);//转入的人+20%银
                     $url = $_SERVER['SERVER_NAME'].":8082?type=publish&content=收到转账金额:+".$eper."积分:+".$tper."&to=".$trid;
 //                    $this->carriedApi($url);
-                    formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
+                    //formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
 
                     $pay_ny = M('store')->where(array('uid' => $uid))->getfield('fengmi_num');
                     $get_ny = M('store')->where(array('uid' => $trid))->getfield('fengmi_num');
@@ -781,7 +781,7 @@ private function get_banner()
             $datapay['cangku_num'] = array('exp', 'cangku_num - ' . $paynums);
             $datapay['fengmi_num'] = array('exp', 'fengmi_num + ' . $eper);
             $res_pay = M('store')->where(array('uid' => $uid))->save($datapay);//转出的人+80%银
-            formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+            //formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
 //            //添加释放记录
             userAward($uid,'zhuandj1',3,$paynums);
 
@@ -789,7 +789,7 @@ private function get_banner()
             $dataget['fengmi_num'] = array('exp', 'fengmi_num + ' . $tper);
             $res_get = M('store')->where(array('uid' => $trid))->save($dataget);//转入的人+20%银
             $trUserInfo = M('user')->where(array('userid' => $trid))->Field('use_grade,is_degraded')->find();
-            formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
+           // formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
 
              $pay_ny = M('store')->where(array('uid' => $uid))->getfield('fengmi_num');
              $get_ny = M('store')->where(array('uid' => $trid))->getfield('fengmi_num');
@@ -1240,7 +1240,7 @@ private function get_banner()
                    $this->Addreas15($uid,$dhnums);//产生区块奖和VIP奖
 
                 //更新用户等级
-                formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+               // formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
 //                $uChanlev = D('Home/index');
 //                $uChanlev->Checklevel($uid);
                 ajaxReturn(L('yedhjfcg'), 1, '/Index/exehange');

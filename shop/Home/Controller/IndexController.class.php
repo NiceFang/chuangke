@@ -54,7 +54,7 @@ class IndexController extends CommonController
 
         $moneyinfo['cangku_num'] = bcadd($moneyinfo['cangku_num'],'0.00',2);
         $moneyinfo['fengmi_num'] = bcadd($moneyinfo['fengmi_num'],'0.00',2);
-        formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
+        //formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
         if (IS_AJAX) {
             if($uinfo['releas_time'] >= strtotime(date('Y-m-d'))){
                 $newArr['status']=0;
@@ -98,7 +98,7 @@ class IndexController extends CommonController
 //                M('tranmoney')->add($jifendets);
 
                 //更新用户等级
-                formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
+                //formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
 
                 if ($res_pay) {
                     $res = $can_get . L('jfsfdyecg');
@@ -616,7 +616,7 @@ class IndexController extends CommonController
                             //将释放了的记录状态改为 2 说明已使用过
                             M('user_award_execute')->where($awardWhere)->save(["is_success"=>2]);
                             //更新用户等级
-                            formatLevel($uid,$uinfo['use_grade'],$uinfo['is_degraded']);
+                           // formatLevel($uid,$uinfo['use_grade'],$uinfo['is_degraded']);
                         }else{
                             $newArr['status']=0;
                             $newArr['message']='领取失败';
@@ -648,7 +648,7 @@ class IndexController extends CommonController
                             }
                             if($addOne && $One && $oneOne){
                                 //更新用户等级
-                                formatLevel($uid,$uinfo['use_grade'],$uinfo['is_degraded']);
+                               // formatLevel($uid,$uinfo['use_grade'],$uinfo['is_degraded']);
                                 $newArr['val']=$arr['cangku_num'];
                                 $newArr['integrals']=$arr['fengmi_num'];
                                 $newArr['status']=1;
@@ -720,7 +720,7 @@ class IndexController extends CommonController
                 $newArr['val']=$arr['cangku_num'];
                 M()->commit();
                 //更新用户等级
-                formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
+                //formatLevel($userid,$uinfo['use_grade'],$uinfo['is_degraded']);
                 echo json_encode($newArr);
             }catch(Exception $e){
                 $Model->rollback();//事务回滚
@@ -1189,7 +1189,7 @@ class IndexController extends CommonController
                     $pay_n = M('store')->where(array('uid' => $uid))->getfield('cangku_num');
                     $get_n = M('store')->where(array('uid' => $trid))->getfield('cangku_num');
                     //更新会员等级 只要积分有变化就调用
-                    formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+                    //formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
                     //添加余额记录
                     addAccountRecords($uid,$trid,-$paynums,4,$pay_n,$type = 'money');
                     addAccountRecords($trid,$uid,$paynums,3,$get_n,$type = 'money');
@@ -1210,7 +1210,7 @@ class IndexController extends CommonController
                     ////添加释放记录
                     // userAward($uid,'zhuandj1',3,$paynums);
                     //更新会员等级 只要积分有变化就调用
-                    formatLevel($trid,$minepwd['use_grade'],$minepwd['is_degraded']);
+                   // formatLevel($trid,$minepwd['use_grade'],$minepwd['is_degraded']);
                     //那么收款方获得百分之八十余额 百分之20积分
                     $dataTurn=[
                         'cangku_num'=>['exp','cangku_num +'.$eper],
@@ -1236,7 +1236,7 @@ class IndexController extends CommonController
                     $res_pay = $Model->table('ysk_store')->where(array('uid' => $uid))->save($datapay);//转出的人+80%银
                     $sqls_a = $Model->getLastSql(); //sql语句
                     crateRecord($uid,$sqls_a,1,"转出方金额减少操作"); //1表示转账减少金额
-                    formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+                    //formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
                     //添加释放记录
                     userAward($uid,'zhuandj1',3,$paynums);
 
@@ -1247,7 +1247,7 @@ class IndexController extends CommonController
                     crateRecord($trid,$sqls_b,2,"收款方余额增加80%操作"); //2表示收款方余额增加
                     //   $url = $_SERVER['SERVER_NAME'].":8082?type=publish&content=收到转账金额:+".$eper."积分:+".$tper."&to=".$trid;
                     //   $this->carriedApi($url);
-                    formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
+                   // formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
 
                     $pay_ny = M('store')->where(array('uid' => $uid))->getfield('fengmi_num');
                     $get_ny = M('store')->where(array('uid' => $trid))->getfield('fengmi_num');
@@ -1363,7 +1363,7 @@ class IndexController extends CommonController
             $datapay['cangku_num'] = array('exp', 'cangku_num - ' . $paynums);
             $datapay['fengmi_num'] = array('exp', 'fengmi_num + ' . $eper);
             $res_pay = M('store')->where(array('uid' => $uid))->save($datapay);//转出的人+80%银
-            formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+            //formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
 //            //添加释放记录
             userAward($uid,'zhuandj1',3,$paynums);
 
@@ -1371,7 +1371,7 @@ class IndexController extends CommonController
             $dataget['fengmi_num'] = array('exp', 'fengmi_num + ' . $tper);
             $res_get = M('store')->where(array('uid' => $trid))->save($dataget);//转入的人+20%银
             $trUserInfo = M('user')->where(array('userid' => $trid))->Field('use_grade,is_degraded')->find();
-            formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
+            //formatLevel($trid,$trUserInfo['use_grade'],$trUserInfo['is_degraded']);
 
             $pay_ny = M('store')->where(array('uid' => $uid))->getfield('fengmi_num');
             $get_ny = M('store')->where(array('uid' => $trid))->getfield('fengmi_num');
@@ -1824,7 +1824,7 @@ class IndexController extends CommonController
                 $this->Addreas15($uid,$dhnums);//产生区块奖和VIP奖
 
                 //更新用户等级
-                formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
+               // formatLevel($uid,$minepwd['use_grade'],$minepwd['is_degraded']);
 //                $uChanlev = D('Home/index');
 //                $uChanlev->Checklevel($uid);
                 ajaxReturn(L('yedhjfcg'), 1, '/Index/exehange');

@@ -697,7 +697,7 @@ function formatLevelbaks($uid,$useGrade,$isDegraded){
  * @param $uid
  * @param $level
  */
-function uUserLevel($uid,$level){
+/*function uUserLevel($uid,$level){
     $userModel = M('user');
     $configModel = D('config');
     $where = 'userid = '.$uid;
@@ -716,7 +716,7 @@ function uUserLevel($uid,$level){
             $userModel->where($where)->setField('reward_superior_status',2);
         }
     }
-}
+}*/
 
 
 //会员等级
@@ -727,7 +727,7 @@ function uUserLevel($uid,$level){
  * @param $isDegraded  是否忽略降级操作
  *
  */
-function formatLevel($uid,$useGrade,$isDegraded){
+/*function formatLevel($uid,$useGrade,$isDegraded){
     $user=D('User');
     $store = M('store');
     $where['uid'] = array('EQ',$uid);
@@ -796,9 +796,9 @@ function formatLevel($uid,$useGrade,$isDegraded){
             uUserLevel($uid,$userLevel);
         }
     }
-}
+}*/
 
-function uUserLevelbakS($uid,$level){
+/*function uUserLevelbakS($uid,$level){
     $userModel = M('user');
     $configModel = D('config');
     $where = 'userid = '.$uid;
@@ -818,7 +818,7 @@ function uUserLevelbakS($uid,$level){
             $userModel->where($where)->setField('reward_superior_status',2);
         }
     }
-}
+}*/
 
 /**
  * 会员积分、余额变化记录

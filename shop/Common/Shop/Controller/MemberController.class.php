@@ -1584,7 +1584,7 @@ class MemberController extends CommonController
                 addAccountRecords($uid,$datas['uid'],$jifeng,32,$account['fengmi_num'],'scores');
                 //添加余额记录
                 addAccountRecords($uid,$datas['uid'],$moneys,32,$account['cangku_num'],'money');
-                formatLevel($uid,$sellInfo['use_grade'],$sellInfo['is_degraded']);
+               // formatLevel($uid,$sellInfo['use_grade'],$sellInfo['is_degraded']);
             }
 
 			if($res){

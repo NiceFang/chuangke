@@ -440,7 +440,7 @@ class PayController extends CommonController
             $res_inc =  M('store')->where(array('uid'=>$uid))->setInc('fengmi_num',$yin_jifen);
 			//查询用户等级（爱心志愿者、爱心达人、爱心大使）
             $userInfo = M('user')->where(array('userid' => $uid))->Field('use_grade,is_degraded')->find();
-            formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
+            //formatLevel($uid,$userInfo['use_grade'],$userInfo['is_degraded']);
             //  写入记录
 //            $traInfo = M('tranmoney');
 //            $data['pay_id'] = $uid;
