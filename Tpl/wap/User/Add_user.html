@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$title}</title>
+
+
+<!-- 新的的样式 -->
+<link rel="stylesheet" href="__WCSS__/base.css">
+<link rel="stylesheet" href="__WCSS__/Setuname.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/accountManage.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<script src="__WJS__/mui.min.js"></script>
+<script src="__WJS__/rem.js"></script>
+
+
+
+<body class="bg96 ">
+
+    <!-- 新的代码 -->
+    <!-- 头部 -->
+    <div class="hear">
+        <a href="{:U('User/Personal')}"><img src="__WIMG__/user/user_jiantouzuo.png" alt=""></a>
+        <eq name="type" value="1">
+            {$Think.lang.uplogpwd}
+
+        <else/>
+            <div>{$Think.lang.帮助注册}</div>
+        </eq>
+    </div>
+
+    <!--
+    <form method="post" action="{:U('User/Add_user')}" id="form-admin-add" enctype="multipart/form-data">
+    <div class="user_info">
+       &lt;!&ndash; <form class="mui-input-group">&ndash;&gt;
+            <div class="mui-input-row user_info_lis">
+                <input class=" pwd_input password"  type="text" id="ReferralCode" placeholder="{$Think.lang.qsrndtjm}" value="" disabled="none">
+            </div>
+            <div class="mui-input-row user_info_lis">
+                <input class="pwd_input passwordrepat" type="text" id="mobile" name="mobile" placeholder="{$Think.lang.qsrsjsjhm}" value="">
+            </div>
+
+            <div class="mui-input-row user_info_lis">
+                <input class="pwd_input passwordrepat" type="text" id="code" name="code" placeholder="{$Think.lang.qsrysjzm}" value="">
+            </div>
+
+            <div class="mui-input-row user_info_lis">
+                <input class="pwd_input passwordrepat" type="text" id="realname"  name ="realname" placeholder="{$Think.lang.qsrsjxm}" value="">
+            </div>
+
+            <div class="mui-input-row user_info_lis">
+                <input type="password" class="pwd_input passwordrepat" name="password" id="password" placeholder="{$Think.lang.qsrsjdlcsmm}" value="">
+            </div>
+
+            <div class="mui-input-row user_info_lis">
+                <input type="password" class="pwd_input passwordrepat"  name="cpassword" id="cpassword" placeholder="{$Think.lang.qqrmm}" value="">
+            </div>
+
+            <div class="mui-input-row user_info_lis">
+                &lt;!&ndash;{$Think.lang.scwxewm}&ndash;&gt;
+
+                <input type="file" id="wexin" name="weixin" class="weixin" placeholder="" value="">
+            </div>
+            <input type="hidden" value="{$type}" class="pwdtype">
+      &lt;!&ndash;  </form>&ndash;&gt;
+    </div>
+
+    &lt;!&ndash; 保存按钮 &ndash;&gt;
+    <div class=" name pwd_save ljzf_but">
+
+        <button type="submit"> {$Think.lang.termine}</button>
+    </div
+
+    </form>-->
+
+    <div class="info_main">
+        <form method="post" action="{:U('User/Add_Action')}" class="form-horizontal" id="form-admin-add" enctype="multipart/form-data">
+            <div class="line">
+                <div class="title">
+                    <img src="__PUBLIC__/Theme3/images/uname.png" alt="">
+                </div>
+                <div class="info">
+                    <div class="inner">
+                        <input type="text" id="ReferralCode" placeholder="请输入你的推荐码:" value="<{$tuijianma}>" disabled="none">
+                    </div>
+                </div>
+            </div>
+            <div class="info_main">
+
+                <div class="line">
+                    <div class="title">
+                        <img src="__PUBLIC__/Theme3/images/uname.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="inner">
+                            <input type="text" id="mobile" name="mobile" placeholder="请输入商家手机号码" value="">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="line">
+                    <div class="title">
+                        <img src="__PUBLIC__/Theme3/images/uname.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="inner">
+                            <input type="text" id="realname"  name ="realname" placeholder="请输入商家姓名" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="title">
+                        <img src="__PUBLIC__/Theme3/images/upsw.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="inner">
+                            <input type="password" name="password" id="password" placeholder="请输入商家登录初始密码" value="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line">
+                    <div class="title">
+                        <img src="__PUBLIC__/Theme3/images/upsw.png" alt="">
+                    </div>
+                    <div class="info">
+                        <div class="inner">
+                            <input type="password" name="cpassword" id="cpassword" placeholder="请确认密码" value="">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="line" style="height:80px;">
+                    <div class="title">
+                        <img src="__PUBLIC__/Theme3/images/uname.png" alt="">
+                    </div>
+                    <div class="mui-input-group">
+                        <div class="mui-input-row user_info_lis">
+                            上传微信二维码：
+                            <input type="file" id="wexin" name="weixin" class="mui-input-row user_info_lis" alt="点击添加图片" title="点击添加图片" src="__PUBLIC__/Theme3/images/uname.png">
+                            <input type="hidden" id="img" name="img" value="{$data.img}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" name pwd_save" id="register">提交</div>
+        </form>
+
+        <script language="javascript">
+
+            $("#register").click(function(){
+
+
+
+                $("#form-admin-add").submit();
+                aler(123);
+            });
+
+            function setError(message){
+
+                $(document.body).append('<div id="txt_tel-error" class="error" >'+message+'</div>');
+
+                setTimeout(function(){
+                    $("#txt_tel-error").css("display","none");
+                },2000)
+            }
+
+        </script>
+
+        <!--错误提示-->
+        <input type="hidden" id="tjmbnwk" value="{$Think.lang.tjmbnwk}">
+        <input type="hidden" id="sjhbnwk" value="{$Think.lang.sjhbnwk}">
+        <input type="hidden" id="sjxmbnwk" value="{$Think.lang.sjxmbnwk}">
+        <input type="hidden" id="sjcsmmbnwk" value="{$Think.lang.sjcsmmbnwk}">
+        <input type="hidden" id="qrmmbnwk" value="{$Think.lang.qrmmbnwk}">
+        <input type="hidden" id="wxewmbnwk" value="{$Think.lang.wxewmbnwk}">
+
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+    // input 的值不为空添加按钮样式
+    $("form input").blur(function () {
+        if (($("input[type=password]").val() != "")) {
+            $(".pwd_save").addClass("active");
+        }
+    })
+
+</script>
+
+<script>
+    $('.ljzf_but').click(function () {
+
+        var tjmbnwk = $('#tjmbnwk').val();
+        var sjhbnwk = $('#sjhbnwk').val();
+        var sjxmbnwk = $('#sjxmbnwk').val();
+
+        var sjcsmmbnwk = $('#sjcsmmbnwk').val();
+        var qrmmbnwk = $('#qrmmbnwk').val();
+        var wxewmbnwk = $('#wxewmbnwk').val();
+
+        var mobile = $('#mobile').val();
+        var realname = $('#realname').val();
+        var password = $('#password').val();
+        var cpassword = $('#cpassword').val();
+        var wexin = $('#wexin').val();
+
+
+/*        var reg = /^\d{9,}$/;
+        if (mobile == '') {
+            msg_alert(sjhbnwk);
+            return false;
+        }
+        if(!reg.test(mobile)){
+            msg_alert(sjhbnwk);
+            return false;
+        }
+
+        if (realname == '') {
+            msg_alert(sjxmbnwk);
+            return;
+        }
+        if (password == 2) {
+            //交易密码必须为6位纯数字
+            var reg = /^\d{6}\b/;
+            if (!reg.test(pwdrpt)) {
+                msg_alert(sjcsmmbnwk);
+                return false;
+            }
+        }
+        if (cpassword == '') {
+            msg_alert(qrmmbnwk);
+            return false;
+        }
+        if (wexin == '') {
+            msg_alert(wxewmbnwk);
+            return false;
+        }*/
+
+
+
+      /*  $.ajax({
+            url: '/User/Add_user',
+            type: 'post',
+            data: {
+                'mobile': mobile,
+                'realname': realname,
+                'password': password,
+                'cpassword' : cpassword,
+                'wexin' : wexin
+            },
+            datatype: 'json',
+            success: function (mes) {
+                if (mes.status == 1) {
+                    msg_alert(mes.message, mes.url);
+                } else {
+                    msg_alert(mes.message);
+                }
+            }
+        })*/
+
+        //$("#form-admin-add").submit();
+
+
+    });
+
+
+
+
+</script>

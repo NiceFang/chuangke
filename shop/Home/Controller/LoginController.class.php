@@ -283,15 +283,28 @@ class LoginController extends Controller
         if (IS_AJAX) {
             $account = I('account');
             $password = I('password');
+
+            $user_info = D('user')->where(array('account'=>$account))->find(); //查找用户
+//            dump($password);
+//            dump($user_info);
+//            var_dump(D('user')->pwdMd5($password, $user_info['login_salt']));
+
+
             // 验证用户名密码是否正确
             $user_object = D('Home/User');
             $user_info   = $user_object->login($account, $password);
+//            dump($user_info);
             if (!$user_info) {
                 ajaxReturn($user_object->getError(),0);
             }
             session('account',$account);
+            $users = M('user');
 
+            $rs = $users->where(array('account'=>$account))->find();
 
+            session("nvip_member_id",$rs["userid"]);
+            session("nvip_member_tuijianma",$rs["mobile"]);
+            session("nvip_nvip_member_User",$rs["mobile"]);
 
              $user_info   = $user_object->Quicklogin($account);
             if (!$user_info) {
@@ -531,6 +544,7 @@ public function check_verify($code, $id = '')
         $this->ajaxReturn(Loginmsg($mobile));
     }
     public function sendCode(){
+
         $mobile=I('post.mobile');
         $sendType = I('post.l');
         $imgCode = I('post.verify');
@@ -599,8 +613,8 @@ public function check_verify($code, $id = '')
 //        ajaxReturn($res);
         if(empty($res)){
             $user=D('User');
+
             $result=sendMsg($mobile,$sendType);
-            // var_dump($result);
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
@@ -614,7 +628,6 @@ public function check_verify($code, $id = '')
             }else{
                 $user=D('User');
                 $result=sendMsg($mobile,$sendType);
-//                var_dump($result);
                 if($result['status']==1){
 
                     $datas['id']=$res['id'];

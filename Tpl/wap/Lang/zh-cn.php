@@ -36,6 +36,11 @@
     'bankcard'=>'账号管理',
     'share'=>'分享',
     'loginpwd'=>'登录密码',
+
+    'register'=>'帮助注册',
+    'upgrade'=>'申请升级',
+    'regrade'=>'审核升级',
+
     'paypwd'=>'支付密码',
     'csave'=>'点击修改',
     'notice'=>'公告',

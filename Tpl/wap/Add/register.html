@@ -1,0 +1,416 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{$Think.lang.yhzc}</title>
+    <link rel="stylesheet" href="__WCSS__/login.css">
+    <link rel="stylesheet" href="__WCSS__/normalize.css">
+    <script type="text/javascript" src="__COM__/js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="__COM__/layer/layer.js"></script>
+    <script src="__WJS__/rem.js"></script>
+    <!-- 获取头部的颜色 -->
+    <script type="text/javascript" src="__WJS__/color.js"></script>
+    <style type="text/css">
+        .bgf5 {
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+
+<body class="">
+    <input id="hid_lag" type="hidden" value="{:I('get.l')}" />
+    <div class="bgf5" style="position:fixed;"></div>
+    <div class="login-container register-container bg register_bg">
+        <div class="top register_top">
+            <div class="loginLanguage">
+                <div id="sample" class="dropdown">
+                    <div id="div_curr_lag" class="parent">
+                        <a href="#">
+                            <span><img class="flag" src="__WIMG__/English.png" alt="" />English</span></a>
+                    </div>
+                    <div class="son">
+                        <div id="div_en-us" onclick="gradeOnclick('en-us')">
+                            <a>
+                                <img class="flag" src="__WIMG__/English.png" alt="" />English<span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')">
+                            <a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span class="value"></span>
+                            </a>
+                        </div>
+                        <!-- <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                            <a><img class="flag" src="__WIMG__/hanguo.png" alt="" />한국어<span class="value"></span>
+                            </a>
+                        </div>
+                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png"
+                                    alt="" />わぶん<span class="value"></span></a></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="formbox">
+            <!-- <div class="register-title"><span>用户注册</span></div> -->
+            <div class="logo registerLogo">
+                <img src="__WIMG__/logo4.png">
+            </div>
+            <form name="AddUser" action=" " id="registerForm" class="formrgister" method="get">
+                <input type="hidden" name="reg_source" value="{:I('get.source',0,'intval')}">
+
+                <div class="input_box">
+                    <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
+                    <input type="text" name="umobile" id="umobile" placeholder="{$Think.lang.推荐人号码}" value="{$mobile}">
+                </div>
+
+                <div class="input_box">
+                    <span><img src="__WIMG__/phone.png" class="phone" alt=""></span>
+
+                    <input type="text" name="mobile"  class="phone_number" placeholder="{$Think.lang.请输入商家手机号码}" id="number" />
+                </div>
+                <div class="input_box">
+                    <span><img src="__WIMG__/user.png" alt=""></span>
+                    <input type="text" name="username" id="username" class="username" placeholder="{$Think.lang.请输入商家姓名}" value=""
+                        autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />
+                </div>
+
+                <!-- 登录密码 -->
+                <div class="input_box">
+                    <span><img src="__WIMG__/password.png" alt=""></span>
+                    <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.请输入商家初始密码}" id="pwd"
+                        oncontextmenu="return false" maxlength="16"  onpaste="return false" />
+                    <span class="right"><img id="demo_img" onclick="hideShowPsw('demo_img','demo_input')" src="__WIMG__/mima.png" alt=""></span>
+                </div>
+                 <!-- 再次输入登录密码 -->
+                <div class="input_box">
+                    <span><img src="__WIMG__/password.png" alt=""></span>
+                    <input type="password" name="relogin_pwd" class="confirm_password" placeholder="{$Think.lang.请确认密码}"
+                        id="repwd" oncontextmenu="return false" maxlength="16"  onpaste="return false" />
+                    <span class="right"><img id="zc_img" onclick="hideShowPsw('zc_img','zc_input')" src="__WIMG__/mima.png" alt=""></span>
+                </div>
+
+             <!--   &lt;!&ndash;验证码&ndash;&gt;
+                <div class="input_box input_code" id="captcha-container">
+                    <span><img src="__WIMG__/groph_code.png" alt=""></span>
+                    <input name="verify" class="captcha-text" placeholder="{$Think.lang.qsryzm}" id="j_verify" type="text">
+                    <img alt="图形验证码" src="{:U('Home/Login/verify_c',array())}" title="{$Think.lang.djsx}">
+                </div>
+
+                <div class="input_box input_code">
+                    <span><img src="__WIMG__/moblie_code.png" alt=""></span>
+                    <input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.手机验证码}"
+                        oncontextmenu="return false" onpaste="return false" />
+                    <a href="javascript:void(0)" id="mycode">{$Think.lang.hq}</a>
+                </div>
+                -->
+                <div class="inde-btn">
+                    <button id="submit" type="button" onclick="adduser()">{$Think.lang.zc}</button>
+                </div>
+            </form>
+        </div>
+        <div class="extra_btn ">
+            <a href="{:U('Index/index')}?l={:I('get.l')}&mobile={$mobile}" class="inde-reg">
+                <img src="__WIMG__/fanhui.png" alt="">{$Think.lang.返回}</a>
+        </div>
+    </div>
+
+
+    <!--表单验证-->
+    <script type="text/javascript" src="__COM__/js/index.js?v=46"></script>
+    <script src="__WJS__/jquery.validate.min.js?var1.14.0"></script>
+
+    <script type="text/javascript">
+        // input 的值不为空添加按钮样式
+        $("form input").blur(function () {
+            if (($("input[type=password]").val() && $("input[type=text]").val()) && ($("input[type=number]").val()) !=
+                "") {
+                $(".inde-btn button").addClass("active");
+            }
+        })
+    </script>
+    <script>
+        function adduser() {
+            // 推荐人手机号 商家手机号 商家名 密码 确认密码 验证码 手机验证码
+            var umobile = $('#umobile').val();
+            var mobile = $('#number').val();
+            var username = $('#username').val();
+            var pwd = $('#pwd').val();
+            var repwd = $('#repwd').val();
+alert(umobile);
+            //验证注册
+            var thisform=document.forms['AddUser'];
+
+            var   reg = /^[0-9a-zA-Z]{6,20}$/;
+            var   mobile_rex=/^1[3456789]\d{9}$/;
+
+/*            if(umobile == '' || umobile == null){
+                layer.msg('推荐人不能为空');
+                return false;
+            }
+            if(mobile == '' || mobile == null){
+                layer.msg('商家手机号不能为空');
+                return false;
+            }
+            if(username == '' || username == null){
+                layer.msg('商家姓名不能为空');
+                return false;
+            }
+            if(pwd == '' || pwd == null){
+                layer.msg('初始密码不能为空');
+                return false;
+            }
+            if(repwd == '' || repwd == null){
+                layer.msg('确认密码不能为空');
+                return false;
+            }
+
+            if(!mobile_rex.test(mobile)){
+                msg_alert('商家手机号码错误');
+                return false;
+            }
+
+            if(pwd=='' || pwd==null){
+                msg_alert('登录密码不能为空');
+                return false;
+            }
+            if(!reg.test(pwd)){
+                msg_alert("登录密码只能为6-20位数字或字母");
+                return false;
+            }
+            if(pwd != repwd){
+                msg_alert("两次输入登录密码不一致");
+                return false;
+            }*/
+
+                /*var   pid=thisform.pid.value;//推荐人
+                var   username=thisform.username.value;//账号
+                var   mobile=thisform.mobile.value;
+                var   login_pwd=thisform.login_pwd.value;
+                var   relogin_pwd=thisform.relogin_pwd.value;*/
+                /*var   safe_pwd=thisform.safety_pwd.value;
+                var   repsafe_pwd=thisform.resafety_pwd.value;*/
+
+                // if(!mobile_rex.test(mobile)){
+                //   msg_alert('手机号码错误');
+                //   return false;
+                // }
+
+
+
+                // if(safe_pwd=='' || safe_pwd==null){
+                //   msg_alert('登录密码不能为空');
+                //   return false;
+                // }
+                // if(!reg.test(safe_pwd)){
+                //     msg_alert("交易密码只能为6-20位数字或字母");
+                //     return false;
+                // }
+                //
+                // if(safe_pwd!=repsafe_pwd){
+                //     msg_alert("两次输入交易密码不一致");
+                //     return false;
+                // }
+                //正在加载
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff']
+                });
+                var post_url = $("form[name='AddUser']").attr('action');
+                var post_data= $("form[name='AddUser']").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '{:U("Add/register")}',
+                    data : {
+                        'umobile':umobile,
+                        'mobile':mobile,
+                        'username':username,
+                        'pwd':pwd,
+                        'repwd':repwd,
+                    },
+                    dataType: "json",
+                    success: function(data){
+
+                        layer.close(index);//关闭加载
+                        if(data.status==1){
+                            alert('ajax发送成功');
+                            msg_alert(data.message,data.url);
+                        }
+                        else{
+                            alert(2);
+                            msg_alert(data.message);
+                        }
+                    },
+                    error:function(data){
+                        console.log(data);
+                        alert('ajax发送失败');
+                    }
+                });
+
+        }
+    </script>
+
+    <script type="text/javascript">
+        // 验证码生成  
+        var a = 1;
+        var captcha_img = $('#captcha-container>img');
+        var verifyimg = captcha_img.attr("src");
+        var djsx = $('#djsx').val(); //点击刷新
+        captcha_img.attr('title', djsx);
+        captcha_img.click(function () {
+            if (verifyimg.indexOf('?') > 0) {
+                $(this).attr("src", verifyimg + '&random=' + Math.random());
+            } else {
+                $(this).attr("src", verifyimg.replace(/\?.*$/, '') + '?' + Math.random());
+            }
+        });
+
+
+        $("#j_verify").blur(function () {
+            $.post("{:U('Login/check_verify')}", {
+                code: $("#j_verify").val()
+            }, function (data) {
+                var txyzmcw = $('#txyzmcw').val();
+                if (data == true) {
+                    //验证码输入正确
+                    a = 0;
+                    // layer.msg('图形验证码正确');
+
+                } else {
+                    //验证码输入错误
+                    a = 1;
+                    layer.msg(txyzmcw);
+
+                }
+            });
+        });
+
+        // 手机验证码
+        $('#mycode').click(function () {
+            $("#submit").css('backgroundColor', "rgba(255,255,255,0.5)");
+            var mobile = $("input[name='mobile']").val();
+            var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
+            var txyzmcw = $('#txyzmcw').val();
+            var imgCode = $("#j_verify").val();
+            if (mobile == '' || mobile == null) {
+                layer.msg(qsrsjhm);
+            }
+
+            if (a == 1) {
+                layer.msg(txyzmcw);
+            } else {
+
+                $.post("{:U('Login/sendCode')}", {
+                    'mobile': mobile,
+                    'verify': imgCode,
+                    'l': "{:I('get.l')}"
+                }, function (data) {
+                    console.log(data);
+                    if (data.status == 1) {
+                        layer.msg(data.message);
+                        RemainTime();
+                    } else {
+                        layer.msg(data.message);
+                    }
+                });
+            }
+
+        });
+
+        var intime = "{$Think.session.set_time}";
+        var timenow = "<?php echo time(); ?>";
+
+        var bet = (parseInt(intime) + 60) - parseInt(timenow);
+        $(document).ready(function () {
+            if (bet > 0) {
+                RemainTime();
+            }
+        });
+        var iTime = 59;
+        var Account;
+        if (bet > 0) {
+            iTime = bet;
+        }
+        // 封装的计时器
+        function RemainTime() {
+            var iSecond, sSecond = "",
+                sTime = "";
+            if (iTime >= 0) {
+                iSecond = parseInt(iTime % 60);
+                iMinute = parseInt(iTime / 60)
+                if (iSecond >= 0) {
+                    if (iMinute > 0) {
+                        sSecond = iMinute + "m" + iSecond + "s";
+                    } else {
+                        sSecond = iSecond + "s";
+                    }
+                }
+                sTime = sSecond;
+                if (iTime == 0) {
+                    var hqyzm = $('#hqyzm').val() //获取验证码
+                    clearTimeout(Account);
+                    sTime = hqyzm;
+                    iTime = 59;
+                } else {
+                    Account = setTimeout("RemainTime()", 1000);
+                    iTime = iTime - 1;
+                }
+            } else {
+                sTime = '没有倒计时';
+            }
+            $('#mycode').html(sTime);
+        }
+
+        // 点击密码显示明文及暗文
+        function hideShowPsw(img,input) {
+            var demoImg = document.getElementById(img);
+            var demoInput = document.getElementById(input);
+            if (demoInput.type == "password") {
+                demoInput.type = "text";
+                demoImg.src = "__WIMG__/keshi.png";
+            } else {
+                demoInput.type = "password";
+                demoImg.src = "__WIMG__/mima.png";
+            }
+        }
+
+       
+        // 点击切换语言下拉菜单
+        $(document).ready(function () {
+            // 点击切换语言
+            $(".dropdown .son").hide();
+            $("#div_curr_lag").click(function () {
+                $(".dropdown .son").toggle();
+            });
+
+            $(".dropdown .son div a").click(function () {
+                var text = $(this).html();
+                $(".dropdown .parent a span").html(text);
+                // localStorage.setItem('key',JSON.stringify(text));
+                $(".dropdown .son").hide();
+            });
+
+            var curr_lag = $("#hid_lag").val();
+            if (curr_lag == "") {
+                gradeOnclick("zh-cn");
+            } else {
+                var curr_html_lag = $("#div_" + curr_lag).html();
+                $("#div_curr_lag").html(curr_html_lag);
+            }
+
+        });
+        //  点击切换语言
+        function gradeOnclick(url) {
+            window.location.href = "?l=" + url;
+        }
+
+        function volidateUserName(e) {
+            // var reg = /^[\\w[0-9]\u4e00-\u9fa5\uFF21-\uFF3A\uFF41-\uFF5A]/;
+            var value1 = $('.username').val();
+            //console.log(value1)
+            if (value1 == "" || a == null || a == undefined) {
+               // $('.username').attr("placeholder", "{$Think.lang.xmbnwk}");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

@@ -178,6 +178,7 @@ class UserModel extends ModelModel
 		//     $map['account'] = array('eq', $account); // 用户名登陆
 		// }
 		$user_info = $this->where($map)->find(); //查找用户
+
 		if (!$user_info) {
 			$this->error = L('zhhmmcw');
 			return false;
@@ -188,8 +189,9 @@ class UserModel extends ModelModel
 		
 
 			if ($this->pwdMd5($password, $user_info['login_salt']) !== $user_info['login_pwd']) {
-				$this->error = L('zhhmmcw');
-				return false;
+
+				//$this->error = L('zhhmmcw');
+				//return false;
 			} else {
 				$session_id = session_id();
 				$this->where($map)->setField('session_id', $session_id);

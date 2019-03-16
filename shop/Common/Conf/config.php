@@ -61,7 +61,7 @@ return array(
 // 测试服
     'DB_TYPE' => 'mysql', // 数据库类型
     'DB_HOST' => '47.244.112.18', // 服务器地址
-    'DB_NAME' => 'dht', // 数据库名
+    'DB_NAME' => 'creator', // 数据库名
     'DB_USER' => 'root', // 用户名
     'DB_PWD' => 'V%I#QodimTF6fEv7', // 密码
     'DB_PORT' => '3306', // 端口

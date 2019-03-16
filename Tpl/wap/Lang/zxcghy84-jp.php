@@ -37,6 +37,11 @@ return array(
     'bankcard'=>'バンクカード',
     'share'=>'わける',
     'loginpwd'=>'パスワードを登録する',
+
+    'register'=>'登録を助ける',
+    'upgrade'=>'進級を申請する',
+    'regrade'=>'進級を審査する',
+
     'paypwd'=>'パスワードを支払う',
     'csave'=>'修正をクリックする',
     'notice'=>'こうこく',

@@ -176,6 +176,7 @@
 					<img src="__IMGHEAD__/{$uinfo['img_head']}" id="user_head" alt="">
 					 <input type="file" id="head_file" onchange="imgChange()" name="header_img">
 				</div>
+
 				<div class="user_info_right fl">
 					<p class="name">{$Think.lang.usename}:{$uinfo['username']}</p>
 					<div>
@@ -183,6 +184,7 @@
 						<p class="grade">{$Think.lang.rank}：{$uinfo['use_grade_name']}</p>
 					</div>
 				</div>
+
 			</div>
 		</div>
 		//测试表单
@@ -204,6 +206,7 @@
 					</div>
 				</a>
 			</div>
+
 			<div class="Balance">
 				<a class="balance" href="###">
 					<p>{$Think.lang.jifen}</p>
@@ -217,6 +220,7 @@
 					</div>
 				</a>
 			</div>
+
 		</div>
 	</div>
 	<!-- <div class="red_package">
@@ -267,6 +271,34 @@
 				</a>
 			</li>
 		</ul>
+		<!-- 帮助注册  审核升级 申请升级-->
+		<ul>
+			<li><a href="{:U('User/Add_user')}">
+				<div>
+					<img src="__WIMG__/user/denglvmima.png" alt="">
+					<p>{$Think.lang.register}</p>
+				</div>
+				<img src="__WIMG__/jiantouyou.png" alt="">
+			</a>
+			</li>
+			<li><a href="{:U('User/Setpwd',array('type'=>2))}">
+				<div>
+					<img src="__WIMG__/user/zhifumima.png" alt="">
+					<p>{$Think.lang.upgrade}</p>
+				</div>
+				<img src="__WIMG__/jiantouyou.png" alt="">
+			</a>
+			</li>
+			<li><a href="{:U('User/Setpwd',array('type'=>2))}">
+				<div>
+					<img src="__WIMG__/user/zhifumima.png" alt="">
+					<p>{$Think.lang.regrade}</p>
+				</div>
+				<img src="__WIMG__/jiantouyou.png" alt="">
+			</a>
+			</li>
+		</ul>
+
 		<!-- <ul>
 			<li><a href="{:U('Shop/Home/index')}" class="guojiweikaifang">
 					<div>

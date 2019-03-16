@@ -1,0 +1,295 @@
+@charset "utf-8";
+body {
+    font-family: 'Microsoft YaHei'; /*微软雅黑*/
+}
+
+body.bg {
+    font-family: 'Microsoft YaHei'; /*微软雅黑*/
+    background: url(../images/background.jpg) no-repeat center;
+}
+
+li.treeview {
+    margin: 12px 0;
+    font-size: 16px;
+    font-family: 'Microsoft YaHei';
+}
+
+li.treeview2 {
+    font-size: 12px;
+    padding: 6px 0;
+}
+
+span.logo-lg {
+    font-family: 'Microsoft YaHei';
+}
+
+.f10 {
+    clear: both;
+    height: 10px;
+    overflow: hidden;
+}
+
+input.seccode {
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+}
+
+footer.main-footer {
+    font-size: 12px;
+}
+
+.callout {
+    margin: 0;
+}
+
+label.control-label {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    margin-top: 0.4em;
+    display: none;
+}
+
+label.control-label span {
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.no_info {
+    padding: 20px;
+    text-align: center;
+    color: #F60
+}
+
+.nowdelete {
+    cursor: pointer;
+    color: #F00;
+
+}
+
+#tree {
+    padding-left: 2em;
+}
+
+.node {
+    font-size: 1em;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.node .title {
+    height: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+
+.node .title div {
+    width: 1.5em;
+    height: 1.5em;
+    float: left;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.node .title span {
+    float: left;
+    height: 1.5em;
+    background: url(../images/user.gif) 0.2em 0.2em no-repeat;
+    padding-left: 1.5em;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+.have_0 {
+    background: url(../images/ico_1.gif) no-repeat;
+}
+
+.have_1 {
+    background: url(../images/ico_6.gif) no-repeat;
+}
+
+.have_2 {
+    background: url(../images/ico_2.gif) no-repeat;
+}
+
+.have_display_0 {
+    background: url(../images/ico_d_1.gif) no-repeat;
+}
+
+.have_display_1 {
+    background: url(../images/ico_d_6.gif) no-repeat;
+}
+
+.have_display_2 {
+    background: url(../images/ico_d_2.gif) no-repeat;
+}
+
+.no_0 {
+    /*background:url(Images/ico_1.gif) no-repeat;*/
+}
+
+.no_1 {
+    background: url(../images/ico_5.gif) no-repeat;
+}
+
+.no_2 {
+    background: url(../images/ico_4.gif) no-repeat;
+}
+
+.node .sub,
+.node .sub_0 {
+    padding-left: 1em;
+}
+
+.node .sub {
+    background: url(../images/ico_3.gif) repeat-y;
+}
+
+.click {
+    cursor: pointer;
+}
+
+.yzmimg {
+    float: left;
+    margin-left: 8px;
+    width: 92px;
+    height: 33px;
+}
+
+.margin5 {
+    margin: 10px 8.5px;
+}
+
+#treeform tr {
+    line-height: normal;
+    height: auto;
+    clear: none;
+    border: 0;
+}
+
+#treeform td {
+    border-bottom: 0;
+}
+
+table.t_info {
+    width: 135px;
+    background: #006600;
+    border-collapse: collapse;
+    border: 1px solid #006600;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+table.t_info tr {
+    border: 0;
+}
+
+table.t_info th {
+    color: #FFF;
+    font-size: 12px;
+    text-align: center;
+    height: 28px;
+    line-height: 28px;
+    border-top: 0;
+    border: 1px solid #006600;
+    background: none;
+}
+
+table.t_info th a {
+    color: #FFF;
+}
+
+table.t_info ._span {
+    color: #F00;
+    cursor: pointer;
+}
+
+table.t_info ._span:hover {
+    text-decoration: underline;
+}
+
+table.t_info td {
+    height: 20px;
+    background: #FFFFFF;
+    text-align: center;
+    border: 1px solid #006600;
+    line-height: 20px;
+}
+
+table.info1 {
+    width: 175px;
+    background: #FEFF99;
+    border-collapse: collapse;
+    border: 1px solid #FEFF99;
+}
+
+table.info1 th {
+    border: 1px solid #FEFF99;
+}
+
+table.info1 td {
+    border: 1px solid #FEFF99;
+}
+
+table.info2 {
+    width: 175px;
+    background: #CDFFCC;
+    border-collapse: collapse;
+    border: 1px solid #CDFFCC;
+}
+
+table.info2 th {
+    border: 1px solid #CDFFCC;
+}
+
+table.info2 td {
+    border: 1px solid #CDFFCC;
+}
+
+table.info3 {
+    width: 175px;
+    background: #00FFFF;
+    border-collapse: collapse;
+    border: 1px solid #00FFFF;
+}
+
+table.info3 th {
+    border: 1px solid #00FFFF;
+}
+
+table.info3 td {
+    border: 1px solid #00FFFF;
+}
+
+table.info4 {
+    width: 175px;
+    background: #CCFE67;
+    border-collapse: collapse;
+    border: 1px solid #CCFE67;
+}
+
+table.info4 th {
+    border: 1px solid #CCFE67;
+}
+
+table.info4 td {
+    border: 1px solid #CCFE67;
+}
+
+table.info5 {
+    width: 175px;
+    background: #CCCCCC;
+    border-collapse: collapse;
+    border: 1px solid #CCCCCC;
+}
+
+table.info5 th {
+    border: 1px solid #CCCCCC;
+}
+
+table.info5 td {
+    border: 1px solid #CCCCCC;
+}

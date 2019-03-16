@@ -44,6 +44,11 @@
     'complins'=>'投诉建议',
     'edition'=>'版本',
     'about'=>'关于',
+
+    'register'=>'帮助注册',
+    'upgrade'=>'申请升级',
+    'regrade'=>'审核升级',
+
     'loginout'=>'退出登录',
     'pstores'=>'我的店铺',
     'morelang'=>'多语言',
@@ -361,6 +366,24 @@
     'qszxzfmm'=>'请设置新支付密码',
     'qrxdzfmm'=>'确认新的支付密码',
     'hqyzm'=>'获取验证码',
+
+//帮助注册 申请升级 审核升级
+    'qsrndtjm'=>'请输入你的推荐码',
+    'qsrsjsjhm'=>'请输入商家手机号码',
+    'qsrysjzm'=>'请输入验手机证码',
+    'qsrsjxm'=>'请输入商家姓名',
+    'qsrsjdlcsmm'=>'请输入商家登录初始密码',
+    'qqrmm'=>'请确认密码',
+    'scwxewm'=>'上传微信二维码',
+
+    'tjmbnwk'=>'推荐码不能为空哦',
+    'sjhbnwk'=>'手机号不能为空哦',
+    'sjxmbnwk'=>'商家姓名不能为空哦',
+    'sjcsmmbnwk'=>'商家初始密码不能为空哦',
+    'qrmmbnwk'=>'确认密码不能为空哦',
+    'wxewmbnwk'=>'微信二维码不能为空哦',
+
+
 //php文件中的错误提示
     'qtxxm'=>'请填写姓名',
     'ncxgcg'=>'昵称修改成功',

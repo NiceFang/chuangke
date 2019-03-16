@@ -89,7 +89,7 @@ function change_code(){
 }
 
 
-//用户注册
+/*//用户注册
 function adduser(){
       //验证注册
       var thisform=document.forms['AddUser'];
@@ -101,8 +101,8 @@ function adduser(){
       var   mobile=thisform.mobile.value;
       var   login_pwd=thisform.login_pwd.value;
       var   relogin_pwd=thisform.relogin_pwd.value;
-      /*var   safe_pwd=thisform.safety_pwd.value;
-      var   repsafe_pwd=thisform.resafety_pwd.value;*/
+      /!*var   safe_pwd=thisform.safety_pwd.value;
+      var   repsafe_pwd=thisform.resafety_pwd.value;*!/
     
       if(username=='' || username==null){
         msg_alert('姓名不能为空');
@@ -174,7 +174,7 @@ function adduser(){
               }      
             }     
       });
-}
+}*/
 
 
 //修改用户信息

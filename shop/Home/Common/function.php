@@ -402,6 +402,7 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
+
         }
 //        var_dump($res);die;
         if ($res == 0) {
@@ -1108,4 +1109,35 @@ function request_post($url = '', $param = '') {
     curl_close($ch);
 
     return $data;
+}
+
+// 申请升级
+function GetLevel($level){
+    if($level=='-1'){
+        return "普通会员";
+    }
+    switch($level){
+        case 9:
+            return "九星会员";
+        case 8:
+            return "八星会员";
+        case 7:
+            return "七星会员";
+        case 6:
+            return "六星会员";
+        case 5:
+            return "五星会员";
+        case 4:
+            return "四星会员";
+        case 3:
+            return "三星会员";
+        case 2:
+            return "二星会员";
+        case 1:
+            return "一星会员";
+        case 0:
+            return "普通会员";
+        default:
+            return "普通会员";
+    }
 }

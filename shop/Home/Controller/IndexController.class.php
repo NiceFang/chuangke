@@ -331,6 +331,7 @@ class IndexController extends CommonController
         ));
         $this->display('/Index/index');
     }
+
 //    public function index()
 //    {
 //        $userid = session('userid');

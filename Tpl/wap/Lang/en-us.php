@@ -37,6 +37,11 @@
     'share'=>'Share',
     'loginpwd'=>'Login Password',
     'paypwd'=>'Pay Password',
+
+    'register'=>'Help Register',
+    'upgrade'=>'Apply for Upgrade',
+    'regrade'=>'Review Upgrade',
+
     'csave'=>'Click to Change',
     'notice'=>'Bulletin',
     'myoder'=>'My Order',

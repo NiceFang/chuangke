@@ -1,0 +1,160 @@
+/* 首页 */
+/* 2017.7.18 谢沛豪 */
+
+/* 选择城市 */
+/*!
+ * BootstrapSelection v0.1.0 (https://coding.net/u/packy/p/bootstrap-chinese-region/git)
+ * Copyright 2015 packy <lpreterite@126.com>
+ * Licensed under MIT (https://coding.net/u/packy/p/bootstrap-chinese-region/git/blob/master/LICENSE)
+ */
+
+.bs-chinese-region input[readonly]{
+	cursor: pointer;
+}
+.bs-chinese-region .dropdown-menu{
+	padding-top:0;
+	padding-bottom:0;
+	width:100%;
+}
+.bs-chinese-region .nav-tabs{
+	background-color: #f5f5f5;
+	border-radius: 4px 4px 0 0;
+}
+.bs-chinese-region .nav-tabs>li>a{
+	border-top:0;
+}
+.bs-chinese-region .nav-tabs>li.active>a,.bs-chinese-region .nav-tabs>li.active>a:hover,.bs-chinese-region .nav-tabs>li.active>a:focus{
+	border-top:0;
+	border-right-color:#ddd;
+}
+.bs-chinese-region .nav-tabs>li:first-child.active>a{
+	border-left-color: transparent;
+}
+.bs-chinese-region .tab-content>div{
+	padding: 10px;
+	white-space: pre-wrap;
+}
+.bs-chinese-region .areas-item{
+	display: inline-block;
+	margin-bottom:3px;
+	padding: 2px 8px;
+}
+.bs-chinese-region .areas-item.current{
+	background: #337ab7;
+	color: #fff;
+	border-radius: 15px;
+}
+
+/**flat**/
+.bs-chinese-region.flat input,.bs-chinese-region.flat .dropdown-menu,.bs-chinese-region.flat .nav-tabs>li>a,.bs-chinese-region .nav-tabs{
+	border-radius: 0;
+}
+.bs-chinese-region.flat .nav-tabs>li>a{
+	margin-right: 0;
+}
+
+
+@media screen and (min-width: 768px) {
+	.bs-chinese-region .dropdown-menu{
+		min-width: 400px;
+	}
+}
+
+
+.content{margin-top: 40px;}
+.m-searchDiv{position: absolute;top: 10px;z-index: 99;left: 0;right: 0; background: rgba(255, 255, 255, 0.77);border-radius: 20px;width: 80%;margin: 0 auto;height: 35px;line-height: 25px;padding:0 15px 5px 15px;font-size: 14px;}
+.m-searchDiv .searchInput{margin-top: 4px;border: 0px;width: 60%;height: 25px;font-size: 14px;padding: 5px;background: rgba(255, 255, 255, 0);}
+.spanIcon{font-size: 11px;margin:1px 5px;position: absolute;left: 50%;top:5px;}
+.searchIcon{font-size: 16px}
+.m-searchDiv #address{width: 70%; overflow: hidden;text-overflow: ellipsis;font-size: 11px; background-color: rgba(255, 255, 255, 0.00);border:0px;float: left;padding: 0px;}
+.bs-chinese-region{width: 100%;}
+.shopList li img{width: 60px;height: 60px;border-radius: 50%;position: absolute;left: 18px;top:23px;}
+.shopList li{ margin: 5px 0px;position: relative;font-size: 13px;background: white;padding:20px 0px 20px 95px;}
+.shopList li p{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 73%;}
+.u-goshop{font-size: 12px; position: absolute;right: 10px;top: 19px;background: white;border: 1px solid #0abf0a;border-radius: 3px;color:#0abf0a;width: 60px;height: 28px;line-height: 28px;}
+.juli{position: absolute;top:47px;right: 11px;color: gray;}
+#wrapper{width:100%;height:100%;position:absolute;z-index:1;}
+#wrapper li{width: 100%;height: 100px;background: red; margin-bottom: 10px;}
+
+
+/* 左右滑动 */
+.block-slider{width:100%;overflow:hidden;}
+.block-slider ul{overflow-x:auto;padding:0;list-style:none;margin:0;}
+.block-slider ul li{background:white; float:left;text-align:center;padding:15px 0;position:relative;border-top: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6;}
+.block-slider ul li .object-name{display:block;text-align:center;font-size:14px;color:#282828;line-height:18px;}
+.iscroll{position:relative;width:100%;height:50px;-webkit-transform:translate3d(0,0,0)}
+.scroller{height:41px;position:absolute;left:0;z-index:0;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);-o-transform:translateZ(0);transform:translateZ(0);-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none;-o-text-size-adjust:none;text-size-adjust:none;}
+
+/* 2017.7.19
+谢沛豪 */
+/* 个人中心 */
+.center .user{text-align: left;padding: 10px 10px 5px 10px;}
+.center .user img{width: 70px;height: 70px;border-radius: 50%;border:1px solid white;position: absolute;left: 10px;top:65px;}
+.f-tac{text-align: center;}
+.center-header{background: #61e1ee;text-align: center;color: white;height: 39px;line-height: 39px;font-weight: bold;font-size: 16px;}
+.center .user p{color: white;font-size: 16px;margin-top: 10px;}
+.center-arrow{margin-top: 5px;}
+.content_head{
+	width: 100%;
+	height: 105px;
+	position: relative;
+	padding:30px 10px 0 10px;
+}
+.a:hover, a:focus{text-decoration: none;}
+.m-shiyongList{height: 101px;overflow: hidden;}
+.m-shiyongList li{width: 25%;text-align: center;float: left;margin-top: 20px;border-bottom: 1px solid #ededed;padding-bottom: 24px;}
+.m-shiyongList li .icon{width: 30px;height: 30px;}
+.m-shiyongList li p{font-size: 14px;margin:  7px 0 0;color: #666666;}
+.m-shiyongList li{position: relative;}
+
+.content_head_img{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: #fff;
+	float: left;
+}
+.content_head_font{
+	margin:0 0 0 10px;
+	float:left;
+}
+.content_head_fontT{
+	color:#fff;
+	font-size: 15px;
+}
+.content_head_fontM{
+	color: #fff;
+	font-size: 15px;
+}
+.content_head_right{
+	position: absolute;
+	bottom: 23px;
+	right: 10px;
+	color:#fff;
+	font-size: 12px;
+}
+.tuijian{bottom: 2px;}
+.u-set img{width: 40px;height: 40px;position: absolute;right: 10px;top: 10px;}
+.dengji{background: #59ceff;padding: 3px 5px;border-radius: 2px;}
+.chongzhi{font-size: 13px;background: rgba(0, 0, 0, 0.3); height: 25px;line-height: 25px;width: 55px;color: white;}
+.m-wrapYue{padding: 5px;text-align: center;color: #656565;box-shadow: 0px 2px 0px #e0e0e0;}
+.weui-flex__item .icon{width: 30px;height: 30px;}
+.weui-flex__item p{font-size: 14px;}
+.weui-flex__item{position: relative;}
+/*.num{position: absolute;top: 0px;right: 25px;background: red;width: 15px;height: 15px;line-height: 15px;text-align: center; border-radius: 50%;color:white;font-size: 12px;}*/
+.num{background: red;width: 15px;height: 15px; margin: 0 auto; line-height: 15px;text-align: center; border-radius: 50%;color:white;font-size: 12px;}
+
+/* 2017.7.20
+谢沛豪 */
+/* 优惠券 */
+.couponList li{background: #f8f8f8;padding: 10px 15px;border-radius: 2px;}
+.couponList{background: white;}
+.couponList li .m-coupon_part1{width: 75%;}
+.couponList li .m-coupon_part2{position: relative; width: 25%;height: 106px;line-height: 106px;border-left: 2px dashed #eaeaea}
+.couponyuan1{    top: 0px;    width: 20px;
+    height: 10px;
+    left: 0px;
+    border: 1px solid #e6e6e6;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom: 0;}

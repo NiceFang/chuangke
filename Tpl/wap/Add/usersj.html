@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link href="__PUBLIC__/Theme3/css/font-awesome.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+<meta name="format-detection" content="telephone=no">
+<script language="javascript" src="__PUBLIC__/Theme3/js/jquery-1.11.1.min.js"></script>
+<script language="javascript" src="__PUBLIC__/Theme3/js/jquery.gcjs.js"></script>
+<!--<link rel="stylesheet" type="text/css" href=".__PUBLIC__/Theme3/addons/sz_yi/template/mobile/default/static/css/style_red.css">-->
+
+
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/jquery-weui.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/weui.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/style.css">
+<!--new add start for style1 2016.09.09-->
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/font-awesome.min(1).css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/style1.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/main.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/iconfont.css">
+<!--new add end for style1-->
+<script>window.PointerEvent = undefined</script></head>
+<body>
+
+
+<title>申请升级</title>
+
+<style type="text/css">
+body {
+    font-family: Arial, Helvetica, Sans-Serif;
+    background-color: #fff;
+}
+
+/*通用*/
+/* common */
+.flex {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+/* 宽度随屏幕改变变化 */
+.flex-1 {
+    flex: 1;
+    -webkit-flex: 1;
+}
+
+/* 垂直 水平 居中 */
+.flex-center {
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+}
+/* 垂直 居中 */
+.flex-ver {
+    align-items: center;
+    -webkit-align-items: center;
+}
+.flex-col-ver{
+    justify-content: center;
+    -webkit-justify-content: center;
+}
+/* 换行 */
+.flex-wrap{
+    flex-wrap: wrap;
+    -moz-flex-wrap:wrap;
+    -webkit-flex-wrap: wrap;
+}
+.flex-reverse{
+    flex-direction:row-reverse;
+    -webkit-flex-direction:row-reverse;
+    -moz-flex-direction:row-reverse;
+}
+/* flex 容器（设置为flex）内子元素向两边顶齐平分 */
+.flex-jcsb {
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+}
+/*中间空白左右各一个*/
+.flex-around{
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+  }
+/*平均分每个空间*/
+.flex-pjf{
+    justify-content: space-around;
+    -webkit-justify-content: space-around;
+}
+.flex-end{
+    align-items: flex-end;
+    -webkit-align-items: flex-end;
+}
+.flex-end1{
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+}
+
+.flex-col {
+
+    flex-direction: column;
+    -webkit-flex-direction: column;
+
+}
+/*通用结束*/
+.rucian_sj{
+    width: 85%;
+    margin: 0 auto;
+    margin-top: 15%;
+    margin-bottom: 15%;
+    padding: 10px;
+    background-color: rgb(242, 242, 242);
+    position: relative;
+}
+.rucian_tj{
+    width: 40%;
+    margin: 0 auto;
+    line-height: 40px;
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    border: 1px solid rgb(27, 25, 25);
+}
+
+.wsjxx{
+    position: absolute;
+    top: 0;
+    right: 11px;
+}
+
+</style>
+<script src="__PUBLIC__/Theme3/js/reg/mobiscroll.core-2.5.2.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Theme3/js/reg/mobiscroll.core-2.5.2-zh.js" type="text/javascript"></script>
+<link href="__PUBLIC__/Theme3/js/reg/mobiscroll.core-2.5.2.css" rel="stylesheet" type="text/css">
+<link href="__PUBLIC__/Theme3/js/reg/mobiscroll.animation-2.5.2.css" rel="stylesheet" type="text/css">
+<script src="__PUBLIC__/Theme3/js/reg/mobiscroll.datetime-2.5.1.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Theme3/js/reg/mobiscroll.datetime-2.5.1-zh.js" type="text/javascript"></script>
+<script src="__PUBLIC__/Theme3/js/reg/mobiscroll.android-ics-2.5.2.js" type="text/javascript"></script>
+<link href="__PUBLIC__/Theme3/js/reg/mobiscroll.android-ics-2.5.2.css" rel="stylesheet" type="text/css">
+
+<div id="container">
+<div class="page_topbar">
+    <a href="javascript:;" class="back" onclick="javascript:location.href='/'"><i class="fa fa-angle-left"></i></a>
+    <div class="title">申请升级</div>
+    <a class="wsjxx" href="{:U('Add/shuserlist')}">商家信息</a>
+</div>
+ <if condition="$isExists eq 1">
+ 
+<div class="rucian_sj">
+    <div>你有申请正在处理</div>
+    <div>首要审核人：<{$shinfo.shuser1}>  <{$shinfo.shuserstatus1}></div>
+    <div>次要审核人：<{$shinfo.shuser2}>  <{$shinfo.shuserstatus2}></div>
+</div>
+ <else/>
+ 
+<div class="rucian_sj">
+    <div>您当前的等级：<{$userinfo.standardlevelname}></div>
+    <div>您可申请升级的等级：<{$userinfo.target_standardlevelname}></div>
+    <div>是否提交申请？</div>
+</div>
+
+<a href="{:U('Add/sjaction')}" class="rucian_tj flex flex-center" id="tijiao">提交申请</a>
+
+ 
+ </if>
+
+</body></html>
+
+

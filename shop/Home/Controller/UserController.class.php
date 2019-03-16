@@ -754,4 +754,111 @@ class UserController extends CommonController
         $this -> assign('reply',$reply);
         $this -> display();
     }
+
+
+
+
+    /**
+     *  注册会员-pp
+     **/
+    public function Add_user()
+    {
+
+
+
+
+        $this->display();
+    }
+
+    public function upImg($image)
+    {
+        //判断获得变量
+        if ($image['error'] > 0) {
+            $error = "上传失败了,原因是";
+
+            switch ($image['error']) {
+                case 1:
+                    $error .= "大小超过了服务器设置的限制！";
+                    break;
+                case 2:
+                    $error .= "文件大小超过了表单的限制！";
+                    break;
+                case 3:
+                    $error .= "文件只有部分被上传！";
+                    break;
+                case 4:
+                    $error .= "没有文件被上传!";
+                    break;
+                case 6:
+                    $error .= "上传文件的临时目录不存在！";
+                    break;
+                case 7:
+                    $error .= "写入失败!";
+                    break;
+                default:
+                    $error .= "未知的错误！";
+                    break;
+            }
+            //输出错误
+            exit($error);
+        } else {
+            //截取文件后缀名
+            $type = strrchr($image['name'], ".");
+
+            //设置上传路径
+            $path = "./Uploads/" . $image['name'];
+
+            //判断上传的文件是否为图片格式
+            if (strtolower($type) == '.png' || strtolower($type) == '.jpg' || strtolower($type) == '.bmp' || strtolower($type) == '.gif') {
+                //将图片文件移到该目录下
+                move_uploaded_file($image['tmp_name'], $path);
+            }
+        }
+
+
+    }
+
+
+
+    /*
+     * 提交注册会员*/
+    public function Add_Action()
+    {
+
+        //获取上传的图片
+        $image = $_FILES['weixin'];
+        var_dump($_POST);
+        if(empty($image)){
+            $this->error("请选择微信二维码上传");
+            exit();
+        }else{
+            $this->upImg($image);
+        }
+
+        if (!$_POST["mobile"]) {
+            $this->error("手机号不能为空");
+            exit();
+        }
+        $res = M('user')->where(array('mobile'=>$_POST["mobile"]))->field('mobile')->find();
+        if ($res) {
+            $this->error("手机号重复，请重新获取!");
+            exit();
+        }
+        if (!$_POST["realname"]) {
+            $this->error("商家姓名不能为空");
+            exit();
+        }
+        if (!$_POST["password"]) {
+            $this->error("请填写密码");
+            exit();
+        }
+        if ($_POST["cpassword"] != $_POST["password"]) {
+            $this->error("两次输入的密码不一致");
+            exit();
+        }
+
+        $this->display();
+    }
+
+
 }
