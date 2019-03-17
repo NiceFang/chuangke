@@ -69,7 +69,7 @@ return true;
 	
 	function isShengji($targetLevel,$userid,$parentpath){
 		$returnArray = "";	
-		$defaultuser = M('users')->where("id =1 ")->order("id desc")->find();
+		$defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
 		if($targetLevel==1){
 			return $this->setLevel('one_star_level','one_star_ge','one_star_team_level','one_star_team_ge','one_star_sh1','one_star_sh2',$userid,$parentpath);
 			

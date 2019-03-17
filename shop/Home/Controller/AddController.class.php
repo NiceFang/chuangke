@@ -282,7 +282,7 @@ class AddController extends LoginTrueController
 
 
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->rootPath = './uploads/wx';
+        $upload->rootPath = './uploads/wx/';
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
        // $upload->saveName = array('uniqid','');
         $upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
@@ -485,7 +485,7 @@ echo "<pre>";
         if(!is_array($sjshuser)){
             $this->error("升级条件未满足<br/>".$sjshuser);
         }
-        var_dump($sjshuser);
+       // var_dump($sjshuser);
         if($sjshuser['find1'])
             $shuser1 = $sjshuser['find1']['mobile'];
 
@@ -498,12 +498,11 @@ echo "<pre>";
             "user_id" => $id,
             "loginname" => $user['mobile'],
             "curlevel" => $user['standardlevel'],
-            "targetlevel" => $user['standardlevel']+1,
+            "targetlevel" => ($user['standardlevel'])+1,
             "shuser1" => $shuser1,
             "shuser2" => $shuser2,
             "addtime" => time()
         );
-       // var_dump($data);
 
         if(M("usersjinfo")->add($data)){
             $msgtext = "【创客联盟】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
@@ -654,14 +653,17 @@ echo "<pre>";
 
         M("usersjinfo")->startTrans();
 
+        $mo = M("usersjinfo");
 
-        if(M("usersjinfo")->where("id=$id")->save($save)){
+     /*     if(M("usersjinfo")->where("id=$id")->save($save)){
+
             if($ispass==1){
-                M("users")->where("id=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }
             if($ispass ==3){
+
                 $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }
@@ -673,7 +675,39 @@ echo "<pre>";
         }
         else{
             $this->error("操作失败");
-        }
+        }*/
+
+            $res = M("usersjinfo")->where("id=$id")->save($save);
+
+            if($ispass==1){
+                $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
+                $this->SendMsg($shList['loginname'],$msgtext);
+            }
+            if($ispass ==3){
+                $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
+                $this->SendMsg($shList['loginname'],$msgtext);
+            }
+            if($res){
+                M("usersjinfo")->commit();
+
+                $this->success("操作成功");
+                exit;
+            }else{
+                $mo->rollback();
+                $this->error("操作失败");
+            }
+
+
+
+
+
+
+
+
+
+
+
 
         $this->assign("shList",$shList);
 

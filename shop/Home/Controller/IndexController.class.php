@@ -37,6 +37,17 @@ class IndexController extends CommonController
         $where['userid'] = $userid;
 //        $userLevel = formatLevel($userid);
         $pic_array = $this->get_banner();
+
+        $memberName = session("nvip_nvip_member_User");
+        $users = M("user");
+        $userModel = $users->where("mobile='{$memberName}'")->find();
+        var_dump( $userModel["standardlevel"]);
+        $userModel["levelName"] = GetLevel($userModel["standardlevel"]);
+
+
+        $this->assign("user_info",$userModel);
+
+
 //设置登录时间
         @M('user')->where(['userid'=>$userid])->setField('lastlogin_time',time());
         $uinfo = M('user')->where($where)

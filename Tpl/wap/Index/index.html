@@ -74,7 +74,8 @@
                 <div class="uid_xy">
                     <p>UID:{$uinfo['userid']}</p>
                     <p>{$Think.lang.rank}:
-                        <?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>
+                        <{$user_info.levelName}>
+                       <!-- <?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>-->
                     </p>
                 </div>
             </div>
@@ -180,13 +181,6 @@
             </a>
 
             <!-- 新增  帮助注册  申请升级 审核升级-->
-            <a href="{:U('Add/register')}">
-                <div class="icon">
-                    <img src="__PUBLIC__/Theme3/images/zhuce.png" alt="">
-                    <p class="txt">{$Think.lang.tochangeinto}<i></i>{$Think.lang.帮助注册}</p>
-                </div>
-            </a>
-
             <a href="{:U('Add/add_user')}">
                 <div class="icon">
                     <img src="__PUBLIC__/Theme3/images/zhuce.png" alt="">

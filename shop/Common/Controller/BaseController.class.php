@@ -69,7 +69,7 @@ return true;
 	}
 
 
-	function isShengji($targetLevel,$userid,$parentpath){
+	function  isShengji($targetLevel,$userid,$parentpath){
         $Model = new \Think\Model(); // 实例化一个model对象 没有对应任何数据表
 		$returnArray = "";	
 //		$defaultuser =$Model-> table('nv_users')->where("id =1 ")->order("id desc")->find();
@@ -210,7 +210,7 @@ return true;
 	 */
 	function GetPid($rid){
 		//查询推荐人所在的组
-		$users = M("users");
+		$users = M("user");
 		$ruser = $users->field('tname')->where("loginname={$rid}")->find();
 		$tname = $ruser['tname'];
 
@@ -956,14 +956,14 @@ return true;
 	 * 支付成功 激活用户
 	 */
 	function RegUser_NewByBaodanAmount($userModel,$jihuoType){
-		$staffAdd = M("users");
+		$staffAdd = M("user");
 		$teamModel = M("teamname");
 		//获得PID
 
 		if($userModel["tname"]){
 			$parray = $this->GetPidByTname($userModel['tname']);
 		}else {
-			$parray = $this->GetPid($userModel['rid']);
+			$parray = $this->GetPid($userModel['pid']);
 		}
 
 		if(!$parray['pid'])
@@ -1039,7 +1039,7 @@ return true;
 	 * 支付成功 激活用户
 	 */
 	function RegUser_new($log_id){
-		$staffAdd = M("users");
+		$staffAdd = M("user");
 		$pay_log = M("pay_log");
 		$teamModel = M("teamname");
 		$payinfo = $pay_log->where("log_id=$log_id and is_paid=1 and is_banfa=0")->find();
