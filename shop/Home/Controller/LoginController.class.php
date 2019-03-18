@@ -613,7 +613,7 @@ public function check_verify($code, $id = '')
 //        ajaxReturn($res);
         if(empty($res)){
             $user=D('User');
-
+            echo 1;
             $result=sendMsg($mobile,$sendType);
 
             if($result['status']==1){
@@ -628,6 +628,7 @@ public function check_verify($code, $id = '')
                 $this->ajaxReturn($mes);
             }else{
                 $user=D('User');
+                echo 2;
                 $result=sendMsg($mobile,$sendType);
                 if($result['status']==1){
 
