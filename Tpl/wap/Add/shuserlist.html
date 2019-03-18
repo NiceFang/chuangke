@@ -25,6 +25,10 @@
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/main.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/Theme3/css/iconfont.css">
 
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/integralConversion.css">
+<link rel="stylesheet" href="__WCSS__/Turnout.css">
+
 <!--new add end for style1-->
 <script>window.PointerEvent = undefined</script>
  </head>
@@ -36,7 +40,7 @@
 <style type="text/css">
 body {
     font-family: Arial, Helvetica, Sans-Serif;
-    background-color: #fff;
+    background-color: #18191D;
 }
 
 /*通用*/
@@ -137,21 +141,27 @@ body {
     bottom: 8%;
     left: 31%;
     z-index: 1001;}
+
+
+
+
 </style>
 <div class="backcover"></div>
 <div id="container">
-<div class="page_topbar">
-    <a href="javascript:;" class="back" onclick="javascript:location.href='usersj'"><i class="fa fa-angle-left"></i></a>
-    <div class="title">商家信息</div>
+<div class="page_topbar" style="background-color: #18191D;border: none;">
+
+    <a href="javascript:;" class="back" onclick="javascript:location.href='usersj'"><i class="fa fa-angle-left" style="color: #fff;"></i></a>
+    <div class="title" style="background-color: #18191D; color: #fff;border: none;">商家信息</div>
 	
 </div>
 
 
+
 <foreach name="sjarray" item="val_staffLists">	
-<div class="rucian_ny">
-    <div>姓名：<{$val_staffLists.username}></div>
-    <div>手机号码：<{$val_staffLists.mobile}></div>
-    <div>微信号：<img src="/uploads/<{$val_staffLists.wximg}>" style="width:80px;" sflag="true" onclick="imgclick(true,this)"/></div>
+<div class="rucian_ny" style="background-color: rgba(225,225,225,0.3);border-radius: 0.6083rem;">
+    <div style="color: #fff;">姓名：<{$val_staffLists.username}></div>
+    <div style="color: #fff;">手机号码：<{$val_staffLists.mobile}></div>
+    <div style="color: #fff;">微信号：<img src="/uploads/<{$val_staffLists.wximg}>" style="width:80px;" sflag="true" onclick="imgclick(true,this)"/></div>
     <!-- <div>会员等级：</div> -->
 </div>
 

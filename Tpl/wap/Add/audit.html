@@ -94,7 +94,37 @@
         height: 0.3333rem;
         background: url('__WIMG__/false02.png') no-repeat;
         background-size: contain;
-    } */
+	} */
+	
+	.history {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 0.4167rem;
+	}
+	.history .rucian_lsjl{
+		font-size: 0.2917rem;
+		color: #ccc;
+	}
+	.agree {
+		display: inline-block;
+		line-height: 0.4167rem;
+		width: 0.8333rem;
+		height: 0.4167rem;
+		background:green;
+		border-radius: 0.0833rem;
+		color: #fff;
+		margin-bottom: 0.125rem;
+	}
+	.disagree {
+		display: inline-block;
+		line-height: 0.4167rem;
+		width: 0.8333rem;
+		height: 0.4167rem;
+		background:#fd4848;
+		border-radius: 0.0833rem;
+		color: #fff;
+	}
 </style>
 
 <body style="background-color:#000">
@@ -103,7 +133,7 @@
 	<div class="hear" style="background-color: #18191d;">
 		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
 		<p>审核</p>
-		<span><a href="{:U('Add/userchecksjlog')}" class="rucian_lsjl flex flex-center">历史订单</a></span>
+		<span class="history"><a href="{:U('Add/userchecksjlog')}" class="rucian_lsjl flex flex-center">历史订单</a></span>
 	</div>
 
 
@@ -124,13 +154,13 @@
 			<ul class="mui-table-view mui-table-view-chevron uls">
 
                 <foreach name="shList" item="user">
-                <li class="lis">
+                <li class="lis" style="height: unset;padding: 0.2083rem 0;">
                     <p class="uid">{$user.user_id}</p>
                     <p>{$user.user.username}</p>
                     <p>{$user.levelname}</p>
 					<p>{$user.loginname}</p>
                   <!--  <p style="text-align: center;"><?php echo date("Y-m-d H:i:s",$v["gr_sevatime"]);?></p>-->
-					<p><a href="/Add/checksjop/id/{$user.id}/op/2/user_id/{$user.user_id}" class="rucian_ty agree" value="1">同意</a>
+					<p style="display: flex; flex-direction: column;align-items: center"><a  href="/Add/checksjop/id/{$user.id}/op/2/user_id/{$user.user_id}" class="rucian_ty agree" value="1">同意</a>
 					<input type="hidden" class="theid" value="50563">
 					<a href="/Add/checksjop/id/{$user.id}/op/1/user_id/{$user.user_id}" class="rucian_jj disagree" value="2">拒绝</a></p>
 

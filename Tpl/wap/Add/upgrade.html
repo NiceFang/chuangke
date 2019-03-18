@@ -42,6 +42,21 @@
 	background-color:#ECD61E;
 	color: #fff;
 }
+.merchantInfo {
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);
+	right: 0.4167rem;
+}
+.merchantInfo .wsjxx{
+	font-size: 0.2917rem;
+	color: #ccc;
+}
+.commitBtn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 </style>
 
 <body class="">
@@ -49,7 +64,7 @@
 	<div class="hear">
 		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
 		<p>升级</p>
-		<span> <a class="wsjxx" href="{:U('Add/shuserlist')}">商家信息</a></span>
+		<span class="merchantInfo"> <a class="wsjxx" href="{:U('Add/shuserlist')}">商家信息</a></span>
 	</div>
 
 	<!-- 个人信息 -->
@@ -113,7 +128,7 @@
 			&lt;!&ndash;<button class="btn">升级</button>&ndash;&gt;
 			<button class="btn typeColor" id="upgrade">升级</button>
 		</if>-->
-		<a href="{:U('Add/sjaction')}" class="btn typeColor" id="tijiao">提交申请</a>
+		<a href="{:U('Add/sjaction')}" class="commitBtn btn typeColor" id="tijiao">提交申请</a>
 	</div>
 </body>
 
