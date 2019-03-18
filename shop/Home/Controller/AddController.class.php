@@ -795,7 +795,7 @@ echo "<pre>";
             $this->error("操作失败");
         }*/
 
-           //$res[] = M("usersjinfo")->where("id=$id")->save($save);
+           $res[] = M("usersjinfo")->where("id=$id")->save($save);
             $data['master_id'] = $id;
             // 当前审核人的id
             $data['deputy_id'] = $_REQUEST['user_id'];
@@ -805,12 +805,12 @@ echo "<pre>";
             $data['get_type'] = 56;
 
             // 当前总额
-            $scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
+            //$scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
             $sql = M('userscores_record')->getLastSql();
 
             $data['now_nums'] =  $data['get_nums'];
             // 审核通过 增加积分
-            $res[] = M('userscores_record')->add($data);
+           // $res[] = M('userscores_record')->add($data);
             $sql = M('userscores_record')->getLastSql();
 
 
