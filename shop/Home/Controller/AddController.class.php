@@ -806,12 +806,12 @@ echo "<pre>";
 
             // 当前总额
             //$scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
-            $sql = M('userscores_record')->getLastSql();
+
 
             $data['now_nums'] =  $data['get_nums'];
             // 审核通过 增加积分
            // $res[] = M('userscores_record')->add($data);
-            $sql = M('userscores_record')->getLastSql();
+
 
 
             /*if($ispass==1){
@@ -825,6 +825,7 @@ echo "<pre>";
             }*/
             if($res){
                 $mo->commit();
+                redirect('/Add/audit.html');
                 $this->success("操作成功");
                 exit;
             }else{
