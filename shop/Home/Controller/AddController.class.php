@@ -570,11 +570,11 @@ echo "<pre>";
 //       echo $shuser1;
 //       echo $shuser2;
 //        exit;
-        $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
-        $res[] = newMsg($shuser1,$msgtext);
-//                 $res = $this->SendMsg('18214969531',$msgtext);
-        var_dump($res);
-        exit;
+//        $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
+//        $res[] = newMsg($shuser1,$msgtext);
+////                 $res = $this->SendMsg('18214969531',$msgtext);
+//        var_dump($res);
+//        exit;
 
         //
         if(M("usersjinfo")->add($data)){
@@ -583,8 +583,7 @@ echo "<pre>";
             if($shuser1){
                 $res[] = newMsg($shuser1,$msgtext);
 //                 $res = $this->SendMsg('18214969531',$msgtext);
-                dump($res);
-                exit;
+
             }
 
             if($shuser2){
@@ -760,7 +759,21 @@ echo "<pre>";
 
         $mo = M("usersjinfo");
 
-          if(M("usersjinfo")->where("id=$id")->save($save)){
+     /*     if(M("usersjinfo")->where("id=$id")->save($save)){
+
+
+              $data['master_id'] = $id;
+             // 当前审核人的id
+             $data['deputy_id'] = session("nvip_member_id");
+             // 数量
+             $data['get_nums'] = 398*3;
+              // 类型
+              $data['get_type'] = 56;
+              // 当前总额
+              $scoresDate = M('userscores_record')->field('now_nums')->where(array('master_id'=>$id))->find();
+              $data['now_nums'] = $scoresDate + $data['get_nums'];
+              // 审核通过 增加积分
+              $res[] = M('userscores_record')->add($data);
 
             if($ispass==1){
                 M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
@@ -780,11 +793,28 @@ echo "<pre>";
         }
         else{
             $this->error("操作失败");
-        }
+        }*/
 
-          /*  $res = M("usersjinfo")->where("id=$id")->save($save);
+           //$res[] = M("usersjinfo")->where("id=$id")->save($save);
+            $data['master_id'] = $id;
+            // 当前审核人的id
+            $data['deputy_id'] = $_REQUEST['user_id'];
+            // 数量
+            $data['get_nums'] = 398*3;
+            // 类型
+            $data['get_type'] = 56;
 
-            if($ispass==1){
+            // 当前总额
+            $scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
+            $sql = M('userscores_record')->getLastSql();
+
+            $data['now_nums'] =  $data['get_nums'];
+            // 审核通过 增加积分
+            $res[] = M('userscores_record')->add($data);
+            $sql = M('userscores_record')->getLastSql();
+
+
+            /*if($ispass==1){
                 $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
@@ -792,16 +822,15 @@ echo "<pre>";
             if($ispass ==3){
                 $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
                 $this->SendMsg($shList['loginname'],$msgtext);
-            }
+            }*/
             if($res){
-                M("usersjinfo")->commit();
-
+                $mo->commit();
                 $this->success("操作成功");
                 exit;
             }else{
                 $mo->rollback();
                 $this->error("操作失败");
-            }*/
+            }
 
 
 

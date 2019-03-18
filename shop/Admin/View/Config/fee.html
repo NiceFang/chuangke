@@ -21,6 +21,17 @@
         #addPoint tr td{
             padding: 30px 10px;
         }
+
+        #addReister tr th{
+            background-color: #0ac9c5;
+            padding: 10px 50px;
+        }
+        #addReister tr th{
+            text-align: center;
+        }
+        #addReister tr td{
+            padding: 30px 10px;
+        }
     </style>
 </block>
 
@@ -259,6 +270,19 @@
                                 <table id="addPoint">
                                     <tr><th colspan="3">新建余额/积分规则</th></tr>
                                     <tr><td>注册人数</td><td><input type="text" name="start_nums"></td><td>~&nbsp;&nbsp;&nbsp;<input type="text" name="end_nums"></td></tr>
+                                    <tr><td>奖励数量</td><td colspan="2"><input type="text" name="point"></td></tr>
+                                </table>
+                                <div class="form-group bottom_button_list" style="margin-left: 0;">
+                                    <a class="btn btn-primary submit ajax-post" type="submit" target-form="form-builderf2">保存</a>
+                                    <a class="btn btn-danger return" onclick="javascript:history.back(-1);return false;">取消</a>
+                                </div>
+                            </form>
+
+
+                            <form action="{:U('Config/addRegister')}" method="post" class="form-horizontal form form-builder form-builderf2" style="padding-left: 0;margin-bottom:20px">
+                                <table id="addRegister">
+                                    <tr><th colspan="3">新建审核帮助注册通过/积分规则</th></tr>
+                                    <tr><td>注册人数</td><td><input type="text" name="start_nums"></td></tr>
                                     <tr><td>奖励数量</td><td colspan="2"><input type="text" name="point"></td></tr>
                                 </table>
                                 <div class="form-group bottom_button_list" style="margin-left: 0;">

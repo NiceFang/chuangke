@@ -438,7 +438,7 @@ function newMsg($mobile,$code) {
     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');
     $key=M('config','nc')->where(array('name'=>'MSG_account'))->getField('value');
     $tpl_id=M('config','nc')->where(array('name'=>'MSG_password'))->getField('value');
-    return $tpl_id;
+//    return $tpl_id;
     $contents='#code#='.$code;//要发送的短信内容
     $smsConf = array(
         'key'   => $key, //您申请的APPKEY
@@ -468,7 +468,8 @@ function newMsg($mobile,$code) {
         // echo "请求发送短信失败";
         $mes=1;
     }
-    return $result;
+    return $mes;
+//    return $result;
 //     $url='http://smssh1.253.com/msg/send/json';
 //     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');
 //     $account=M('config','nc')->where(array('name'=>'MSG_account'))->getField('value');

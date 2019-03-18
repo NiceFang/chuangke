@@ -607,4 +607,22 @@ class ConfigController extends AdminController
         }
         $this -> error('插入失败');
     }
+
+    //新增注册奖励配置
+    public function addRegister(){
+        $configNum = M('config')->where(['group'=>15])->count()+1;
+        $data['title'] = '注册赠送积分条件';
+        $data['name'] = 'awardPoint'.$configNum;
+        $data['value'] = I('start_nums').'~'.I('end_nums');
+        $data['tip'] = I('point');
+        $data['group'] = 15;
+        $data['create_time'] = time();
+        $result = M('config')->data($data)->add();
+        if($result){
+            $this -> success('插入成功');
+        }
+        $this -> error('插入失败');
+    }
+
+
 }
