@@ -517,8 +517,8 @@ echo "<pre>";
             if($shuser1){
                 $res[] = newMsg($shuser1,$msgtext);
                 // $res = $this->SendMsg('18214969531',$msgtext);
-                dump($res);
-                exit;
+               // dump($res);
+               // exit;
             }
 
             if($shuser2){
