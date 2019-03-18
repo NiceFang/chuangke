@@ -350,6 +350,7 @@ alert(umobile);
             var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
             var txyzmcw = $('#txyzmcw').val();
             var imgCode = $("#j_verify").val();
+
             if (mobile == '' || mobile == null) {
                 layer.msg(qsrsjhm);
             }
@@ -384,7 +385,7 @@ alert(umobile);
                 RemainTime();
             }
         });
-        var iTime = 59;
+        var iTime = 10;
         var Account;
         if (bet > 0) {
             iTime = bet;

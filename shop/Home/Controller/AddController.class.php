@@ -570,17 +570,21 @@ echo "<pre>";
 //       echo $shuser1;
 //       echo $shuser2;
 //        exit;
+        $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
+        $res[] = newMsg($shuser1,$msgtext);
+//                 $res = $this->SendMsg('18214969531',$msgtext);
+        var_dump($res);
+        exit;
 
-
-
-        if(M("usersjinfo")->add($data)){
+        // M("usersjinfo")->add($data)
+        if(true){
             // 发送短信
-            $msgtext = "【创客联盟】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
+            $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
             if($shuser1){
                 $res[] = newMsg($shuser1,$msgtext);
-                // $res = $this->SendMsg('18214969531',$msgtext);
-               // dump($res);
-               // exit;
+//                 $res = $this->SendMsg('18214969531',$msgtext);
+                dump($res);
+                exit;
             }
 
             if($shuser2){
@@ -734,7 +738,7 @@ echo "<pre>";
 
         $mo = M("usersjinfo");
 
-     /*     if(M("usersjinfo")->where("id=$id")->save($save)){
+          if(M("usersjinfo")->where("id=$id")->save($save)){
 
             if($ispass==1){
                 M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
@@ -754,9 +758,9 @@ echo "<pre>";
         }
         else{
             $this->error("操作失败");
-        }*/
+        }
 
-            $res = M("usersjinfo")->where("id=$id")->save($save);
+          /*  $res = M("usersjinfo")->where("id=$id")->save($save);
 
             if($ispass==1){
                 $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
@@ -775,7 +779,7 @@ echo "<pre>";
             }else{
                 $mo->rollback();
                 $this->error("操作失败");
-            }
+            }*/
 
 
 

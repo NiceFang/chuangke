@@ -438,6 +438,7 @@ function newMsg($mobile,$code) {
     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');
     $key=M('config','nc')->where(array('name'=>'MSG_account'))->getField('value');
     $tpl_id=M('config','nc')->where(array('name'=>'MSG_password'))->getField('value');
+    return $tpl_id;
     $contents='#code#='.$code;//要发送的短信内容
     $smsConf = array(
         'key'   => $key, //您申请的APPKEY
