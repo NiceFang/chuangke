@@ -153,14 +153,14 @@ body {
     <a class="wsjxx" href="{:U('Add/shuserlist')}">商家信息</a>
 </div>
  <if condition="$isExists eq 1">
- 
+
 <div class="rucian_sj">
     <div>你有申请正在处理</div>
     <div>首要审核人：<{$shinfo.shuser1}>  <{$shinfo.shuserstatus1}></div>
     <div>次要审核人：<{$shinfo.shuser2}>  <{$shinfo.shuserstatus2}></div>
 </div>
  <else/>
- 
+
 <div class="rucian_sj">
     <div>您当前的等级：<{$userinfo.standardlevelname}></div>
     <div>您可申请升级的等级：<{$userinfo.target_standardlevelname}></div>

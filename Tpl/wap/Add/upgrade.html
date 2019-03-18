@@ -59,14 +59,33 @@
 					<div class="div_img fl">
 						<img src="__IMGHEAD__/{$userinfo['img_head']}" alt="">
 					</div>
-					<div class="user_info_left fl">
-						<p class="name">{$Think.lang.nickname} : {$userinfo.username}</p>
 
-						<p class="uid">{$Think.lang.rank}：{$userinfo.standardlevelname}</p>
+					<if condition="$isExists eq 1">
+						<php>echo $isExists</php>
+						<php>echo 2222</php>
+						<div class="user_info_left fl">
+							<p class="name">{$Think.lang.你有申请正在处理} : </p>
 
-						<p class="uid" id="uid">UID : {$userinfo.userid} </p>
-						<p class="garde">{$Think.lang.可申请升级的等级}：{$userinfo.target_standardlevelname}</p>
-					</div>
+							<p class="uid">{$Think.lang.首要审核人}：<{$shinfo.shuser1}>  <{$shinfo.shuserstatus1}></p>
+
+							<p class="garde">{$Think.lang.次要审核人}：<{$shinfo.shuser2}>  <{$shinfo.shuserstatus2}></p>
+						</div>
+
+						<else/>
+						<php>echo $isExists</php>
+						<php>echo 1111</php>
+						<div class="user_info_left fl">
+							<p class="name">{$Think.lang.nickname} : {$userinfo.username}</p>
+
+							<p class="uid">{$Think.lang.rank}：{$userinfo.standardlevelname}</p>
+
+							<p class="uid" id="uid">UID : {$userinfo.userid} </p>
+							<p class="garde">{$Think.lang.可申请升级的等级}：{$userinfo.target_standardlevelname}</p>
+						</div>
+
+
+					</if>
+
 				</div>
 				<!--<div class="mony">
 					<div class="balance">
@@ -89,14 +108,15 @@
 				</div>-->
 			</div>
         </div>
+
+
 		<!--<if condition="$structure egt $number">
 			<button class="btn typeColor" id="upgrade">升级</button>
 			<else/>
 			&lt;!&ndash;<button class="btn">升级</button>&ndash;&gt;
 			<button class="btn typeColor" id="upgrade">升级</button>
 		</if>-->
-	<!--	<button class="btn typeColor" id="upgrade">升级</button>-->
-		<a href="{:U('Add/sjaction')}"  class="btn typeColor"  id="tijiao">提交申请</a>
+		<a href="{:U('Add/sjaction')}" class="btn typeColor" id="tijiao">提交申请</a>
 	</div>
 </body>
 

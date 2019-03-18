@@ -4,7 +4,7 @@ namespace Home\Controller;
 class AddController extends LoginTrueController
 {
     // 帮助注册
-    public function register(){
+    public function register1(){
         // 推荐人pid 是本人 userid
         // 商家手机号码不能重复
         // 微信二维码上传并保存到数据库
@@ -241,12 +241,26 @@ class AddController extends LoginTrueController
     }
 
 
+    public function register()
+    {
+        $this->LoginTrue();
+
+
+        $this->assign("tuijianma", $_SESSION['nvip_member_tuijianma']);
+
+        $i = 0;
+
+        $this->display();
+    }
+
     /**
      * 注册会员提交后的处理-pp
      */
     public function Add_Action()
     {
-
+//        var_dump($_POST);
+//        var_dump($_FILES);
+//        exit;
         $this->LoginTrue();
         $txt_loginname = $_POST["mobile"];
         if (!$txt_loginname) {
@@ -282,13 +296,14 @@ class AddController extends LoginTrueController
 
 
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->rootPath = './uploads/wx/';
+        $upload->rootPath = './uploads/';
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
-       // $upload->saveName = array('uniqid','');
+        $upload->saveName = array('uniqid','');
         $upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
         $upload->autoSub  = false;
-        //$upload->subName  = array('date','Ymd');
+        $upload->subName  = array('date','Ymd');
         $info   =   $upload->upload();
+        //var_dump($info);
         if(!$info) {// 上传错误提示错误信息
             $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息
@@ -312,7 +327,8 @@ class AddController extends LoginTrueController
 
 
         $data['wximg'] = $file_path;//微信二维码
-
+//        var_dump($file_path);
+//        exit;
         $data['ceng'] = $r_user['ceng'] + 1;//层
          // 第几代
         $data['dai'] = $r_user['dai'] + 1;
@@ -391,13 +407,14 @@ class AddController extends LoginTrueController
                     $isExists["shuserstatus1"] = $isExists["shuser1"] ? ' - '.$this->GetStatus($isExists['status1']): '';
                     $isExists["shuserstatus2"] = $isExists["shuser2"] ? ' - '.$this->GetStatus($isExists['status2']) : '';
                     $this->assign("shinfo",$isExists);
+
                 }
             }
 
         }
 
 
-        $user = M('users')->where("id='{$id}'")->field("standardlevel")->find();
+        $user = M('user')->where("userid='{$id}'")->field("standardlevel")->find();
 
         $user['standardlevelname'] = GetLevel($user['standardlevel']);
         if($user['standardlevel']+1>9){
@@ -406,7 +423,7 @@ class AddController extends LoginTrueController
             $user['target_standardlevelname'] = GetLevel($user['standardlevel']+1);
         }
 
-
+        var_dump($user);
         $this->assign("userinfo",$user);
 
         $this->display();
@@ -420,7 +437,7 @@ class AddController extends LoginTrueController
 
         //判断是否有正在升级的宴请  and (status1!=1 and status2!=1)
         $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
-
+//        var_dump($isExists);
         if($isExists){
             if($isExists['status1'] ==0 or $isExists['status2'] ==0){
                 if((!($isExists['status1'] ==1 or $isExists['status2'] ==1))){
@@ -429,7 +446,9 @@ class AddController extends LoginTrueController
                     $isExists["shuser2"] = $isExists["shuser2"] ?: "无";
                     $isExists["shuserstatus1"] = $isExists["shuser1"] ? ' - '.$this->GetStatus($isExists['status1']): '';
                     $isExists["shuserstatus2"] = $isExists["shuser2"] ? ' - '.$this->GetStatus($isExists['status2']) : '';
+
                     $this->assign("shinfo",$isExists);
+                    var_dump($isExists);
                 }
             }
 
@@ -450,9 +469,9 @@ class AddController extends LoginTrueController
        
 
         $this->assign("userinfo",$user);
+        //var_dump($user);
+        $this->display();
 
-        $this->display();
-        $this->display();
     }
 
 

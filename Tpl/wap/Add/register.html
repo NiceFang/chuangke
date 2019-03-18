@@ -54,44 +54,80 @@
             <div class="logo registerLogo">
                 <img src="__WIMG__/logo4.png">
             </div>
-            <form name="AddUser" action=" " id="registerForm" class="formrgister" method="get">
+            <form method="post" action="{:U('Add/Add_Action')}" id="registerForm" class="formrgister" enctype="multipart/form-data">
                 <input type="hidden" name="reg_source" value="{:I('get.source',0,'intval')}">
 
                 <div class="input_box">
                     <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
-                    <input type="text" name="umobile" id="umobile" placeholder="{$Think.lang.推荐人号码}" value="{$mobile}">
+                    <input type="text" name="ReferralCode" id="ReferralCode" placeholder="{$Think.lang.推荐人号码}" value="<{$tuijianma}>">
                 </div>
 
                 <div class="input_box">
                     <span><img src="__WIMG__/phone.png" class="phone" alt=""></span>
 
-                    <input type="text" name="mobile"  class="phone_number" placeholder="{$Think.lang.请输入商家手机号码}" id="number" />
+                   <!-- <input type="text" name="mobile"  class="phone_number" placeholder="{$Think.lang.请输入商家手机号码}" id="number" />-->
+                    <input type="text" id="mobile" name="mobile" placeholder="{$Think.lang.请输入商家手机号码}" value=""  class="phone_number">
                 </div>
                 <div class="input_box">
+
                     <span><img src="__WIMG__/user.png" alt=""></span>
-                    <input type="text" name="username" id="username" class="username" placeholder="{$Think.lang.请输入商家姓名}" value=""
-                        autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />
+
+              <!--      <input type="text" name="username" id="username" class="username" placeholder="{$Think.lang.请输入商家姓名}" value=""
+                        autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />-->
+
+                    <input type="text" id="realname"  name ="realname"  class="username" placeholder="{$Think.lang.请输入商家姓名}" value="">
                 </div>
 
                 <!-- 登录密码 -->
                 <div class="input_box">
                     <span><img src="__WIMG__/password.png" alt=""></span>
-                    <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.请输入商家初始密码}" id="pwd"
-                        oncontextmenu="return false" maxlength="16"  onpaste="return false" />
+
+                   <!-- <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.请输入商家初始密码}" id="pwd"
+                        oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
+
+                    <input type="password" name="password" class="password" id="password" placeholder="{$Think.lang.请输入商家初始密码}" value=""
+                           oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="demo_img" onclick="hideShowPsw('demo_img','demo_input')" src="__WIMG__/mima.png" alt=""></span>
+
+
+
                 </div>
                  <!-- 再次输入登录密码 -->
                 <div class="input_box">
                     <span><img src="__WIMG__/password.png" alt=""></span>
-                    <input type="password" name="relogin_pwd" class="confirm_password" placeholder="{$Think.lang.请确认密码}"
-                        id="repwd" oncontextmenu="return false" maxlength="16"  onpaste="return false" />
+                  <!--  <input type="password" name="relogin_pwd" class="confirm_password" placeholder="{$Think.lang.请确认密码}"
+                        id="repwd" oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
+
+                    <input type="password" name="cpassword" id="cpassword" placeholder="请确认密码" value="" class="confirm_password"
+                           oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="zc_img" onclick="hideShowPsw('zc_img','zc_input')" src="__WIMG__/mima.png" alt=""></span>
                 </div>
 
+                <div class="input_box input_code" id="captcha-container">
+                    <span><img src="__WIMG__/groph_code.png" alt=""></span>
+                    <input name="verify" class="captcha-text" placeholder="{$Think.lang.qsryzm}" id="j_verify" type="text">
+                    <img alt="图形验证码" src="{:U('Home/Login/verify_c',array())}" title="{$Think.lang.djsx}">
+                </div>
+
+                <!--上传微信二维码-->
+                <div class="input_box">
+
+                    <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
+
+                    <input type="file" id="wexin" name="weixin" class="weixin" placeholder="s" value="">
+                </div>
+
+                <div class="input_box input_code">
+                    <span><img src="__WIMG__/moblie_code.png" alt=""></span>
+                    <input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.sjyzm}"
+                           oncontextmenu="return false" onpaste="return false" />
+                    <a href="javascript:void(0)" id="mycode">{$Think.lang.hq}</a>
+                </div>
 
 
                 <div class="inde-btn">
-                    <button id="submit" type="button" onclick="adduser()">{$Think.lang.zc}</button>
+                  <!--  <button id="submit" type="button" onclick="adduser()">{$Think.lang.zc}</button>-->
+                    <button id="submit" type="submit" >{$Think.lang.zc}</button>
                 </div>
             </form>
         </div>
@@ -101,7 +137,44 @@
         </div>
     </div>
 
-
+    <!--图形验证码错误-->
+    <input type="hidden" id="txyzmcw" value="{$Think.lang.txyzmcw}">
+    <!--请输入手机号码-->
+    <input type="hidden" id="qsrsjhm" value="{$Think.lang.qsrsjhm}">
+    <!--分-->
+    <input type="hidden" id="fen" value="{$Think.lang.fen}">
+    <!--秒-->
+    <input type="hidden" id="miao" value="{$Think.lang.miao}">
+    <!--获取验证码-->
+    <input type="hidden" id="hqyzm" value="{$Think.lang.hqyzm}">
+    <!--没有倒计时-->
+    <input type="hidden" id="mydjs" value="{$Think.lang.mydjs}">
+    <!--手机号码不能为空-->
+    <input type="hidden" id="sjhmbnwk" value="{$Think.lang.sjhmbnwk}">
+    <!--五分钟内禁止注册-->
+    <input type="hidden" id="wfznjzzc" value="{$Think.lang.wfznjzzc}">
+    <!--姓名不能为空-->
+    <input type="hidden" id="xmbnwk" value="{$Think.lang.xmbnwk}">
+    <!--推荐人不能为空-->
+    <input type="hidden" id="tjrbnwk" value="{$Think.lang.tjrbnwk}">
+    <!--推荐人手机号码错误-->
+    <input type="hidden" id="tjrsjhmcw" value="{$Think.lang.tjrsjhmcw}">
+    <!--登录密码不能为空-->
+    <input type="hidden" id="dlmmbnwk" value="{$Think.lang.dlmmbnwk}">
+    <!--登录密码只能为6-20为数字或字母-->
+    <input type="hidden" id="dlmmznwsz" value="{$Think.lang.dlmmznwsz}">
+    <!--两次输入登录密码不一致-->
+    <input type="hidden" id="lcsrdlmmbyz" value="{$Think.lang.lcsrdlmmbyz}">
+    <!--交易密码只能为6位数-->
+    <input type="hidden" id="jymmznw6w" value="{$Think.lang.jymmznw6w}">
+    <!--验证码不能为空-->
+    <input type="hidden" id="yzmbnwk" value="{$Think.lang.yzmbnwk}">
+    <!--请输入新密码-->
+    <input type="hidden" id="qsrxmm" value="{$Think.lang.qsrxmm}">
+    <!--请输入确认密码-->
+    <input type="hidden" id="qsrqrmm" value="{$Think.lang.qsrqrmm}">
+    <!--两次输入密码不一致-->
+    <input type="hidden" id="lcsrdmmbyz" value="{$Think.lang.lcsrdmmbyz}">
     <!--表单验证-->
     <script type="text/javascript" src="__COM__/js/index.js?v=46"></script>
     <script src="__WJS__/jquery.validate.min.js?var1.14.0"></script>
