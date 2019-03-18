@@ -389,7 +389,7 @@ class AddController extends LoginTrueController
 
 
     //会员升级
-    public function usersj()
+   /* public function usersj()
     {
         $this->LoginTrue();
 
@@ -427,7 +427,7 @@ class AddController extends LoginTrueController
         $this->assign("userinfo",$user);
 
         $this->display();
-    }
+    }*/
 
     public function upgrade()
     {
