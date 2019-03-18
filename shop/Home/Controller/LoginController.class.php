@@ -614,7 +614,7 @@ public function check_verify($code, $id = '')
         if(empty($res)){
             $user=D('User');
             $result=sendMsg($mobile,$sendType);
-            return $result;
+//            return $result;
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
