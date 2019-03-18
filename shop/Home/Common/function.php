@@ -402,7 +402,7 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
-
+            return $res;
         }
 //        var_dump($res);die;
         if ($res == 0) {
@@ -451,7 +451,7 @@ function newMsg($mobile,$code) {
 
     if($content){
         $result = json_decode($content,true);
-        return $result;
+
         $error_code = $result['error_code'];
         if($error_code == 0){
             //状态为0，说明短信发送成功
@@ -468,7 +468,7 @@ function newMsg($mobile,$code) {
         // echo "请求发送短信失败";
         $mes=1;
     }
-    return $mes;
+    return $result;
 //     $url='http://smssh1.253.com/msg/send/json';
 //     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');
 //     $account=M('config','nc')->where(array('name'=>'MSG_account'))->getField('value');

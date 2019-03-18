@@ -613,9 +613,8 @@ public function check_verify($code, $id = '')
 //        ajaxReturn($res);
         if(empty($res)){
             $user=D('User');
-            echo 1;
             $result=sendMsg($mobile,$sendType);
-
+            return $result;
             if($result['status']==1){
                 M('preventip')->add($datas);
             }

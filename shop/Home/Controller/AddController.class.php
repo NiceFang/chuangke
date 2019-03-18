@@ -576,8 +576,8 @@ echo "<pre>";
         var_dump($res);
         exit;
 
-        // M("usersjinfo")->add($data)
-        if(true){
+        //
+        if(M("usersjinfo")->add($data)){
             // 发送短信
             $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
             if($shuser1){
@@ -666,6 +666,28 @@ echo "<pre>";
 
         $this->display();
     }
+    public function audit()
+    {
+        $this->LoginTrue();
+
+        $loginname = $_SESSION['nvip_nvip_member_User'];
+
+
+        $shList = M("usersjinfo")->where("(shuser1='$loginname' and status1=0) or (shuser2='$loginname' and status2=0)")->order("id desc")->select();
+        $sql = M("usersjinfo")->getLastSql();
+        //var_dump($sql);
+        foreach($shList as $key=>$val){
+
+            $shList[$key]['user'] = M("user")->where("userid=".$val['user_id'])->find();
+            $shList[$key]['levelname'] = GetLevel($val['targetlevel']);
+
+        }
+        $this->assign("shList",$shList);
+
+        $this->display();
+    }
+
+
     //审核操作
     public function checksjop()
     {
