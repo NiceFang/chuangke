@@ -544,7 +544,8 @@ public function check_verify($code, $id = '')
         $this->ajaxReturn(Loginmsg($mobile));
     }
     public function sendCode(){
-
+    var_dump($_POST);
+    exit;
         $mobile=I('post.mobile');
         $sendType = I('post.l');
         $imgCode = I('post.verify');
