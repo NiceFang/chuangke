@@ -195,17 +195,13 @@
             var username = $('#username').val();
             var pwd = $('#pwd').val();
             var repwd = $('#repwd').val();
-alert(umobile);
+
             //验证注册
             var thisform=document.forms['AddUser'];
 
             var   reg = /^[0-9a-zA-Z]{6,20}$/;
             var   mobile_rex=/^1[3456789]\d{9}$/;
 
-/*            if(umobile == '' || umobile == null){
-                layer.msg('推荐人不能为空');
-                return false;
-            }
             if(mobile == '' || mobile == null){
                 layer.msg('商家手机号不能为空');
                 return false;
@@ -239,7 +235,7 @@ alert(umobile);
             if(pwd != repwd){
                 msg_alert("两次输入登录密码不一致");
                 return false;
-            }*/
+            }
 
                 /*var   pid=thisform.pid.value;//推荐人
                 var   username=thisform.username.value;//账号
@@ -352,6 +348,12 @@ alert(umobile);
             var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
             var txyzmcw = $('#txyzmcw').val();   <!--图形验证码错误-->
             var imgCode = $("#j_verify").val();
+
+            var   mobile_rex=/^1[3456789]\d{9}$/;
+            if(!mobile_rex.test(mobile)){
+                msg_alert('商家手机号码错误');
+                return false;
+            }
 
             if (mobile == '' || mobile == null) {
                 layer.msg(qsrsjhm);
