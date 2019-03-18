@@ -544,8 +544,7 @@ public function check_verify($code, $id = '')
         $this->ajaxReturn(Loginmsg($mobile));
     }
     public function sendCode(){
-    var_dump($_POST);
-    exit;
+
         $mobile=I('post.mobile');
         $sendType = I('post.l');
         $imgCode = I('post.verify');
@@ -575,6 +574,7 @@ public function check_verify($code, $id = '')
             $sendType = 'zxcghy84-corean';
         }
         if(empty($mobile)){
+            echo 1;
             $mes['status']=0;
             $mes['message']= L('sjhmbnwk');
             $this->ajaxReturn($mes);
@@ -599,10 +599,12 @@ public function check_verify($code, $id = '')
             'reg_ip'=>$cip,
             'reg_date'=>array('egt',strtotime(date('Y-m-d')))
         );
+        echo 2;
         $resNum=M('user')->where($resCountWhere)->count();
 //        dump($resNum);exit;
 //            dump($resNum);
         if($resNum>10){
+            echo 3;
 //            ajaxReturn(2,0);
             $mes=array();
             $mes['status'] = 2;
@@ -613,9 +615,10 @@ public function check_verify($code, $id = '')
         $res=M('preventip')->where(array('ip'=>$cip))->find();
 //        ajaxReturn($res);
         if(empty($res)){
+            echo 4;
             $user=D('User');
             $result=sendMsg($mobile,$sendType);
-            return $mobile;
+            echo 5;
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
@@ -628,8 +631,9 @@ public function check_verify($code, $id = '')
                 $this->ajaxReturn($mes);
             }else{
                 $user=D('User');
-                echo 2;
+                echo 6;
                 $result=sendMsg($mobile,$sendType);
+                echo 7;
                 if($result['status']==1){
 
                     $datas['id']=$res['id'];
