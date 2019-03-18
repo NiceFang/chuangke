@@ -402,7 +402,7 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
-            return $res;
+//            return $res;
         }
 //        var_dump($res);die;
         if ($res == 0) {
