@@ -483,6 +483,7 @@ echo "<pre>";
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
 
         if(!is_array($sjshuser)){
+
             $this->error("升级条件未满足<br/>".$sjshuser);
         }
        // var_dump($sjshuser);
@@ -503,17 +504,33 @@ echo "<pre>";
             "shuser2" => $shuser2,
             "addtime" => time()
         );
+       // var_dump($sjshuser);
+//       echo $shuser1;
+//       echo $shuser2;
+//        exit;
+
+
 
         if(M("usersjinfo")->add($data)){
+            // 发送短信
             $msgtext = "【创客联盟】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
             if($shuser1){
-                $this->SendMsg($shuser1,$msgtext);
+                $res[] = newMsg($shuser1,$msgtext);
+                // $res = $this->SendMsg('18214969531',$msgtext);
+                dump($res);
+                exit;
             }
+
             if($shuser2){
-                $this->SendMsg($shuser2,$msgtext);
+                $res[] = newMsg($shuser2,$msgtext);
+                $res[] = $this->SendMsg($shuser2,$msgtext);
             }
+
             $this->success("申请成功");
             exit;
+        }else{
+
+            $this->error("申请失败");
         }
 
         $this->assign("userinfo",$user);

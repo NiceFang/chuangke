@@ -41,7 +41,7 @@ class IndexController extends CommonController
         $memberName = session("nvip_nvip_member_User");
         $users = M("user");
         $userModel = $users->where("mobile='{$memberName}'")->find();
-        var_dump( $userModel["standardlevel"]);
+//        var_dump( $userModel["standardlevel"]);
         $userModel["levelName"] = GetLevel($userModel["standardlevel"]);
 
 

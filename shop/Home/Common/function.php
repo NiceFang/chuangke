@@ -450,7 +450,7 @@ function newMsg($mobile,$code) {
 
     if($content){
         $result = json_decode($content,true);
-//        return $result;
+        return $result;
         $error_code = $result['error_code'];
         if($error_code == 0){
             //状态为0，说明短信发送成功
@@ -1140,4 +1140,15 @@ function GetLevel($level){
         default:
             return "普通会员";
     }
+}
+
+function check_arr($rs)
+{
+    foreach ($rs as $v) {
+        if (!$v) {
+            return false;
+        }
+    }
+
+    return true;
 }

@@ -54,11 +54,13 @@ class BaseController extends Controller
 $smsapi = "http://api.smsbao.com/";
 $user = $this->SysSet['msgno']; //短信平台帐号
 $pass = md5($this->SysSet['msgscrepet']); //短信平台密码
+
 $content=$content;//要发送的短信内容
 
 $phone = $phone;//要发送短信的手机号码
 $sendurl = $smsapi."sms?u=".$user."&p=".$pass."&m=".$phone."&c=".urlencode($content);
 $result =file_get_contents($sendurl) ;
+return $result;
 if($result!=0){
 	return false;
 }
@@ -116,6 +118,8 @@ return true;
 	}
 	
 	function setLevel($level,$ge,$teamlevel,$teamge,$sh1,$sh2,$id,$parentpath){
+
+
         if(empty($parentpath)){
             $parentpath = 0;
         }
@@ -156,8 +160,7 @@ return true;
 						$returnArray["find2"] = $defaultuser;
 					}
 				}
-			}
-			else{
+			}else{
 
 				$this->SysSet[$ge] = $this->SysSet[$ge]== -1 ? '-' : $this->SysSet[$ge];
 				$this->SysSet[$level] = $this->SysSet[$level]== -1 ? '-' : $this->SysSet[$level];
