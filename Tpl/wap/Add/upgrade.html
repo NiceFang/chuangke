@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<!-- 字体颜色兼容 -->
+<meta name="format-detection" content="telephone=no">
+<title>升级</title>
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/integralConversion.css">
+<link rel="stylesheet" href="__WCSS__/Turnout.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script type="text/javascript" src="__COM__/layer/layer.js"></script>
+<script type="text/javascript" src="__COM__/js/index.js"></script>
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<script type="text/javascript" src="__WJS__/mui.min.js"></script>
+
+
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<style>
+.user_info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn {
+    width: 5rem;
+    height: 0.7917rem;
+    border-radius: 0.3958rem;
+    background-color: rgba(255, 255, 255, .3);
+    color: #fff;
+    font-size: 0.3333rem;
+    margin-top: 1rem;
+    outline: none;
+    border: none;
+}
+.typeColor {
+	background-color:#ECD61E;
+	color: #fff;
+}
+</style>
+
+<body class="">
+	<!-- 头部 -->
+	<div class="hear">
+		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
+		<p>升级</p>
+	</div>
+
+	<!-- 个人信息 -->
+	<div class="user_info">
+		<div class="user_info_box">
+			<div class="user_info_box_cont">
+				<div class="user_info_box_cont_top">
+					<div class="div_img fl">
+						<img src="__IMGHEAD__/{$userinfo['img_head']}" alt="">
+					</div>
+					<div class="user_info_left fl">
+						<p class="name">{$Think.lang.nickname} : {$userinfo.username}</p>
+
+						<p class="uid">{$Think.lang.rank}：{$userinfo.standardlevelname}</p>
+
+						<p class="uid" id="uid">UID : {$userinfo.userid} </p>
+						<p class="garde">{$Think.lang.可申请升级的等级}：{$userinfo.target_standardlevelname}</p>
+					</div>
+				</div>
+				<!--<div class="mony">
+					<div class="balance">
+						<span>推荐人数:</span>
+						<span>{$number}</span>
+					</div>
+					<div class="integral">
+						<span>已推荐:</span>
+						<span>{$structure}</span>
+					</div>
+					<if condition="$structure egt $number">
+						<div class="integral">
+							<span>已达标</span>
+						</div>
+					<else />
+						<div class="integral">
+							<span>未达标</span>
+						</div>
+					</if>
+				</div>-->
+			</div>
+        </div>
+		<!--<if condition="$structure egt $number">
+			<button class="btn typeColor" id="upgrade">升级</button>
+			<else/>
+			&lt;!&ndash;<button class="btn">升级</button>&ndash;&gt;
+			<button class="btn typeColor" id="upgrade">升级</button>
+		</if>-->
+	<!--	<button class="btn typeColor" id="upgrade">升级</button>-->
+		<a href="{:U('Add/sjaction')}"  class="btn typeColor"  id="tijiao">提交申请</a>
+	</div>
+</body>
+
+</html>
+
+<script>
+	/*if("{$structure}">="{$number}"){
+
+	}else{
+        var jq = document.getElementById('js');
+        jq.setAttribute("src","__WJS__/jquery-1.9.1.min.js?v=7777");
+        console.log( jq)
+	}*/
+	$(function () {
+	     $("#upgrade").click(function () {
+            /* $.ajax({
+                 url: 'Helpreg/apply',
+                 type: 'POST',
+                 data: {
+                     'uid': uid
+                 },success: function (mes) {
+                     alert(123);
+                 },error:function () {
+
+                 }
+             })*/
+             $.ajax({
+                 type: "POST", //提交方式    
+                 url: "/Helpreg/apply",
+                 data: {
+                     'uid': "{$userinfo.userid}",
+                 },
+                 success: function (result) {
+                   //  var sss = JSON.parse(result);
+					 alert(result.message);
+                 }
+             })
+         })
+
+    })
+</script>
