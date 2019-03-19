@@ -601,6 +601,7 @@ class AddController extends LoginTrueController
 
         //判断是否有正在升级的宴请
         $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
+//        var_dump($isExists);
         $sjarray=array();
         if($isExists['shuser1']){
             $sjarray[] = M("user")->where("mobile='".$isExists['shuser1']."'")->find();
