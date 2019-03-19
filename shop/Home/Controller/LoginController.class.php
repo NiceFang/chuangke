@@ -633,6 +633,7 @@ public function check_verify($code, $id = '')
                 $user=D('User');
                 echo 6;
                 $result=sendMsg($mobile,$sendType);
+                var_dump($result);
                 echo 7;
                 if($result['status']==1){
 

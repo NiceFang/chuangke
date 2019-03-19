@@ -338,7 +338,7 @@
                 if (data == true) {
                     //验证码输入正确
                     a = 0;
-                    alert('图形验证码正确');
+
                     // layer.msg('图形验证码正确');
 
                 } else {
@@ -355,7 +355,7 @@
         $('#mycode').click(function () {
             $("#submit").css('backgroundColor', "rgba(255,255,255,0.5)");
             var mobile = $("input[name='mobile']").val();
-
+            alert(mobile);
             var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
             var txyzmcw = $('#txyzmcw').val();   <!--图形验证码错误-->
             var imgCode = $("#j_verify").val();
@@ -379,7 +379,7 @@
                     'verify': imgCode,
                     'l': "{:I('get.l')}"
                 }, function (data) {
-
+                    alert('ajax发送成功');
                     if (data.status == 1) {
                        alert('发送成功');
                         layer.msg(data.message);
@@ -402,7 +402,7 @@
                 RemainTime();
             }
         });
-        var iTime = 10;
+        var iTime = 50;
         var Account;
         if (bet > 0) {
             iTime = bet;

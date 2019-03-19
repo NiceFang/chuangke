@@ -809,7 +809,7 @@ class AddController extends LoginTrueController
             // 审核通过 增加积分
            // $res[] = M('userscores_record')->add($data);
 
-        
+
            if($ispass==1){
                // 改变用户级别
                 $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
