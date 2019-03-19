@@ -402,7 +402,8 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
-//            return $res;
+            echo "bb";
+            return $res;
         }
 //        var_dump($res);die;
         if ($res == 0) {
@@ -468,7 +469,7 @@ function newMsg($mobile,$code) {
         // echo "请求发送短信失败";
         $mes=1;
     }
-    return $mes;
+    return $result;
 //    return $result;
 //     $url='http://smssh1.253.com/msg/send/json';
 //     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');
