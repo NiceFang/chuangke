@@ -539,7 +539,7 @@ class AddController extends LoginTrueController
 
 
         $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
-       
+        var_dump($user);
         if($user['standardlevel']+1>9){
             $this->error("已经是最高等级");
         }
