@@ -625,7 +625,7 @@ public function check_verify($code, $id = '')
 
             $this->ajaxReturn($result);
         }elseif(!empty($res)){
-            if(time()-$res['time'] <= 10){
+            if(time()-$res['time'] <= 300){
                 $mes=array();
                 $mes['status'] = 2;
                 $mes['message'] = L('wfznjzzc');//五分钟禁止注册

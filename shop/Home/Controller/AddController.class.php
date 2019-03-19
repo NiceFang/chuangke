@@ -258,10 +258,13 @@ class AddController extends LoginTrueController
      */
     public function Add_Action()
     {
-//        var_dump($_POST);
+        var_dump($_POST);
 //        var_dump($_FILES);
 //        exit;
         $this->LoginTrue();
+        if($_POST["code"] != session('code') ){
+            $this->error("验证码错误");
+        }
         $txt_loginname = $_POST["mobile"];
         if (!$txt_loginname) {
             $this->error("手机号不能为空");
@@ -297,6 +300,9 @@ class AddController extends LoginTrueController
 
         $upload = new \Think\Upload();// 实例化上传类
         $upload->rootPath = './uploads/';
+        if(!is_dir($upload->rootPath)){
+            mkdir($upload->rootPath,0777,true);
+        }
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->saveName = array('uniqid','');
         $upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
