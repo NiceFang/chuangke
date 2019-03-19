@@ -258,9 +258,8 @@ class AddController extends LoginTrueController
      */
     public function Add_Action()
     {
-
         $this->LoginTrue();
-     if($_POST["code"] != session('code') ){
+      if($_POST["code"] != session('code') ){
             $this->error("验证码错误");
         }
         $txt_loginname = $_POST["mobile"];
