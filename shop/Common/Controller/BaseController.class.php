@@ -128,11 +128,14 @@ return true;
             // 计算上家人数
 			$tjcount = M('user')->where("pid='{$id}' ".$wheresql)->count();
 
+            $sql[] = M('user')->getLastSql();
 			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and standardlevel=".$this->SysSet[$teamlevel];
 
 			$teamtjcount = M('user')->where("FIND_IN_SET($id,rpath) ".$wheresql)->count();
-			$sql = M('user')->getLastSql();
-
+			$sql[] = M('user')->getLastSql();
+//            var_dump($sql);
+//            echo  $this->SysSet[$ge];
+//            echo  $this->SysSet[$teamge];
 			if($tjcount >= $this->SysSet[$ge] && $teamtjcount>= $this->SysSet[$teamge]){
 				//查找满足条件的审核人
 				$wheresql = $this->SysSet[$sh1]==-1  ? " and 1=1 " : " and standardlevel = ".$this->SysSet[$sh1];

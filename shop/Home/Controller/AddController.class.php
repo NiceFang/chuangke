@@ -448,7 +448,7 @@ class AddController extends LoginTrueController
                     $isExists["shuserstatus2"] = $isExists["shuser2"] ? ' - '.$this->GetStatus($isExists['status2']) : '';
 
                     $this->assign("shinfo",$isExists);
-                    var_dump($isExists);
+                    //var_dump($isExists);
                 }
             }
 
@@ -522,7 +522,7 @@ class AddController extends LoginTrueController
     public function sjaction()
     {
         $this->LoginTrue();
-echo "<pre>";
+
         $id = $_SESSION['nvip_member_id'];
 
         //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
@@ -543,7 +543,7 @@ echo "<pre>";
         // $tjcount = M('users')->where("rid='{$id}'")->count();
 
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
-
+//        var_dump($sjshuser);exit;
         if(!is_array($sjshuser)){
 
             $this->error("升级条件未满足<br/>".$sjshuser);
@@ -566,17 +566,7 @@ echo "<pre>";
             "shuser2" => $shuser2,
             "addtime" => time()
         );
-       // var_dump($sjshuser);
-//       echo $shuser1;
-//       echo $shuser2;
-//        exit;
-//        $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
-//        $res[] = newMsg($shuser1,$msgtext);
-////                 $res = $this->SendMsg('18214969531',$msgtext);
-//        var_dump($res);
-//        exit;
 
-        //
         if(M("usersjinfo")->add($data)){
             // 发送短信
             $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
@@ -624,7 +614,7 @@ echo "<pre>";
     }
 
 
-    //审核升级
+    //审核升级历史订单页面
     public function userchecksjlog()
     {
         $this->LoginTrue();
@@ -665,6 +655,8 @@ echo "<pre>";
 
         $this->display();
     }
+
+    //审核升级页面
     public function audit()
     {
         $this->LoginTrue();
@@ -814,7 +806,8 @@ echo "<pre>";
 
 
 
-            /*if($ispass==1){
+           if($ispass==1){
+               // 改变用户级别
                 $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
@@ -822,7 +815,7 @@ echo "<pre>";
             if($ispass ==3){
                 $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
                 $this->SendMsg($shList['loginname'],$msgtext);
-            }*/
+            }
             if($res){
                 $mo->commit();
                 $this->success("操作成功");
