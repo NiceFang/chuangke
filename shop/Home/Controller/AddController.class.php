@@ -260,7 +260,7 @@ class AddController extends LoginTrueController
     {
         var_dump($_POST);
 //        var_dump($_FILES);
-//        exit;
+        exit;
         $this->LoginTrue();
        /* if($_POST["code"] != session('code') ){
             $this->error("验证码错误");
