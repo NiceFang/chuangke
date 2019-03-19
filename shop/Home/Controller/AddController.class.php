@@ -258,11 +258,11 @@ class AddController extends LoginTrueController
      */
     public function Add_Action()
     {
-//        var_dump($_POST);
-//        var_dump($_FILES);
-//        exit;
         $this->LoginTrue();
         $txt_loginname = $_POST["mobile"];
+      /*  if($_POST["mobile"] != session('code')){
+            $this->error("验证码错误");
+        }*/
         if (!$txt_loginname) {
             $this->error("手机号不能为空");
             exit();
@@ -466,7 +466,7 @@ class AddController extends LoginTrueController
         $info = M('user')->where("userid='{$id}'")->find();
         $user['userid'] = $info['userid'];
         $user['username'] = $info['username'];
-       
+
 
         $this->assign("userinfo",$user);
         //var_dump($user);
@@ -522,73 +522,79 @@ class AddController extends LoginTrueController
     public function sjaction()
     {
         $this->LoginTrue();
+        if(IS_AJAX){
+            if(!empty($_POST['uid'])){
+                $id = $_SESSION['nvip_member_id'];
 
-        $id = $_SESSION['nvip_member_id'];
-
-        //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
-        $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
-        if($isExists){
-            if($isExists['status1'] == 0 && $isExists['status2'] ==0){
-                $this->error("你有申请正在处理");
-            }
-
-        }
+                //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
+                $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
+                if($isExists){
+                    if($isExists['status1'] == 0 && $isExists['status2'] ==0){
+                       ajaxReturn("你有申请正在处理",0);
+                    }
+                }
 
 
-        $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
-        if($user['standardlevel']+1>9){
-            $this->error("已经是最高等级");
-        }
-        $targetlevel = $user['standardlevel']+1;
-        // $tjcount = M('users')->where("rid='{$id}'")->count();
+                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+                if($user['standardlevel']+1>9){
+                   // $this->error("已经是最高等级");
+                    ajaxReturn("已经是最高等级",0);
+                }
+                $targetlevel = $user['standardlevel']+1;
+                // $tjcount = M('users')->where("rid='{$id}'")->count();
 
-        $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
-//        var_dump($sjshuser);exit;
-        if(!is_array($sjshuser)){
+                $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
 
-            $this->error("升级条件未满足<br/>".$sjshuser);
-        }
-       // var_dump($sjshuser);
-        if($sjshuser['find1'])
-            $shuser1 = $sjshuser['find1']['mobile'];
+                if(!is_array($sjshuser)){
 
-        if($sjshuser['find2'])
-            $shuser2 = $sjshuser['find2']['mobile'];
+//                    $this->error("升级条件未满足<br/>".$sjshuser);
+                    ajaxReturn("\"升级条件未满足<br/>\".$sjshuser",0);
+                }
 
-        //var_dump($shuser1);
+                if($sjshuser['find1'])
+                    $shuser1 = $sjshuser['find1']['mobile'];
 
-        $data = array(
-            "user_id" => $id,
-            "loginname" => $user['mobile'],
-            "curlevel" => $user['standardlevel'],
-            "targetlevel" => ($user['standardlevel'])+1,
-            "shuser1" => $shuser1,
-            "shuser2" => $shuser2,
-            "addtime" => time()
-        );
+                if($sjshuser['find2'])
+                    $shuser2 = $sjshuser['find2']['mobile'];
 
-        if(M("usersjinfo")->add($data)){
-            // 发送短信
-            $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
-            if($shuser1){
-                $res[] = newMsg($shuser1,$msgtext);
+                //var_dump($shuser1);
+
+                $data = array(
+                    "user_id" => $id,
+                    "loginname" => $user['mobile'],
+                    "curlevel" => $user['standardlevel'],
+                    "targetlevel" => ($user['standardlevel'])+1,
+                    "shuser1" => $shuser1,
+                    "shuser2" => $shuser2,
+                    "addtime" => time()
+                );
+
+                if(M("usersjinfo")->add($data)){
+                    // 发送短信
+                    $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
+                    if($shuser1){
+                        $res[] = newMsg($shuser1,$msgtext);
 //                 $res = $this->SendMsg('18214969531',$msgtext);
 
+                    }
+
+                    if($shuser2){
+                        $res[] = newMsg($shuser2,$msgtext);
+                        $res[] = $this->SendMsg($shuser2,$msgtext);
+                    }
+
+                    //$this->success("申请成功");
+                    $this->ajaxReturn("申请成功",1);
+
+                }else{
+//                    $this->error("申请失败");
+                    $this->ajaxReturn("申请失败",0);
+                }
+
+                $this->assign("userinfo",$user);
             }
-
-            if($shuser2){
-                $res[] = newMsg($shuser2,$msgtext);
-                $res[] = $this->SendMsg($shuser2,$msgtext);
-            }
-
-            $this->success("申请成功");
-            exit;
-        }else{
-
-            $this->error("申请失败");
         }
 
-        $this->assign("userinfo",$user);
         $this->display();
     }
 
@@ -693,8 +699,8 @@ class AddController extends LoginTrueController
             $this->error("非法操作");
         }
 
-
         $shList = M("usersjinfo")->where("id='$id'  and (shuser1='$loginname' or shuser2='$loginname' )")->order("id desc")->find();
+
         if(!$shList){
             $this->error("不正确的操作");
         }
@@ -787,28 +793,26 @@ class AddController extends LoginTrueController
         else{
             $this->error("操作失败");
         }*/
+            // 审核通过记录到表
+            $res[] = M("usersjinfo")->where("id=$id")->save($save);
+            $pid = M('user')->where(array('userid'=>$shList['user_id']))->getField('pid');
 
-           $res[] = M("usersjinfo")->where("id=$id")->save($save);
-            $data['master_id'] = $id;
+            $data['master_id'] = $shList['user_id'];
+
             // 当前审核人的id
-            $data['deputy_id'] = $_REQUEST['user_id'];
+            $data['deputy_id'] = $pid;
             // 数量
             $data['get_nums'] = 398*3;
             // 类型
             $data['get_type'] = 56;
 
             // 当前总额
+            $scoresDate = M('userscores_record')->where(array('master_id'=>$shList['user_id']))->find();
 
-            //$scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
-
-           // $scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
-
-
-
-            $data['now_nums'] =  $data['get_nums'];
+            $scoresDate ? $scoresDate : 0;
+            $data['now_nums'] =  $data['get_nums'] + $scoresDate['now_nums'];
             // 审核通过 增加积分
-           // $res[] = M('userscores_record')->add($data);
-
+          //  $res[] = M('userscores_record')->add($data);
 
            if($ispass==1){
                // 改变用户级别
