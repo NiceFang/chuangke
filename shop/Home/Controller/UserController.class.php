@@ -758,18 +758,6 @@ class UserController extends CommonController
 
 
 
-    /**
-     *  注册会员-pp
-     **/
-    public function Add_user()
-    {
-
-
-
-
-        $this->display();
-    }
-
     public function upImg($image)
     {
         //判断获得变量
@@ -820,45 +808,6 @@ class UserController extends CommonController
 
 
 
-    /*
-     * 提交注册会员*/
-    public function Add_Action()
-    {
-
-        //获取上传的图片
-        $image = $_FILES['weixin'];
-        var_dump($_POST);
-        if(empty($image)){
-            $this->error("请选择微信二维码上传");
-            exit();
-        }else{
-            $this->upImg($image);
-        }
-
-        if (!$_POST["mobile"]) {
-            $this->error("手机号不能为空");
-            exit();
-        }
-        $res = M('user')->where(array('mobile'=>$_POST["mobile"]))->field('mobile')->find();
-        if ($res) {
-            $this->error("手机号重复，请重新获取!");
-            exit();
-        }
-        if (!$_POST["realname"]) {
-            $this->error("商家姓名不能为空");
-            exit();
-        }
-        if (!$_POST["password"]) {
-            $this->error("请填写密码");
-            exit();
-        }
-        if ($_POST["cpassword"] != $_POST["password"]) {
-            $this->error("两次输入的密码不一致");
-            exit();
-        }
-
-        $this->display();
-    }
 
 
 }
