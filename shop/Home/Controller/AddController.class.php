@@ -258,12 +258,7 @@ class AddController extends LoginTrueController
      */
     public function Add_Action()
     {
-        var_dump($_POST);
-        var_dump(session('code'));
-        echo "<br>";
-        var_dump(session('sms_code'));
-//        var_dump($_FILES);
-        exit;
+
         $this->LoginTrue();
        /* if($_POST["code"] != session('code') ){
             $this->error("验证码错误");
