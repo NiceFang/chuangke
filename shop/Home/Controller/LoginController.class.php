@@ -622,6 +622,7 @@ public function check_verify($code, $id = '')
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
+
             $this->ajaxReturn($result);
         }elseif(!empty($res)){
             if(time()-$res['time'] <= 300){

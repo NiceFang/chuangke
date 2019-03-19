@@ -402,8 +402,8 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
-            echo "bb";
-            return $res;
+//            echo "bb";
+//            return $res;
         }
 //        var_dump($res);die;
         if ($res == 0) {
