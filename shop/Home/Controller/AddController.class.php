@@ -539,6 +539,7 @@ class AddController extends LoginTrueController
 
 
         $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+       
         if($user['standardlevel']+1>9){
             $this->error("已经是最高等级");
         }
@@ -546,7 +547,8 @@ class AddController extends LoginTrueController
         // $tjcount = M('users')->where("rid='{$id}'")->count();
 
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
-//        var_dump($sjshuser);exit;
+        var_dump($sjshuser);
+        exit;
         if(!is_array($sjshuser)){
 
             $this->error("升级条件未满足<br/>".$sjshuser);
