@@ -260,9 +260,9 @@ class AddController extends LoginTrueController
     {
 
         $this->LoginTrue();
-       /* if($_POST["code"] != session('code') ){
+     if($_POST["code"] != session('code') ){
             $this->error("验证码错误");
-        }*/
+        }
         $txt_loginname = $_POST["mobile"];
         if (!$txt_loginname) {
             $this->error("手机号不能为空");
