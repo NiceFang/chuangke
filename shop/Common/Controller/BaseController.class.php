@@ -146,7 +146,7 @@ return true;
 					$returnArray["find1"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
                     $sql = M('user')->getLastSql();
 //                    var_dump($sql);
-					if(!$returnArray["find1"]){
+					if(!$returnArray["find1"] || $returnArray["find1"] == NULL){
 						$returnArray["find1"] = $defaultuser;
 					}
 				}
