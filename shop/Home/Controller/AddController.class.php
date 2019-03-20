@@ -571,8 +571,7 @@ class AddController extends LoginTrueController
             "shuser2" => $shuser2,
             "addtime" => time()
         );
-        var_dump($data);
-        exit;
+
         if(M("usersjinfo")->add($data)){
             // 发送短信
             $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
@@ -701,6 +700,8 @@ class AddController extends LoginTrueController
 
 
         $shList = M("usersjinfo")->where("id='$id'  and (shuser1='$loginname' or shuser2='$loginname' )")->order("id desc")->find();
+        var_dump($shList);
+        exit;
         if(!$shList){
             $this->error("不正确的操作");
         }
@@ -795,6 +796,7 @@ class AddController extends LoginTrueController
         }*/
 
            $res[] = M("usersjinfo")->where("id=$id")->save($save);
+
             $data['master_id'] = $id;
             // 当前审核人的id
             $data['deputy_id'] = $_REQUEST['user_id'];
