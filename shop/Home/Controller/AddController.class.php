@@ -547,8 +547,8 @@ class AddController extends LoginTrueController
         // $tjcount = M('users')->where("rid='{$id}'")->count();
 
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
-        var_dump($sjshuser);
-        exit;
+//        var_dump($sjshuser);
+//        exit;
         if(!is_array($sjshuser)){
 
             $this->error("升级条件未满足<br/>".$sjshuser);
@@ -571,7 +571,8 @@ class AddController extends LoginTrueController
             "shuser2" => $shuser2,
             "addtime" => time()
         );
-
+        var_dump($data);
+        exit;
         if(M("usersjinfo")->add($data)){
             // 发送短信
             $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
