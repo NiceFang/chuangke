@@ -467,7 +467,7 @@ class AddController extends LoginTrueController
                 if(!is_array($sjshuser)){
 
 //                    $this->error("升级条件未满足<br/>".$sjshuser);
-                    ajaxReturn("\"升级条件未满足<br/>\".$sjshuser",0);
+                    ajaxReturn("\"升级条件未满足<br/>\"",0);
                 }
 
                 if($sjshuser['find1'])

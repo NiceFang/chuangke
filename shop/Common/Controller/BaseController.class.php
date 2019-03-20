@@ -152,7 +152,7 @@ return true;
 
                     $returnArray["find1"] = M('user')->where("userid in ($parentpath) " . $wheresql)->order("userid desc")->find();
 
-                    $sql[] = M('user')->getLastSql();
+                   // $sql[] = M('user')->getLastSql();
 
                     if (!$returnArray["find1"] || $returnArray["find1"] == NULL) {
 
@@ -163,11 +163,11 @@ return true;
 
 				$wheresql = $this->SysSet[$sh2]==-1  ? " and 1=1 " : " and standardlevel = ".$this->SysSet[$sh2];
 
-				if($this->SysSet[$shS2]==-1){
+				if($this->SysSet[$sh2]==-1){
 					$returnArray["find2"] = false;
 				}else{
 					$returnArray["find2"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
-                    $sql[] = M('user')->getLastSql();
+                    //$sql[] = M('user')->getLastSql();
                     //var_dump($sql);
 					if(!$returnArray["find2"]){
 						$returnArray["find2"] = $defaultuser;
