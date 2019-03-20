@@ -259,6 +259,9 @@ class AddController extends LoginTrueController
     public function Add_Action()
     {
         $this->LoginTrue();
+     /* if($_POST["code"] != session('code') ){
+            $this->error("验证码错误");
+        }*/
         $txt_loginname = $_POST["mobile"];
       /*  if($_POST["mobile"] != session('code')){
             $this->error("验证码错误");
@@ -297,6 +300,9 @@ class AddController extends LoginTrueController
 
         $upload = new \Think\Upload();// 实例化上传类
         $upload->rootPath = './uploads/';
+        if(!is_dir($upload->rootPath)){
+            mkdir($upload->rootPath,0777,true);
+        }
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->saveName = array('uniqid','');
         $upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
@@ -434,10 +440,81 @@ class AddController extends LoginTrueController
 
     public function sjaction()
     {
-
         $this->LoginTrue();
+        if(IS_AJAX){
+            if(!empty($_POST['uid'])){
+                $id = $_SESSION['nvip_member_id'];
 
-        $id = $_SESSION['nvip_member_id'];
+                //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
+                $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
+                if($isExists){
+                    if($isExists['status1'] == 0 && $isExists['status2'] ==0){
+                        ajaxReturn("你有申请正在处理",0);
+                    }
+                }
+
+
+                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+                if($user['standardlevel']+1>9){
+                    // $this->error("已经是最高等级");
+                    ajaxReturn("已经是最高等级",0);
+                }
+                $targetlevel = $user['standardlevel']+1;
+                // $tjcount = M('users')->where("rid='{$id}'")->count();
+
+                $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+                //var_dump($sjshuser);
+                if(!is_array($sjshuser)){
+
+//                    $this->error("升级条件未满足<br/>".$sjshuser);
+                    ajaxReturn("\"升级条件未满足<br/>\".$sjshuser",0);
+                }
+
+                if($sjshuser['find1'])
+                    $shuser1 = $sjshuser['find1']['mobile'];
+
+                if($sjshuser['find2'])
+                    $shuser2 = $sjshuser['find2']['mobile'];
+
+                //var_dump($shuser1);
+
+                $data = array(
+                    "user_id" => $id,
+                    "loginname" => $user['mobile'],
+                    "curlevel" => $user['standardlevel'],
+                    "targetlevel" => ($user['standardlevel'])+1,
+                    "shuser1" => $shuser1,
+                    "shuser2" => $shuser2,
+                    "addtime" => time()
+                );
+
+                if(M("usersjinfo")->add($data)){
+                    // 发送短信
+                    $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
+                    if($shuser1){
+                        $res[] = newMsg($shuser1,$msgtext);
+//                 $res = $this->SendMsg('18214969531',$msgtext);
+
+                    }
+
+                    if($shuser2){
+                        $res[] = newMsg($shuser2,$msgtext);
+                        $res[] = $this->SendMsg($shuser2,$msgtext);
+                    }
+
+                    //$this->success("申请成功");
+                    $this->ajaxReturn("申请成功",1);
+
+                }else{
+//                    $this->error("申请失败");
+                    $this->ajaxReturn("申请失败",0);
+                }
+
+                $this->assign("userinfo",$user);
+            }
+        }
+
+/*        $id = $_SESSION['nvip_member_id'];
 
         //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
         $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
@@ -450,8 +527,12 @@ class AddController extends LoginTrueController
 
 
         $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+
         var_dump($user);
         exit;
+
+//        var_dump($user);
+
         if($user['standardlevel']+1>9){
             $this->error("已经是最高等级");
         }
@@ -497,7 +578,7 @@ class AddController extends LoginTrueController
             exit;
         }
 
-        $this->assign("userinfo",$user);
+        $this->assign("userinfo",$user);*/
         $this->display();
     }
 
@@ -603,6 +684,7 @@ class AddController extends LoginTrueController
         $this->display();
     }
 
+
     //审核升级
     public function userchecksj()
     {
@@ -662,6 +744,8 @@ class AddController extends LoginTrueController
 
 
         $shList = M("usersjinfo")->where("id='$id'  and (shuser1='$loginname' or shuser2='$loginname' )")->order("id desc")->find();
+//        var_dump($shList);
+//        exit;
         if(!$shList){
             $this->error("不正确的操作");
         }
@@ -737,9 +821,52 @@ class AddController extends LoginTrueController
             $this->success("操作成功");
             exit;
         }
-        else{
+        else {
             $this->error("操作失败");
         }
+
+
+
+
+           $res[] = M("usersjinfo")->where("id=$id")->save($save);
+
+            $data['master_id'] = $id;
+            // 当前审核人的id
+            $data['deputy_id'] = $_REQUEST['user_id'];
+            // 数量
+            $data['get_nums'] = 398*3;
+            // 类型
+            $data['get_type'] = 56;
+
+            // 当前总额
+           // $scoresDate = M('userscores_record')->where(array('master_id'=>$id))->find();
+
+
+            $data['now_nums'] =  $data['get_nums'];
+            // 审核通过 增加积分
+           // $res[] = M('userscores_record')->add($data);
+
+
+
+           if($ispass==1){
+               // 改变用户级别
+                $res[] =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
+                $this->SendMsg($shList['loginname'],$msgtext);
+            }
+            if($ispass ==3){
+                $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
+                $this->SendMsg($shList['loginname'],$msgtext);
+            }
+            if($res){
+                $mo->commit();
+                $this->success("操作成功");
+                exit;
+            }else{
+                $mo->rollback();
+                $this->error("操作失败");
+            }
+
 
         $this->assign("shList",$shList);
 

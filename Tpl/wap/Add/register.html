@@ -338,7 +338,6 @@
                 if (data == true) {
                     //验证码输入正确
                     a = 0;
-
                     // layer.msg('图形验证码正确');
 
                 } else {
@@ -381,11 +380,11 @@
                 }, function (data) {
                     alert('ajax发送成功');
                     if (data.status == 1) {
-                       alert('发送成功');
+                       // alert('发送成功');
                         layer.msg(data.message);
                         RemainTime();
                     } else {
-                        alert('发送失败！');
+                        // alert('发送失败！');
                         layer.msg(data.message);
                     }
                 });

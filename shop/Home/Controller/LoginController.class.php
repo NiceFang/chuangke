@@ -599,12 +599,12 @@ public function check_verify($code, $id = '')
             'reg_ip'=>$cip,
             'reg_date'=>array('egt',strtotime(date('Y-m-d')))
         );
-        echo 2;
+//        echo 2;
         $resNum=M('user')->where($resCountWhere)->count();
 //        dump($resNum);exit;
 //            dump($resNum);
         if($resNum>10){
-            echo 3;
+//            echo 3;
 //            ajaxReturn(2,0);
             $mes=array();
             $mes['status'] = 2;
@@ -615,13 +615,14 @@ public function check_verify($code, $id = '')
         $res=M('preventip')->where(array('ip'=>$cip))->find();
 //        ajaxReturn($res);
         if(empty($res)){
-            echo 4;
+//            echo 4;
             $user=D('User');
             $result=sendMsg($mobile,$sendType);
-            echo 5;
+//            echo 5;
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
+
             $this->ajaxReturn($result);
         }elseif(!empty($res)){
             if(time()-$res['time'] <= 300){
@@ -631,10 +632,9 @@ public function check_verify($code, $id = '')
                 $this->ajaxReturn($mes);
             }else{
                 $user=D('User');
-                echo 6;
+//                echo 6;
                 $result=sendMsg($mobile,$sendType);
-                var_dump($result);
-                echo 7;
+//               echo 7;
                 if($result['status']==1){
 
                     $datas['id']=$res['id'];

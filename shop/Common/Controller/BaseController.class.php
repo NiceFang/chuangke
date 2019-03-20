@@ -75,7 +75,7 @@ return true;
         $Model = new \Think\Model(); // 实例化一个model对象 没有对应任何数据表
 		$returnArray = "";	
 //		$defaultuser =$Model-> table('nv_users')->where("id =1 ")->order("id desc")->find();
-        $defaultuser =$Model-> table('ysk_user')->where("userid =1 ")->order("userid desc")->find();
+        $defaultuser =$Model-> table('ysk_user')->where("userid =606441 ")->find();
 		if($targetLevel==1){
 			return $this->setLevel('one_star_level','one_star_ge','one_star_team_level','one_star_team_ge','one_star_sh1','one_star_sh2',$userid,$parentpath);
 			
@@ -119,11 +119,11 @@ return true;
 	
 	function setLevel($level,$ge,$teamlevel,$teamge,$sh1,$sh2,$id,$parentpath){
 
-
-      /*  if(empty($parentpath)){
+        /*if(empty($parentpath)){
             $parentpath = 0;
         }*/
-		$defaultuser = M('user')->where("userid =606470 ")->find();
+		$defaultuser = M('user')->where("userid =606441 ")->find();
+
 //        $defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
 			$wheresql = $this->SysSet[$level]==-1  ? "" : " and standardlevel=".$this->SysSet[$level];
             // 计算上家人数
@@ -135,6 +135,12 @@ return true;
 			$teamtjcount = M('user')->where("FIND_IN_SET($id,rpath) ".$wheresql)->count();
 			$sql[] = M('user')->getLastSql();
 
+			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and standardlevel=".$this->SysSet[$teamlevel];
+
+			$teamtjcount = M('user')->where("FIND_IN_SET($id,rpath) ".$wheresql)->count();
+			$sql = M('user')->getLastSql();
+            //var_dump($sql);
+
 //            echo  $this->SysSet[$ge];
 //            echo  $this->SysSet[$teamge];
 			if($tjcount >= $this->SysSet[$ge] && $teamtjcount>= $this->SysSet[$teamge]){
@@ -142,20 +148,22 @@ return true;
 				$wheresql = $this->SysSet[$sh1]==-1  ? " and 1=1 " : " and standardlevel = ".$this->SysSet[$sh1];
 				if($this->SysSet[$sh1]==-1){
 					$returnArray["find1"] = false;
-				}else{
+				}else {
 
-					$returnArray["find1"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
+                    $returnArray["find1"] = M('user')->where("userid in ($parentpath) " . $wheresql)->order("userid desc")->find();
+
                     $sql[] = M('user')->getLastSql();
 
-					if(!$returnArray["find1"]){
-						$returnArray["find1"] = $defaultuser;
-					}
-				}
+                    if (!$returnArray["find1"] || $returnArray["find1"] == NULL) {
+
+                        $returnArray["find1"] = $defaultuser;
+                    }
+                }
 
 
 				$wheresql = $this->SysSet[$sh2]==-1  ? " and 1=1 " : " and standardlevel = ".$this->SysSet[$sh2];
-			
-				if($this->SysSet[$sh2]==-1){
+
+				if($this->SysSet[$shS2]==-1){
 					$returnArray["find2"] = false;
 				}else{
 					$returnArray["find2"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
@@ -173,7 +181,7 @@ return true;
 				$this->SysSet[$teamlevel] = $this->SysSet[$teamlevel]== -1 ? '-' : $this->SysSet[$teamlevel];
 				return "您需要推荐".$this->SysSet[$ge]." 个 ".$this->SysSet[$level]." 星会员 且团队下面有 ".$this->SysSet[$teamge]." 个 ".$this->SysSet[$teamlevel]." 星会员";
 			}
-			
+
 
 		return $returnArray;
 	}
