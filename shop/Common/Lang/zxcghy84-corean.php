@@ -374,6 +374,18 @@ return array(
     'qrxdzfmm'=>'새로 운 지급 비밀번호를 확인하다',
     'hqyzm'=>'인증번호 발송',
 
+    // 首页文案修改
+    'sctz'=>'Lock up',
+    'hyhz'=>'Member transfers',
+    'tzsc'=>'Through lock',
+    'sqgl'=>'Community management',
+    'dhzc'=>'Cash assets',
+    'styy'=>'Ecological applications',
+
+
+
+
+
     'qtxxm'=>'이름을 입력하십시오',
     'ncxgcg'=>'닉네임 수정 성공',
     'ncxgsb'=>'닉네임 수정 실패',

@@ -362,6 +362,23 @@
     'zhzfmm'=>'Retrieve payment password',
     'qszxzfmm'=>'New payment password',
     'qrxdzfmm'=>'Confirm payment password',
+
+    //首页更改文案
+    'sctz'=>'Lock up',
+    'hyhz'=>'Member transfers',
+    'tzsc'=>'Through lock',
+    'sqgl'=>'Community management',
+    'dhzc'=>'Cash assets',
+    'styy'=>'Ecological applications',
+
+
+
+
+
+
+
+
+
     'hqyzm'=>'Get verify code',
 //php文件中的错误提示
     'qtxxm'=>'Please enter name',
