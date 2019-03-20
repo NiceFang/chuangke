@@ -386,49 +386,7 @@ class AddController extends LoginTrueController
         $this->display();
     }
 
-
-
-    //会员升级
-   /* public function usersj()
-    {
-        $this->LoginTrue();
-
-        $id = $_SESSION['nvip_member_id'];
-
-        //判断是否有正在升级的宴请  and (status1!=1 and status2!=1)
-        $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
-
-        if($isExists){
-            if($isExists['status1'] ==0 or $isExists['status2'] ==0){
-                if((!($isExists['status1'] ==1 or $isExists['status2'] ==1))){
-                    $this->assign("isExists",1);
-                    $isExists["shuser1"] = $isExists["shuser1"] ?: "无";
-                    $isExists["shuser2"] = $isExists["shuser2"] ?: "无";
-                    $isExists["shuserstatus1"] = $isExists["shuser1"] ? ' - '.$this->GetStatus($isExists['status1']): '';
-                    $isExists["shuserstatus2"] = $isExists["shuser2"] ? ' - '.$this->GetStatus($isExists['status2']) : '';
-                    $this->assign("shinfo",$isExists);
-
-                }
-            }
-
-        }
-
-
-        $user = M('user')->where("userid='{$id}'")->field("standardlevel")->find();
-
-        $user['standardlevelname'] = GetLevel($user['standardlevel']);
-        if($user['standardlevel']+1>9){
-            $user['target_standardlevelname'] = "已是最高等级";
-        }else{
-            $user['target_standardlevelname'] = GetLevel($user['standardlevel']+1);
-        }
-
-        var_dump($user);
-        $this->assign("userinfo",$user);
-
-        $this->display();
-    }*/
-
+    // 升级申请页面
     public function upgrade()
     {
         $this->LoginTrue();
@@ -474,52 +432,77 @@ class AddController extends LoginTrueController
 
     }
 
+    public function sjaction()
+    {
 
-    public function GetStatus($opstatus){
+        $this->LoginTrue();
 
-        if($opstatus==0)
-            return "未审核";
-        if($opstatus==1)
-            return "未通过";
-        if($opstatus==2)
-            return "已通过";
+        $id = $_SESSION['nvip_member_id'];
+
+        //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
+        $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
+        if($isExists){
+            if($isExists['status1'] == 0 && $isExists['status2'] ==0){
+                $this->error("你有申请正在处理");
+            }
+
+        }
+
+
+        $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+        var_dump($user);
+        exit;
+        if($user['standardlevel']+1>9){
+            $this->error("已经是最高等级");
+        }
+
+        $targetlevel = $user['standardlevel']+1;
+        // $tjcount = M('users')->where("rid='{$id}'")->count();
+        $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+//        var_dump($sjshuser);
+//        exit;
+        if(!is_array($sjshuser)){
+            $this->error("升级条件未满足<br/>".$sjshuser);
+        }
+
+        if($sjshuser['find1'])
+            $shuser1 = $sjshuser['find1']['loginname'];
+
+        if($sjshuser['find2'])
+            $shuser2 = $sjshuser['find2']['loginname'];
+
+
+
+        $data = array(
+            "user_id" => $id,
+            "loginname" => $user['loginname'],
+            "curlevel" => $user['standardlevel'],
+            "targetlevel" => $user['standardlevel']+1,
+            "shuser1" => $shuser1,
+            "shuser2" => $shuser2,
+            "addtime" => time()
+        );
+
+
+        if(M("usersjinfo")->add($data)){
+            $msgtext = "【创客联盟】用户".$user['loginname']."向您发来审核申请，请尽快处理。";
+            if($shuser1){
+                $this->SendMsg($shuser1,$msgtext);
+            }
+            if($shuser2){
+                $this->SendMsg($shuser2,$msgtext);
+            }
+
+            $this->success("申请成功");
+            exit;
+        }
+
+        $this->assign("userinfo",$user);
+        $this->display();
     }
 
-    /* 	//会员升级
-        public function usersj()
-        {
-            $this->LoginTrue();
-
-            $id = $_SESSION['nvip_member_id'];
-
-            //判断是否有正在升级的宴请
-            $isExists =M("usersjinfo")->where("user_id=$id and (status1=0 or status2=0)")->find();
-            if($isExists){
-                $this->assign("isExists",1);
-                $isExists["shuser1"] = $isExists["shuser1"] ?: "无";
-                $isExists["shuser2"] = $isExists["shuser2"] ?: "无";
-                $this->assign("shinfo",$isExists);
-
-            }
-            else{
-                $user = M('users')->where("id='{$id}'")->field("standardlevel")->find();
-
-                $user['standardlevelname'] = GetLevel($user['standardlevel']);
-                if($user['standardlevel']+1>9){
-                    $user['target_standardlevelname'] = "已是最高等级";
-                }else{
-                    $user['target_standardlevelname'] = GetLevel($user['standardlevel']+1);
-                }
-            }
-
-
-            $this->assign("userinfo",$user);
-            $this->display();
-        } */
-
-
     //提交会员升级申请
-    public function sjaction()
+   /* public function sjaction()
     {
         $this->LoginTrue();
         if(IS_AJAX){
@@ -596,7 +579,7 @@ class AddController extends LoginTrueController
         }
 
         $this->display();
-    }
+    }*/
 
     //商家信息
     public function shuserlist()
@@ -617,27 +600,6 @@ class AddController extends LoginTrueController
         }
 
         $this->assign("sjarray",$sjarray);
-        $this->display();
-    }
-
-
-    //审核升级历史订单页面
-    public function userchecksjlog()
-    {
-        $this->LoginTrue();
-
-        $loginname = $_SESSION['nvip_nvip_member_User'];
-
-        //$shList = M("usersjinfo")->where("(shuser1='$loginname' or shuser2='$loginname'  )and ( status1=2 and status2=2)")->order("id desc")->select();
-        $shList = M("usersjinfo")->where("((shuser1='$loginname' and status1=2) or (shuser2='$loginname' and status2=2)) and status1=2 and status2=2 ")->order("id desc")->select();
-        foreach($shList as $key=>$val){
-
-            $shList[$key]['user'] = M("user")->where("userid=".$val['user_id'])->find();
-            $shList[$key]['levelname'] = GetLevel($val['targetlevel']);
-
-        }
-        $this->assign("shList",$shList);
-
         $this->display();
     }
 
@@ -670,7 +632,6 @@ class AddController extends LoginTrueController
 
         $loginname = $_SESSION['nvip_nvip_member_User'];
 
-
         $shList = M("usersjinfo")->where("(shuser1='$loginname' and status1=0) or (shuser2='$loginname' and status2=0)")->order("id desc")->select();
         $sql = M("usersjinfo")->getLastSql();
         //var_dump($sql);
@@ -699,14 +660,14 @@ class AddController extends LoginTrueController
             $this->error("非法操作");
         }
 
-        $shList = M("usersjinfo")->where("id='$id'  and (shuser1='$loginname' or shuser2='$loginname' )")->order("id desc")->find();
 
+        $shList = M("usersjinfo")->where("id='$id'  and (shuser1='$loginname' or shuser2='$loginname' )")->order("id desc")->find();
         if(!$shList){
             $this->error("不正确的操作");
         }
         $status = "";
         if($shList['shuser1'] == $loginname){
-
+            echo 3;
             if($shList['status1'] !=0){
                 $this->error("您已经审核过此订单");
             }
@@ -722,6 +683,7 @@ class AddController extends LoginTrueController
             }
 
         }else if($shList['shuser2'] == $loginname){
+            echo 2;
             $status = "status2";
             if($shList['status2'] !=0){
                 $this->error("您已经审核过此订单");
@@ -738,7 +700,7 @@ class AddController extends LoginTrueController
             }
         }
         if($shList['shuser1'] == $shList['shuser2']){
-
+            echo 1;
             $save = array(
                 "status1" => $op,
                 "shtime1" => time(),
@@ -746,6 +708,7 @@ class AddController extends LoginTrueController
                 "shtime2" => time()
             );
         }
+//        var_dump($save);
         $ispass = 0;
         if($save['status1'] == 2 && $save['status2'] ==2 ){
             $ispass = 1;
@@ -755,32 +718,16 @@ class AddController extends LoginTrueController
         }
 
         M("usersjinfo")->startTrans();
-
-        $mo = M("usersjinfo");
-
-     /*     if(M("usersjinfo")->where("id=$id")->save($save)){
-
-
-              $data['master_id'] = $id;
-             // 当前审核人的id
-             $data['deputy_id'] = session("nvip_member_id");
-             // 数量
-             $data['get_nums'] = 398*3;
-              // 类型
-              $data['get_type'] = 56;
-              // 当前总额
-              $scoresDate = M('userscores_record')->field('now_nums')->where(array('master_id'=>$id))->find();
-              $data['now_nums'] = $scoresDate + $data['get_nums'];
-              // 审核通过 增加积分
-              $res[] = M('userscores_record')->add($data);
-
+//        echo $id;
+        echo $ispass;
+//        exit;
+        if(M("usersjinfo")->where("id=$id")->save($save)){
             if($ispass==1){
-                M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                M("users")->where("id=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }
             if($ispass ==3){
-
                 $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }
@@ -792,61 +739,43 @@ class AddController extends LoginTrueController
         }
         else{
             $this->error("操作失败");
-        }*/
-            // 审核通过记录到表
-            $res[] = M("usersjinfo")->where("id=$id")->save($save);
-            $pid = M('user')->where(array('userid'=>$shList['user_id']))->getField('pid');
-
-            $data['master_id'] = $shList['user_id'];
-
-            // 当前审核人的id
-            $data['deputy_id'] = $pid;
-            // 数量
-            $data['get_nums'] = 398*3;
-            // 类型
-            $data['get_type'] = 56;
-
-            // 当前总额
-            $scoresDate = M('userscores_record')->where(array('master_id'=>$shList['user_id']))->find();
-
-            $scoresDate ? $scoresDate : 0;
-            $data['now_nums'] =  $data['get_nums'] + $scoresDate['now_nums'];
-            // 审核通过 增加积分
-          //  $res[] = M('userscores_record')->add($data);
-
-           if($ispass==1){
-               // 改变用户级别
-                $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
-                $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
-                $this->SendMsg($shList['loginname'],$msgtext);
-            }
-            if($ispass ==3){
-                $msgtext = "【创客联盟】您的审核申请被拒绝，请重新申请，如果被多次拒绝请联系客服。";
-                $this->SendMsg($shList['loginname'],$msgtext);
-            }
-            if($res){
-                $mo->commit();
-                redirect('/Add/audit.html');
-                $this->success("操作成功");
-                exit;
-            }else{
-                $mo->rollback();
-                $this->error("操作失败");
-            }
-
-
-
-
-
-
-
-
-
-
-
+        }
 
         $this->assign("shList",$shList);
 
         $this->display();
     }
+
+    //审核升级历史订单页面
+    public function userchecksjlog()
+    {
+        $this->LoginTrue();
+
+        $loginname = $_SESSION['nvip_nvip_member_User'];
+
+        //$shList = M("usersjinfo")->where("(shuser1='$loginname' or shuser2='$loginname'  )and ( status1=2 and status2=2)")->order("id desc")->select();
+        $shList = M("usersjinfo")->where("((shuser1='$loginname' and status1=2) or (shuser2='$loginname' and status2=2)) and status1=2 and status2=2 ")->order("id desc")->select();
+        foreach($shList as $key=>$val){
+
+            $shList[$key]['user'] = M("user")->where("userid=".$val['user_id'])->find();
+            $shList[$key]['levelname'] = GetLevel($val['targetlevel']);
+
+        }
+        $this->assign("shList",$shList);
+
+        $this->display();
+    }
+
+    public function GetStatus($opstatus){
+
+        if($opstatus==0)
+            return "未审核";
+        if($opstatus==1)
+            return "未通过";
+        if($opstatus==2)
+            return "已通过";
+    }
+
+
+
 }
