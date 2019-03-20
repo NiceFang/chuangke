@@ -122,13 +122,13 @@
         </div>
 
 
-		<!--<if condition="$structure egt $number">
+		<if condition="$structure egt $number">
 			<button class="btn typeColor" id="upgrade">升级</button>
 			<else/>
-			&lt;!&ndash;<button class="btn">升级</button>&ndash;&gt;
+			<!--<button class="btn">升级</button>-->
 			<button class="btn typeColor" id="upgrade">升级</button>
-		</if>-->
-		<a href="{:U('Add/sjaction')}" class="commitBtn btn typeColor" id="tijiao">提交申请</a>
+		</if>
+		<!--<a href="{:U('Add/sjaction')}" class="commitBtn btn typeColor" id="tijiao">提交申请</a>-->
 	</div>
 </body>
 
@@ -157,7 +157,7 @@
              })*/
              $.ajax({
                  type: "POST", //提交方式    
-                 url: "/Helpreg/apply",
+                 url: "/Add/sjaction",
                  data: {
                      'uid': "{$userinfo.userid}",
                  },

@@ -526,7 +526,80 @@ class AddController extends LoginTrueController
     {
         $this->LoginTrue();
 
-        $id = $_SESSION['nvip_member_id'];
+        if(IS_AJAX){
+            if(!empty($_POST['uid'])){
+                $id = $_SESSION['nvip_member_id'];
+
+                //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
+                $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
+                if($isExists){
+                    if($isExists['status1'] == 0 && $isExists['status2'] ==0){
+                        ajaxReturn("你有申请正在处理",0);
+                    }
+                }
+
+
+                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+                if($user['standardlevel']+1>9){
+                    // $this->error("已经是最高等级");
+                    ajaxReturn("已经是最高等级",0);
+                }
+                $targetlevel = $user['standardlevel']+1;
+                // $tjcount = M('users')->where("rid='{$id}'")->count();
+
+                $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+                //var_dump($sjshuser);
+                if(!is_array($sjshuser)){
+
+//                    $this->error("升级条件未满足<br/>".$sjshuser);
+                    ajaxReturn("\"升级条件未满足<br/>\".$sjshuser",0);
+                }
+
+                if($sjshuser['find1'])
+                    $shuser1 = $sjshuser['find1']['mobile'];
+
+                if($sjshuser['find2'])
+                    $shuser2 = $sjshuser['find2']['mobile'];
+
+                //var_dump($shuser1);
+
+                $data = array(
+                    "user_id" => $id,
+                    "loginname" => $user['mobile'],
+                    "curlevel" => $user['standardlevel'],
+                    "targetlevel" => ($user['standardlevel'])+1,
+                    "shuser1" => $shuser1,
+                    "shuser2" => $shuser2,
+                    "addtime" => time()
+                );
+
+                if(M("usersjinfo")->add($data)){
+                    // 发送短信
+                    $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
+                    if($shuser1){
+                        $res[] = newMsg($shuser1,$msgtext);
+//                 $res = $this->SendMsg('18214969531',$msgtext);
+
+                    }
+
+                    if($shuser2){
+                        $res[] = newMsg($shuser2,$msgtext);
+                        $res[] = $this->SendMsg($shuser2,$msgtext);
+                    }
+
+                    //$this->success("申请成功");
+                    $this->ajaxReturn("申请成功",1);
+
+                }else{
+//                    $this->error("申请失败");
+                    $this->ajaxReturn("申请失败",0);
+                }
+
+                $this->assign("userinfo",$user);
+            }
+        }
+
+/*        $id = $_SESSION['nvip_member_id'];
 
         //判断是否有正在升级的宴请  and ((status1=0 and status2=0) or (status1=2 or status2=2)
         $isExists =M("usersjinfo")->where("user_id=$id")->order("id desc")->find();
@@ -593,7 +666,7 @@ class AddController extends LoginTrueController
             $this->error("申请失败");
         }
 
-        $this->assign("userinfo",$user);
+        $this->assign("userinfo",$user);*/
         $this->display();
     }
 
