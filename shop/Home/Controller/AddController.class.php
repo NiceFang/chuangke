@@ -544,7 +544,7 @@ class AddController extends LoginTrueController
                 // $tjcount = M('users')->where("rid='{$id}'")->count();
 
                 $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
-                var_dump($sjshuser);
+                //var_dump($sjshuser);
                 if(!is_array($sjshuser)){
 
 //                    $this->error("升级条件未满足<br/>".$sjshuser);
