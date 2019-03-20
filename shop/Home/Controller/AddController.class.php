@@ -571,7 +571,8 @@ class AddController extends LoginTrueController
             "shuser2" => $shuser2,
             "addtime" => time()
         );
-
+        var_dump($data);
+        exit;
         if(M("usersjinfo")->add($data)){
             // 发送短信
             $msgtext = "【DHT】用户".$user['mobile']."向您发来审核申请，请尽快处理。";
@@ -635,6 +636,7 @@ class AddController extends LoginTrueController
             $shList[$key]['levelname'] = GetLevel($val['targetlevel']);
 
         }
+        var_dump($shList);
         $this->assign("shList",$shList);
 
         $this->display();
