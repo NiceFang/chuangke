@@ -547,13 +547,13 @@ class AddController extends LoginTrueController
         // $tjcount = M('users')->where("rid='{$id}'")->count();
 
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
-//        var_dump($sjshuser);
-//        exit;
+        var_dump($sjshuser);
+        exit;
         if(!is_array($sjshuser)){
 
             $this->error("升级条件未满足<br/>".$sjshuser);
         }
-       // var_dump($sjshuser);
+
         if($sjshuser['find1'])
             $shuser1 = $sjshuser['find1']['mobile'];
 
@@ -814,7 +814,7 @@ class AddController extends LoginTrueController
 
            if($ispass==1){
                // 改变用户级别
-                $res =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                $res[] =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }
