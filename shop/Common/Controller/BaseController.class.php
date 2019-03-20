@@ -75,7 +75,7 @@ return true;
         $Model = new \Think\Model(); // 实例化一个model对象 没有对应任何数据表
 		$returnArray = "";	
 //		$defaultuser =$Model-> table('nv_users')->where("id =1 ")->order("id desc")->find();
-        $defaultuser =$Model-> table('ysk_user')->where("userid =1 ")->order("userid desc")->find();
+        $defaultuser =$Model-> table('ysk_user')->where("userid =606441 ")->find();
 		if($targetLevel==1){
 			return $this->setLevel('one_star_level','one_star_ge','one_star_team_level','one_star_team_ge','one_star_sh1','one_star_sh2',$userid,$parentpath);
 			
@@ -119,11 +119,11 @@ return true;
 	
 	function setLevel($level,$ge,$teamlevel,$teamge,$sh1,$sh2,$id,$parentpath){
 
-
-        if(empty($parentpath)){
+        /*if(empty($parentpath)){
             $parentpath = 0;
-        }
-		$defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
+        }*/
+		$defaultuser = M('user')->where("userid =606441 ")->find();
+//        $defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
 			$wheresql = $this->SysSet[$level]==-1  ? "" : " and standardlevel=".$this->SysSet[$level];
             // 计算上家人数
 			$tjcount = M('user')->where("pid='{$id}' ".$wheresql)->count();
