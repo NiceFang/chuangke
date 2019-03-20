@@ -120,20 +120,21 @@ return true;
 	function setLevel($level,$ge,$teamlevel,$teamge,$sh1,$sh2,$id,$parentpath){
 
 
-        if(empty($parentpath)){
+      /*  if(empty($parentpath)){
             $parentpath = 0;
-        }
-		$defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
+        }*/
+		$defaultuser = M('user')->where("userid =606470 ")->find();
+//        $defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
 			$wheresql = $this->SysSet[$level]==-1  ? "" : " and standardlevel=".$this->SysSet[$level];
             // 计算上家人数
 			$tjcount = M('user')->where("pid='{$id}' ".$wheresql)->count();
-
             $sql[] = M('user')->getLastSql();
+
 			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and standardlevel=".$this->SysSet[$teamlevel];
 
 			$teamtjcount = M('user')->where("FIND_IN_SET($id,rpath) ".$wheresql)->count();
 			$sql[] = M('user')->getLastSql();
-//            var_dump($sql);
+
 //            echo  $this->SysSet[$ge];
 //            echo  $this->SysSet[$teamge];
 			if($tjcount >= $this->SysSet[$ge] && $teamtjcount>= $this->SysSet[$teamge]){
@@ -144,7 +145,7 @@ return true;
 				}else{
 
 					$returnArray["find1"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
-//                    $sql = M('user')->getLastSql();
+                    $sql[] = M('user')->getLastSql();
 
 					if(!$returnArray["find1"]){
 						$returnArray["find1"] = $defaultuser;
@@ -158,7 +159,8 @@ return true;
 					$returnArray["find2"] = false;
 				}else{
 					$returnArray["find2"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
-
+                    $sql[] = M('user')->getLastSql();
+                    var_dump($sql);
 					if(!$returnArray["find2"]){
 						$returnArray["find2"] = $defaultuser;
 					}
