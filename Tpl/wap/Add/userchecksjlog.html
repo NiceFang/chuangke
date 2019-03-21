@@ -156,19 +156,18 @@ body {
     <div class="title">历史订单</div>-->
 
     <a href="javascript:;" class="back" onclick="javascript:location.href='audit'"><i class="fa fa-angle-left" style="color: #fff;"></i></a>
-    <div class="title" style="background-color: #18191D;color: #fff;border: none;">历史订单</div>
+    <div class="title" style="background-color: #18191D;color: #fff;border: none;">{$Think.lang.lisdid}</div>
 
-	
 </div>
 
 
 <foreach name="shList" item="user">
 	<div class="rucian_ny" style="color: #FCFBF1;background-color: #7c8395">
-    <div>对方ID：<{$user.user_id}></div>
-    <div>姓名：<{$user.user.username}></div>
-    <div>手机号码：<{$user.loginname}></div>
-    <div>微信号：<img src="/uploads/wx/{$user.user.wximg}" style="width:80px;" sflag="true" onclick="imgclick(true,this)"/></div>
-     <a href="javascript:;" class="rucian_ty">已审核</a>
+    <div>{$Think.lang.dfuid}：<{$user.user_id}></div>
+    <div>{$Think.lang.nickname}：<{$user.user.username}></div>
+    <div>{$Think.lang.sjhaom}：<{$user.loginname}></div>
+    <div>{$Think.lang.weixh}：<img src="/uploads/wx/{$user.user.wximg}" style="width:80px;" sflag="true" onclick="imgclick(true,this)"/></div>
+     <a href="javascript:;" class="rucian_ty">{$Think.lang.yishe}</a>
 </div>
 
 </foreach>

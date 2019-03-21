@@ -39,12 +39,32 @@
                             <a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span class="value"></span>
                             </a>
                         </div>
-                        <!-- <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                         <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
                             <a><img class="flag" src="__WIMG__/hanguo.png" alt="" />한국어<span class="value"></span>
                             </a>
                         </div>
                         <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png"
-                                    alt="" />わぶん<span class="value"></span></a></div> -->
+                                    alt="" />わぶん<span class="value"></span></a>
+                        </div>
+
+
+                        <!--新增语言-->
+                        <!--阿拉伯-->
+                        <div id="div_Arabic" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Arab.png" alt="" />Arabic<span
+                                class="value"></span></a></div>
+
+                        <!--法国-->
+                        <div id="div_France" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/France.png" alt="" />France<span
+                                class="value"></span></a></div>
+                        <!--德国-->
+                        <div id="div_German" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Germany.png" alt="" />German<span
+                                class="value"></span></a></div>
+                        <!--葡萄牙-->
+                        <div id="div_Portugal" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Portugal.png" alt="" />Portugal<span
+                                class="value"></span></a></div>
+                        <!--俄罗斯-->
+                        <div id="div_Russian" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Russia.png" alt="" />Russian<span
+                                class="value"></span></a></div>
                     </div>
                 </div>
             </div>
@@ -59,14 +79,14 @@
 
                 <div class="input_box">
                     <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
-                    <input type="text" name="ReferralCode" id="ReferralCode" placeholder="{$Think.lang.推荐人号码}" value="<{$tuijianma}>">
+                    <input type="text" name="ReferralCode" id="ReferralCode" placeholder="{$Think.lang.tjrhm}" value="<{$tuijianma}>">
                 </div>
 
                 <div class="input_box">
                     <span><img src="__WIMG__/phone.png" class="phone" alt=""></span>
 
                    <!-- <input type="text" name="mobile"  class="phone_number" placeholder="{$Think.lang.请输入商家手机号码}" id="number" />-->
-                    <input type="text" id="mobile" name="mobile" placeholder="{$Think.lang.请输入商家手机号码}" value=""  class="phone_number">
+                    <input type="text" id="mobile" name="mobile" placeholder="{$Think.lang.qsrsjsjhm}" value=""  class="phone_number">
                 </div>
                 <div class="input_box">
 
@@ -75,7 +95,7 @@
               <!--      <input type="text" name="username" id="username" class="username" placeholder="{$Think.lang.请输入商家姓名}" value=""
                         autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />-->
 
-                    <input type="text" id="realname"  name ="realname"  class="username" placeholder="{$Think.lang.请输入商家姓名}" value="">
+                    <input type="text" id="realname"  name ="realname"  class="username" placeholder="{$Think.lang.qsrsjxm}" value="">
                 </div>
 
                 <!-- 登录密码 -->
@@ -85,7 +105,7 @@
                    <!-- <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.请输入商家初始密码}" id="pwd"
                         oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
 
-                    <input type="password" name="password" class="password" id="password" placeholder="{$Think.lang.请输入商家初始密码}" value=""
+                    <input type="password" name="password" class="password" id="password" placeholder="{$Think.lang.qsrsjdlcsmm}" value=""
                            oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="demo_img" onclick="hideShowPsw('demo_img','demo_input')" src="__WIMG__/mima.png" alt=""></span>
 
@@ -98,7 +118,7 @@
                   <!--  <input type="password" name="relogin_pwd" class="confirm_password" placeholder="{$Think.lang.请确认密码}"
                         id="repwd" oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
 
-                    <input type="password" name="cpassword" id="cpassword" placeholder="请确认密码" value="" class="confirm_password"
+                    <input type="password" name="cpassword" id="cpassword" placeholder="{$Think.lang.qqrmm}" value="" class="confirm_password"
                            oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="zc_img" onclick="hideShowPsw('zc_img','zc_input')" src="__WIMG__/mima.png" alt=""></span>
                 </div>
@@ -143,7 +163,7 @@
         </div>
         <div class="extra_btn ">
             <a href="{:U('Index/index')}?l={:I('get.l')}&mobile={$mobile}" class="inde-reg">
-                <img src="__WIMG__/fanhui.png" alt="">{$Think.lang.返回}</a>
+                <img src="__WIMG__/fanhui.png" alt="">{$Think.lang.fanhui}</a>
         </div>
     </div>
 

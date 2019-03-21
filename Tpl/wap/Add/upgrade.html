@@ -63,8 +63,8 @@
 	<!-- 头部 -->
 	<div class="hear">
 		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/integraimages/jiantouzuo.png" alt=""></a>
-		<p>升级</p>
-		<span class="merchantInfo"> <a class="wsjxx" href="{:U('Add/shuserlist')}">商家信息</a></span>
+		<p>{$Think.lang.sqsj}</p>
+		<span class="merchantInfo"> <a class="wsjxx" href="{:U('Add/shuserlist')}">{$Think.lang.sjxxi}</a></span>
 	</div>
 
 	<!-- 个人信息 -->
@@ -78,11 +78,12 @@
 
 					<if condition="$isExists eq 1">
 						<div class="user_info_left fl">
-							<p class="name">{$Think.lang.你有申请正在处理} : </p>
-							<p class="uid" id="id">UID : {$shinfo.user_id} </p>
-							<p class="uid">{$Think.lang.首要审核人}：<{$shinfo.shuser1}>  <{$shinfo.shuserstatus1}></p>
 
-							<p class="garde">{$Think.lang.次要审核人}：<{$shinfo.shuser2}>  <{$shinfo.shuserstatus2}></p>
+							<p class="name">{$Think.lang.nysqzzcl} : </p>
+
+							<p class="uid">{$Think.lang.syshr}：<{$shinfo.shuser1}>  <{$shinfo.shuserstatus1}></p>
+
+							<p class="garde">{$Think.lang.cyshr}：<{$shinfo.shuser2}>  <{$shinfo.shuserstatus2}></p>
 						</div>
 
 						<else/>
@@ -92,7 +93,7 @@
 							<p class="uid">{$Think.lang.rank}：{$userinfo.standardlevelname}</p>
 
 							<p class="uid" id="uid">UID : {$userinfo.userid} </p>
-							<p class="garde">{$Think.lang.可申请升级的等级}：{$userinfo.target_standardlevelname}</p>
+							<p class="garde">{$Think.lang.ksqsjddj}：{$userinfo.target_standardlevelname}</p>
 						</div>
 
 
@@ -123,10 +124,10 @@
 
 
 		<if condition="$structure egt $number">
-			<button class="btn typeColor" id="upgrade">升级</button>
+			<button class="btn typeColor" id="upgrade">{$Think.lang.sji}</button>
 			<else/>
 			<!--<button class="btn">升级</button>-->
-			<button class="btn typeColor" id="upgrade">升级</button>
+			<button class="btn typeColor" id="upgrade">{$Think.lang.sji}</button>
 		</if>
 		<!--<a href="{:U('Add/sjaction')}" class="commitBtn btn typeColor" id="tijiao">提交申请</a>-->
 	</div>

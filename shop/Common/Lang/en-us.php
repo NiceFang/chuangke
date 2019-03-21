@@ -364,18 +364,61 @@
     'qrxdzfmm'=>'Confirm payment password',
 
     //首页更改文案
+    'register'=>'Register',
+    'upgrade'=>'Apply',
+    'regrade'=>'Review',
     'sctz'=>'Lock up',
-    'hyhz'=>'Member transfers',
+    'hyhz'=>'Transfers',
     'tzsc'=>'Through lock',
-    'sqgl'=>'Community management',
-    'dhzc'=>'Cash assets',
-    'styy'=>'Ecological applications',
+    'sqgl'=>'Community',
+    'dhzc'=>'Exchange',
+    'styy'=>'Use',
+    'kytxz'=>'Available',
+    'jyzx'=>'Transaction',
 
+    'puthy'=>'Regular',
+    'yxhy'=>'VIP1',
+    'exhy'=>'VIP2',
+    'sxhy'=>'VIP3',
+    'sanxhy'=>'VIP4',
+    'wxhy'=>'VIP5',
+    'lxhy'=>'VIP6',
+    'qxhy'=>'VIP7',
+    'bxhy'=>'VIP8',
+    'jxhy'=>'VIP9',
 
+    'kytxzjl'=>'Available Records',
+    'sctzjl'=>'Lock Records',
+    'sqgljl'=>'Community Records',
 
+    // 帮助注册
+    'tjrhm'=>'Reference number',
+    'qsrsjsjhm'=>'Merchant mobile ',
+    'qsrsjxm'=>'Merchant name',
+    'qsrsjdlcsmm'=>'Login initial password',
+    'qqrmm'=>'Confirm password',
+    'shoujyzm'=>'Phone Code',
+    'fanhui'=>'Return',
 
+    // 申请升级
+    'sqsj'=>'Apply',
+    'nysqzzcl'=>'Application pending',
+    'syshr'=>'Primary auditor',
+    'cyshr'=>'Secondary auditor',
+    'ksqsjddj'=>'Apply for an upgrade level',
+    'sji'=>'Upgrade',
+    'sjxxi'=>'Merchant infor',
+    'sjhaom'=>'Mobile',
+    'weixh'=>'Wechat ID',
 
-
+    // 审核升级
+    'lisdid'=>'History',
+    'dfuid'=>'UID',
+    'dengji'=>'Grade',
+    'caozuo'=>'Operate',
+    'yishe'=>'Checked',
+    'tongyi'=>'Consent',
+    'jujue'=>'Reject',
 
 
 

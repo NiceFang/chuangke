@@ -44,17 +44,16 @@
     'complins'=>'投诉建议',
     'edition'=>'版本',
     'about'=>'关于',
-
-    'register'=>'帮助注册',
-    'upgrade'=>'申请升级',
-    'regrade'=>'审核升级',
-
     'loginout'=>'退出登录',
     'pstores'=>'我的店铺',
     'morelang'=>'多语言',
     'credit'=>'信用',
     'ScanCode'=>'扫码支付',
     'yue'=>'余额',
+
+ /*   'sttz'=>'生态通证',
+    'stzh'=>'生态转换',*/
+
     'jifen'=>'资产',
     'turnout'=>'互转',
     'gbzc'=>'Mikey资产转出',
@@ -367,15 +366,17 @@
     'qrxdzfmm'=>'确认新的支付密码',
     'hqyzm'=>'获取验证码',
 
-//帮助注册 申请升级 审核升级
+//帮助注册
     'qsrndtjm'=>'请输入你的推荐码',
+    'tjrhm'=>'推荐人号码',
     'qsrsjsjhm'=>'请输入商家手机号码',
-    'qsrysjzm'=>'请输入验手机证码',
     'qsrsjxm'=>'请输入商家姓名',
     'qsrsjdlcsmm'=>'请输入商家登录初始密码',
     'qqrmm'=>'请确认密码',
-    'scwxewm'=>'上传微信二维码',
+    'shoujyzm'=>'手机验证码',
+    'fanhui'=>'返回',
 
+    'scwxewm'=>'上传微信二维码',
     'tjmbnwk'=>'推荐码不能为空哦',
     'sjhbnwk'=>'手机号不能为空哦',
     'sjxmbnwk'=>'商家姓名不能为空哦',
@@ -383,16 +384,58 @@
     'qrmmbnwk'=>'确认密码不能为空哦',
     'wxewmbnwk'=>'微信二维码不能为空哦',
 
+// 申请升级
+    'sqsj'=>'申请升级',
+    'nysqzzcl'=>'你有申请正在处理',
+    'syshr'=>'首要审核人',
+    'cyshr'=>'次要审核人',
+    'ksqsjddj'=>'可申请升级的等级',
+    'sji'=>'升级',
+    'sjxxi'=>'商家信息',
+    'sjhaom'=>'手机号码',
+    'weixh'=>'微信号',
+
+// 审核升级
+    'lisdid'=>'历史订单',
+    'dfuid'=>'对方UID',
+    'dengji'=>'等级',
+    'caozuo'=>'操作',
+    'yishe'=>'已审核',
+    'tongyi'=>'同意',
+    'jujue'=>'拒绝',
+
+
+
+// 首页文案修改
+    'register'=>'帮助注册',
+    'upgrade'=>'申请升级',
+    'regrade'=>'审核升级',
+
     'sctz'=>'锁仓通证',
     'hyhz'=>'会员互转',
     'tzsc'=>'通证锁仓',
     'sqgl'=>'社区管理',
-    'dhzc'=>'兑换资产',
-    'styy'=>'生态应用',
-    'jyzx'=>'交易中心',
-    'kytxz'=>'可用通证',
+
     'sttz'=>'生态通证',
     'stzh'=>'生态转换',
+
+   'jyzx'=>'交易中心',
+    'dhzc'=>'兑换资产',
+    'styy'=>'生态应用',
+    'kytxz'=>'可用通证',
+    'puthy'=>'普通会员',
+    'yxhy'=>'一星会员',
+    'exhy'=>'二星会员',
+    'sxhy'=>'三星会员',
+    'sanxhy'=>'四星会员',
+    'wxhy'=>'五星会员',
+    'lxhy'=>'六星会员',
+    'qxhy'=>'七星会员',
+    'bxhy'=>'八星会员',
+    'jxhy'=>'九星会员',
+    'kytxzjl'=>'可用通证记录',
+    'sctzjl'=>'锁仓通证记录',
+    'sqgljl'=>'社区管理记录',
 
 
 

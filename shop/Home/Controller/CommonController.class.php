@@ -7,11 +7,21 @@ use Think\Controller;
 class CommonController extends Controller {
     //中文
     protected $userLevel = [
-        1=> 'zyz',//志愿者
+       /* 1=> 'zyz',//志愿者
         2=> 'hbws',//环保卫士
         3=>'hbkw',//环保顾问
         4=>'hbdr',//环保达人
-        5=>'hbds'//环保大使
+        5=>'hbds'//环保大使*/
+        1=> 'puthy',//普通会员
+        2=> 'yxhy',//一星会员
+        3=>'exhy',//二星会员
+        4=>'sxhy',//三星会员
+        5=>'sanxhy',//
+        6=>'wxhy',//五星会员
+        7=>'lxhy',//六星会员
+        8=>'qxhy',//七星会员
+        9=>'bxhy',//八星会员
+        10=>'jxhy',//九星会员
     ];
     protected $moneyType = [
         1=>'mrhb',
