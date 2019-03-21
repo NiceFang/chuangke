@@ -1118,31 +1118,43 @@ function request_post($url = '', $param = '') {
 // 申请升级
 function GetLevel($level){
     if($level=='-1'){
-        return "普通会员";
+//        return "普通会员";
+        return "puthy";
     }
     switch($level){
         case 9:
-            return "九星会员";
+//            return "九星会员";
+            return "VIP9";
         case 8:
-            return "八星会员";
+//            return "八星会员";
+            return "VIP8";
         case 7:
-            return "七星会员";
+//            return "七星会员";
+            return "VIP7";
         case 6:
-            return "六星会员";
+//            return "六星会员";
+            return "VIP6";
         case 5:
-            return "五星会员";
+//            return "五星会员";
+            return "VIP5";
         case 4:
-            return "四星会员";
+//            return "四星会员";
+            return "VIP4";
         case 3:
-            return "三星会员";
+//            return "三星会员";
+            return "VIP3";
         case 2:
-            return "二星会员";
+//            return "二星会员";
+            return "VIP2";
         case 1:
-            return "一星会员";
+//            return "一星会员";
+            return "VIP1";
         case 0:
-            return "普通会员";
+//            return "普通会员";
+            return "puthy";
         default:
-            return "普通会员";
+//            return "普通会员";
+            return "puthy";
     }
 }
 

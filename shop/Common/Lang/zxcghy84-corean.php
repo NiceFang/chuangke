@@ -237,6 +237,34 @@ return array(
 	 'appload'=>'앱 다운로드',
 	 'mineshops'=>'나의 상점',
 
+    // 修改文案
+    'register'=>'도움말',
+    'upgrade'=>'업그레이드 신청',
+    'regrade'=>'승급을 심사하다.',
+    'sctz'=>'창고 철폐',
+    'hyhz'=>'회원',
+    'tzsc'=>'통증 창고',
+    'sqgl'=>'사회 관리',
+    'jyzx'=>'거래 센터',
+    'dhzc'=>'환전 자산',
+    'styy'=>'생태 응용',
+    'kytxz'=>'사용 가능한 통증',
+    'puthy'=>'일반 회원',
+    'yxhy'=>'일성 회원',
+    'exhy'=>'이성 회원',
+    'sxhy'=>'삼성 회원',
+    'sanxhy'=>'사성 회원',
+    'wxhy'=>'오성회원',
+    'lxhy'=>'육성 회원',
+    'qxhy'=>'칠성 회원',
+    'bxhy'=>'팔성회원',
+    'jxhy'=>'구성회원',
+
+
+
+
+
+
     'callCenter'=>'매입 센터',
     'creatOrder'=>'주문 제작',
     'SalesCenter'=>'판매 센터',

@@ -364,12 +364,28 @@
     'qrxdzfmm'=>'Confirm payment password',
 
     //首页更改文案
+    'register'=>'Register',
+    'upgrade'=>'Apply',
+    'regrade'=>'Review',
     'sctz'=>'Lock up',
-    'hyhz'=>'Member transfers',
+    'hyhz'=>'Transfers',
     'tzsc'=>'Through lock',
-    'sqgl'=>'Community management',
-    'dhzc'=>'Cash assets',
-    'styy'=>'Ecological applications',
+    'sqgl'=>'Community',
+    'dhzc'=>'Exchange',
+    'styy'=>'Use',
+    'kytxz'=>'Available',
+    'jyzx'=>'Transaction',
+
+    'puthy'=>'Regular',
+    'yxhy'=>'VIP1',
+    'exhy'=>'VIP2',
+    'sxhy'=>'VIP3',
+    'sanxhy'=>'VIP4',
+    'wxhy'=>'VIP5',
+    'lxhy'=>'VIP6',
+    'qxhy'=>'VIP7',
+    'bxhy'=>'VIP8',
+    'jxhy'=>'VIP9',
 
 
 

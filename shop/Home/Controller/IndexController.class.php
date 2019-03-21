@@ -41,11 +41,16 @@ class IndexController extends CommonController
         $memberName = session("nvip_nvip_member_User");
         $users = M("user");
         $userModel = $users->where("mobile='{$memberName}'")->find();
-//        var_dump( $userModel["standardlevel"]);
+
         $userModel["levelName"] = GetLevel($userModel["standardlevel"]);
 
-
-        $this->assign("user_info",$userModel);
+//        $level = $this->userLevel[$userModel["levelName"]];
+//        $lang = L('l');
+//
+//        $uinfo['use_grade_name'] = L($level);
+        $userModel["levelName"] = L( $userModel["levelName"]);
+        //var_dump($userModel);
+        $this->assign("userModel",$userModel);
 
 
 //设置登录时间
@@ -261,10 +266,10 @@ class IndexController extends CommonController
 //        }
 //        $uinfo['vip_grade'] = $userLevel;
         //需要判断哪个的语言
-        $level = $this->userLevel[$uinfo['use_grade']];
+       /* $level = $this->userLevel[$uinfo['use_grade']];
         $lang = L('l');
 
-        $uinfo['use_grade_name'] = L($level);
+        $uinfo['use_grade_name'] = L($level);*/
 
 
         //首页气泡浮动

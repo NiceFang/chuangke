@@ -334,12 +334,28 @@ return array(
     'hqyzm'=>'検証符号を取得する',
 
 // 首页文案修改
+    'register'=>'登録を助ける',
+    'upgrade'=>'進級を申請する',
+    'regrade'=>'進級を審査する',
     'sctz'=>'閉倉通証',
     'hyhz'=>'会員が互いに回転する',
     'tzsc'=>'証拠を通す',
     'sqgl'=>'コミュニティ管理',
     'dhzc'=>'資産を兌換する',
     'styy'=>'生態応用',
+    'jyzx'=>'取引センター',
+    'kytxz'=>'通証を利用する',
+    'puthy'=>'一般会員',
+    'yxhy'=>'VIP1',
+    'exhy'=>'VIP2',
+    'sxhy'=>'VIP3',
+    'sanxhy'=>'VIP4',
+    'wxhy'=>'VIP5',
+    'lxhy'=>'VIP6',
+    'qxhy'=>'VIP7',
+    'bxhy'=>'VIP8',
+    'jxhy'=>'VIP9',
+
 
 
 

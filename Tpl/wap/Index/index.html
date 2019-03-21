@@ -73,8 +73,8 @@
                 <!-- ID 与 级别 -->
                 <div class="uid_xy">
                     <p>UID:{$uinfo['userid']}</p>
-                    <p>{$Think.lang.rank}:
-                        <{$user_info.levelName}>
+                    <p>{$Think.lang.rank}: <!--{$user_info.levelName}-->
+                        <?php echo $userModel['levelName'] ? $userModel['levelName'] : L('zyz')?>
                        <!-- <?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>-->
                     </p>
                 </div>
@@ -223,7 +223,7 @@
     </div>
     <!-- 主体内容 end -->
 
-    <!-- 公告/积分/分享/团队 -->
+    <!-- 会员互转/积分/分享/团队 -->
     <div class="banner_box">
         <ul class="fun_list">
             <li>

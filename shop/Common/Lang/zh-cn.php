@@ -44,18 +44,12 @@
     'complins'=>'投诉建议',
     'edition'=>'版本',
     'about'=>'关于',
-
-    'register'=>'帮助注册',
-    'upgrade'=>'申请升级',
-    'regrade'=>'审核升级',
-
     'loginout'=>'退出登录',
     'pstores'=>'我的店铺',
     'morelang'=>'多语言',
     'credit'=>'信用',
     'ScanCode'=>'扫码支付',
     'yue'=>'余额',
-    'kytxz'=>'可用通行证',
     'sttz'=>'生态通证',
     'stzh'=>'生态转换',
     'jifen'=>'资产',
@@ -386,13 +380,29 @@
     'qrmmbnwk'=>'确认密码不能为空哦',
     'wxewmbnwk'=>'微信二维码不能为空哦',
 
+
+
+    'register'=>'帮助注册',
+    'upgrade'=>'申请升级',
+    'regrade'=>'审核升级',
     'sctz'=>'锁仓通证',
     'hyhz'=>'会员互转',
     'tzsc'=>'通证锁仓',
     'sqgl'=>'社区管理',
+    'jyzx'=>'交易中心',
     'dhzc'=>'兑换资产',
     'styy'=>'生态应用',
-
+    'kytxz'=>'可用通证',
+    'puthy'=>'普通会员',
+    'yxhy'=>'一星会员',
+    'exhy'=>'二星会员',
+    'sxhy'=>'三星会员',
+    'sanxhy'=>'四星会员',
+    'wxhy'=>'五星会员',
+    'lxhy'=>'六星会员',
+    'qxhy'=>'七星会员',
+    'bxhy'=>'八星会员',
+    'jxhy'=>'九星会员',
 
 
 
