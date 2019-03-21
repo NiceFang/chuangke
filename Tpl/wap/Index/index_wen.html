@@ -46,12 +46,12 @@
                         <!--中文-->
                         <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png"
                                     alt="" />中文<span class="value"></span></a></div>
-                        <!--韩文-->
-                        <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"
-                        alt="" />한국어<span class="value"></span></a></div>
-                        <!--日文-->
-                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span
-                        class="value"></span></a></div>
+                        <!--&lt;!&ndash;韩文&ndash;&gt;-->
+                        <!--<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"-->
+                        <!--alt="" />한국어<span class="value"></span></a></div>-->
+                        <!--&lt;!&ndash;日文&ndash;&gt;-->
+                        <!--<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span-->
+                        <!--class="value"></span></a></div>-->
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
 
             <a href="{:U('Index/Exchangerecords')}">
                 <div class="my_integral">
-                    <p class="title" style="margin-top: 0.2083rem">{$Think.lang.sctz}:</p>
+                    <p class="title" style="margin-top: 0.2083rem">{$Think.lang.sttz}:</p>
                     <div class="num" style="margin-top: 0.1042rem">
                         <i></i>{$moneyinfo['fengmi_num']}
                     </div>
@@ -179,14 +179,13 @@
                     <p class="txt">{$Think.lang.tochangeinto}<i></i>{$Think.lang.ru}</p>
                 </div>
             </a>-->
-            <!-- 互转-->
-           <!-- <a href="{:U('Index/Turnout')}">
+            <a href="{:U('Index/Turnout')}">
                 <div class="icon">
                     <img src="__WIMG__/index/icon03.png" alt="">
                     <p class="txt">{$Think.lang.turnout}</p>
                 </div>
             </a>
--->
+
             <!-- 新增  帮助注册  申请升级 审核升级-->
           <!--  <a href="{:U('Add/add_user')}">-->
             <a href="{:U('Add/register')}">
@@ -216,7 +215,7 @@
                 <!--<a class="notSell">-->
                 <div class="icon">
                     <img src="__WIMG__/index/icon004.png" alt="">
-                    <p class="txt">{$Think.lang.jyzx}</p>
+                    <p class="txt">{$Think.lang.trade}</p>
                 </div>
             </a>
         </div>
@@ -227,37 +226,20 @@
     <div class="banner_box">
         <ul class="fun_list">
             <li>
-                <a href="{:U('Index/Turnout')}">
-                    <div class="icon">
-                        <img src="__WIMG__/index/icon03.png" alt="会员互转">
-                        <p class="txt">{$Think.lang.hyhz}</p>
-                    </div>
-                </a>
-
-                <!--游戏-->
                 <!--<a href="{:U('User/News')}">-->
-              <!--  <a href="{:U('Index/page')}">
+                <a href="{:U('Index/page')}">
                     <div class="icon">
                         <img src="__WIMG__/index/gg.png" alt="公告">
                     </div>
                     <p class="txt">{$Think.lang.notice}</p>
-                </a>-->
-
+                </a>
             </li>
             <li>
                 <a href="{:U('Index/exehange')}">
                     <div class="icon">
-                        <img src="__WIMG__/index/jfdh.png" alt="通证锁仓">
+                        <img src="__WIMG__/index/jfdh.png" alt="资产兑换">
                     </div>
-                    <p class="txt">{$Think.lang.tzsc}</p>
-                </a>
-            </li>
-            <li>
-                <a href="{:U('User/Teamdets')}">
-                    <div class="icon">
-                        <img src="__WIMG__/index/td.png" alt="社区管理">
-                    </div>
-                    <p class="txt">{$Think.lang.sqgl}</p>
+                    <p class="txt">{$Think.lang.stzh}</p>
                 </a>
             </li>
             <li>
@@ -268,8 +250,16 @@
                     <p class="txt">{$Think.lang.share}</p>
                 </a>
             </li>
+            <li>
+                <a href="{:U('User/Teamdets')}">
 
 
+                    <div class="icon">
+                        <img src="__WIMG__/index/td.png" alt="团队">
+                    </div>
+                    <p class="txt">{$Think.lang.team}</p>
+                </a>
+            </li>
         </ul>
     </div>
 
@@ -282,12 +272,12 @@
          <a href="{:U('Turntable/index')}">
         <!--<a id="notSell">-->
         <!--<a href="{:U('Index/page')}">-->
-            <img src="__WIMG__/zican.png" alt="兑换资产">
-            <p>{$Think.lang.dhzc}</p>
+            <img src="__WIMG__/zican.png" alt="资产">
+            <p>{$Think.lang.zichan}</p>
         </a>
         <a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
-            <img src="__WIMG__/gouwuche.png" alt="生态应用">
-            <p>{$Think.lang.styy}</p>
+            <img src="__WIMG__/gouwuche.png" alt="商城">
+            <p>{$Think.lang.shoppingmall}</p>
         </a>
         <a href="{:U('User/Personal')}">
             <img src="__WIMG__/wode.png" alt="我的">
