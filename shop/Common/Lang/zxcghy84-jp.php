@@ -355,6 +355,20 @@ return array(
     'qxhy'=>'VIP7',
     'bxhy'=>'VIP8',
     'jxhy'=>'VIP9',
+    'kytxzjl'=>'通証で記録する',
+    'sctzjl'=>'ロックの記録',
+    'sqgljl'=>'コミュニティ管理記録',
+
+//帮助注册 申请升级 审核升级
+    'qsrndtjm'=>'请输入你的推荐码',
+    'tjrhm'=>'推荐人号码',
+    'qsrsjsjhm'=>'携帯電話番号を入力',
+    'qsrsjxm'=>'商家の名前',
+    'qsrsjdlcsmm'=>'店舗登録パスワード',
+    'qqrmm'=>'パスワードを確認する',
+    'qsrysjzm'=>'携帯電話の検証コード',
+    'shoujyzm'=>'手机验证码',
+    'fanhui'=>'戻る',
 
 
 

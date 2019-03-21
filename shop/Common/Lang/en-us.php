@@ -387,12 +387,35 @@
     'bxhy'=>'VIP8',
     'jxhy'=>'VIP9',
 
+    'kytxzjl'=>'Available Records',
+    'sctzjl'=>'Lock Records',
+    'sqgljl'=>'Community Records',
 
+    // 帮助注册
+    'tjrhm'=>'Reference number',
+    'qsrsjsjhm'=>'Merchant mobile ',
+    'qsrsjxm'=>'Merchant name',
+    'qsrsjdlcsmm'=>'Login initial password',
+    'qqrmm'=>'Confirm password',
+    'shoujyzm'=>'Phone Code',
+    'fanhui'=>'Return',
 
+    // 申请升级
+    'sqsj'=>'Apply',
+    'nysqzzcl'=>'Application pending',
+    'syshr'=>'Primary auditor',
+    'cyshr'=>'Secondary auditor',
+    'ksqsjddj'=>'Apply for an upgrade level',
+    'sji'=>'Upgrade',
+    'sjxxi'=>'Merchant infor',
+    'sjhaom'=>'Mobile',
+    'weixh'=>'Wechat ID',
 
-
-
-
+    // 审核升级
+    'lisdid'=>'History',
+    'dfuid'=>'UID',
+    'dengji'=>'Grade',
+    'caozuo'=>'Operate',
 
 
     'hqyzm'=>'Get verify code',

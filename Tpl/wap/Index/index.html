@@ -52,6 +52,24 @@
                         <!--日文-->
                         <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span
                         class="value"></span></a></div>
+
+                        <!--新增语言-->
+                        <!--阿拉伯-->
+                        <div id="div_Arabic" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Arab.png" alt="" />Arabic<span
+                                class="value"></span></a></div>
+                        <!--法国-->
+                        <div id="div_France" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/France.png" alt="" />France<span
+                                class="value"></span></a></div>
+                        <!--德国-->
+                        <div id="div_German" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Germany.png" alt="" />German<span
+                                class="value"></span></a></div>
+                        <!--葡萄牙-->
+                        <div id="div_Portugal" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Portugal.png" alt="" />Portugal<span
+                                class="value"></span></a></div>
+                        <!--俄罗斯-->
+                        <div id="div_Russian" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Russia.png" alt="" />Russian<span
+                                class="value"></span></a></div>
+
                     </div>
                 </div>
             </div>
@@ -247,7 +265,7 @@
             <li>
                 <a href="{:U('Index/exehange')}">
                     <div class="icon">
-                        <img src="__WIMG__/index/jfdh.png" alt="通证锁仓">
+                        <img src="__WIMG__/index/jfdh.png" alt="">
                     </div>
                     <p class="txt">{$Think.lang.tzsc}</p>
                 </a>
@@ -475,10 +493,12 @@
             // 点击切换语言
             $(".dropdown .son").hide();
             $("#div_curr_lag").click(function () {
+
                 $(".dropdown .son").toggle();
             });
 
             $(".dropdown .son div a").click(function () {
+
                 var text = $(this).html();
                 $(".dropdown .parent a span").html(text);
                 // localStorage.setItem('key',JSON.stringify(text));
@@ -486,6 +506,7 @@
             }); //选择完成以后隐藏页面
 
             var curr_lag = $("#hid_lag").val();
+            console.log(curr_lag);
             if (curr_lag == "") {
                 gradeOnclick("en-us");
             } else {
@@ -495,6 +516,7 @@
         })
 
         function gradeOnclick(url) {
+
             window.location.href = "?l=" + url;
         };
     </script>

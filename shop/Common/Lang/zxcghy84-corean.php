@@ -237,7 +237,7 @@ return array(
 	 'appload'=>'앱 다운로드',
 	 'mineshops'=>'나의 상점',
 
-    // 修改文案
+    // 首页修改文案
     'register'=>'도움말',
     'upgrade'=>'업그레이드 신청',
     'regrade'=>'승급을 심사하다.',
@@ -259,6 +259,20 @@ return array(
     'qxhy'=>'칠성 회원',
     'bxhy'=>'팔성회원',
     'jxhy'=>'구성회원',
+    'kytxzjl'=>'사용 가능 증명서',
+    'sctzjl'=>'창고 철폐 기록',
+    'sqgljl'=>'지역 관리 기록',
+
+    //帮助注册 申请升级 审核升级
+    'qsrndtjm'=>'추천 코드 입력',
+    'tjrhm'=>'추천인 번호',
+    'qsrsjsjhm'=>'상가 핸드폰 번호',
+    'qsrsjxm'=>'상가 이름',
+    'qsrsjdlcsmm'=>'상가 등록 초기 암호',
+    'qqrmm'=>'비밀번호 확인',
+    'shoujyzm'=>'휴대폰 코드 검증',
+    'fanhui'=>'되돌아가다',
+
 
 
 
@@ -401,18 +415,6 @@ return array(
     'qszxzfmm'=>'새 결제비밀번호 확인',
     'qrxdzfmm'=>'새로 운 지급 비밀번호를 확인하다',
     'hqyzm'=>'인증번호 발송',
-
-    // 首页文案修改
-    'sctz'=>'Lock up',
-    'hyhz'=>'Member transfers',
-    'tzsc'=>'Through lock',
-    'sqgl'=>'Community management',
-    'dhzc'=>'Cash assets',
-    'styy'=>'Ecological applications',
-
-
-
-
 
     'qtxxm'=>'이름을 입력하십시오',
     'ncxgcg'=>'닉네임 수정 성공',
