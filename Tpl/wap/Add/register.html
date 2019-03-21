@@ -15,6 +15,7 @@
         .bgf5 {
             background-size: 100% 100%;
         }
+
     </style>
 </head>
 
@@ -130,10 +131,14 @@
                 </div>
 
                 <!--上传微信二维码-->
-                <div class="input_box">
+                <div class="input_box" style="position: relative">
                     <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
-                    <input type="file" id="wexin" name="weixin" class="weixin" placeholder="上传二维码" value="">
+                    <input type="file" id="wexin" name="weixin" class="weixin" value="上传二维码" value="" style="opacity: 0; z-index: 5;">
+                    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 1px solid #7AC231;border-radius: 9.4375rem; color: #fff;" >上传二维码</div>
                 </div>
+
+
+
 
                 <div class="input_box input_code">
                     <span><img src="__WIMG__/moblie_code.png" alt=""></span>
@@ -321,10 +326,13 @@
                 });
 
         }
-        var img =  $('#wexin').val();
+
+
+
+      /*  var img =  $('#wexin').val();
         if(img == ''|| img == NULL){
-            $('#wexin').attr('src','__WIMG__/user/gonggao.png');
-        }
+            $('#wimg').attr('src','__WIMG__/index/suo.png');
+        }*/
 
     </script>
 

@@ -431,6 +431,10 @@
     'sqgljl'=>'社区管理记录',
     'saoma'=>'扫码',
     'gonggao'=>'公告',
+    'qsrzckytxz'=>'请输入转出可用通证',
+    'duihEUSD'=>'兑换EUSD',
+    'shouEUSDma'=>'收EUSD码',
+
 
 
 
