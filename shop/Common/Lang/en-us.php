@@ -393,6 +393,7 @@
     'dqsctz'=>'Current',
     'dqkytz'=>'Current',
     'saoma'=>'Scan',
+    'gonggao'=>'Notice',
 
 
     // 帮助注册
