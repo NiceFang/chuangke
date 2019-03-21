@@ -708,7 +708,7 @@ class AddController extends LoginTrueController
             $shList[$key]['levelname'] = GetLevel($val['targetlevel']);
 
         }
-        var_dump($shList);
+//        var_dump($shList);
         $this->assign("shList",$shList);
 
         $this->display();

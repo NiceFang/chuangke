@@ -416,6 +416,9 @@
     'dfuid'=>'UID',
     'dengji'=>'Grade',
     'caozuo'=>'Operate',
+    'yishe'=>'Checked',
+    'tongyi'=>'Consent',
+    'jujue'=>'Reject',
 
 
     'hqyzm'=>'Get verify code',

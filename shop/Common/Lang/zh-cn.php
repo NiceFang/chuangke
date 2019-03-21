@@ -398,6 +398,9 @@
     'dfuid'=>'对方UID',
     'dengji'=>'等级',
     'caozuo'=>'操作',
+    'yishe'=>'已审核',
+    'tongyi'=>'同意',
+    'jujue'=>'拒绝',
 
 
 
