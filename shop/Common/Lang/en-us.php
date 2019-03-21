@@ -390,6 +390,10 @@
     'kytxzjl'=>'Available Records',
     'sctzjl'=>'Lock Records',
     'sqgljl'=>'Community Records',
+    'dqsctz'=>'Current',
+    'dqkytz'=>'Current',
+    'saoma'=>'Scan',
+
 
     // 帮助注册
     'tjrhm'=>'Reference number',

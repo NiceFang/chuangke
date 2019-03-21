@@ -262,6 +262,7 @@ return array(
     'kytxzjl'=>'사용 가능 증명서',
     'sctzjl'=>'창고 철폐 기록',
     'sqgljl'=>'지역 관리 기록',
+    'saoma'=>'소제하다',
 
     //帮助注册 申请升级 审核升级
     'qsrndtjm'=>'추천 코드 입력',
