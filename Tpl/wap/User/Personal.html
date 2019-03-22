@@ -161,10 +161,10 @@
 									 class="value"></span></a></div>
 							<div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span
 									 class="value"></span></a></div>
-							<!--<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"-->
-							<!--alt="" />한국어<span class="value"></span></a></div>-->
-							<!--<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png"-->
-							<!--alt="" />わぶん<span class="value"></span></a></div>-->
+							<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"
+							alt="" />한국어<span class="value"></span></a></div>
+							<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png"
+							alt="" />わぶん<span class="value"></span></a></div>
 						</div>
 					</div>
 				</div>
@@ -195,7 +195,7 @@
 		<div class="centBalance">
 			<div class="Balance">
 				<a class="balance" href="###">
-					<p>{$Think.lang.yue}</p>
+					<p>{$Think.lang.kytxz}</p>
 					<div class="balance_box">
 						<div class="div_info fl">
 							<img src="__WIMG__/index/white_icc.png" alt="">
@@ -209,7 +209,7 @@
 
 			<div class="Balance">
 				<a class="balance" href="###">
-					<p>{$Think.lang.jifen}</p>
+					<p>{$Think.lang.sctz}</p>
 					<div class="balance_box">
 						<div class="div_info fl">
 							<img src="__WIMG__/index/white_icc.png" alt="">
@@ -271,50 +271,7 @@
 				</a>
 			</li>
 		</ul>
-		<!-- 帮助注册  审核升级 申请升级-->
-		<ul>
-			<li><a href="{:U('User/Add_user')}">
-				<div>
-					<img src="__WIMG__/user/denglvmima.png" alt="">
-					<p>{$Think.lang.register}</p>
-				</div>
-				<img src="__WIMG__/jiantouyou.png" alt="">
-			</a>
-			</li>
-			<li><a href="{:U('User/Setpwd',array('type'=>2))}">
-				<div>
-					<img src="__WIMG__/user/zhifumima.png" alt="">
-					<p>{$Think.lang.upgrade}</p>
-				</div>
-				<img src="__WIMG__/jiantouyou.png" alt="">
-			</a>
-			</li>
-			<li><a href="{:U('User/Setpwd',array('type'=>2))}">
-				<div>
-					<img src="__WIMG__/user/zhifumima.png" alt="">
-					<p>{$Think.lang.regrade}</p>
-				</div>
-				<img src="__WIMG__/jiantouyou.png" alt="">
-			</a>
-			</li>
-		</ul>
 
-		<!-- <ul>
-			<li><a href="{:U('Shop/Home/index')}" class="guojiweikaifang">
-					<div>
-						<img src="__WIMG__/user/dianpu.png" alt="">
-						<p>{$Think.lang.mineshops}</p>
-					</div>
-					<img src="__WIMG__/jiantouyou.png" alt="">
-				</a></li>
-			<li><a href="{:U('Shop/Member/allorder')}" class="guojiweikaifang">
-					<div>
-						<img src="__WIMG__/user/dingdan.png" alt="">
-						<p>{$Think.lang.myoder}</p>
-					</div>
-					<img src="__WIMG__/jiantouyou.png" alt="">
-				</a></li>
-		</ul> -->
 		<ul>
 			<if condition="$isAndMobile['isM'] eq false">
 				<li><a href="{:U('User/Setpwd',array('type'=>1))}">
@@ -339,7 +296,7 @@
 			<li><a href="{:U('User/News')}" class="guojiweikaifang">
 					<div>
 						<img src="__WIMG__/user/gonggao.png" alt="">
-						<p>{$Think.lang.notice}</p>
+						<p>{$Think.lang.gonggao}</p>
 					</div>
 					<img src="__WIMG__/jiantouyou.png" alt="">
 				</a>

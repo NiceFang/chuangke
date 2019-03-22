@@ -132,20 +132,20 @@
 	<!-- 头部 -->
 	<div class="hear" style="background-color: #18191d;">
 		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
-		<p>审核</p>
-		<span class="history"><a href="{:U('Add/userchecksjlog')}" class="rucian_lsjl flex flex-center">历史订单</a></span>
+		<p>{$Think.lang.regrade}</p>
+		<span class="history" style="z-index: 10;"><a style="width: 100%;height: 100%;display: block;" href="{:U('Add/userchecksjlog')}" class="rucian_lsjl flex flex-center">{$Think.lang.lisdid}</a></span>
 	</div>
 
 
 
 	<div class="tab"  >
 		<ul>
-			<li>对方UID</li>
-			<li>昵称</li>
-			<li>等级</li>
-			<li>手机号码</li>
+			<li>{$Think.lang.dfuid}</li>
+			<li>{$Think.lang.nickname}</li>
+			<li>{$Think.lang.dengji}</li>
+			<li>{$Think.lang.sjhaom}</li>
 			<!--<li>时间</li>-->
-			<li>操作</li>
+			<li>{$Think.lang.caozuo}</li>
 		</ul>
 	</div>
 	<!-- 列表 -->
@@ -160,9 +160,15 @@
                     <p>{$user.levelname}</p>
 					<p>{$user.loginname}</p>
                   <!--  <p style="text-align: center;"><?php echo date("Y-m-d H:i:s",$v["gr_sevatime"]);?></p>-->
-					<p style="display: flex; flex-direction: column;align-items: center"><a  href="/Add/checksjop/id/{$user.id}/op/2/user_id/{$user.user_id}" class="rucian_ty agree" value="1">同意</a>
-					<input type="hidden" class="theid" value="50563">
-					<a href="/Add/checksjop/id/{$user.id}/op/1/user_id/{$user.user_id}" class="rucian_jj disagree" value="2">拒绝</a></p>
+					<p style="display: flex; flex-direction: column;align-items: center">
+
+						<a  href="/Add/checksjop/id/{$user.id}/op/2/user_id/{$user.user_id}" class="rucian_ty agree" value="1">{$Think.lang.tongyi}</a>
+						<!--<button  value="1" class="rucian_ty agree">同意</button>-->
+						<input type="hidden" class="theid" value="50563">
+						<!--<button  value="2">拒绝</button>-->
+						<a href="/Add/checksjop/id/{$user.id}/op/1/user_id/{$user.user_id}" class="rucian_jj disagree" value="2">{$Think.lang.jujue}</a>
+
+					</p>
 
                 </li>
 				</foreach>

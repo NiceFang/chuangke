@@ -15,6 +15,7 @@
         .bgf5 {
             background-size: 100% 100%;
         }
+
     </style>
 </head>
 
@@ -39,12 +40,32 @@
                             <a><img class="flag" src="__WIMG__/china.png" alt="" />中文<span class="value"></span>
                             </a>
                         </div>
-                        <!-- <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
+                         <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')">
                             <a><img class="flag" src="__WIMG__/hanguo.png" alt="" />한국어<span class="value"></span>
                             </a>
                         </div>
                         <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png"
-                                    alt="" />わぶん<span class="value"></span></a></div> -->
+                                    alt="" />わぶん<span class="value"></span></a>
+                        </div>
+
+
+                        <!--新增语言-->
+                        <!--阿拉伯-->
+                        <div id="div_Arabic" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Arab.png" alt="" />Arabic<span
+                                class="value"></span></a></div>
+
+                        <!--法国-->
+                        <div id="div_France" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/France.png" alt="" />France<span
+                                class="value"></span></a></div>
+                        <!--德国-->
+                        <div id="div_German" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Germany.png" alt="" />German<span
+                                class="value"></span></a></div>
+                        <!--葡萄牙-->
+                        <div id="div_Portugal" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Portugal.png" alt="" />Portugal<span
+                                class="value"></span></a></div>
+                        <!--俄罗斯-->
+                        <div id="div_Russian" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Russia.png" alt="" />Russian<span
+                                class="value"></span></a></div>
                     </div>
                 </div>
             </div>
@@ -54,66 +75,95 @@
             <div class="logo registerLogo">
                 <img src="__WIMG__/logo4.png">
             </div>
-            <form name="AddUser" action="{:U('Login/register')}" id="registerForm" class="formrgister" method="get">
+            <form method="post" action="{:U('Add/Add_Action')}" id="registerForm" class="formrgister" enctype="multipart/form-data">
                 <input type="hidden" name="reg_source" value="{:I('get.source',0,'intval')}">
+
                 <div class="input_box">
-                    <span><img src="__WIMG__/user.png" alt=""></span>
-                    <input type="text" name="username" class="username" placeholder="{$Think.lang.qsrnc}" value=""
-                        autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />
+                    <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
+                    <input type="text" name="ReferralCode" id="ReferralCode" placeholder="{$Think.lang.tjrhm}" value="<{$tuijianma}>">
                 </div>
+
                 <div class="input_box">
                     <span><img src="__WIMG__/phone.png" class="phone" alt=""></span>
-                    <input type="text" name="mobile" class="phone_number" placeholder="{$Think.lang.qsrsjhm}" id="number" />
+
+                   <!-- <input type="text" name="mobile"  class="phone_number" placeholder="{$Think.lang.请输入商家手机号码}" id="number" />-->
+                    <input type="text" id="mobile" name="mobile" placeholder="{$Think.lang.qsrsjsjhm}" value=""  class="phone_number">
                 </div>
+                <div class="input_box">
+
+                    <span><img src="__WIMG__/user.png" alt=""></span>
+
+              <!--      <input type="text" name="username" id="username" class="username" placeholder="{$Think.lang.请输入商家姓名}" value=""
+                        autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />-->
+
+                    <input type="text" id="realname"  name ="realname"  class="username" placeholder="{$Think.lang.qsrsjxm}" value="">
+                </div>
+
                 <!-- 登录密码 -->
                 <div class="input_box">
                     <span><img src="__WIMG__/password.png" alt=""></span>
-                    <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.qsrddlmm}" id="demo_input"
-                        oncontextmenu="return false" maxlength="16"  onpaste="return false" />
+
+                   <!-- <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.请输入商家初始密码}" id="pwd"
+                        oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
+
+                    <input type="password" name="password" class="password" id="password" placeholder="{$Think.lang.qsrsjdlcsmm}" value=""
+                           oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="demo_img" onclick="hideShowPsw('demo_img','demo_input')" src="__WIMG__/mima.png" alt=""></span>
+
+
+
                 </div>
                  <!-- 再次输入登录密码 -->
                 <div class="input_box">
                     <span><img src="__WIMG__/password.png" alt=""></span>
-                    <input type="password" name="relogin_pwd" class="confirm_password" placeholder="{$Think.lang.zcsrdlmm}"
-                        id="zc_input" oncontextmenu="return false" maxlength="16"  onpaste="return false" />
+                  <!--  <input type="password" name="relogin_pwd" class="confirm_password" placeholder="{$Think.lang.请确认密码}"
+                        id="repwd" oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
+
+                    <input type="password" name="cpassword" id="cpassword" placeholder="{$Think.lang.qqrmm}" value="" class="confirm_password"
+                           oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="zc_img" onclick="hideShowPsw('zc_img','zc_input')" src="__WIMG__/mima.png" alt=""></span>
                 </div>
-                <div class="input_box">
-                    <span><img src="__WIMG__/password.png" alt=""></span>
-                    <input type="password" name="safety_pwd" class="safety_pwd" placeholder="{$Think.lang.qsrjymm}" id="Jy_input"
-                        oncontextmenu="return false" onpaste="return false" />
-                    <span class="right"><img id="Jy_img" onclick="hideShowPsw('Jy_img','Jy_input')" src="__WIMG__/mima.png" alt=""></span>
-                </div>
+
+
+
 
                 <div class="input_box input_code" id="captcha-container">
+
                     <span><img src="__WIMG__/groph_code.png" alt=""></span>
                     <input name="verify" class="captcha-text" placeholder="{$Think.lang.qsryzm}" id="j_verify" type="text">
                     <img alt="图形验证码" src="{:U('Home/Login/verify_c',array())}" title="{$Think.lang.djsx}">
                 </div>
 
-                <div class="input_box">
+                <!--上传微信二维码-->
+                <div class="input_box" style="position: relative">
                     <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
-                    <input type="text" name="pid" placeholder="{$Think.lang.tjrsjhm}" value="{$mobile}">
+                    <input type="file" id="wexin" name="weixin" class="weixin" value="上传二维码" value="" style="opacity: 0; z-index: 5;">
+                    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 1px solid #7AC231;border-radius: 9.4375rem; color: #fff;" >上传二维码</div>
                 </div>
+
+
                 <div class="input_box input_code">
+
                     <span><img src="__WIMG__/moblie_code.png" alt=""></span>
                     <input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.sjyzm}"
-                        oncontextmenu="return false" onpaste="return false" />
+                           oncontextmenu="return false" onpaste="return false" />
                     <a href="javascript:void(0)" id="mycode">{$Think.lang.hq}</a>
                 </div>
+
+
                 <div class="inde-btn">
-                    <button id="submit" type="button" onclick="adduser()">{$Think.lang.zc}</button>
+                  <!--  <button id="submit" type="button" onclick="adduser()">{$Think.lang.zc}</button>-->
+                    <button id="submit" type="submit" >{$Think.lang.zc}</button>
                 </div>
             </form>
+
         </div>
         <div class="extra_btn ">
-            <a href="{:U('Login/login')}?l={:I('get.l')}&mobile={$mobile}" class="inde-reg">
-                <img src="__WIMG__/fanhui.png" alt="">{$Think.lang.fhdl}</a>
+            <a href="{:U('Index/index')}?l={:I('get.l')}&mobile={$mobile}" class="inde-reg">
+                <img src="__WIMG__/fanhui.png" alt="">{$Think.lang.fanhui}</a>
         </div>
     </div>
-    <!--点击刷新-->
-    <input type="hidden" id="djsx" value="{$Think.lang.djsx}">
+
     <!--图形验证码错误-->
     <input type="hidden" id="txyzmcw" value="{$Think.lang.txyzmcw}">
     <!--请输入手机号码-->
@@ -152,7 +202,6 @@
     <input type="hidden" id="qsrqrmm" value="{$Think.lang.qsrqrmm}">
     <!--两次输入密码不一致-->
     <input type="hidden" id="lcsrdmmbyz" value="{$Think.lang.lcsrdmmbyz}">
-
     <!--表单验证-->
     <script type="text/javascript" src="__COM__/js/index.js?v=46"></script>
     <script src="__WJS__/jquery.validate.min.js?var1.14.0"></script>
@@ -165,6 +214,129 @@
                 $(".inde-btn button").addClass("active");
             }
         })
+    </script>
+    <script>
+        function adduser() {
+            // 推荐人手机号 商家手机号 商家名 密码 确认密码 验证码 手机验证码
+            var umobile = $('#umobile').val();
+            var mobile = $('#number').val();
+            var username = $('#username').val();
+            var pwd = $('#pwd').val();
+            var repwd = $('#repwd').val();
+
+            //验证注册
+            var thisform=document.forms['AddUser'];
+
+            var   reg = /^[0-9a-zA-Z]{6,20}$/;
+            var   mobile_rex=/^1[3456789]\d{9}$/;
+
+            if(mobile == '' || mobile == null){
+                layer.msg('商家手机号不能为空');
+                return false;
+            }
+            if(username == '' || username == null){
+                layer.msg('商家姓名不能为空');
+                return false;
+            }
+            if(pwd == '' || pwd == null){
+                layer.msg('初始密码不能为空');
+                return false;
+            }
+            if(repwd == '' || repwd == null){
+                layer.msg('确认密码不能为空');
+                return false;
+            }
+
+            if(!mobile_rex.test(mobile)){
+                msg_alert('商家手机号码错误');
+                return false;
+            }
+
+            if(pwd=='' || pwd==null){
+                msg_alert('登录密码不能为空');
+                return false;
+            }
+            if(!reg.test(pwd)){
+                msg_alert("登录密码只能为6-20位数字或字母");
+                return false;
+            }
+            if(pwd != repwd){
+                msg_alert("两次输入登录密码不一致");
+                return false;
+            }
+
+                /*var   pid=thisform.pid.value;//推荐人
+                var   username=thisform.username.value;//账号
+                var   mobile=thisform.mobile.value;
+                var   login_pwd=thisform.login_pwd.value;
+                var   relogin_pwd=thisform.relogin_pwd.value;*/
+                /*var   safe_pwd=thisform.safety_pwd.value;
+                var   repsafe_pwd=thisform.resafety_pwd.value;*/
+
+                // if(!mobile_rex.test(mobile)){
+                //   msg_alert('手机号码错误');
+                //   return false;
+                // }
+
+
+
+                // if(safe_pwd=='' || safe_pwd==null){
+                //   msg_alert('登录密码不能为空');
+                //   return false;
+                // }
+                // if(!reg.test(safe_pwd)){
+                //     msg_alert("交易密码只能为6-20位数字或字母");
+                //     return false;
+                // }
+                //
+                // if(safe_pwd!=repsafe_pwd){
+                //     msg_alert("两次输入交易密码不一致");
+                //     return false;
+                // }
+                //正在加载
+                var index = layer.load(1, {
+                    shade: [0.1,'#fff']
+                });
+                var post_url = $("form[name='AddUser']").attr('action');
+                var post_data= $("form[name='AddUser']").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '{:U("Add/register")}',
+                    data : {
+                        'umobile':umobile,
+                        'mobile':mobile,
+                        'username':username,
+                        'pwd':pwd,
+                        'repwd':repwd,
+                    },
+                    dataType: "json",
+                    success: function(data){
+
+                        layer.close(index);//关闭加载
+                        if(data.status==1){
+                            alert('ajax发送成功');
+                            msg_alert(data.message,data.url);
+                        }
+                        else{
+                            alert(2);
+                            msg_alert(data.message);
+                        }
+                    },
+                    error:function(data){
+                        console.log(data);
+                        alert('ajax发送失败');
+                    }
+                });
+
+        }
+
+
+
+      /*  var img =  $('#wexin').val();
+        if(img == ''|| img == NULL){
+            $('#wimg').attr('src','__WIMG__/index/suo.png');
+        }*/
+
     </script>
 
     <script type="text/javascript">
@@ -196,18 +368,28 @@
                 } else {
                     //验证码输入错误
                     a = 1;
+                    alert('图形验证码cuowu');
                     layer.msg(txyzmcw);
 
                 }
             });
         });
 
+        // 手机验证码
         $('#mycode').click(function () {
             $("#submit").css('backgroundColor', "rgba(255,255,255,0.5)");
             var mobile = $("input[name='mobile']").val();
+            alert(mobile);
             var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
-            var txyzmcw = $('#txyzmcw').val();
+            var txyzmcw = $('#txyzmcw').val();   <!--图形验证码错误-->
             var imgCode = $("#j_verify").val();
+
+            var   mobile_rex=/^1[3456789]\d{9}$/;
+            if(!mobile_rex.test(mobile)){
+                msg_alert('商家手机号码错误');
+                return false;
+            }
+
             if (mobile == '' || mobile == null) {
                 layer.msg(qsrsjhm);
             }
@@ -215,16 +397,19 @@
             if (a == 1) {
                 layer.msg(txyzmcw);
             } else {
+
                 $.post("{:U('Login/sendCode')}", {
                     'mobile': mobile,
                     'verify': imgCode,
                     'l': "{:I('get.l')}"
                 }, function (data) {
-                    console.log(data);
+                    alert('ajax发送成功');
                     if (data.status == 1) {
+                       // alert('发送成功');
                         layer.msg(data.message);
                         RemainTime();
                     } else {
+                        // alert('发送失败！');
                         layer.msg(data.message);
                     }
                 });
@@ -241,7 +426,7 @@
                 RemainTime();
             }
         });
-        var iTime = 59;
+        var iTime = 50;
         var Account;
         if (bet > 0) {
             iTime = bet;
@@ -324,7 +509,7 @@
             var value1 = $('.username').val();
             //console.log(value1)
             if (value1 == "" || a == null || a == undefined) {
-                $('.username').attr("placeholder", "{$Think.lang.xmbnwk}");
+               // $('.username').attr("placeholder", "{$Think.lang.xmbnwk}");
             }
 
         }

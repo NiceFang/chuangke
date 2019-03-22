@@ -332,6 +332,53 @@ return array(
     'qszxzfmm'=>'パスワードを新しく支払いなさい',
     'qrxdzfmm'=>'新しい支払暗証番号を確認する',
     'hqyzm'=>'検証符号を取得する',
+
+// 首页文案修改
+
+    'register'=>'登録を助ける',
+    'upgrade'=>'進級を申請する',
+    'regrade'=>'進級を審査する',
+
+    'sctz'=>'閉倉通証',
+    'hyhz'=>'会員が互いに回転する',
+    'tzsc'=>'証拠を通す',
+    'sqgl'=>'コミュニティ管理',
+    'dhzc'=>'資産を兌換する',
+    'styy'=>'生態応用',
+
+    'jyzx'=>'取引センター',
+    'kytxz'=>'通証を利用する',
+    'puthy'=>'一般会員',
+    'yxhy'=>'VIP1',
+    'exhy'=>'VIP2',
+    'sxhy'=>'VIP3',
+    'sanxhy'=>'VIP4',
+    'wxhy'=>'VIP5',
+    'lxhy'=>'VIP6',
+    'qxhy'=>'VIP7',
+    'bxhy'=>'VIP8',
+    'jxhy'=>'VIP9',
+    'kytxzjl'=>'通証で記録する',
+    'sctzjl'=>'ロックの記録',
+    'sqgljl'=>'コミュニティ管理記録',
+    'saoma'=>'コードを掃く',
+    'gonggao'=>'公告',
+
+
+//帮助注册 申请升级 审核升级
+    'qsrndtjm'=>'请输入你的推荐码',
+    'tjrhm'=>'推荐人号码',
+    'qsrsjsjhm'=>'携帯電話番号を入力',
+    'qsrsjxm'=>'商家の名前',
+    'qsrsjdlcsmm'=>'店舗登録パスワード',
+    'qqrmm'=>'パスワードを確認する',
+    'qsrysjzm'=>'携帯電話の検証コード',
+    'shoujyzm'=>'手机验证码',
+    'fanhui'=>'戻る',
+
+
+
+
 //php文件中的错误提示
     'qtxxm'=>'氏名を記入してください',
     'ncxgcg'=>'ニックネームは修正に成功した。',

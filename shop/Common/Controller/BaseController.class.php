@@ -60,7 +60,7 @@ $content=$content;//要发送的短信内容
 $phone = $phone;//要发送短信的手机号码
 $sendurl = $smsapi."sms?u=".$user."&p=".$pass."&m=".$phone."&c=".urlencode($content);
 $result =file_get_contents($sendurl) ;
-return $result;
+
 if($result!=0){
 	return false;
 }
@@ -75,7 +75,7 @@ return true;
         $Model = new \Think\Model(); // 实例化一个model对象 没有对应任何数据表
 		$returnArray = "";	
 //		$defaultuser =$Model-> table('nv_users')->where("id =1 ")->order("id desc")->find();
-        $defaultuser =$Model-> table('ysk_user')->where("userid =1 ")->order("userid desc")->find();
+        $defaultuser =$Model-> table('ysk_user')->where("userid =606441 ")->find();
 		if($targetLevel==1){
 			return $this->setLevel('one_star_level','one_star_ge','one_star_team_level','one_star_team_ge','one_star_sh1','one_star_sh2',$userid,$parentpath);
 			
@@ -119,43 +119,53 @@ return true;
 	
 	function setLevel($level,$ge,$teamlevel,$teamge,$sh1,$sh2,$id,$parentpath){
 
+		$defaultuser = M('user')->where("userid =606441 ")->find();
 
-        if(empty($parentpath)){
-            $parentpath = 0;
-        }
-		$defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
-			$wheresql = $this->SysSet[$level]==-1  ? "" : " and standardlevel=".$this->SysSet[$level];
+//        $defaultuser = M('user')->where("userid =1 ")->order("userid desc")->find();
+			$wheresql = $this->SysSet[$level]==-1  ? "" : " and use_grade=".$this->SysSet[$level];
             // 计算上家人数
 			$tjcount = M('user')->where("pid='{$id}' ".$wheresql)->count();
+            $sql[] = M('user')->getLastSql();
 
-			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and standardlevel=".$this->SysSet[$teamlevel];
+			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and use_grade=".$this->SysSet[$teamlevel];
 
-			$teamtjcount = M('user')->where("FIND_IN_SET($id,rpath) ".$wheresql)->count();
+			$teamtjcount = M('user')->where("FIND_IN_SET($id,path) ".$wheresql)->count();
+			$sql[] = M('user')->getLastSql();
+
+			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and use_grade=".$this->SysSet[$teamlevel];
+
+			$teamtjcount = M('user')->where("FIND_IN_SET($id,path) ".$wheresql)->count();
 			$sql = M('user')->getLastSql();
+            //var_dump($sql);
 
+//            echo  $this->SysSet[$ge];
+//            echo  $this->SysSet[$teamge];
 			if($tjcount >= $this->SysSet[$ge] && $teamtjcount>= $this->SysSet[$teamge]){
 				//查找满足条件的审核人
-				$wheresql = $this->SysSet[$sh1]==-1  ? " and 1=1 " : " and standardlevel = ".$this->SysSet[$sh1];
+				$wheresql = $this->SysSet[$sh1]==-1  ? " and 1=1 " : " and use_grade = ".$this->SysSet[$sh1];
 				if($this->SysSet[$sh1]==-1){
 					$returnArray["find1"] = false;
-				}else{
+				}else {
 
-					$returnArray["find1"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
-//                    $sql = M('user')->getLastSql();
+                    $returnArray["find1"] = M('user')->where("userid in ($parentpath) " . $wheresql)->order("userid desc")->find();
 
-					if(!$returnArray["find1"]){
-						$returnArray["find1"] = $defaultuser;
-					}
-				}
+                   // $sql[] = M('user')->getLastSql();
+
+                    if (!$returnArray["find1"] || $returnArray["find1"] == NULL) {
+
+                        $returnArray["find1"] = $defaultuser;
+                    }
+                }
 
 
-				$wheresql = $this->SysSet[$sh2]==-1  ? " and 1=1 " : " and standardlevel = ".$this->SysSet[$sh2];
-			
+				$wheresql = $this->SysSet[$sh2]==-1  ? " and 1=1 " : " and use_grade = ".$this->SysSet[$sh2];
+
 				if($this->SysSet[$sh2]==-1){
 					$returnArray["find2"] = false;
 				}else{
 					$returnArray["find2"] = M('user')->where("userid in ($parentpath) ".$wheresql)->order("userid desc")->find();
-
+                    //$sql[] = M('user')->getLastSql();
+                    //var_dump($sql);
 					if(!$returnArray["find2"]){
 						$returnArray["find2"] = $defaultuser;
 					}
@@ -168,7 +178,7 @@ return true;
 				$this->SysSet[$teamlevel] = $this->SysSet[$teamlevel]== -1 ? '-' : $this->SysSet[$teamlevel];
 				return "您需要推荐".$this->SysSet[$ge]." 个 ".$this->SysSet[$level]." 星会员 且团队下面有 ".$this->SysSet[$teamge]." 个 ".$this->SysSet[$teamlevel]." 星会员";
 			}
-			
+
 
 		return $returnArray;
 	}
@@ -220,7 +230,7 @@ return true;
 		$tname = $tname ? $tname : 1;
 
 		//查询所在组的等级一的用户
-		$level1_array = $users->field('id,loginname,ppath,standardlevel,ceng,area')->where("tname='{$tname}' and standardlevel=1 ")->order(' sort asc ')->select();
+		$level1_array = $users->field('id,loginname,ppath,use_grade,ceng,area')->where("tname='{$tname}' and use_grade=1 ")->order(' sort asc ')->select();
 
 		$small = 3;
 		$pid = 0;
@@ -231,7 +241,7 @@ return true;
 				$ppath = $v['ppath'];
 				$id = $v['id'];
 				$pid = $v['loginname'];
-				$rLevel = $v['standardlevel'];
+				$rLevel = $v['use_grade'];
 				$ceng = $v['ceng'];
 				$area = $v['area'];
 			}
@@ -258,7 +268,7 @@ return true;
 		$tname = $tname ? $tname : 1;
 
 		//查询所在组的等级一的用户
-		$level1_array = $users->field('id,loginname,ppath,standardlevel,ceng,area')->where("tname='{$tname}' and standardlevel=1 ")->order(' sort asc ')->select();
+		$level1_array = $users->field('id,loginname,ppath,use_grade,ceng,area')->where("tname='{$tname}' and use_grade=1 ")->order(' sort asc ')->select();
 
 		$small = 3;
 		$pid = 0;
@@ -269,7 +279,7 @@ return true;
 				$ppath = $v['ppath'];
 				$id = $v['id'];
 				$pid = $v['loginname'];
-				$rLevel = $v['standardlevel'];
+				$rLevel = $v['use_grade'];
 				$ceng = $v['ceng'];
 				$area = $v['area'];
 			}
@@ -489,15 +499,15 @@ return true;
 		
 		$jihuoAmount = $user["jihuoAmount"];
 		//推荐奖 begion 
-		$ruser_array = $userModel->field("id,loginname,standardlevel")->where("id in ({$user[rpath]})  and standardlevel>0")->order("id desc")->limit(0,$systemInfo['affectceng'])->select();
+		$ruser_array = $userModel->field("id,loginname,use_grade")->where("id in ({$user[path]})  and use_grade>0")->order("id desc")->limit(0,$systemInfo['affectceng'])->select();
 		
 		foreach($ruser_array as $k=>$ruser){
 
-			if ($ruser['standardlevel']==1) {
+			if ($ruser['use_grade']==1) {
 				$jine = sprintf("%.2f", substr(sprintf("%.4f",($jihuoAmount*$systemInfo["tong_bili"]/100)), 0, -2));
-			}elseif ($ruser['standardlevel']==2) {
+			}elseif ($ruser['use_grade']==2) {
 				$jine = sprintf("%.2f", substr(sprintf("%.4f",($jihuoAmount*$systemInfo["yin_bili"]/100)), 0, -2));
-			}elseif ($ruser['standardlevel']==3) {
+			}elseif ($ruser['use_grade']==3) {
 				$jine = sprintf("%.2f", substr(sprintf("%.4f",($jihuoAmount*$systemInfo["jin_bili"]/100)), 0, -2));
 			}
 
@@ -512,15 +522,15 @@ return true;
 		// 见点奖 begion
 		if($issuccess){	
 
-			if ($user['standardlevel']==1) {
+			if ($user['use_grade']==1) {
 				$ilimit=$systemInfo["jiandian_tong"];
 				
-			}elseif ($user['standardlevel']==2) {
+			}elseif ($user['use_grade']==2) {
 				$ilimit=$systemInfo["jiandian_yin"];
-			}elseif ($user['standardlevel']==3) {
+			}elseif ($user['use_grade']==3) {
 				$ilimit=$systemInfo["jiandian_jin"];
 			}
-			$puser_array = $userModel->field("id,loginname")->where("id in ({$user[ppath]})  and standardlevel>0")->order("id desc")->limit(0,$ilimit)->select();
+			$puser_array = $userModel->field("id,loginname")->where("id in ({$user[ppath]})  and use_grade>0")->order("id desc")->limit(0,$ilimit)->select();
 			
 			foreach($puser_array as $k=>$puser){
 				
@@ -686,7 +696,7 @@ return true;
 		}
 		$order = "sort asc";
 
-		$ceng1_lists = $users->field("id,pid,rid,loginname,standardlevel,tname")->where($where)->order($order)->select();
+		$ceng1_lists = $users->field("id,pid,rid,loginname,use_grade,tname")->where($where)->order($order)->select();
 
 		foreach($ceng1_lists as $k=>$v){
 
@@ -694,13 +704,13 @@ return true;
 			$tarray[$v['loginname']]['parent_id'] = $pid;
 			$tarray[$v['loginname']]['name'] = $v['loginname'];
 			$tarray[$v['loginname']]['tname'] = $v['tname'];
-			$tarray[$v['loginname']]['level'] = $v['standardlevel'];
-			$tarray[$v['loginname']]['leveldesc'] = GetLevel($v['standardlevel']);
+			$tarray[$v['loginname']]['level'] = $v['use_grade'];
+			$tarray[$v['loginname']]['leveldesc'] = GetLevel($v['use_grade']);
 			$tarray[$v['loginname']]['parent_level'] = $plevel;
 			$tarray[$v['loginname']]['parent_tname'] = $tname;
 			$zhituiCount = $users->where("rid={$v['loginname']}")->count();
 			$tarray[$v['loginname']]['zhituiCount'] = "<font color=red>".$zhituiCount."</font>";
-			$ch_array =  $this->getTree01($v['loginname'],$v['standardlevel'],$v['tname'],$v['id']);
+			$ch_array =  $this->getTree01($v['loginname'],$v['use_grade'],$v['tname'],$v['id']);
 			$tarray[$v['loginname']]['childrencount'] = count($ch_array);
 			$tarray[$v['loginname']]['children'] =  $ch_array;
 
@@ -715,7 +725,7 @@ return true;
 	{
 		$tarray = array();
 		$users=M("users");
-		$ceng1_lists = $users->field("id,pid,rid,loginname,standardlevel,tname,zhicount,cengcount,tpath,area")->where("pid='{$loginname}'")->order("sort asc")->select();
+		$ceng1_lists = $users->field("id,pid,rid,loginname,use_grade,tname,zhicount,cengcount,tpath,area")->where("pid='{$loginname}'")->order("sort asc")->select();
 
 		foreach($ceng1_lists as $k=>$v){
 
@@ -723,8 +733,8 @@ return true;
 			$tarray[$v['loginname']]['parent_id'] = $pid;
 			$tarray[$v['loginname']]['name'] = $v['loginname'];
 			$tarray[$v['loginname']]['tname'] = $v['tname'];
-			$tarray[$v['loginname']]['level'] = $v['standardlevel'];
-			$tarray[$v['loginname']]['leveldesc'] = GetLevel($v['standardlevel']);
+			$tarray[$v['loginname']]['level'] = $v['use_grade'];
+			$tarray[$v['loginname']]['leveldesc'] = GetLevel($v['use_grade']);
 			$tarray[$v['loginname']]['parent_level'] = $plevel;
 			$tarray[$v['loginname']]['parent_tname'] = $tname;
 
@@ -733,7 +743,7 @@ return true;
 			$tarray[$v['loginname']]['cengCount'] = "<font color=red>".$v[cengcount]."</font>";
 			$tarray[$v['loginname']]['tpath'] = $v[tpath];
 			$tarray[$v['loginname']]['area'] = $v[area];
-			$ch_array =  $this->getTree($v['loginname'],$v['standardlevel'],$v['tname'],$v['id']);
+			$ch_array =  $this->getTree($v['loginname'],$v['use_grade'],$v['tname'],$v['id']);
 			$tarray[$v['loginname']]['childrencount'] = count($ch_array);
 			$tarray[$v['loginname']]['children'] =  $ch_array;
 
@@ -747,13 +757,13 @@ return true;
 	function getZhituiTree($info,$users){
 		//$str .= "<ul>";
 		$tarray = array();
-		$info_lists = $users->field("id,rid,loginname,standardlevel")->where("rid='{$info[id]}'")->select();
+		$info_lists = $users->field("id,rid,loginname,use_grade")->where("rid='{$info[id]}'")->select();
 
 		foreach($info_lists as $k=>$v){
 			//$str .= "<li>".$v['loginname'];
 			$tarray[$v['loginname']]['rid'] = $info['loginname'];
 			$tarray[$v['loginname']]['name'] = $v['loginname'];
-			$tarray[$v['loginname']]['level'] = GetLevel($v["standardlevel"]);
+			$tarray[$v['loginname']]['level'] = GetLevel($v["use_grade"]);
 			$ch_array = $this->getZhituiTree($v,$users);
 			$tarray[$v['loginname']]['childrencount'] = count($ch_array);
 			$tarray[$v['loginname']]['children'] = $ch_array;
@@ -777,7 +787,7 @@ return true;
 		{
 			//查找13组第一层
 			$users = M("users");
-			$utop1 = $users->field("id,loginname,pid")->where("standardlevel=3 and tname={$teamid}")->find();
+			$utop1 = $users->field("id,loginname,pid")->where("use_grade=3 and tname={$teamid}")->find();
 			if(!$utop1)
 				return false;
 
@@ -896,11 +906,11 @@ return true;
 		$data['pid'] = $parray['pid'];
 
 
-		$r_user = $staffAdd->field("id,loginname,rpath,dai")->where("loginname='{$payinfo[rid]}'")->find();
+		$r_user = $staffAdd->field("id,loginname,path,dai")->where("loginname='{$payinfo[rid]}'")->find();
 
 
 		$data['tname'] = $parray['tname'];
-		$data['rpath']=$r_user['rpath'].",".$r_user['id'];//推荐path
+		$data['path']=$r_user['path'].",".$r_user['id'];//推荐path
 		$data['ppath'] = $parray['ppath'].",".$parray['id'];//接点path
 
 		$data['dai'] = $r_user['dai']+1;
@@ -984,7 +994,7 @@ return true;
 		}
 		$data['pid'] = $parray['pid'];
 
-		$r_user = $staffAdd->field("id,loginname,rpath,dai,tname,standardlevel,teamdai")->where("loginname='{$userModel[rid]}'")->find();
+		$r_user = $staffAdd->field("id,loginname,path,dai,tname,use_grade,teamdai")->where("loginname='{$userModel[rid]}'")->find();
 
 		$data["loginname"] = $userModel['loginname'];
 		$data['tname'] = $parray['tname'];
@@ -1001,8 +1011,8 @@ return true;
 
 		if($result){
 
-			if($r_user['rpath']){
-				$rpath_array = $staffAdd->field("loginname,dai,id")->where("id in ({$r_user[rpath]}) and tname=$r_user[tname]")->select();
+			if($r_user['path']){
+				$rpath_array = $staffAdd->field("loginname,dai,id")->where("id in ({$r_user[path]}) and tname=$r_user[tname]")->select();
 				foreach($rpath_array as $k=>$v){
 					unset($rpath_data);
 					$cengcount = $this->getCountNum($v["loginname"],$r_user['tname']);
@@ -1077,7 +1087,7 @@ return true;
 
 		$data['pid'] = $parray['pid'];
 
-		$r_user = $staffAdd->field("id,loginname,rpath,dai,tname,standardlevel,teamdai")->where("loginname='{$userModel[rid]}'")->find();
+		$r_user = $staffAdd->field("id,loginname,path,dai,tname,use_grade,teamdai")->where("loginname='{$userModel[rid]}'")->find();
 
 		$data["loginname"] = $userModel['loginname'];
 		$data['tname'] = $parray['tname'];
@@ -1102,8 +1112,8 @@ return true;
 
 		if($result){
 
-			if($r_user['rpath']){
-				$rpath_array = $staffAdd->field("loginname,dai,id")->where("id in ({$r_user[rpath]}) and tname=$r_user[tname]")->select();
+			if($r_user['path']){
+				$rpath_array = $staffAdd->field("loginname,dai,id")->where("id in ({$r_user[path]}) and tname=$r_user[tname]")->select();
 				foreach($rpath_array as $k=>$v){
 					unset($rpath_data);
 					$cengcount = $this->getCountNum($v["loginname"],$r_user['tname']);
@@ -1212,10 +1222,10 @@ return true;
 		}
 
 
-		$userModel = $user->field("id,rid,loginname,rpath,truename")->where("loginname='{$loginname}'")->find();
+		$userModel = $user->field("id,rid,loginname,path,truename")->where("loginname='{$loginname}'")->find();
 
-		if($userModel['rpath']) {
-			$rarray = $user->field("id,loginname")->where("id in ({$userModel[rpath]})")->select();
+		if($userModel['path']) {
+			$rarray = $user->field("id,loginname")->where("id in ({$userModel[path]})")->select();
 			$istrue = "0";
 			foreach ($rarray as $k => $v) {
 				if ($v['loginname'] == $username) {
@@ -1227,14 +1237,14 @@ return true;
 		}
 
 		if($result['msg']=="no"){
-			$userModel = $user->field("id,rid,loginname,rpath,truename")->where("loginname='{$username}'")->find();
+			$userModel = $user->field("id,rid,loginname,path,truename")->where("loginname='{$username}'")->find();
 			if(!$userModel){
 				$result['msg'] = "nouser";
 				return $result;
 				exit;
 			}
 
-			$rarray = $user->field("id,loginname,truename")->where("id in ({$userModel[rpath]})")->select();
+			$rarray = $user->field("id,loginname,truename")->where("id in ({$userModel[path]})")->select();
 
 			foreach($rarray as $k=>$v){
 				if($v['loginname']==$loginname){
@@ -1257,7 +1267,7 @@ return true;
 		$pid['pid'] = array('in',$loginname);
 
 
-		$all = $users->where("standardlevel=3")->where($pid)->getField('loginname',true);
+		$all = $users->where("use_grade=3")->where($pid)->getField('loginname',true);
 
 		if($all){
 			return $all;
@@ -1273,7 +1283,7 @@ return true;
 	 * 判断用户是否出局
 	 */
 	public function is_out(){
-		$flag=M('users')->where("pid='{$_SESSION['nvip_member_User']}' AND standardlevel>4")->find();
+		$flag=M('users')->where("pid='{$_SESSION['nvip_member_User']}' AND use_grade>4")->find();
 		return $flag?true:false;
 	}
 
@@ -1281,7 +1291,7 @@ return true;
 	 * 判断用户是否出局
 	 */
 	public function is_out_user($pid){
-		$flag=M('users')->where("rid='$pid' AND standardlevel>4")->find();
+		$flag=M('users')->where("rid='$pid' AND use_grade>4")->find();
 		return $flag?true:false;
 	}
 
@@ -1417,7 +1427,7 @@ return true;
      public  function jiesuan_day_select($loginname,$user_id,$standardlevel,$invite_count,$left_count,$right_count,$three_count,$amount,$current_amount,$current_bonus_amount,$jiesuan_desc,$daoqi_time,$date){
             $data['loginname']=$loginname;
             $data['user_id']=$user_id;
-             $data['standardlevel']=$standardlevel;
+             $data['use_grade']=$standardlevel;
              $data['invite_count']=$invite_count;
              $data['left_count']=$left_count;
              $data['right_count']=$right_count;
@@ -1528,7 +1538,7 @@ return true;
     {
         $getusername = str_replace('\'','',stripslashes($_GET["username"]));
         //判断是不是七星含七星以上会员
-        $user_seven=M("users")->field(count('id'))->where("loginname='{$getusername}' and standardlevel>7")->find();
+        $user_seven=M("users")->field(count('id'))->where("loginname='{$getusername}' and use_grade>7")->find();
         $users=M("users")->field(count('id'))->where("pid='{$getusername}' and area=3")->find();
         if(!$user_seven){
             echo '2';

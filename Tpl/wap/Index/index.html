@@ -24,6 +24,63 @@
     body {
         /* position: relative; */
     }
+    .functionList {
+        position: absolute;
+        top:0.5833rem;
+        right: 0.05rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        background: url('__WIMG__/index/list.png') no-repeat;
+        background-size: contain;
+        margin-right: 0.2083rem;
+    }
+    .functionList ul {
+        position: absolute;
+        bottom: -1.4583rem;
+        right: -0.0833rem;
+        background-color: #fff;
+        border-radius: 0.0625rem;
+
+    }
+    .functionList ul.active {
+        display: none
+    }
+    .functionList ul li {
+        width: 2.2708rem;
+        height: 0.6667rem;
+    }
+    .functionList ul li>a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.2708rem;
+        height: 0.6667rem;
+        font-size: 0.2917rem;
+        color: #000;
+    }
+    .functionList ul li .saoyisao{
+        width: 0.3333rem;
+        height: 0.3333rem;
+        margin-right: 0.1667rem;
+        display: inline-block;
+        background: url('__WIMG__/index/saoyisao.png') no-repeat;
+        background-size: contain;
+    }
+    .functionList ul li .twocope{
+        width: 0.3333rem;
+        height: 0.3333rem;
+        margin-right: 0.1667rem;
+        display: inline-block;
+        background: url('__WIMG__/index/twocope.png') no-repeat;
+        background-size: contain;
+    }
+    .functionList ul li .icon{
+        width: 0.2917rem;
+        height: 0.2917rem;
+        display: inline-block;
+        background: url('__WIMG__/index/icon10.png') no-repeat;
+        background-size: contain;
+    }
 </style>
 
 
@@ -39,24 +96,54 @@
                         <a href="#">
                             <span><img class="flag" src="__WIMG__/English.png" alt="" />English</span></a>
                     </div>
-                    <div class="son">
+                    <div class="son" style="z-index: 99">
                         <!--英文-->
                         <div id="div_en-us" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/English.png"
                                     alt="" />English<span class="value"></span></a></div>
                         <!--中文-->
                         <div id="div_zh-cn" onclick="gradeOnclick('zh-cn')"><a><img class="flag" src="__WIMG__/china.png"
                                     alt="" />中文<span class="value"></span></a></div>
-                        <!--&lt;!&ndash;韩文&ndash;&gt;-->
-                        <!--<div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"-->
-                        <!--alt="" />한국어<span class="value"></span></a></div>-->
-                        <!--&lt;!&ndash;日文&ndash;&gt;-->
-                        <!--<div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span-->
-                        <!--class="value"></span></a></div>-->
+                        <!--韩文-->
+                        <div id="div_zxcghy84-corean" onclick="gradeOnclick('zxcghy84-corean')"><a><img class="flag" src="__WIMG__/hanguo.png"
+                        alt="" />한국어<span class="value"></span></a></div>
+                        <!--日文-->
+                        <div id="div_zxcghy84-jp" onclick="gradeOnclick('zxcghy84-jp')"><a><img class="flag" src="__WIMG__/Japan.png" alt="" />わぶん<span
+                        class="value"></span></a></div>
+
+                        <!--新增语言-->
+                        <!--阿拉伯-->
+                        <div id="div_Arabic_en" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Arab.png" alt="" />Arabic<span
+                                class="value"></span></a></div>
+                        <!--法国-->
+                        <div id="div_France_en" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/France.png" alt="" />France<span
+                                class="value"></span></a></div>
+                        <!--德国-->
+                        <div id="div_German_en" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Germany.png" alt="" />German<span
+                                class="value"></span></a></div>
+                        <!--葡萄牙-->
+                        <div id="div_Portugal_en" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Portugal.png" alt="" />Portugal<span
+                                class="value"></span></a></div>
+                        <!--俄罗斯-->
+                        <div id="div_Russian_en" onclick="gradeOnclick('en-us')"><a><img class="flag" src="__WIMG__/Russia.png" alt="" />Russian<span
+                                class="value"></span></a></div>
+
+
                     </div>
                 </div>
             </div>
         </div>
 
+        <div class="functionList">
+            <ul class="active">
+                <li><a onclick="BSL.Qcode('0','qrcodeCallback')"><i class="saoyisao"></i>{$Think.lang.scan}</a></li>
+                <li><a href="{:U('Growth/Intro')}"><i class="twocope"></i><i class="icon"></i>{$Think.lang.saoma}</a></li>
+            </ul>
+        </div>
+        <script>
+            $('.functionList').click(function(){
+                $(this).children('ul').toggleClass('active')
+            })
+        </script>
         <!-- 用户信息 -->
         <div class="userInfo">
             <!-- 人物头像 -->
@@ -73,8 +160,8 @@
                 <!-- ID 与 级别 -->
                 <div class="uid_xy">
                     <p>UID:{$uinfo['userid']}</p>
-                    <p>{$Think.lang.rank}:
-                        <{$user_info.levelName}>
+                    <p>{$Think.lang.rank}: <!--{$user_info.levelName}-->
+                        <?php echo $userModel['levelName'] ? $userModel['levelName'] : L('pthy')?>
                        <!-- <?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>-->
                     </p>
                 </div>
@@ -95,7 +182,7 @@
 
             <a href="{:U('Index/Exchangerecords')}">
                 <div class="my_integral">
-                    <p class="title" style="margin-top: 0.2083rem">{$Think.lang.sttz}:</p>
+                    <p class="title" style="margin-top: 0.2083rem">{$Think.lang.sctz}:</p>
                     <div class="num" style="margin-top: 0.1042rem">
                         <i></i>{$moneyinfo['fengmi_num']}
                     </div>
@@ -167,25 +254,26 @@
 
         <!-- 扫码/交易中心 -->
         <div class="trading_center">
-           <!-- <a onclick="BSL.Qcode('0','qrcodeCallback')">
-                <div class="icon">
-                    <img src="__WIMG__/index/icon01.png" alt="">
-                    <p class="txt">{$Think.lang.scan}</p>
-                </div>
-            </a>
-            <a href="{:U('Growth/Intro')}">
-                <div class="icon">
-                    <img src="__WIMG__/index/icon02.png" alt="">
-                    <p class="txt">{$Think.lang.tochangeinto}<i></i>{$Think.lang.ru}</p>
-                </div>
-            </a>-->
-            <a href="{:U('Index/Turnout')}">
+            <!--  <a onclick="BSL.Qcode('0','qrcodeCallback')">
+                    <div class="icon">
+                        <img src="__WIMG__/index/icon01.png" alt="">
+                        <p class="txt">{$Think.lang.scan}</p>
+                    </div>
+                </a>
+                 <a href="{:U('Growth/Intro')}">
+                   <div class="icon">
+                       <img src="__WIMG__/index/icon02.png" alt="">
+                       <p class="txt">{$Think.lang.tochangeinto}<i></i>{$Think.lang.ru}</p>
+                   </div>
+               </a>-->
+            <!-- 互转-->
+           <!-- <a href="{:U('Index/Turnout')}">
                 <div class="icon">
                     <img src="__WIMG__/index/icon03.png" alt="">
                     <p class="txt">{$Think.lang.turnout}</p>
                 </div>
             </a>
-
+-->
             <!-- 新增  帮助注册  申请升级 审核升级-->
           <!--  <a href="{:U('Add/add_user')}">-->
             <a href="{:U('Add/register')}">
@@ -199,7 +287,7 @@
                 <a href="{:U('Add/upgrade')}">
                 <div class="icon">
                     <img src="__WIMG__/index/icon002.png" alt="">
-                    <p class="txt">{$Think.lang.申请升级}</p>
+                    <p class="txt">{$Think.lang.upgrade}</p>
                 </div>
             </a>
 
@@ -207,7 +295,7 @@
                 <a href="{:U('Add/audit')}">
                 <div class="icon">
                     <img src="__WIMG__/index/icon003.png" alt="">
-                    <p class="txt">{$Think.lang.审核升级}</p>
+                    <p class="txt">{$Think.lang.regrade}</p>
                 </div>
             </a>
             <!--<a href="{:U('Index/trading_center')}">-->
@@ -215,31 +303,48 @@
                 <!--<a class="notSell">-->
                 <div class="icon">
                     <img src="__WIMG__/index/icon004.png" alt="">
-                    <p class="txt">{$Think.lang.trade}</p>
+                    <p class="txt">{$Think.lang.jyzx}</p>
                 </div>
             </a>
         </div>
     </div>
     <!-- 主体内容 end -->
 
-    <!-- 公告/积分/分享/团队 -->
+    <!-- 会员互转/积分/分享/团队 -->
     <div class="banner_box">
         <ul class="fun_list">
             <li>
+                <a href="{:U('Index/Turnout')}">
+                    <div class="icon">
+                        <img src="__WIMG__/index/icon03.png" alt="会员互转">
+                        <p class="txt">{$Think.lang.hyhz}</p>
+                    </div>
+                </a>
+
+                <!--游戏-->
                 <!--<a href="{:U('User/News')}">-->
-                <a href="{:U('Index/page')}">
+              <!--  <a href="{:U('Index/page')}">
                     <div class="icon">
                         <img src="__WIMG__/index/gg.png" alt="公告">
                     </div>
                     <p class="txt">{$Think.lang.notice}</p>
-                </a>
+                </a>-->
+
             </li>
             <li>
                 <a href="{:U('Index/exehange')}">
                     <div class="icon">
-                        <img src="__WIMG__/index/jfdh.png" alt="资产兑换">
+                        <img src="__WIMG__/index/jfdh.png" alt="通证锁仓">
                     </div>
-                    <p class="txt">{$Think.lang.stzh}</p>
+                    <p class="txt">{$Think.lang.tzsc}</p>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('User/Teamdets')}">
+                    <div class="icon">
+                        <img src="__WIMG__/index/td.png" alt="社区管理">
+                    </div>
+                    <p class="txt">{$Think.lang.sqgl}</p>
                 </a>
             </li>
             <li>
@@ -250,16 +355,8 @@
                     <p class="txt">{$Think.lang.share}</p>
                 </a>
             </li>
-            <li>
-                <a href="{:U('User/Teamdets')}">
 
 
-                    <div class="icon">
-                        <img src="__WIMG__/index/td.png" alt="团队">
-                    </div>
-                    <p class="txt">{$Think.lang.team}</p>
-                </a>
-            </li>
         </ul>
     </div>
 
@@ -272,12 +369,12 @@
          <a href="{:U('Turntable/index')}">
         <!--<a id="notSell">-->
         <!--<a href="{:U('Index/page')}">-->
-            <img src="__WIMG__/zican.png" alt="资产">
-            <p>{$Think.lang.zichan}</p>
+            <img src="__WIMG__/zican.png" alt="兑换资产">
+            <p>{$Think.lang.dhzc}</p>
         </a>
         <a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
-            <img src="__WIMG__/gouwuche.png" alt="商城">
-            <p>{$Think.lang.shoppingmall}</p>
+            <img src="__WIMG__/gouwuche.png" alt="生态应用">
+            <p>{$Think.lang.styy}</p>
         </a>
         <a href="{:U('User/Personal')}">
             <img src="__WIMG__/wode.png" alt="我的">
@@ -465,10 +562,12 @@
             // 点击切换语言
             $(".dropdown .son").hide();
             $("#div_curr_lag").click(function () {
+
                 $(".dropdown .son").toggle();
             });
 
             $(".dropdown .son div a").click(function () {
+
                 var text = $(this).html();
                 $(".dropdown .parent a span").html(text);
                 // localStorage.setItem('key',JSON.stringify(text));
@@ -476,6 +575,7 @@
             }); //选择完成以后隐藏页面
 
             var curr_lag = $("#hid_lag").val();
+            console.log(curr_lag);
             if (curr_lag == "") {
                 gradeOnclick("en-us");
             } else {
@@ -485,6 +585,7 @@
         })
 
         function gradeOnclick(url) {
+
             window.location.href = "?l=" + url;
         };
     </script>

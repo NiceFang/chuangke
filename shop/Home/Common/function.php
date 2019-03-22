@@ -388,12 +388,14 @@ function sendMsg($mobile,$sendType)
         $user_mobile = $mobile;
         $code = getCode();//获取随机验证码
         $sms_code = sha1(md5(trim($code) . trim($mobile)));
+        session('code', $code);
         session('sms_code', $sms_code);//将验证码和手机号存入
         //发送短信
 //        $content="您本次的验证码为".$code."，请在5分钟内完成验证，验证码打死也不要告诉别人哦！";//要发送的短信内容
         if($sendType == 'zxcghy84-corean'){
             $user_mobile = '0082'.$user_mobile;
             $res = sendSms($user_mobile,$code);
+            echo "aa";
             if($res->Code=='OK'){
 
                 $res = 0;
@@ -402,6 +404,8 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
+
+//            echo "bb";
 //            return $res;
         }
 //        var_dump($res);die;
@@ -468,7 +472,7 @@ function newMsg($mobile,$code) {
         // echo "请求发送短信失败";
         $mes=1;
     }
-    return $mes;
+    return $result;
 //    return $result;
 //     $url='http://smssh1.253.com/msg/send/json';
 //     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');
@@ -1116,31 +1120,43 @@ function request_post($url = '', $param = '') {
 // 申请升级
 function GetLevel($level){
     if($level=='-1'){
-        return "普通会员";
+//        return "普通会员";
+        return "puthy";
     }
     switch($level){
         case 9:
-            return "九星会员";
+//            return "九星会员";
+            return "VIP9";
         case 8:
-            return "八星会员";
+//            return "八星会员";
+            return "VIP8";
         case 7:
-            return "七星会员";
+//            return "七星会员";
+            return "VIP7";
         case 6:
-            return "六星会员";
+//            return "六星会员";
+            return "VIP6";
         case 5:
-            return "五星会员";
+//            return "五星会员";
+            return "VIP5";
         case 4:
-            return "四星会员";
+//            return "四星会员";
+            return "VIP4";
         case 3:
-            return "三星会员";
+//            return "三星会员";
+            return "VIP3";
         case 2:
-            return "二星会员";
+//            return "二星会员";
+            return "VIP2";
         case 1:
-            return "一星会员";
+//            return "一星会员";
+            return "VIP1";
         case 0:
-            return "普通会员";
+//            return "普通会员";
+            return "puthy";
         default:
-            return "普通会员";
+//            return "普通会员";
+            return "puthy";
     }
 }
 

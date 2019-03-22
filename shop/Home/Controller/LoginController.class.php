@@ -68,7 +68,7 @@ class LoginController extends Controller
             //$mobile = '1587229752@qq.com';
             //验证邮箱
             $checkmail="/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-            if(preg_match($checkmail,$mobile)){
+           if(preg_match($checkmail,$mobile)){
                 if(!check_mail($code,$mobile)){
                     $set_code = session('EmailCode');
                    ajaxReturn(L('yzmcwhygq'));
@@ -138,11 +138,17 @@ class LoginController extends Controller
             //拼接路径
             $path=$p_info['path'];
             $deep=$p_info['deep'];
-            if(empty($path)){
+
+            if ($path) {
+                $data['path'] = $path . "," . $pid;//推荐path
+            } else {
+                $data['path'] = $pid;//推荐rpath
+            }
+           /* if(empty($path)){
                 $data['path']='-'.$pid.'-';
             }else{
                 $data['path']=$path.$pid.'-';
-            }
+            }*/
             $data['deep']=$deep+1;
 
             $user->startTrans();//开启事务
@@ -302,6 +308,7 @@ class LoginController extends Controller
 
             $rs = $users->where(array('account'=>$account))->find();
 
+            session("userid",$rs["userid"]);
             session("nvip_member_id",$rs["userid"]);
             session("nvip_member_tuijianma",$rs["mobile"]);
             session("nvip_nvip_member_User",$rs["mobile"]);
@@ -599,12 +606,12 @@ public function check_verify($code, $id = '')
             'reg_ip'=>$cip,
             'reg_date'=>array('egt',strtotime(date('Y-m-d')))
         );
-        echo 2;
+//        echo 2;
         $resNum=M('user')->where($resCountWhere)->count();
 //        dump($resNum);exit;
 //            dump($resNum);
         if($resNum>10){
-            echo 3;
+//            echo 3;
 //            ajaxReturn(2,0);
             $mes=array();
             $mes['status'] = 2;
@@ -615,13 +622,14 @@ public function check_verify($code, $id = '')
         $res=M('preventip')->where(array('ip'=>$cip))->find();
 //        ajaxReturn($res);
         if(empty($res)){
-            echo 4;
+//            echo 4;
             $user=D('User');
             $result=sendMsg($mobile,$sendType);
-            echo 5;
+//            echo 5;
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
+
             $this->ajaxReturn($result);
         }elseif(!empty($res)){
             if(time()-$res['time'] <= 300){
@@ -631,9 +639,9 @@ public function check_verify($code, $id = '')
                 $this->ajaxReturn($mes);
             }else{
                 $user=D('User');
-                echo 6;
+//                echo 6;
                 $result=sendMsg($mobile,$sendType);
-                echo 7;
+//               echo 7;
                 if($result['status']==1){
 
                     $datas['id']=$res['id'];
