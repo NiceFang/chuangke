@@ -375,7 +375,8 @@ class UserController extends CommonController
 
 
         }
-        $aurl = $_SERVER['SERVER_NAME']. U('Login/register/UID/' . $uinfo['userid'].'/l/'.LANG_SET);
+        //$aurl = $_SERVER['SERVER_NAME']. U('Login/register/UID/' . $uinfo['userid'].'/l/'.LANG_SET);
+        $aurl = $_SERVER['SERVER_NAME'].':806'. U('Login/register/UID/' . $uinfo['userid'].'/l/'.LANG_SET);
         $moneyinfo = M('store')->where(array('uid' => $userid))->field('cangku_num,fengmi_num')->find();
         $this->assign('moneyinfo', $moneyinfo);
         $this->urel = ltrim($urel,".");
