@@ -617,7 +617,7 @@ return array(
     'yzm3'=>'인증번호',
 
     'scan'=>'스캔하기',
-    'trade'=>'거래센터',
+    'trade'=>'거래 센터',
     'zhgl'=>'계정관리',
     'yhk'=>'은행카드',
     'zfb'=>'Alipay',
