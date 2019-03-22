@@ -717,6 +717,9 @@ r
             return "已通过";
     }
 
-
+    public function ecosystem()
+    {
+        $this->display();
+    }
 
 }
