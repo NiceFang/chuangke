@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>{$Think.lang.dhjl}</title>
+
+<!-- 新的样式 -->
+<link rel="stylesheet" href="__WCSS__/integralbase.css">
+<link rel="stylesheet" href="__WCSS__/sumConversion.css">
+<link rel="stylesheet" href="__WCSS__/mui.min.css">
+
+<script src="__WJS__/jquery1.11.1.min.js"></script>
+<script src="__WJS__/mui.min.js"></script>
+
+<script type="text/javascript" src="__WJS__/rem.js"></script>
+<!-- 获取头部的颜色 -->
+<script type="text/javascript" src="__WJS__/color.js"></script>
+<style>
+    body {
+        background-color: #0F1013;
+    }
+    .content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0.5rem 0.9167rem ;
+    }
+    .iconList {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .iconBox {
+        width: 1.4583rem;
+        margin-right: 0.625rem;
+        margin-bottom: 0.4167rem;
+    }
+    .iconBox:nth-child(3n) {
+        margin-right: 0rem;
+    }
+    .iconBox a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .iconBox a img {
+        width: 1rem;
+        height: 1rem;
+        margin-bottom: 0.1458rem;
+    }
+    .iconBox p {
+        font-size: 0.2917rem;
+    }
+</style>
+
+<body >
+	<!-- 新的代码 -->
+	<!-- 头部 -->
+	<div class="hear">
+		<a href="{:U('Index/index')}" class="jiantou"><img src="__WIMG__/jiantou2416.png" alt=""></a>
+		<p>生态应用</p>
+    </div>
+    <div class="content">
+        <ul class="iconList">
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/marking.png" alt="">
+                    <p>生态商城</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/agriculture.png" alt="">
+                    <p>生态农业</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/energy.png" alt="">
+                    <p>生态新能源</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/health.png" alt="">
+                    <p>生态健康</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/travel.png" alt="">
+                    <p>生态旅游</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/jingdong.png" alt="">
+                    <p>京东</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/xiecheng.png" alt="">
+                    <p>携程</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/taobao.png" alt="">
+                    <p>淘宝</p>
+                </a>
+            </li>
+            <li class="iconBox">
+                <a href="#">
+                    <img src="__WIMG__/pingduoduo.png" alt="">
+                    <p>拼多多</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
