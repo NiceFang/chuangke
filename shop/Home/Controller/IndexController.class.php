@@ -2832,6 +2832,10 @@ class IndexController extends CommonController
             $arr = $orderTable->find($orderId);
             $fileName = $arr['pay_no'];
             $fileName = "./Uploads/orderimgs/$fileName.png";
+            $dir = './Uploads/orderimgs';
+            if(!file_exists($dir)){
+                mkdir($dir);
+            }
             if (!$arr){
                 ajaxReturn(L('ddbcz'),0);
             }
