@@ -36,10 +36,11 @@ class AddController extends LoginTrueController
      */
     public function Add_Action()
     {
-        $this->LoginTrue();
+        //$this->LoginTrue();
      /* if($_POST["code"] != session('code') ){
             $this->error("验证码错误");
         }*/
+
         $txt_loginname = $_POST["mobile"];
 
         if (!$txt_loginname) {
@@ -174,6 +175,9 @@ class AddController extends LoginTrueController
 
         $this->display();
     }
+
+
+
 
     // 升级申请页面
     public function upgrade()

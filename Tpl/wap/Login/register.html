@@ -75,19 +75,19 @@
             <div class="logo registerLogo">
                 <img src="__WIMG__/logo4.png">
             </div>
-            <form method="post" action="{:U('Add/Add_Action')}" id="registerForm" class="formrgister" enctype="multipart/form-data">
+            <form method="post" action="{:U('Login/regis')}" id="registerForm" class="formrgister" enctype="multipart/form-data">
                 <input type="hidden" name="reg_source" value="{:I('get.source',0,'intval')}">
 
                 <div class="input_box">
-                    <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
-                    <input type="text" name="ReferralCode" id="ReferralCode" placeholder="{$Think.lang.tjrhm}" value="<{$tuijianma}>">
+                    <span><img src="__WIMG__/moblie_code.png" alt="" class="phone"></span>
+                    <input type="text" name="ReferralCode" id="ReferralCode" placeholder="{$Think.lang.请输入推荐人手机号码}" value="{$tuijianma}">
                 </div>
 
                 <div class="input_box">
                     <span><img src="__WIMG__/phone.png" class="phone" alt=""></span>
 
                    <!-- <input type="text" name="mobile"  class="phone_number" placeholder="{$Think.lang.请输入商家手机号码}" id="number" />-->
-                    <input type="text" id="mobile" name="mobile" placeholder="{$Think.lang.qsrsjsjhm}" value=""  class="phone_number">
+                    <input type="text" id="mobile" name="mobile" placeholder="{$Think.lang.sjhaom}" value=""  class="phone_number">
                 </div>
                 <div class="input_box">
 
@@ -96,7 +96,7 @@
               <!--      <input type="text" name="username" id="username" class="username" placeholder="{$Think.lang.请输入商家姓名}" value=""
                         autocomplete="off" maxlength="6" onblur="volidateUserName(this)" />-->
 
-                    <input type="text" id="realname"  name ="realname"  class="username" placeholder="{$Think.lang.qsrsjxm}" value="">
+                    <input type="text" id="realname"  name ="realname"  class="username" placeholder="{$Think.lang.qsrnc}" value="">
                 </div>
 
                 <!-- 登录密码 -->
@@ -106,7 +106,7 @@
                    <!-- <input type="password" name="login_pwd" class="password" placeholder="{$Think.lang.请输入商家初始密码}" id="pwd"
                         oncontextmenu="return false" maxlength="16"  onpaste="return false" />-->
 
-                    <input type="password" name="password" class="password" id="password" placeholder="{$Think.lang.qsrsjdlcsmm}" value=""
+                    <input type="password" name="password" class="password" id="password" placeholder="{$Think.lang.qsrddlmm}" value=""
                            oncontextmenu="return false" maxlength="16"  onpaste="return false" />
                     <span class="right"><img id="demo_img" onclick="hideShowPsw('demo_img','demo_input')" src="__WIMG__/mima.png" alt=""></span>
 
@@ -145,7 +145,7 @@
                 <div class="input_box input_code">
 
                     <span><img src="__WIMG__/moblie_code.png" alt=""></span>
-                    <input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.sjyzm}"
+                    <input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.shoujyzm}"
                            oncontextmenu="return false" onpaste="return false" />
                     <a href="javascript:void(0)" id="mycode">{$Think.lang.hq}</a>
                 </div>
