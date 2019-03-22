@@ -131,7 +131,7 @@ return true;
             $sql = M('user')->getLastSql();
 			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and standardlevel=".$this->SysSet[$teamlevel];
 
-			$teamtjcount = M('user')->where("FIND_IN_SET($id,rpath) ".$wheresql)->count();
+			$teamtjcount = M('user')->where("FIND_IN_SET($id,path) ".$wheresql)->count();
 			$sql = M('user')->getLastSql();
             //var_dump($sql);
 //            echo  $this->SysSet[$ge];
@@ -492,7 +492,7 @@ return true;
 		
 		$jihuoAmount = $user["jihuoAmount"];
 		//推荐奖 begion 
-		$ruser_array = $userModel->field("id,loginname,standardlevel")->where("id in ({$user[rpath]})  and standardlevel>0")->order("id desc")->limit(0,$systemInfo['affectceng'])->select();
+		$ruser_array = $userModel->field("id,loginname,standardlevel")->where("id in ({$user[path]})  and standardlevel>0")->order("id desc")->limit(0,$systemInfo['affectceng'])->select();
 		
 		foreach($ruser_array as $k=>$ruser){
 
@@ -899,11 +899,11 @@ return true;
 		$data['pid'] = $parray['pid'];
 
 
-		$r_user = $staffAdd->field("id,loginname,rpath,dai")->where("loginname='{$payinfo[rid]}'")->find();
+		$r_user = $staffAdd->field("id,loginname,path,dai")->where("loginname='{$payinfo[rid]}'")->find();
 
 
 		$data['tname'] = $parray['tname'];
-		$data['rpath']=$r_user['rpath'].",".$r_user['id'];//推荐path
+		$data['path']=$r_user['path'].",".$r_user['id'];//推荐path
 		$data['ppath'] = $parray['ppath'].",".$parray['id'];//接点path
 
 		$data['dai'] = $r_user['dai']+1;
@@ -987,7 +987,7 @@ return true;
 		}
 		$data['pid'] = $parray['pid'];
 
-		$r_user = $staffAdd->field("id,loginname,rpath,dai,tname,standardlevel,teamdai")->where("loginname='{$userModel[rid]}'")->find();
+		$r_user = $staffAdd->field("id,loginname,path,dai,tname,standardlevel,teamdai")->where("loginname='{$userModel[rid]}'")->find();
 
 		$data["loginname"] = $userModel['loginname'];
 		$data['tname'] = $parray['tname'];
@@ -1004,8 +1004,8 @@ return true;
 
 		if($result){
 
-			if($r_user['rpath']){
-				$rpath_array = $staffAdd->field("loginname,dai,id")->where("id in ({$r_user[rpath]}) and tname=$r_user[tname]")->select();
+			if($r_user['path']){
+				$rpath_array = $staffAdd->field("loginname,dai,id")->where("id in ({$r_user[path]}) and tname=$r_user[tname]")->select();
 				foreach($rpath_array as $k=>$v){
 					unset($rpath_data);
 					$cengcount = $this->getCountNum($v["loginname"],$r_user['tname']);

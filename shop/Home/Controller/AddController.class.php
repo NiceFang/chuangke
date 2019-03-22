@@ -322,10 +322,10 @@ class AddController extends LoginTrueController
 
         $r_user = M("user")->where(array('mobile'=>$rid))->find();//rpath根据推荐人来计算
 
-        if ($r_user['rpath']) {
-            $data['rpath'] = $r_user['rpath'] . "," . $r_user['userid'];//推荐rpath
+        if ($r_user['path']) {
+            $data['path'] = $r_user['path'] . "," . $r_user['userid'];//推荐rpath
         } else {
-            $data['rpath'] = $r_user['userid'];//推荐rpath
+            $data['path'] = $r_user['userid'];//推荐rpath
         }
 
 
@@ -539,7 +539,7 @@ class AddController extends LoginTrueController
                 }
 
 
-                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,path")->find();
                 if($user['standardlevel']+1>9){
                     // $this->error("已经是最高等级");
                     ajaxReturn("已经是最高等级",0);
@@ -547,7 +547,7 @@ class AddController extends LoginTrueController
                 $targetlevel = $user['standardlevel']+1;
                 // $tjcount = M('users')->where("rid='{$id}'")->count();
 
-                $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+                $sjshuser = $this->isShengji($targetlevel,$id,$user['path']);
                 //var_dump($sjshuser);
                 if(!is_array($sjshuser)){
 
@@ -611,7 +611,7 @@ class AddController extends LoginTrueController
         }
 
 
-        $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+        $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,path")->find();
 //        var_dump($user);
         if($user['standardlevel']+1>9){
             $this->error("已经是最高等级");
@@ -619,7 +619,7 @@ class AddController extends LoginTrueController
         $targetlevel = $user['standardlevel']+1;
         // $tjcount = M('users')->where("rid='{$id}'")->count();
 
-        $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+        $sjshuser = $this->isShengji($targetlevel,$id,$user['path']);
 //        var_dump($sjshuser);
 //        exit;
         if(!is_array($sjshuser)){
