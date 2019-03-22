@@ -68,7 +68,7 @@ class LoginController extends Controller
             //$mobile = '1587229752@qq.com';
             //验证邮箱
             $checkmail="/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-            if(preg_match($checkmail,$mobile)){
+           /* if(preg_match($checkmail,$mobile)){
                 if(!check_mail($code,$mobile)){
                     $set_code = session('EmailCode');
                    ajaxReturn(L('yzmcwhygq'));
@@ -78,7 +78,7 @@ class LoginController extends Controller
                     ajaxReturn(L('yzmcwhygq'));
                 }
                  $isEmail = false;
-            }
+            }*/
 
 
             //判断仓库
