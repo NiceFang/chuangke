@@ -44,6 +44,141 @@ class LoginController extends Controller
 
     }
 
+    public function regis()
+    {
+        var_dump($_POST);
+        exit;
+        $txt_loginname = $_POST["mobile"];
+
+        if (!$txt_loginname) {
+            $this->error("手机号不能为空");
+            exit();
+        }
+        // 手机号 DHT 是mobile
+        if ($this->check_loginname($txt_loginname)) {
+            $this->error("手机号重复，请重新获取!");
+            exit();
+        }
+        //验证身份证是不是重复
+        $id_sfz = $_POST['txt_identityid'];
+        // 推荐码是手机号码
+        $rid = $_SESSION['nvip_member_tuijianma'];
+        if (!$rid) {
+            $this->error("推荐人不能为空");
+            exit();
+        }
+
+        if (!$_POST["realname"]) {
+            $this->error("商家姓名不能为空");
+            exit();
+        }
+        if (!$_POST["password"]) {
+            $this->error("请填写密码");
+            exit();
+        }
+        if ($_POST["cpassword"] != $_POST["password"]) {
+            $this->error("两次输入的密码不一致");
+            exit();
+        }
+
+
+        $upload = new \Think\Upload();// 实例化上传类
+        $upload->rootPath = './uploads/';
+        if(!is_dir($upload->rootPath)){
+            mkdir($upload->rootPath,0777,true);
+        }
+        $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->saveName = array('uniqid','');
+        $upload->exts     = array('jpg', 'gif', 'png', 'jpeg');
+        $upload->autoSub  = false;
+        $upload->subName  = array('date','Ymd');
+        $info   =   $upload->upload();
+        //var_dump($info);
+        if(!$info) {// 上传错误提示错误信息
+            $this->error($upload->getError());
+        }else{// 上传成功 获取上传文件信息
+            foreach($info as $file){
+                $file_path =  $file['savepath'].$file['savename'];
+            }
+        }
+        if (!$file_path) {
+            $this->error("请选择微信二维码上传");
+            exit();
+        }
+
+
+        $r_user = M("user")->where(array('mobile'=>$rid))->find();//path根据推荐人来计算
+
+        if ($r_user['path']) {
+
+            $data['path'] = $r_user['path'] . "," . $r_user['userid'];//推荐path
+        } else {
+            $data['path'] = $r_user['userid'];//推荐rpath
+        }
+        /* if ($r_user['rpath']) {
+             $data['rpath'] = $r_user['rpath'] . "," . $r_user['userid'];//推荐rpath
+         } else {
+             $data['rpath'] = $r_user['userid'];//推荐rpath
+         }*/
+
+
+        $data['wximg'] = $file_path;//微信二维码
+//        var_dump($file_path);
+//        exit;
+        $data['ceng'] = $r_user['ceng'] + 1;//层
+        // 第几代
+        $data['dai'] = $r_user['dai'] + 1;
+
+        $data['user_credit'] = '0';//刚开始就是临时会员
+        // 等级
+        $data['use_grade'] = '0';//刚开始就是临时会员
+        // 手机号
+        $data["mobile"] = $txt_loginname;
+
+        // // 推荐码$data["tuijianma"] = $this->SysSet['inviteStart'].$this->get_random(3);;
+        $data["username"] = $_POST['realname'];
+        // $data["tel"] = $txt_loginname;
+
+        // 上级id
+        $data["pid"] = $r_user['userid'];
+        // 上上级id
+        $data["gid"] = $r_user['pid'];
+        // 上上上级id
+        $data["ggid"] = $r_user['gid'];
+
+
+
+        // 登录密码 盐值
+        $salt= substr(md5(time()),0,3);
+        $data['login_pwd']=D('user')->pwdMd5($_POST["password"],$salt);
+        $data['login_salt']=$salt;
+
+//        $data["pwd1"] = md5(trim($_POST["password"]));
+//        $data["pwd2"] = md5(trim($_POST["password"]));
+
+        $data["states"] = 1;
+        $data["reg_ip"] = get_client_ip();
+        $data["reg_source"] = '';
+        $data["reg_date"] = time();
+        $data["account"] = $txt_loginname;
+        // 账号不锁定
+        $data["status"] = 1;
+        $data['deep']=$r_user['deep']+1;
+
+
+
+        $result = D('user')->add($data);
+        if ($result) {
+
+            $this->assign("txt_loginname", $data['mobile']);
+            $this->assign("txt_pwd1",$_POST["password"]);
+            $this->assign("rid", base64_encode($data["pid"]));
+            $this->assign("result", $result);
+        } else {
+            $this->error("注册失败,请重新注册");
+            exit();
+        }
+    }
 
 
     //注册好友
@@ -68,7 +203,9 @@ class LoginController extends Controller
             //$mobile = '1587229752@qq.com';
             //验证邮箱
             $checkmail="/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-           /* if(preg_match($checkmail,$mobile)){
+
+         /*if(preg_match($checkmail,$mobile)){
+
                 if(!check_mail($code,$mobile)){
                     $set_code = session('EmailCode');
                    ajaxReturn(L('yzmcwhygq'));
@@ -138,11 +275,17 @@ class LoginController extends Controller
             //拼接路径
             $path=$p_info['path'];
             $deep=$p_info['deep'];
-            if(empty($path)){
+
+            if ($path) {
+                $data['path'] = $path . "," . $pid;//推荐path
+            } else {
+                $data['path'] = $pid;//推荐rpath
+            }
+           /* if(empty($path)){
                 $data['path']='-'.$pid.'-';
             }else{
                 $data['path']=$path.$pid.'-';
-            }
+            }*/
             $data['deep']=$deep+1;
 
             $user->startTrans();//开启事务
@@ -302,6 +445,7 @@ class LoginController extends Controller
 
             $rs = $users->where(array('account'=>$account))->find();
 
+            session("userid",$rs["userid"]);
             session("nvip_member_id",$rs["userid"]);
             session("nvip_member_tuijianma",$rs["mobile"]);
             session("nvip_nvip_member_User",$rs["mobile"]);
@@ -634,7 +778,7 @@ public function check_verify($code, $id = '')
                 $user=D('User');
 //                echo 6;
                 $result=sendMsg($mobile,$sendType);
-//                echo 7;
+//               echo 7;
                 if($result['status']==1){
 
                     $datas['id']=$res['id'];

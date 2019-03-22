@@ -78,6 +78,7 @@
 
 					<if condition="$isExists eq 1">
 						<div class="user_info_left fl">
+
 							<p class="name">{$Think.lang.nysqzzcl} : </p>
 
 							<p class="uid">{$Think.lang.syshr}：<{$shinfo.shuser1}>  <{$shinfo.shuserstatus1}></p>
@@ -144,27 +145,22 @@
 	}*/
 	$(function () {
 	     $("#upgrade").click(function () {
-            /* $.ajax({
-                 url: 'Helpreg/apply',
-                 type: 'POST',
-                 data: {
-                     'uid': uid
-                 },success: function (mes) {
-                     alert(123);
-                 },error:function () {
 
-                 }
-             })*/
              $.ajax({
                  type: "POST", //提交方式    
+
                  url: "/Add/sjaction",
+
                  data: {
                      'uid': "{$userinfo.userid}",
                  },
                  success: function (result) {
                    //  var sss = JSON.parse(result);
-                     //$("#upgrade").attr("disabled",ture);
+                   // $("#upgrade").attr("disabled",ture);
+
 					 alert(result.message);
+                     location=location;
+
                  }
              })
          })

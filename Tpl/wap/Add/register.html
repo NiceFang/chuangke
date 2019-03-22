@@ -124,7 +124,11 @@
                     <span class="right"><img id="zc_img" onclick="hideShowPsw('zc_img','zc_input')" src="__WIMG__/mima.png" alt=""></span>
                 </div>
 
+
+
+
                 <div class="input_box input_code" id="captcha-container">
+
                     <span><img src="__WIMG__/groph_code.png" alt=""></span>
                     <input name="verify" class="captcha-text" placeholder="{$Think.lang.qsryzm}" id="j_verify" type="text">
                     <img alt="图形验证码" src="{:U('Home/Login/verify_c',array())}" title="{$Think.lang.djsx}">
@@ -138,9 +142,8 @@
                 </div>
 
 
-
-
                 <div class="input_box input_code">
+
                     <span><img src="__WIMG__/moblie_code.png" alt=""></span>
                     <input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.sjyzm}"
                            oncontextmenu="return false" onpaste="return false" />
@@ -360,7 +363,6 @@
                 if (data == true) {
                     //验证码输入正确
                     a = 0;
-                    // alert('图形验证码正确');
                     // layer.msg('图形验证码正确');
 
                 } else {
@@ -377,7 +379,7 @@
         $('#mycode').click(function () {
             $("#submit").css('backgroundColor', "rgba(255,255,255,0.5)");
             var mobile = $("input[name='mobile']").val();
-
+            alert(mobile);
             var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
             var txyzmcw = $('#txyzmcw').val();   <!--图形验证码错误-->
             var imgCode = $("#j_verify").val();
@@ -401,7 +403,7 @@
                     'verify': imgCode,
                     'l': "{:I('get.l')}"
                 }, function (data) {
-
+                    alert('ajax发送成功');
                     if (data.status == 1) {
                        // alert('发送成功');
                         layer.msg(data.message);

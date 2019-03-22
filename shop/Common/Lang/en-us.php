@@ -426,6 +426,7 @@
     'jujue'=>'Reject',
 
 
+
     'hqyzm'=>'Get verify code',
 //php文件中的错误提示
     'qtxxm'=>'Please enter name',

@@ -395,6 +395,7 @@ function sendMsg($mobile,$sendType)
         if($sendType == 'zxcghy84-corean'){
             $user_mobile = '0082'.$user_mobile;
             $res = sendSms($user_mobile,$code);
+            echo "aa";
             if($res->Code=='OK'){
 
                 $res = 0;
@@ -403,6 +404,7 @@ function sendMsg($mobile,$sendType)
             }
         }else{
             $res = newMsg($user_mobile,$code);//发送短信
+
 //            echo "bb";
 //            return $res;
         }
@@ -470,7 +472,7 @@ function newMsg($mobile,$code) {
         // echo "请求发送短信失败";
         $mes=1;
     }
-    return $mes;
+    return $result;
 //    return $result;
 //     $url='http://smssh1.253.com/msg/send/json';
 //     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');

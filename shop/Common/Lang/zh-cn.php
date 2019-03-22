@@ -50,8 +50,10 @@
     'credit'=>'信用',
     'ScanCode'=>'扫码支付',
     'yue'=>'余额',
-    'sttz'=>'生态通证',
-    'stzh'=>'生态转换',
+
+ /*   'sttz'=>'生态通证',
+    'stzh'=>'生态转换',*/
+
     'jifen'=>'资产',
     'turnout'=>'互转',
     'gbzc'=>'Mikey资产转出',
@@ -408,11 +410,16 @@
     'register'=>'帮助注册',
     'upgrade'=>'申请升级',
     'regrade'=>'审核升级',
+
     'sctz'=>'锁仓通证',
     'hyhz'=>'会员互转',
     'tzsc'=>'通证锁仓',
     'sqgl'=>'社区管理',
-    'jyzx'=>'交易中心',
+
+    'sttz'=>'生态通证',
+    'stzh'=>'生态转换',
+
+   'jyzx'=>'交易中心',
     'dhzc'=>'兑换资产',
     'styy'=>'生态应用',
     'kytxz'=>'可用通证',
@@ -434,6 +441,7 @@
     'qsrzckytxz'=>'请输入转出可用通证',
     'duihEUSD'=>'兑换EUSD',
     'shouEUSDma'=>'收EUSD码',
+
 
 
 
