@@ -57,25 +57,25 @@
     <div class="content">
         <ul class="languageList">
             <li class="languageBox">
-                <a href="#">
+                <a href="#" onclick="gradeOnclick('zh-cn')">
                     <img src="__WIMG__/languageIcon/china.png" alt="">
                     <p class="languageTxt">中文</p>
                 </a>
             </li>
             <li class="languageBox">
-                <a href="#">
+                <a href="#" onclick="gradeOnclick('en-us')">
                     <img src="__WIMG__/languageIcon/English.png" alt="">
                     <p class="languageTxt">English</p>
                 </a>
             </li>
-            <li class="languageBox">
-                <a href="#">
+            <li class="languageBox" >
+                <a href="#" onclick="gradeOnclick('zxcghy84-corean')">
                     <img src="__WIMG__/languageIcon/hanguo.png" alt="">
                     <p class="languageTxt">한국어</p>
                 </a>
             </li>
             <li class="languageBox">
-                <a href="#">
+                <a href="#" onclick="gradeOnclick('zxcghy84-jp')">
                     <img src="__WIMG__/languageIcon/Japan.png" alt="">
                     <p class="languageTxt">わぶん</p>
                 </a>
@@ -86,3 +86,11 @@
 </body>
 
 </html>
+
+<script>
+    //  点击切换语言
+    function gradeOnclick(url) {
+        window.location.href = "{:U('User/Personal')}?l=" + url;
+    }
+
+</script>
