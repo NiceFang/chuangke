@@ -150,7 +150,8 @@
 	<div class="head">
 		<div class="head_title">
 			<div class="top">
-				<div class="loginLanguage">
+
+			<!--	<div class="loginLanguage">
 					<div id="sample" class="dropdown">
 						<div id="div_curr_lag" class="parent">
 							<a href="#">
@@ -167,7 +168,8 @@
 							alt="" />わぶん<span class="value"></span></a></div>
 						</div>
 					</div>
-				</div>
+				</div>-->
+
 			</div>
 		</div>
 		<div class="user">
@@ -201,7 +203,7 @@
 							<img src="__WIMG__/index/white_icc.png" alt="">
 						</div>
 						<span class="yue fl">
-							&nbsp;{$moneyinfo['cangku_num']|Showtwo}
+							&nbsp;{$moneyinfo['cangku_num']|Showtwo}  EUSD
 						</span>
 					</div>
 				</a>
@@ -215,7 +217,7 @@
 							<img src="__WIMG__/index/white_icc.png" alt="">
 						</div>
 						<span class="yue fl">
-							&nbsp;{$moneyinfo['fengmi_num']|Showtwo}
+							&nbsp;{$moneyinfo['fengmi_num']|Showtwo}  EUSD
 						</span>
 					</div>
 				</a>
@@ -317,6 +319,14 @@
 					<img src="__WIMG__/jiantouyou.png" alt="">
 				</a>
 			</li>
+			<li><a href="{:U('User/selectLanguage')}">
+					<div>
+						<img src="__WIMG__/china.png" alt="">
+						<p>选择语言</p>
+					</div>
+					<img src="__WIMG__/jiantouyou.png" alt="">
+				</a>
+			</li>
 			<li><a href="javascript:void(0)">
 					<div>
 						<img src="__WIMG__/user/banben.png" alt="">
@@ -336,15 +346,23 @@
 			<img src="__WIMG__/shouye.png" alt="首页">
 			<p class="">{$Think.lang.sy}</p>
 		</a>
-		<!-- <a href="{:U('Turntable/index')}"> -->
-		<!--<a id="notSell">-->
-		<a href="{:U('index/page')}">
+		<!--<a href="{:U('index/page')}">
 			<img src="__WIMG__/zican.png" alt="资产">
 			<p>{$Think.lang.zichan}</p>
+		</a>-->
+		<a href="{:U('Turntable/index')}">
+			<!--<a id="notSell">-->
+			<!--<a href="{:U('Index/page')}">-->
+			<img src="__WIMG__/zican.png" alt="兑换资产">
+			<p>{$Think.lang.dhzc}</p>
 		</a>
-		<a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
+		<!--<a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
 			<img src="__WIMG__/gouwuche.png" alt="商城">
 			<p>{$Think.lang.shoppingmall}</p>
+		</a>-->
+		<a href="{:U('Add/ecosystem')}" id="guojiweikaifang">
+			<img src="__WIMG__/gouwuche.png" alt="生态应用">
+			<p>{$Think.lang.styy}</p>
 		</a>
 		<a href="{:U('User/Personal')}">
 			<img src="__WIMG__/wode_select.png" alt="我的">

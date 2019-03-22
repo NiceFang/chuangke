@@ -442,6 +442,8 @@
     'duihEUSD'=>'兑换EUSD',
     'shouEUSDma'=>'收EUSD码',
 
+    'qsrshoujyzm'=>'手机验证码',
+
 
 
 
@@ -633,7 +635,7 @@
     'yzm3'=>'获取验证码',
 
     'scan'=>'扫一扫',
-    'trade'=>'房产基金',
+    'trade'=>'交易中心',
     'zhgl'=>'账号管理',
     'yhk'=>'银行卡',
     'zfb'=>'支付宝',

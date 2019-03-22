@@ -56,7 +56,8 @@ class GrowthController extends CommonController {
 		for($i=1;$i<=5;$i++){
 			$coindets[]= D('coindets')->where("cid=".$i)->order('coin_addtime desc')->find();
 		}
-        $level = $this->userLevel[$uinfo['use_grade']];
+//        $level = $this->userLevel[$uinfo['use_grade']];
+        $level = GetLevel($uinfo["use_grade"]);
 
         $uinfo['use_grade_name'] = L($level);
       //当前我的资产

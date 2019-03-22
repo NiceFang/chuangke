@@ -599,7 +599,7 @@
     'yzm3'=>'Get Code',
 
     'scan'=>'Scan',
-    'trade'=>'房产基金',
+    'trade'=>'Trade Center',
     'zhgl'=>'Manage Account',
     'yhk'=>'Bank Card',
     'zfb'=>'Alipay Account',
