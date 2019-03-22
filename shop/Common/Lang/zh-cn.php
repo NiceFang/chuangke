@@ -442,6 +442,8 @@
     'duihEUSD'=>'兑换EUSD',
     'shouEUSDma'=>'收EUSD码',
 
+    'qsrshoujyzm'=>'手机验证码',
+
 
 
 
