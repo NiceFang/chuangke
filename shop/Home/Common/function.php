@@ -388,6 +388,7 @@ function sendMsg($mobile,$sendType)
         $user_mobile = $mobile;
         $code = getCode();//获取随机验证码
         $sms_code = sha1(md5(trim($code) . trim($mobile)));
+        session('code', $code);
         session('set_code', $code);
         session('sms_code', $sms_code);//将验证码和手机号存入
         //发送短信
@@ -395,7 +396,7 @@ function sendMsg($mobile,$sendType)
         if($sendType == 'zxcghy84-corean'){
             $user_mobile = '0082'.$user_mobile;
             $res = sendSms($user_mobile,$code);
-            echo "aa";
+//            echo "aa";
             if($res->Code=='OK'){
 
                 $res = 0;
@@ -472,7 +473,7 @@ function newMsg($mobile,$code) {
         // echo "请求发送短信失败";
         $mes=1;
     }
-    return $result;
+    return $mes;
 //    return $result;
 //     $url='http://smssh1.253.com/msg/send/json';
 //     // $content=M('config','nc')->where(array('name'=>'MSG'))->getField('value');

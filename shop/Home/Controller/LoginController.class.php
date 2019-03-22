@@ -921,7 +921,7 @@ public function check_verify($code, $id = '')
             $sendType = 'zxcghy84-corean';
         }
         if(empty($mobile)){
-            echo 1;
+//            echo 1;
             $mes['status']=0;
             $mes['message']= L('sjhmbnwk');
             $this->ajaxReturn($mes);
