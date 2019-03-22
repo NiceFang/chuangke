@@ -132,7 +132,9 @@ return true;
 			$teamtjcount = M('user')->where("FIND_IN_SET($id,path) ".$wheresql)->count();
 			$sql[] = M('user')->getLastSql();
 
+
 			$wheresql = $this->SysSet[$teamlevel]==-1  ? "" : " and use_grade=".$this->SysSet[$teamlevel];
+
 
 			$teamtjcount = M('user')->where("FIND_IN_SET($id,path) ".$wheresql)->count();
 			$sql = M('user')->getLastSql();
@@ -499,8 +501,9 @@ return true;
 		
 		$jihuoAmount = $user["jihuoAmount"];
 		//推荐奖 begion 
+
 		$ruser_array = $userModel->field("id,loginname,use_grade")->where("id in ({$user[path]})  and use_grade>0")->order("id desc")->limit(0,$systemInfo['affectceng'])->select();
-		
+
 		foreach($ruser_array as $k=>$ruser){
 
 			if ($ruser['use_grade']==1) {
@@ -993,6 +996,7 @@ return true;
 			return ;
 		}
 		$data['pid'] = $parray['pid'];
+
 
 		$r_user = $staffAdd->field("id,loginname,path,dai,tname,use_grade,teamdai")->where("loginname='{$userModel[rid]}'")->find();
 

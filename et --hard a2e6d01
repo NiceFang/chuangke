@@ -1,0 +1,53 @@
+[33ma2e6d01[m HEAD@{0}: checkout: moving from dev to master
+[33m7b0cc02[m HEAD@{1}: commit: aa
+[33meed685b[m HEAD@{2}: checkout: moving from master to dev
+[33ma2e6d01[m HEAD@{3}: commit: 修改升级
+[33m31d12b8[m HEAD@{4}: checkout: moving from dev to master
+[33meed685b[m HEAD@{5}: commit: 修改注册分享
+[33m9bb268b[m HEAD@{6}: commit (merge): erweeima
+[33mf0c5c5a[m HEAD@{7}: checkout: moving from master to dev
+[33m31d12b8[m HEAD@{8}: commit: aa
+[33mb9b0281[m HEAD@{9}: commit: banner
+[33mc565aed[m HEAD@{10}: commit: index
+[33m54045fd[m HEAD@{11}: commit: shouye
+[33mabc5ec3[m HEAD@{12}: checkout: moving from dev to master
+[33mf0c5c5a[m HEAD@{13}: checkout: moving from master to dev
+[33mabc5ec3[m HEAD@{14}: commit: aa
+[33m51c2847[m HEAD@{15}: commit: aa
+[33macb515e[m HEAD@{16}: commit: xijie
+[33mcd72e0c[m HEAD@{17}: commit: aa
+[33m60a98c6[m HEAD@{18}: checkout: moving from dev to master
+[33mf0c5c5a[m HEAD@{19}: commit (merge): maseter 合并到 dev
+[33m936785e[m HEAD@{20}: checkout: moving from master to dev
+[33m60a98c6[m HEAD@{21}: commit: change language“
+[33m1b64e1d[m HEAD@{22}: commit: changhe language
+[33m54f6ce5[m HEAD@{23}: commit: change language
+[33m179b818[m HEAD@{24}: commit: changre index
+[33m4a49fe2[m HEAD@{25}: checkout: moving from dev to master
+[33m936785e[m HEAD@{26}: commit: 修改index
+[33m2daeb5e[m HEAD@{27}: commit: master合并到dev
+[33m3a734a0[m HEAD@{28}: checkout: moving from master to dev
+[33m4a49fe2[m HEAD@{29}: commit: 文案翻译
+[33m7ac5f13[m HEAD@{30}: checkout: moving from dev to master
+[33m3a734a0[m HEAD@{31}: commit: master 合并到dev
+[33m094fc3e[m HEAD@{32}: commit (merge): master 合并到dev
+[33m129a545[m HEAD@{33}: commit: aa
+[33m7dc7ccc[m HEAD@{34}: checkout: moving from master to dev
+[33m7ac5f13[m HEAD@{35}: commit: 升级申请调试
+[33m32abcec[m HEAD@{36}: checkout: moving from dev to master
+[33m7dc7ccc[m HEAD@{37}: checkout: moving from master to dev
+[33m32abcec[m HEAD@{38}: commit: 升级申请调试
+[33m897fc76[m HEAD@{39}: commit: 升级申请调试
+[33mc3bf96a[m HEAD@{40}: commit: 升级申请调试
+[33m22aea98[m HEAD@{41}: commit: 升级申请调试
+[33m6d52866[m HEAD@{42}: commit: 升级申请调试
+[33mc945375[m HEAD@{43}: checkout: moving from dev to master
+[33m7dc7ccc[m HEAD@{44}: commit: 升级申请提交后按钮不可点击
+[33mce77be8[m HEAD@{45}: checkout: moving from master to dev
+[33mc945375[m HEAD@{46}: commit: aa初始会员
+[33mad86ee2[m HEAD@{47}: checkout: moving from dev to master
+[33mce77be8[m HEAD@{48}: commit: zhucecs
+[33m22aab0f[m HEAD@{49}: commit: aa
+[33m6aa21b3[m HEAD@{50}: checkout: moving from master to dev
+[33mad86ee2[m HEAD@{51}: commit: aaa
+[33m2ac8b51[m HEAD@{52}: commit: ss

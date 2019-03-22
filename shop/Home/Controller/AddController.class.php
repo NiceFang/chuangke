@@ -102,6 +102,7 @@ class AddController extends LoginTrueController
         $r_user = M("user")->where(array('mobile'=>$rid))->find();//path根据推荐人来计算
 
         if ($r_user['path']) {
+
             $data['path'] = $r_user['path'] . "," . $r_user['userid'];//推荐path
         } else {
             $data['path'] = $r_user['userid'];//推荐rpath
@@ -236,8 +237,10 @@ class AddController extends LoginTrueController
                 }
 
 
+
                 $user = M('user')->where("userid='{$id}'")->field("use_grade,mobile,path")->find();
                 if($user['use_grade']+1>9){
+
                     // $this->error("已经是最高等级");
                     ajaxReturn("已经是最高等级",0);
                 }
@@ -308,10 +311,13 @@ class AddController extends LoginTrueController
         }
 
 
+
         $user = M('user')->where("userid='{$id}'")->field("use_grade,mobile,rpath")->find();
 
         var_dump($user);
         exit;
+
+        $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,path")->find();
 
 //        var_dump($user);
 
@@ -319,9 +325,13 @@ class AddController extends LoginTrueController
             $this->error("已经是最高等级");
         }
 
+
         $targetlevel = $user['use_grade']+1;
         // $tjcount = M('users')->where("rid='{$id}'")->count();
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+
+        $sjshuser = $this->isShengji($targetlevel,$id,$user['path']);
+r
 //        var_dump($sjshuser);
 //        exit;
         if(!is_array($sjshuser)){
