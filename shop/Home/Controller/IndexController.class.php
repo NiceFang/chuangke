@@ -42,7 +42,7 @@ class IndexController extends CommonController
         $users = M("user");
         $userModel = $users->where("mobile='{$memberName}'")->find();
 
-        $userModel["levelName"] = GetLevel($userModel["standardlevel"]);
+        $userModel["levelName"] = GetLevel($userModel["use_grade"]);
 
 //        $level = $this->userLevel[$userModel["levelName"]];
 //        $lang = L('l');

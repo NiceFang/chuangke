@@ -138,11 +138,17 @@ class LoginController extends Controller
             //拼接路径
             $path=$p_info['path'];
             $deep=$p_info['deep'];
-            if(empty($path)){
+
+            if ($path) {
+                $data['path'] = $path . "," . $pid;//推荐path
+            } else {
+                $data['path'] = $pid;//推荐rpath
+            }
+           /* if(empty($path)){
                 $data['path']='-'.$pid.'-';
             }else{
                 $data['path']=$path.$pid.'-';
-            }
+            }*/
             $data['deep']=$deep+1;
 
             $user->startTrans();//开启事务
@@ -302,6 +308,7 @@ class LoginController extends Controller
 
             $rs = $users->where(array('account'=>$account))->find();
 
+            session("userid",$rs["userid"]);
             session("nvip_member_id",$rs["userid"]);
             session("nvip_member_tuijianma",$rs["mobile"]);
             session("nvip_nvip_member_User",$rs["mobile"]);

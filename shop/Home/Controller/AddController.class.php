@@ -41,9 +41,7 @@ class AddController extends LoginTrueController
             $this->error("验证码错误");
         }*/
         $txt_loginname = $_POST["mobile"];
-      /*  if($_POST["mobile"] != session('code')){
-            $this->error("验证码错误");
-        }*/
+
         if (!$txt_loginname) {
             $this->error("手机号不能为空");
             exit();
@@ -101,13 +99,18 @@ class AddController extends LoginTrueController
         }
 
 
-        $r_user = M("user")->where(array('mobile'=>$rid))->find();//rpath根据推荐人来计算
+        $r_user = M("user")->where(array('mobile'=>$rid))->find();//path根据推荐人来计算
 
-        if ($r_user['rpath']) {
+        if ($r_user['path']) {
+            $data['path'] = $r_user['path'] . "," . $r_user['userid'];//推荐path
+        } else {
+            $data['path'] = $r_user['userid'];//推荐rpath
+        }
+       /* if ($r_user['rpath']) {
             $data['rpath'] = $r_user['rpath'] . "," . $r_user['userid'];//推荐rpath
         } else {
             $data['rpath'] = $r_user['userid'];//推荐rpath
-        }
+        }*/
 
 
         $data['wximg'] = $file_path;//微信二维码
@@ -116,10 +119,10 @@ class AddController extends LoginTrueController
         $data['ceng'] = $r_user['ceng'] + 1;//层
          // 第几代
         $data['dai'] = $r_user['dai'] + 1;
-        // 等级
-        $data['user_credit'] = '0';//刚开始就是临时会员
 
-        $data['standardlevel'] = '0';//刚开始就是临时会员
+        $data['user_credit'] = '0';//刚开始就是临时会员
+        // 等级
+        $data['use_grade'] = '0';//刚开始就是临时会员
         // 手机号
         $data["mobile"] = $txt_loginname;
 
@@ -151,6 +154,7 @@ class AddController extends LoginTrueController
         $data["account"] = $txt_loginname;
         // 账号不锁定
         $data["status"] = 1;
+        $data['deep']=$r_user['deep']+1;
 
 
 
@@ -197,13 +201,13 @@ class AddController extends LoginTrueController
         }
 
 
-        $user = M('user')->where("userid='{$id}'")->field("standardlevel")->find();
+        $user = M('user')->where("userid='{$id}'")->field("use_grade")->find();
 
-        $user['standardlevelname'] = GetLevel($user['standardlevel']);
-        if($user['standardlevel']+1>9){
+        $user['standardlevelname'] = GetLevel($user['use_grade']);
+        if($user['use_grade']+1>9){
             $user['target_standardlevelname'] = "已是最高等级";
         }else{
-            $user['target_standardlevelname'] = GetLevel($user['standardlevel']+1);
+            $user['target_standardlevelname'] = GetLevel($user['use_grade']+1);
         }
         $info = M('user')->where("userid='{$id}'")->find();
         $user['userid'] = $info['userid'];
@@ -232,15 +236,15 @@ class AddController extends LoginTrueController
                 }
 
 
-                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
-                if($user['standardlevel']+1>9){
+                $user = M('user')->where("userid='{$id}'")->field("use_grade,mobile,path")->find();
+                if($user['use_grade']+1>9){
                     // $this->error("已经是最高等级");
                     ajaxReturn("已经是最高等级",0);
                 }
-                $targetlevel = $user['standardlevel']+1;
+                $targetlevel = $user['use_grade']+1;
                 // $tjcount = M('users')->where("rid='{$id}'")->count();
 
-                $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
+                $sjshuser = $this->isShengji($targetlevel,$id,$user['path']);
                 //var_dump($sjshuser);
                 if(!is_array($sjshuser)){
 
@@ -259,8 +263,8 @@ class AddController extends LoginTrueController
                 $data = array(
                     "user_id" => $id,
                     "loginname" => $user['mobile'],
-                    "curlevel" => $user['standardlevel'],
-                    "targetlevel" => ($user['standardlevel'])+1,
+                    "curlevel" => $user['use_grade'],
+                    "targetlevel" => ($user['use_grade'])+1,
                     "shuser1" => $shuser1,
                     "shuser2" => $shuser2,
                     "addtime" => time()
@@ -304,18 +308,18 @@ class AddController extends LoginTrueController
         }
 
 
-        $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
+        $user = M('user')->where("userid='{$id}'")->field("use_grade,mobile,rpath")->find();
 
         var_dump($user);
         exit;
 
 //        var_dump($user);
 
-        if($user['standardlevel']+1>9){
+        if($user['use_grade']+1>9){
             $this->error("已经是最高等级");
         }
 
-        $targetlevel = $user['standardlevel']+1;
+        $targetlevel = $user['use_grade']+1;
         // $tjcount = M('users')->where("rid='{$id}'")->count();
         $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
 //        var_dump($sjshuser);
@@ -335,8 +339,8 @@ class AddController extends LoginTrueController
         $data = array(
             "user_id" => $id,
             "loginname" => $user['loginname'],
-            "curlevel" => $user['standardlevel'],
-            "targetlevel" => $user['standardlevel']+1,
+            "curlevel" => $user['use_grade'],
+            "targetlevel" => $user['use_grade']+1,
             "shuser1" => $shuser1,
             "shuser2" => $shuser2,
             "addtime" => time()
@@ -377,12 +381,12 @@ class AddController extends LoginTrueController
                 }
 
 
-                $user = M('user')->where("userid='{$id}'")->field("standardlevel,mobile,rpath")->find();
-                if($user['standardlevel']+1>9){
+                $user = M('user')->where("userid='{$id}'")->field("use_grade,mobile,rpath")->find();
+                if($user['use_grade']+1>9){
                    // $this->error("已经是最高等级");
                     ajaxReturn("已经是最高等级",0);
                 }
-                $targetlevel = $user['standardlevel']+1;
+                $targetlevel = $user['use_grade']+1;
                 // $tjcount = M('users')->where("rid='{$id}'")->count();
 
                 $sjshuser = $this->isShengji($targetlevel,$id,$user['rpath']);
@@ -404,8 +408,8 @@ class AddController extends LoginTrueController
                 $data = array(
                     "user_id" => $id,
                     "loginname" => $user['mobile'],
-                    "curlevel" => $user['standardlevel'],
-                    "targetlevel" => ($user['standardlevel'])+1,
+                    "curlevel" => $user['use_grade'],
+                    "targetlevel" => ($user['use_grade'])+1,
                     "shuser1" => $shuser1,
                     "shuser2" => $shuser2,
                     "addtime" => time()
@@ -607,7 +611,7 @@ class AddController extends LoginTrueController
 //        exit;
         if(M("usersjinfo")->where("id=$id")->save($save)){
             if($ispass==1){
-                M("users")->where("id=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                M("users")->where("id=$shList[user_id]")->save(array("use_grade"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }
@@ -650,7 +654,7 @@ class AddController extends LoginTrueController
 
            if($ispass==1){
                // 改变用户级别
-                $res[] =  M("user")->where("userid=$shList[user_id]")->save(array("standardlevel"=>$shList['targetlevel']));
+                $res[] =  M("user")->where("userid=$shList[user_id]")->save(array("use_grade"=>$shList['targetlevel']));
                 $msgtext = "【创客联盟】您的审核已通过，恭喜您成功升级为".$shList['targetlevel']."级会员。";
                 $this->SendMsg($shList['loginname'],$msgtext);
             }

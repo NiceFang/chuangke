@@ -21,7 +21,9 @@ class UserController extends CommonController
             $lantype = 1;//简体中文
         if (preg_match("/en/i", $lang))
             $lantype = 2;//English
-        $level = $this->userLevel[$uinfo['use_grade']];
+//        $level = $this->userLevel[$uinfo['use_grade']];
+        $level = GetLevel($uinfo["use_grade"]);
+
         $uinfo['use_grade_name'] = L($level);
         $mobile = session('user_login.mobile');
         $isM = strstr($mobile,'m');
@@ -376,6 +378,7 @@ class UserController extends CommonController
 
         }
         $aurl = $_SERVER['SERVER_NAME']. U('Login/register/UID/' . $uinfo['userid'].'/l/'.LANG_SET);
+        //$aurl = $_SERVER['SERVER_NAME'].':806'. U('Login/register/UID/' . $uinfo['userid'].'/l/'.LANG_SET);
         $moneyinfo = M('store')->where(array('uid' => $userid))->field('cangku_num,fengmi_num')->find();
         $this->assign('moneyinfo', $moneyinfo);
         $this->urel = ltrim($urel,".");
