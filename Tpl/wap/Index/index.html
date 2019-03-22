@@ -24,6 +24,63 @@
     body {
         /* position: relative; */
     }
+    .functionList {
+        position: absolute;
+        top:0.5833rem;
+        right: 0.05rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        background: url('__WIMG__/index/list.png') no-repeat;
+        background-size: contain;
+        margin-right: 0.2083rem;
+    }
+    .functionList ul {
+        position: absolute;
+        bottom: -1.4583rem;
+        right: -0.0833rem;
+        background-color: #fff;
+        border-radius: 0.0625rem;
+
+    }
+    .functionList ul.active {
+        display: none
+    }
+    .functionList ul li {
+        width: 2.2708rem;
+        height: 0.6667rem;
+    }
+    .functionList ul li>a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 2.2708rem;
+        height: 0.6667rem;
+        font-size: 0.2917rem;
+        color: #000;
+    }
+    .functionList ul li .saoyisao{
+        width: 0.3333rem;
+        height: 0.3333rem;
+        margin-right: 0.1667rem;
+        display: inline-block;
+        background: url('__WIMG__/index/saoyisao.png') no-repeat;
+        background-size: contain;
+    }
+    .functionList ul li .twocope{
+        width: 0.3333rem;
+        height: 0.3333rem;
+        margin-right: 0.1667rem;
+        display: inline-block;
+        background: url('__WIMG__/index/twocope.png') no-repeat;
+        background-size: contain;
+    }
+    .functionList ul li .icon{
+        width: 0.2917rem;
+        height: 0.2917rem;
+        display: inline-block;
+        background: url('__WIMG__/index/icon10.png') no-repeat;
+        background-size: contain;
+    }
 </style>
 
 
@@ -76,6 +133,17 @@
             </div>
         </div>
 
+        <div class="functionList">
+            <ul class="active">
+                <li><a onclick="BSL.Qcode('0','qrcodeCallback')"><i class="saoyisao"></i>{$Think.lang.scan}</a></li>
+                <li><a href="{:U('Growth/Intro')}"><i class="twocope"></i><i class="icon"></i>{$Think.lang.saoma}</a></li>
+            </ul>
+        </div>
+        <script>
+            $('.functionList').click(function(){
+                $(this).children('ul').toggleClass('active')
+            })
+        </script>
         <!-- 用户信息 -->
         <div class="userInfo">
             <!-- 人物头像 -->
@@ -93,7 +161,7 @@
                 <div class="uid_xy">
                     <p>UID:{$uinfo['userid']}</p>
                     <p>{$Think.lang.rank}: <!--{$user_info.levelName}-->
-                        <?php echo $userModel['levelName'] ? $userModel['levelName'] : L('zyz')?>
+                        <?php echo $userModel['levelName'] ? $userModel['levelName'] : L('pthy')?>
                        <!-- <?php echo $uinfo['use_grade_name'] ? $uinfo['use_grade_name'] : L('zyz')?>-->
                     </p>
                 </div>
@@ -186,18 +254,18 @@
 
         <!-- 扫码/交易中心 -->
         <div class="trading_center">
-           <!-- <a onclick="BSL.Qcode('0','qrcodeCallback')">
-                <div class="icon">
-                    <img src="__WIMG__/index/icon01.png" alt="">
-                    <p class="txt">{$Think.lang.scan}</p>
-                </div>
-            </a>
-            <a href="{:U('Growth/Intro')}">
-                <div class="icon">
-                    <img src="__WIMG__/index/icon02.png" alt="">
-                    <p class="txt">{$Think.lang.tochangeinto}<i></i>{$Think.lang.ru}</p>
-                </div>
-            </a>-->
+            <!--  <a onclick="BSL.Qcode('0','qrcodeCallback')">
+                    <div class="icon">
+                        <img src="__WIMG__/index/icon01.png" alt="">
+                        <p class="txt">{$Think.lang.scan}</p>
+                    </div>
+                </a>
+                 <a href="{:U('Growth/Intro')}">
+                   <div class="icon">
+                       <img src="__WIMG__/index/icon02.png" alt="">
+                       <p class="txt">{$Think.lang.tochangeinto}<i></i>{$Think.lang.ru}</p>
+                   </div>
+               </a>-->
             <!-- 互转-->
            <!-- <a href="{:U('Index/Turnout')}">
                 <div class="icon">
