@@ -302,7 +302,10 @@
         alert(mobile);
         var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
         var txyzmcw = $('#txyzmcw').val();   <!--图形验证码错误-->
-        var imgCode = $("#j_verify").val();
+        var jmmbnwk = $('#jmmbnwk').val();
+        var xmmbnwk = $('#xmmbnwk').val();
+        var jymmznw6w = $('#jymmznw6w').val();
+
 
         var   mobile_rex=/^1[3456789]\d{9}$/;
         if(!mobile_rex.test(mobile)){
@@ -312,13 +315,22 @@
 
         if (mobile == '' || mobile == null) {
             layer.msg(qsrsjhm);
+            return false;
+        }
+        if($('$demo_input').val() == null || $('$demo_input').val() == ''){
+            layer.msg(jmmbnwk);
+            return false;
+		}
+        if($('#new_input').val() == null || $('#new_input').val() == ''){
+            layer.msg(xmmbnwk);
+            return false;
         }
 		a =0;
         if (a == 1) {
             layer.msg(txyzmcw);
         } else {
 
-            $.post("{:U('Login/sendCode')}", {
+            $.post("{:U('Login/sendPwdCode')}", {
                 'mobile': mobile,
                 'l': "{:I('get.l')}"
             }, function (data) {
