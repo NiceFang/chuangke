@@ -962,10 +962,10 @@ public function check_verify($code, $id = '')
         $res=M('preventip')->where(array('ip'=>$cip))->find();
 //        ajaxReturn($res);
         if(empty($res)){
-            echo 4;
+//            echo 4;
             $user=D('User');
             $result=sendMsg($mobile,$sendType);
-            echo 5;
+//            echo 5;
             if($result['status']==1){
                 M('preventip')->add($datas);
             }
@@ -979,9 +979,9 @@ public function check_verify($code, $id = '')
                 $this->ajaxReturn($mes);
             }else{
                 $user=D('User');
-                echo 6;
+//                echo 6;
                 $result=sendMsg($mobile,$sendType);
-               echo 7;
+//               echo 7;
                 if($result['status']==1){
 
                     $datas['id']=$res['id'];
