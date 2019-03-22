@@ -137,8 +137,10 @@
                 <!--上传微信二维码-->
                 <div class="input_box" style="position: relative">
                     <span><img src="__WIMG__/phone.png" alt="" class="phone"></span>
-                    <input type="file" id="wexin" name="weixin" class="weixin" value="上传二维码" value="" style="opacity: 0; z-index: 5;">
-                    <div style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 1px solid #7AC231;border-radius: 9.4375rem; color: #fff;" >上传二维码</div>
+                    <input type="file" id="wexin" name="weixin" class="weixin"  value="" style="opacity: 0; z-index: 5;">
+                    <div  id="img_code" style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 1px solid #7AC231;border-radius: 9.4375rem; color: #fff;" >
+                        上传二维码
+                    </div>
                 </div>
 
 
@@ -336,6 +338,11 @@
         if(img == ''|| img == NULL){
             $('#wimg').attr('src','__WIMG__/index/suo.png');
         }*/
+
+      var img_code = $('#wexin').val();
+        $('#wexin').change(function () {
+            $('#img_code').text('上传成功');
+        })
 
     </script>
 

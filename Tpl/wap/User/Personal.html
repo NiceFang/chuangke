@@ -201,7 +201,7 @@
 							<img src="__WIMG__/index/white_icc.png" alt="">
 						</div>
 						<span class="yue fl">
-							&nbsp;{$moneyinfo['cangku_num']|Showtwo}
+							&nbsp;{$moneyinfo['cangku_num']|Showtwo}  EUSD
 						</span>
 					</div>
 				</a>
@@ -215,7 +215,7 @@
 							<img src="__WIMG__/index/white_icc.png" alt="">
 						</div>
 						<span class="yue fl">
-							&nbsp;{$moneyinfo['fengmi_num']|Showtwo}
+							&nbsp;{$moneyinfo['fengmi_num']|Showtwo}  EUSD
 						</span>
 					</div>
 				</a>
@@ -344,15 +344,23 @@
 			<img src="__WIMG__/shouye.png" alt="首页">
 			<p class="">{$Think.lang.sy}</p>
 		</a>
-		<!-- <a href="{:U('Turntable/index')}"> -->
-		<!--<a id="notSell">-->
-		<a href="{:U('index/page')}">
+		<!--<a href="{:U('index/page')}">
 			<img src="__WIMG__/zican.png" alt="资产">
 			<p>{$Think.lang.zichan}</p>
+		</a>-->
+		<a href="{:U('Turntable/index')}">
+			<!--<a id="notSell">-->
+			<!--<a href="{:U('Index/page')}">-->
+			<img src="__WIMG__/zican.png" alt="兑换资产">
+			<p>{$Think.lang.dhzc}</p>
 		</a>
-		<a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
+		<!--<a href="{:U('Shop/Home/index')}" id="guojiweikaifang">
 			<img src="__WIMG__/gouwuche.png" alt="商城">
 			<p>{$Think.lang.shoppingmall}</p>
+		</a>-->
+		<a href="{:U('Add/ecosystem')}" id="guojiweikaifang">
+			<img src="__WIMG__/gouwuche.png" alt="生态应用">
+			<p>{$Think.lang.styy}</p>
 		</a>
 		<a href="{:U('User/Personal')}">
 			<img src="__WIMG__/wode_select.png" alt="我的">
