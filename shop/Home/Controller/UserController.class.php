@@ -179,6 +179,8 @@ class UserController extends CommonController
                 ajaxReturn(L('xgsb'), 0);
             }
         }
+        $mobile = M('user')->where(array('userid'=> session("userid")))->getField('mobile');
+        $this->assign('mobile', $mobile);
         $this->assign('title', $title);
         $this->assign('type', $type);
         $this->display();

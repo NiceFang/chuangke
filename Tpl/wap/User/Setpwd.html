@@ -21,7 +21,61 @@
 <script src="__WJS__/mui.min.js"></script>
 <script src="__WJS__/rem.js"></script>
 
+<style>
+	.input_code input {
+		width: 3.7917rem;
+		margin: 0;
+		line-height: 0.875rem;
+		height: 0.875rem;
+		border-radius: 0;
+		border-top-left-radius: 0.4375rem;
+		border-bottom-left-radius: 0.4375rem;
+	}
 
+	.input_code a,
+	.input_code>img {
+		height: 0.875rem;
+		width: 2.0833rem;
+		/* background: RGBA(255, 255, 255,0.4); */
+		color: #fff;
+		line-height: 0.84rem;
+		border-top-right-radius: 0.4375rem;
+		border-bottom-right-radius: 0.4375rem;
+		font-size: 0.3333rem;
+		background-color: #7AC231;
+	}
+
+	.input_box .phone-code {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+	}
+
+	.input_box .phone-code input {
+		width: 50%;
+		height: .72rem;
+		border-radius: 0;
+		border-top-left-radius: .4rem;
+		border-bottom-left-radius: .4rem;
+	}
+
+	.input_box .phone-code a {
+		width: 50%;
+		height: .72rem;
+		display: block;
+		color: #1188ff;
+		margin-top: .2rem;
+		padding: .2rem 0;
+		background: #d9bc59;
+		font-size: .28rem;
+		border-top-right-radius: .4rem;
+		border-bottom-right-radius: .4rem;
+	}
+
+</style>
 
 <body class="bg96 ">
 	<!-- 旧的代码 -->
@@ -89,7 +143,18 @@
 					<input type="password" class="pwd_input passwordrepat" placeholder="" id="new_input">
 					<img src="__WIMG__/user/mima.png" alt="" id="new_img" onclick="hideShowPsw('new_img','new_input')">
 				</div>
+
+				<!--短信验证码-->
+				<div class="input_box input_code">
+					<span><img src="__WIMG__/moblie_code.png" alt=""></span>
+					<input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.qsrshoujyzm}"
+						   oncontextmenu="return false" onpaste="return false" />
+					<a href="javascript:void(0)" id="mycode">{$Think.lang.hq}</a>
+				</div>
+
 				<input type="hidden" value="{$type}" class="pwdtype">
+				<input type="hidden" value="{$mobile}" id="mobile" class="pwdtype">
+
 			</form>
 		</div>
 	
@@ -105,7 +170,7 @@
 		</div>
 	
 		<!-- 保存按钮 -->
-		<div class=" name pwd_save ljzf_but">{$Think.lang.termine}</div>
+		<div class=" name pwd_save ljzf_but" id="confirm">{$Think.lang.termine}</div>
 	</body>
 
 
@@ -182,4 +247,92 @@
 			}
 		})
 	})
+</script>
+<script>
+
+    var intime = "{$Think.session.set_time}";
+    var timenow = "<?php echo time(); ?>";
+
+    var bet = (parseInt(intime) + 60) - parseInt(timenow);
+    $(document).ready(function () {
+        if (bet > 0) {
+            RemainTime();
+        }
+    });
+    var iTime = 50;
+    var Account;
+    if (bet > 0) {
+        iTime = bet;
+    }
+    // 封装的计时器
+    function RemainTime() {
+        var iSecond, sSecond = "",
+            sTime = "";
+        if (iTime >= 0) {
+            iSecond = parseInt(iTime % 60);
+            iMinute = parseInt(iTime / 60)
+            if (iSecond >= 0) {
+                if (iMinute > 0) {
+                    sSecond = iMinute + "m" + iSecond + "s";
+                } else {
+                    sSecond = iSecond + "s";
+                }
+            }
+            sTime = sSecond;
+            if (iTime == 0) {
+                var hqyzm = $('#hqyzm').val() //获取验证码
+                clearTimeout(Account);
+                sTime = hqyzm;
+                iTime = 59;
+            } else {
+                Account = setTimeout("RemainTime()", 1000);
+                iTime = iTime - 1;
+            }
+        } else {
+            sTime = '没有倒计时';
+        }
+        $('#mycode').html(sTime);
+    }
+
+    // 手机验证码
+    $('#mycode').click(function () {
+
+        $("#confirm").css('backgroundColor', "rgba(255,255,255,0.5)");
+        var mobile = $("#mobile").val();
+        alert(mobile);
+        var qsrsjhm = $('#qsrsjhm').val(); //请输入手机号
+        var txyzmcw = $('#txyzmcw').val();   <!--图形验证码错误-->
+        var imgCode = $("#j_verify").val();
+
+        var   mobile_rex=/^1[3456789]\d{9}$/;
+        if(!mobile_rex.test(mobile)){
+            msg_alert('商家手机号码错误');
+            return false;
+        }
+
+        if (mobile == '' || mobile == null) {
+            layer.msg(qsrsjhm);
+        }
+		a =0;
+        if (a == 1) {
+            layer.msg(txyzmcw);
+        } else {
+
+            $.post("{:U('Login/sendCode')}", {
+                'mobile': mobile,
+                'l': "{:I('get.l')}"
+            }, function (data) {
+                alert('ajax发送成功');
+                if (data.status == 1) {
+                    // alert('发送成功');
+                    layer.msg(data.message);
+                    RemainTime();
+                } else {
+                    // alert('发送失败！');
+                    layer.msg(data.message);
+                }
+            });
+        }
+
+    });
 </script>

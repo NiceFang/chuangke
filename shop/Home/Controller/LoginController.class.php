@@ -893,7 +893,111 @@ public function check_verify($code, $id = '')
 //
 //    }
 
-    
+    public function sendPwdCode(){
+
+        $mobile=I('post.mobile');
+        $sendType = I('post.l');
+
+        //判断用户用的哪种方式注册
+        $checkmail="/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+        if(preg_match($checkmail,$mobile)){
+            //是邮箱
+            $result = sendPost($mobile);
+            if(sendPost($mobile)!=1){
+                //ajaxReturn($result,0);
+                $this->ajaxReturn($result);
+                exit;
+            }else{
+                $this->ajaxReturn($result);
+                // ajaxReturn(L('cg'),1);
+                exit;
+            }
+        }
+
+        if(!isset($sendType) || empty($sendType)){
+            $sendType = cookie('think_language');
+        }
+        if($sendType == 'zxcghy84-corean' && L('guoji') == 'hanguo'){
+            $sendType = 'zxcghy84-corean';
+        }
+        if(empty($mobile)){
+            echo 1;
+            $mes['status']=0;
+            $mes['message']= L('sjhmbnwk');
+            $this->ajaxReturn($mes);
+        }
+        if(!empty($_SERVER["HTTP_CLIENT_IP"]))
+        {
+            $cip = $_SERVER["HTTP_CLIENT_IP"];
+        }
+        else if(!empty($_SERVER["HTTP_X_FORWARDED_FOR"]))
+        {
+            $cip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        }
+        else if(!empty($_SERVER["REMOTE_ADDR"]))
+        {
+            $cip = $_SERVER["REMOTE_ADDR"];
+        }
+        // var_dump($cip);
+        $datas=array();
+        $datas['ip']=$cip;
+        $datas['time']=time();
+        $resCountWhere = array(
+            'reg_ip'=>$cip,
+            'reg_date'=>array('egt',strtotime(date('Y-m-d')))
+        );
+//        echo 2;
+        $resNum=M('user')->where($resCountWhere)->count();
+//        dump($resNum);exit;
+//            dump($resNum);
+        if($resNum>10){
+//            echo 3;
+//            ajaxReturn(2,0);
+            $mes=array();
+            $mes['status'] = 2;
+            $mes['message'] = L('wfznjzzc');//五分钟禁止注册
+            M('errorlog_ip')->add($datas);
+            $this->ajaxReturn($mes);
+        }
+        $res=M('preventip')->where(array('ip'=>$cip))->find();
+//        ajaxReturn($res);
+        if(empty($res)){
+//            echo 4;
+            $user=D('User');
+            $result=sendMsg($mobile,$sendType);
+//            echo 5;
+            if($result['status']==1){
+                M('preventip')->add($datas);
+            }
+
+            $this->ajaxReturn($result);
+        }elseif(!empty($res)){
+            if(time()-$res['time'] <= 300){
+                $mes=array();
+                $mes['status'] = 2;
+                $mes['message'] = L('wfznjzzc');//五分钟禁止注册
+                $this->ajaxReturn($mes);
+            }else{
+                $user=D('User');
+//                echo 6;
+                $result=sendMsg($mobile,$sendType);
+//               echo 7;
+                if($result['status']==1){
+
+                    $datas['id']=$res['id'];
+                    $ress=M('preventip')->save($datas);
+                }
+                $this->ajaxReturn($result);
+            }
+        }
+
+//        if($count==1){
+//            $mes['status']=0;
+//            $mes['message']='手机号码已在系统中';
+//            $this->ajaxReturn($mes);
+//        }
+
+    }
     public function adduser(){
       
         //判断是否开启交易功能
