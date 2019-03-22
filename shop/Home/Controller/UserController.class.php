@@ -157,6 +157,11 @@ class UserController extends CommonController
             $pwd = trim(I('pwd'));//新密码
             $pwdrpt = trim(I('pwdrpt'));//旧密码
             $type = trim(I('pwdtype'));
+            $mobile_code = I('code');
+             $code = session('set_code');
+             if($mobile_code != session('set_code')){
+                 ajaxReturn(L('dxyzmcw'), 0);
+             }
             if ($pwdrpt == '') {
                 ajaxReturn(L('xmmbnwk'), 0);
             }

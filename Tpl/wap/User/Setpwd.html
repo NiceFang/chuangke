@@ -199,6 +199,7 @@
 	<input type="hidden" id="jmmbnwk" value="{$Think.lang.jmmbnwk}">
 	<input type="hidden" id="xmmbnwk" value="{$Think.lang.xmmbnwk}">
 	<input type="hidden" id="jymmznw6w" value="{$Think.lang.jymmznw6w}">
+	<input type="hidden" id="dxyzmbnwk" value="{$Think.lang.dxyzmbnwk}">
 </body>
 
 </html>
@@ -231,10 +232,13 @@
 		var jmmbnwk = $('#jmmbnwk').val();
 		var xmmbnwk = $('#xmmbnwk').val();
 		var jymmznw6w = $('#jymmznw6w').val();
+		var dxyzmbnwk =  $('#dxyzmbnwk').val();
 
 		var pwd = $('.password').val();
 		var pwdrpt = $('.passwordrepat').val(); //新密码
 		var pwdtype = $('.pwdtype').val();
+		var code = $('#code').val();
+
 		if (pwd == '') {
 			msg_alert(jmmbnwk);
 		}
@@ -242,6 +246,10 @@
 			msg_alert(xmmbnwk);
 			return;
 		}
+        if (code == '') {
+            msg_alert(dxyzmbnwk);
+            return;
+        }
 		if (pwdtype == 2) {
 			//交易密码必须为6位纯数字
 			var reg = /^\d{6}\b/;
@@ -256,7 +264,8 @@
 			data: {
 				'pwd': pwd,
 				'pwdrpt': pwdrpt,
-				'pwdtype': pwdtype
+				'pwdtype': pwdtype,
+				'code':code
 			},
 			datatype: 'json',
 			success: function (mes) {
@@ -324,7 +333,7 @@
 
         var jmmbnwk = $('#jmmbnwk').val(); // 旧密码
         var xmmbnwk = $('#xmmbnwk').val(); // 新密码
-		
+
         if (mobile == '' || mobile == null) {
             layer.msg(qsrsjhm);
             return false;

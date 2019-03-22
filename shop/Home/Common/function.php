@@ -388,7 +388,7 @@ function sendMsg($mobile,$sendType)
         $user_mobile = $mobile;
         $code = getCode();//获取随机验证码
         $sms_code = sha1(md5(trim($code) . trim($mobile)));
-        session('code', $code);
+        session('set_code', $code);
         session('sms_code', $sms_code);//将验证码和手机号存入
         //发送短信
 //        $content="您本次的验证码为".$code."，请在5分钟内完成验证，验证码打死也不要告诉别人哦！";//要发送的短信内容
@@ -406,7 +406,7 @@ function sendMsg($mobile,$sendType)
             $res = newMsg($user_mobile,$code);//发送短信
 
 //            echo "bb";
-            return $res;
+//            return $res;
         }
 //        var_dump($res);die;
         if ($res == 0) {
