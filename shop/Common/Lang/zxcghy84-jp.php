@@ -530,7 +530,7 @@ return array(
     'yzm3'=>'検証コード',
 
     'scan'=>'Scan',
-    'trade'=>'Trade Center',
+    'trade'=>'トランザクションセンター',
     'zhgl'=>'Manage Account',
     'yhk'=>'Bank Card',
     'zfb'=>'Alipay',

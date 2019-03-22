@@ -62,7 +62,7 @@ class TurntableController extends CommonController {
        	$uinfo = M('user')->where(array('userid'=>$uid))->field('img_head,userid,user_credit,is_reward,today_releas,quanxian,use_grade,username')->find();
       $moneyinfo = M('store')->where(array('uid' => $uid))->field('cangku_num,fengmi_num,tongzheng')->find();
         $mulriple = D('config')->where("name='mulriple'")->getField("value");
-      $level = $this->userLevel[$uinfo['use_grade']];
+      $level = GetLevel([$uinfo['use_grade']]);
         $uinfo['use_grade_name'] = L($level);
 		$this->assign('moneyinfo', $moneyinfo);
      	 $this->assign('uinfo',$uinfo);

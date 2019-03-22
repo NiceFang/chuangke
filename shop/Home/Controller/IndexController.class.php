@@ -1045,7 +1045,8 @@ class IndexController extends CommonController
         $userinfo = M('user')->where(['userid'=>$uid])->find();
 
         //$userinfo['lev'] = $this -> $userLevel[$userinfo['user_grade']];
-        $userinfo['lev'] = L($this->userLevel[$userinfo['use_grade']]);
+        $userinfo["lev"] = L(GetLevel($userinfo["use_grade"]));
+
 //        dump($moneyinfo);exit;
         $this->assign('userinfo',$userinfo);
         $this->assign('moneyinfo', $moneyinfo);
@@ -1855,7 +1856,7 @@ class IndexController extends CommonController
         $userinfo = M('user')->where(['userid'=>$uid])->find();
 
         //$userinfo['lev'] = $this -> $userLevel[$userinfo['user_grade']];
-        $userinfo['lev'] = L($this->userLevel[$userinfo['use_grade']]);
+        $userinfo['lev'] = GetLevel($userinfo["use_grade"]);
 //        dump($moneyinfo);exit;
         //兑换记录
         $where = [
