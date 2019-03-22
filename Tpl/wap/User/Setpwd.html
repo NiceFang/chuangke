@@ -74,6 +74,27 @@
 		border-top-right-radius: .4rem;
 		border-bottom-right-radius: .4rem;
 	}
+	.noteBox {
+		display: flex;
+		align-items: center;
+		box-sizing: border-box;
+		padding: 0rem 0.3333rem;
+	}
+	.noteBox .noteIcon {
+		height: 0.5208rem;
+	}
+	#code {
+		font-size: 0.2917rem;
+		color: #ccc;
+	}
+	#mycode {
+		width: 1.6667rem;
+		border-radius: 0.4167rem;
+		height: 0.5208rem;
+		font-size: 0.2917rem;
+		line-height: 0.5208rem;
+		text-align: center;
+	}
 
 </style>
 
@@ -121,13 +142,13 @@
 	<!-- 新的代码 -->
 	 <!-- 头部 -->
 	 <div class="hear">
-			<a href="{:U('User/Personal')}"><img src="__WIMG__/user/user_jiantouzuo.png" alt=""></a>
+		<a href="{:U('User/Personal')}"><img src="__WIMG__/user/user_jiantouzuo.png" alt=""></a>
 		 <eq name="type" value="1">
 			 {$Think.lang.uplogpwd}</div>
 			 <else/>
 			 {$Think.lang.paypwdup}</div>
 		 </eq>
-		</div>
+	</div>
 	
 	
 		<!-- 密码 -->
@@ -145,9 +166,9 @@
 				</div>
 
 				<!--短信验证码-->
-				<div class="input_box input_code">
-					<span><img src="__WIMG__/moblie_code.png" alt=""></span>
-					<input type="number" id="code" name="code" class="code" placeholder="{$Think.lang.qsrshoujyzm}"
+				<div class="input_box input_code noteBox">
+					<span><img class="noteIcon" src="__WIMG__/moblie_code.png" alt=""></span>
+					<input style="flex: 1;" type="number" id="code" name="code" class="code" placeholder="{$Think.lang.qsrshoujyzm}"
 						   oncontextmenu="return false" onpaste="return false" />
 					<a href="javascript:void(0)" id="mycode">{$Think.lang.hq}</a>
 				</div>
